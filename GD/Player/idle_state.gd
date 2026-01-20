@@ -1,6 +1,9 @@
 extends NodeState
 @export var character_body_2d : CharacterBody2D
 @export var animated_sprite_2d : AnimatedSprite2D
+@onready var state_machine: NodeFiniteStateMachine = $".."
+@onready var jump: Node = $"../jump"
+
 
 @export_category("Physics Friction")
 @export var slow_down_speed : int = 600
@@ -37,8 +40,12 @@ func on_physics_process(_delta : float):
 		transition.emit("crouch")
 		return
 		
+	if GameInputEvents.dash_input():
+		transition.emit("dash")
 	
 func enter():
+	if state_machine.previous_node_state_name.to_lower() == "fall":
+		jump.jumps = jump.max_jump
 	animated_sprite_2d.play("idle")
 	
 func exit():

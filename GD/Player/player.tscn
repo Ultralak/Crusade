@@ -378,7 +378,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dash",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -587,45 +587,53 @@ height = 20.0
 radius = 5.0
 height = 14.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["PLAYER_"]]
 collision_layer = 2
 script = ExtResource("1_btcbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_c4i3b")
-animation = &"main_slash"
+animation = &"dash"
+frame = 2
+frame_progress = 0.9011938
 
 [node name="normal collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_l8h54")
 
-[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state", "player")]
 script = ExtResource("3_gwnis")
 initial_node_state = NodePath("idle")
+player = NodePath("..")
 
 [node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("4_fhl08")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d", "Jump_node")]
 script = ExtResource("5_vtle1")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-coyote_time = 1.0
+Jump_node = NodePath("../jump")
+coyote_time = 0.15
+jump_buffer_time = 0.15
+jump_friction = 1000
 
-[node name="jump_buffer_timer" type="Timer" parent="state_machine/fall"]
-wait_time = 0.24
+[node name="coyote_timer" type="Timer" parent="state_machine/fall"]
 one_shot = true
 
-[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+[node name="jump_buffer_timer" type="Timer" parent="state_machine/fall"]
+one_shot = true
+
+[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d", "state_machine", "Fall_Node")]
 script = ExtResource("6_od3ui")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-jump_height = -225.0
-max_jump_count = 3
-jump_gravity = 1200
+state_machine = NodePath("..")
+max_jump = 2
+Fall_Node = NodePath("../fall")
 
 [node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("7_vtle1")
@@ -644,9 +652,15 @@ collision_crouch = NodePath("../../CollisionShape2D")
 script = ExtResource("16_o28un")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+air_time = 0.25
 
-[node name="dash" type="Node" parent="state_machine"]
+[node name="air_timer" type="Timer" parent="state_machine/slash"]
+one_shot = true
+
+[node name="dash" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("16_lfmf2")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
@@ -669,3 +683,6 @@ state_mach = NodePath("../state_machine")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="state_machine/slash" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="state_machine/slash" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="state_machine/fall/coyote_timer" to="state_machine/fall" method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="state_machine/fall/jump_buffer_timer" to="state_machine/fall" method="_on_jump_buffer_timer_timeout"]
+[connection signal="timeout" from="state_machine/slash/air_timer" to="state_machine/slash" method="_on_air_timer_timeout"]

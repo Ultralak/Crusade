@@ -40,6 +40,9 @@ func on_physics_process(_delta : float):
 		transition.emit("jump")
 		return
 		
+	if GameInputEvents.dash_input():
+		transition.emit("dash")
+		return
 
 	if direction == 0:
 		transition.emit("idle")

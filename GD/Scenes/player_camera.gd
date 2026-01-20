@@ -6,14 +6,14 @@ extends Camera2D
 
 
 @export_category("Camera Smoothing")
-@export_range(1, 10) var smoothing_distance : int = 8
+@export_range(1, 20) var smoothing_distance : int = 8
 @export var smoothing_enabled : bool
 
 var weight : float
 
 func _ready() -> void:
 	# Smoothing weight
-	weight = float(11 - smoothing_distance) / 100
+	weight = float(21 - smoothing_distance) / 100
 
 
 

@@ -14,10 +14,12 @@ static func jump_input() -> bool:
 	
 static func slash_input() -> bool:
 	var slash_input_ : bool  = Input.is_action_pressed("slash")
-	return slash_input_
-# remember that there are 3 slash levels	
+	return slash_input_	
 
 static func crouch_input() -> bool:
 	var crouching : bool  = Input.is_action_pressed("crouch")
 	return crouching
 	
+static func dash_input() -> bool:
+	var dashing : bool = Input.is_action_just_pressed("dash")
+	return dashing

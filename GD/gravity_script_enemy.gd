@@ -10,7 +10,3 @@ func _physics_process(delta: float) -> void:
 		character_body_2d.velocity.y += GRAVITY * delta
 		
 	character_body_2d.move_and_slide()
-
-
-func _on_raycast_right_entered_ray_right() -> void:
-	pass # Replace with function body.
