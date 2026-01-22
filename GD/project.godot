@@ -15,6 +15,12 @@ run/main_scene="uid://cpe7igoj4lqdp"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerManager="*res://autoloads/player_manager.gd"
+EnemyHealthManager="*res://autoloads/EnemyHealthManager.gd"
+EnemyManager="*res://autoloads/EnemyManager.gd"
+
 [display]
 
 window/size/viewport_width=960
@@ -24,7 +30,7 @@ window/stretch/scale_mode="integer"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/david/OneDrive/Documents/Crusade/Crusade/GD/Videos/Day 5-6.avi"
+movie_writer/movie_file="C:/Users/david/OneDrive/Documents/Crusade/Crusade/GD/Videos/Day 8.avi"
 movie_writer/fps=30
 
 [editor_plugins]
@@ -34,6 +40,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 [global_group]
 
 PLAYER_="all player characters"
+ENEMY_=""
 
 [input]
 
@@ -79,7 +86,6 @@ dash={
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
 2d_physics/layer_9="detection"
-2d_physics/layer_10="hitboxes"
 
 [physics]
 

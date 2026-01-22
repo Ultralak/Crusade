@@ -16,6 +16,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if jump.jumps:
 		words = "%s" % [jump.jumps]
-
 	text = state_mach.previous_node_state_name + " -> " + state_mach.current_node_state_name+ " " + words	
 	printed = false
+	

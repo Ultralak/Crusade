@@ -1,8 +1,8 @@
 extends NodeState
 @export var character_body_2d : CharacterBody2D
 @export var animated_sprite_2d : AnimatedSprite2D
-@onready var state_machine: NodeFiniteStateMachine = $".."
-@onready var jump: Node = $"../jump"
+@export var state_machine: NodeFiniteStateMachine 
+@export var jump: Node 
 
 
 @export_category("Physics Friction")

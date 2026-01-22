@@ -1,6 +1,7 @@
 extends NodeState
-@onready var coyote_timer: Timer = $coyote_timer
-@onready var jump_buffer_timer: Timer = $jump_buffer_timer
+@export var coyote_timer: Timer
+@export var jump_buffer_timer: Timer 
+@export var jump: NodeState 
 
 @export var character_body_2d : CharacterBody2D
 @export var animated_sprite_2d : AnimatedSprite2D
@@ -11,7 +12,7 @@ extends NodeState
 @export var jump_buffer_time : float = 0.1 
 @export var speed : float  = 200
 @export var max_horizontal_speed : float = 200
-@onready var jump: Node = $"../jump"
+
 @export var jump_friction : int 
 
 

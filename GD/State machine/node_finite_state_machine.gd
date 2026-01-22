@@ -17,6 +17,7 @@ func _ready():
 		if child is NodeState:
 			node_states[child.name.to_lower()] = child
 			child.transition.connect(transition_to)
+			child.force_transition.connect(force_transition_to)
 			# checks the children of the scene for any nodestates and adds to the dictionary
 	if initial_node_state:
 		initial_node_state.enter()
@@ -56,3 +57,23 @@ func transition_to(node_state_name	):
 	current_node_state_name = current_node_state.name.to_lower()
 	printed = false
 		
+
+func force_transition_to(node_state_name	):
+	var new_node_state = node_states.get(node_state_name.to_lower())
+	
+	if !new_node_state:
+		return
+		
+	if current_node_state:
+		current_node_state.exit()
+		
+	previous_node_state_name = current_node_state_name	
+	new_node_state.enter()
+	current_node_state = new_node_state
+	current_node_state_name = current_node_state.name.to_lower()
+	printed = false
+
+
+
+func _on_player_hurt() -> void:
+	transition_to("hurt")

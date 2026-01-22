@@ -3,6 +3,7 @@ extends Node
 
 
 signal transition
+signal force_transition
 
 func on_process(_delta : float):
 	pass

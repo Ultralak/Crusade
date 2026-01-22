@@ -3,8 +3,9 @@ extends NodeState
 @export var character_body_2d : CharacterBody2D
 @export var animated_sprite_2d : AnimatedSprite2D
 
+
 @export_category("Dash_state")
-@export var Dash_speed : int = 2000
+@export var Dash_speed : int = 1500
 @export var friction : int = 200
 func on_process(_delta : float):
 	pass
@@ -27,15 +28,17 @@ func on_physics_process(_delta : float):
 			return
 		
 func enter():
-	
+	character_body_2d.set_collision_mask_value(3,false)
 	var direction = GameInputEvents.movement_input()
 	if direction == 0:	
 		direction  = -1 if animated_sprite_2d.flip_h else 1
 		
 	character_body_2d.velocity.x  += direction * Dash_speed
 	character_body_2d.velocity.y = 0
+	
 	animated_sprite_2d.play("dash")
 	
 	
 func exit():
+	character_body_2d.set_collision_mask_value(3,true)
 	animated_sprite_2d.stop()
