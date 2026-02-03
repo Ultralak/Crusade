@@ -2,7 +2,7 @@ extends Node
 
 @export var node_finite_state_machine : NodeFiniteStateMachine
 @export var enemy_1 : CharacterBody2D
-@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+@export var animation_player : AnimationPlayer
 
 @export_category("Distances")
 @export var detect_distance : float = 100
@@ -32,20 +32,17 @@ func _physics_process(_delta: float) -> void:
 			node_finite_state_machine.transition_to("idle")
 
 
-
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if animated_sprite_2d.animation == "attack":
-		node_finite_state_machine.transition_to("recovery")
-	if animated_sprite_2d.animation == "death":
-		enemy_1.queue_free()
-
-
 func _on_test_enemy_enemy_hit() -> void:
 	node_finite_state_machine.transition_to("hurt")
 
 
-func _on_melee_enemy_dead() -> void:
-	is_dead = true
-	node_finite_state_machine.transition_to("death")
+
+func _on_player_animation_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "attack":
+		node_finite_state_machine.transition_to("recovery")
+	if anim_name == "death":
+		enemy_1.queue_free()
+
+
+func _on_health_component_enemy_hit() -> void:
+	node_finite_state_machine.transition_to("hurt")

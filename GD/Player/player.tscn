@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=89 format=3 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://cg4agbfw0v3hn" path="res://Player/player.gd" id="1_btcbx"]
 [ext_resource type="Texture2D" uid="uid://cv3drjsiadcdf" path="res://Player/Death.png" id="2_gu6f8"]
@@ -19,6 +19,11 @@
 [ext_resource type="Script" uid="uid://btkaaotjglg8u" path="res://Player/slash_state.gd" id="16_o28un"]
 [ext_resource type="Script" uid="uid://cujf13n6wr73m" path="res://Player/state_label.gd" id="17_pisgm"]
 [ext_resource type="Script" uid="uid://ckyfjyiu2q5q" path="res://Player/hurt_state.gd" id="18_n471f"]
+[ext_resource type="Texture2D" uid="uid://m6k00nb0w40r" path="res://Player/player_dead_effect/Player sprite sheet.png" id="20_n471f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o28un"]
+radius = 5.0
+height = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n471f"]
 atlas = ExtResource("2_gu6f8")
@@ -483,20 +488,50 @@ height = 20.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o28un"]
 size = Vector2(29, 20)
 
-[node name="player" type="CharacterBody2D" groups=["PLAYER_"]]
-collision_layer = 3
-collision_mask = 5
+[sub_resource type="Animation" id="Animation_7emwf"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_hshwv"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_gpjlu"]
+resource_name = "main_slash"
+
+[sub_resource type="Animation" id="Animation_8mwp6"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qemgg"]
+_data = {
+&"death": SubResource("Animation_7emwf"),
+&"idle": SubResource("Animation_hshwv"),
+&"main_slash": SubResource("Animation_gpjlu"),
+&"new_animation": SubResource("Animation_8mwp6")
+}
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine") groups=["PLAYER_"]]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_btcbx")
+state_machine = NodePath("state_machine")
+damage_amount = 2
+
+[node name="crouch_collision" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_o28un")
+disabled = true
+debug_color = Color(0.886946, 0.2276842, 0.6039829, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_c4i3b")
-animation = &"hurt"
-frame = 2
+animation = &"main_slash"
+frame = 14
 frame_progress = 1.0
 
 [node name="normal collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_l8h54")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state", "player")]
@@ -534,8 +569,13 @@ script = ExtResource("6_od3ui")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 state_machine = NodePath("..")
-max_jump = 2
+max_jump = 3
 Fall_Node = NodePath("../fall")
+move_speed = 200.0
+jump_height = 35.0
+time_to_peak = 0.2
+time_to_descent = 0.4
+max_horizontal_speed = 200.0
 
 [node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("7_vtle1")
@@ -548,12 +588,13 @@ script = ExtResource("8_od3ui")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 collision_normal = NodePath("../../normal collision")
-collision_crouch = NodePath("../../normal collision")
+collision_crouch = NodePath("../../crouch_collision")
 
-[node name="slash" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+[node name="slash" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d", "fall")]
 script = ExtResource("16_o28un")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+fall = NodePath("../fall")
 air_time = 0.25
 fixed_offset = 22.0
 
@@ -564,10 +605,12 @@ one_shot = true
 script = ExtResource("16_lfmf2")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+Dash_speed = 1250
 
-[node name="hurt" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d", "Jump_node")]
+[node name="hurt" type="Node" parent="state_machine" node_paths=PackedStringArray("character_body_2d", "sprite_2d", "animated_sprite_2d", "Jump_node")]
 script = ExtResource("18_n471f")
 character_body_2d = NodePath("../..")
+sprite_2d = NodePath("../../Sprite2D")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 Jump_node = NodePath("../jump")
 
@@ -595,10 +638,22 @@ position = Vector2(-22.999998, -10.000002)
 shape = SubResource("RectangleShape2D_o28un")
 disabled = true
 
-[connection signal="hurt" from="." to="state_machine" method="_on_player_hurt"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+texture = ExtResource("20_n471f")
+hframes = 18
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qemgg")
+}
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="state_machine/slash" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="state_machine/slash" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="state_machine/fall/coyote_timer" to="state_machine/fall" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="state_machine/fall/jump_buffer_timer" to="state_machine/fall" method="_on_jump_buffer_timer_timeout"]
+[connection signal="passthrough" from="state_machine/crouch" to="." method="_on_crouch_passthrough"]
 [connection signal="timeout" from="state_machine/slash/air_timer" to="state_machine/slash" method="_on_air_timer_timeout"]
 [connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]

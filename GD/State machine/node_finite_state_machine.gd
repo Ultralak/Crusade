@@ -11,8 +11,11 @@ var current_node_state: NodeState
 var current_node_state_name : String
 var previous_node_state_name : String
 var printed : bool 
+var FlipComponent : Node
 
 func _ready():
+	
+	
 	for child in get_children():
 		if child is NodeState:
 			node_states[child.name.to_lower()] = child
@@ -72,8 +75,3 @@ func force_transition_to(node_state_name	):
 	current_node_state = new_node_state
 	current_node_state_name = current_node_state.name.to_lower()
 	printed = false
-
-
-
-func _on_player_hurt() -> void:
-	transition_to("hurt")

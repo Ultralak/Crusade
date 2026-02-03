@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhugkn1u7t8hi"]
+
+[ext_resource type="Script" uid="uid://di4iqksm4805r" path="res://Enemies/components/gravity_script_enemy.gd" id="1_73fcj"]
+
+[node name="gravity" type="Node" node_paths=PackedStringArray("character_body_2d")]
+script = ExtResource("1_73fcj")
+character_body_2d = NodePath("")

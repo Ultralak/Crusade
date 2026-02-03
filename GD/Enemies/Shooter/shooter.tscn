@@ -1,14 +1,24 @@
-[gd_scene load_steps=16 format=3 uid="uid://ojx7uiirw8s6"]
+[gd_scene load_steps=29 format=3 uid="uid://ojx7uiirw8s6"]
 
+[ext_resource type="Script" uid="uid://cbgs6vk50ngd8" path="res://Enemies/Shooter/shooter.gd" id="1_lu23t"]
 [ext_resource type="Texture2D" uid="uid://d0skshhbudxsi" path="res://Enemies/Shooter/Player_metroid.png" id="1_mm4c3"]
+[ext_resource type="Shader" uid="uid://fyr6cq44cguf" path="res://Enemies/melee/hit_flash.tres" id="2_dmv0w"]
 [ext_resource type="Script" uid="uid://na74sqiddic8" path="res://State machine/node_finite_state_machine.gd" id="2_hb0gk"]
-[ext_resource type="Script" uid="uid://c5j1c7pwbv777" path="res://Enemies/Shooter/state_machine_shooter.gd" id="2_mm4c3"]
-[ext_resource type="Script" uid="uid://xkbxdaaxnowp" path="res://Enemies/melee/idle_state_enemy_1.gd" id="4_n74op"]
-[ext_resource type="Script" uid="uid://s7liprkh7bi3" path="res://Enemies/melee/run_enemy_state.gd" id="5_qswr5"]
-[ext_resource type="Script" uid="uid://d3d00k25fb30x" path="res://Enemies/melee/attack_state.gd" id="6_c4ya3"]
-[ext_resource type="Script" uid="uid://bdwdvm21dh8ni" path="res://Enemies/melee/death_enemy.gd" id="7_7gejs"]
-[ext_resource type="Script" uid="uid://bm0j8g75to1y5" path="res://Enemies/melee/recovery_enemy_state.gd" id="8_k5vtx"]
-[ext_resource type="Script" uid="uid://s83o32cwk0oy" path="res://Enemies/melee/hurt_enemy_state.gd" id="9_r6l05"]
+[ext_resource type="Script" uid="uid://c8pqilvqpojp3" path="res://Enemies/Shooter/state_machine_controller_shooter.gd" id="3_rec62"]
+[ext_resource type="Script" uid="uid://df85hsfdkkliv" path="res://Enemies/Shooter/walk_state_shooter.gd" id="5_7cw4v"]
+[ext_resource type="Script" uid="uid://d1qly8xbo4l4v" path="res://Enemies/Shooter/idle_state_shooter.gd" id="6_rec62"]
+[ext_resource type="PackedScene" uid="uid://dhugkn1u7t8hi" path="res://Enemies/components/gravity.tscn" id="7_7cw4v"]
+[ext_resource type="Script" uid="uid://b3g2flbss5usl" path="res://Enemies/Shooter/attack_shooter_state.gd" id="7_n74op"]
+[ext_resource type="Script" uid="uid://cjd627muk2628" path="res://Enemies/Shooter/aim_shooter_state.gd" id="9_hepy4"]
+[ext_resource type="Texture2D" uid="uid://o5be367640f" path="res://Enemies/Shooter/gun.png" id="9_qswr5"]
+[ext_resource type="Script" uid="uid://bn0bt8oj8pm1t" path="res://Enemies/Shooter/hurt_shooter_state.gd" id="9_s3aet"]
+[ext_resource type="Script" uid="uid://bmr8f1c1qyrjo" path="res://Enemies/Shooter/damage_component.gd" id="11_c4ya3"]
+[ext_resource type="Script" uid="uid://b0m5pky411gxr" path="res://Enemies/Shooter/preaim_shooter_state.gd" id="11_hepy4"]
+[ext_resource type="Script" uid="uid://c57yhkch816jv" path="res://Enemies/Shooter/recovery_shooter_state.gd" id="11_nbbyi"]
+[ext_resource type="Script" uid="uid://diydtkgvoxmhd" path="res://Enemies/Shooter/state_display.gd" id="12_7gejs"]
+[ext_resource type="PackedScene" uid="uid://cqrbqi3wwdfid" path="res://Enemies/components/flip_component.tscn" id="13_k5vtx"]
+[ext_resource type="PackedScene" uid="uid://ccr3u47h0wucr" path="res://Enemies/components/health_component.tscn" id="16_nbbyi"]
+[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://UI/health_bar.tscn" id="19_0wvnk"]
 
 [sub_resource type="Animation" id="Animation_tnrwe"]
 resource_name = "Idle"
@@ -28,11 +38,8 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_lu23t"]
-resource_name = "run"
-length = 0.71430004
-loop_mode = 1
-step = 0.14285715
+[sub_resource type="Animation" id="Animation_7cw4v"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,10 +47,22 @@ tracks/0/path = NodePath("PlayerMetroid:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857146, 0.5714286, 0.71428573),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5, 6, 7, 8, 9, 10]
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerMetroid:material:shader_parameter/Hit_flash_on")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_rec62"]
@@ -63,8 +82,32 @@ tracks/0/keys = {
 "values": [29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
 }
 
-[sub_resource type="Animation" id="Animation_7cw4v"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_dmv0w"]
+resource_name = "hit_flash"
+length = 0.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerMetroid:material:shader_parameter/Hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_nbbyi"]
+resource_name = "hurt"
+step = 0.2
+
+[sub_resource type="Animation" id="Animation_lu23t"]
+resource_name = "run"
+length = 0.71430004
+loop_mode = 1
+step = 0.14285715
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -72,10 +115,10 @@ tracks/0/path = NodePath("PlayerMetroid:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857146, 0.5714286, 0.71428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1]
+"values": [5, 6, 7, 8, 9, 10]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e6vx6"]
@@ -83,13 +126,32 @@ _data = {
 &"Idle": SubResource("Animation_tnrwe"),
 &"RESET": SubResource("Animation_7cw4v"),
 &"death": SubResource("Animation_rec62"),
+&"hit_flash": SubResource("Animation_dmv0w"),
+&"hurt": SubResource("Animation_nbbyi"),
 &"run": SubResource("Animation_lu23t")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n74op"]
 radius = 7.0
 
-[node name="Shooter" type="CharacterBody2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hepy4"]
+resource_local_to_scene = true
+shader = ExtResource("2_dmv0w")
+shader_parameter/Hit_flash_on = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[node name="Shooter" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "muzzle") groups=["ENEMY_"]]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_lu23t")
+attack_duration = 3.0
+sprite_2d = NodePath("PlayerMetroid")
+projectile_damage = 1
+projectile_speed = 50
+walk_speed = 50
+health = 20
+muzzle = NodePath("muzzle")
+attack_distance = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -97,50 +159,139 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -15)
+position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_n74op")
 
 [node name="PlayerMetroid" type="Sprite2D" parent="."]
-position = Vector2(2, -22)
+material = SubResource("ShaderMaterial_hepy4")
+position = Vector2(0, -22)
 texture = ExtResource("1_mm4c3")
 hframes = 8
 vframes = 7
 frame = 1
 
-[node name="state_machine_shooter" type="Node" parent="."]
-script = ExtResource("2_mm4c3")
-
-[node name="idle" type="Node" parent="state_machine_shooter"]
-
-[node name="state_machine_controller" type="Node" parent="."]
+[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("node_finite_state_machine", "shooter", "animation_player")]
+script = ExtResource("3_rec62")
+node_finite_state_machine = NodePath("../state_machine_enemy")
+shooter = NodePath("..")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="state_machine_enemy" type="Node" parent="." node_paths=PackedStringArray("initial_node_state", "player")]
 script = ExtResource("2_hb0gk")
-initial_node_state = NodePath("idle")
+initial_node_state = NodePath("walk")
 player = NodePath("..")
 
-[node name="idle" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d")]
-script = ExtResource("4_n74op")
+[node name="idle" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine_controller", "sprite_2d")]
+script = ExtResource("6_rec62")
 characterbody2d = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+state_machine_controller = NodePath("../../StateController")
+acceleration = 200.0
+speed = 300.0
+sprite_2d = NodePath("../../PlayerMetroid")
 
-[node name="run" type="Node" parent="state_machine_enemy"]
-script = ExtResource("5_qswr5")
-speed = 100.0
+[node name="walk" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "raycast_floor", "state_machine_controller", "sprite_2d")]
+script = ExtResource("5_7cw4v")
+characterbody2d = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+raycast_floor = NodePath("../../floor")
+state_machine_controller = NodePath("../../StateController")
+sprite_2d = NodePath("../../PlayerMetroid")
 
-[node name="attack" type="Node" parent="state_machine_enemy"]
-script = ExtResource("6_c4ya3")
+[node name="fire" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine_controller", "sprite_2d", "gun_sprite", "attack_timer")]
+script = ExtResource("7_n74op")
+characterbody2d = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+state_machine_controller = NodePath("../../StateController")
+sprite_2d = NodePath("../../PlayerMetroid")
+gun_sprite = NodePath("../../gun")
+attack_timer = NodePath("../../timer")
+unstoppable = true
 
-[node name="death" type="Node" parent="state_machine_enemy"]
-script = ExtResource("7_7gejs")
+[node name="aim" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine", "sprite_2d", "danger", "gun_sprite", "timer")]
+script = ExtResource("9_hepy4")
+characterbody2d = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+state_machine = NodePath("..")
+sprite_2d = NodePath("../../PlayerMetroid")
+danger = NodePath("../../danger_warning")
+gun_sprite = NodePath("../../gun")
+timer = NodePath("../../timer")
 
-[node name="recovery" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy")]
-script = ExtResource("8_k5vtx")
+[node name="hurt" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy", "test_enemy", "animation_player")]
+script = ExtResource("9_s3aet")
 state_machine_enemy = NodePath("..")
+test_enemy = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+unstoppable = true
 
-[node name="hurt" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy")]
-script = ExtResource("9_r6l05")
-state_machine_enemy = NodePath("..")
+[node name="recovery" type="Node" parent="state_machine_enemy"]
+script = ExtResource("11_nbbyi")
+unstoppable = true
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(13, -10)
-target_position = Vector2(0, 30)
+[node name="preaim" type="Node" parent="state_machine_enemy"]
+script = ExtResource("11_hepy4")
+unstoppable = true
+
+[node name="floor" type="RayCast2D" parent="."]
+position = Vector2(11, -8)
+target_position = Vector2(0, 9)
+collision_mask = 9
+
+[node name="gravity" parent="." node_paths=PackedStringArray("character_body_2d") instance=ExtResource("7_7cw4v")]
+character_body_2d = NodePath("..")
+
+[node name="gun" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(9, -16)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("9_qswr5")
+
+[node name="FlipComponent" parent="." instance=ExtResource("13_k5vtx")]
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("characterbody_2d", "healthbar") instance=ExtResource("16_nbbyi")]
+characterbody_2d = NodePath("..")
+healthbar = NodePath("../Health_bar")
+
+[node name="DamageComponent" type="Node" parent="." node_paths=PackedStringArray("characterbody2d")]
+script = ExtResource("11_c4ya3")
+characterbody2d = NodePath("..")
+
+[node name="muzzle" type="Marker2D" parent="."]
+position = Vector2(18, -16)
+
+[node name="state_display" type="Label" parent="." node_paths=PackedStringArray("state_machine_enemy", "test_enemy")]
+offset_left = -67.0
+offset_top = -51.0
+offset_right = 71.0
+offset_bottom = -28.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("12_7gejs")
+state_machine_enemy = NodePath("../state_machine_enemy")
+test_enemy = NodePath("..")
+
+[node name="danger_warning" type="Label" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = -71.0
+offset_right = 34.0
+offset_bottom = -48.0
+text = "!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Health_bar" parent="." instance=ExtResource("19_0wvnk")]
+visible = false
+offset_left = -12.0
+offset_top = -34.0
+offset_right = 12.0
+offset_bottom = -31.0
+
+[connection signal="enemy_hit" from="HealthComponent" to="StateController" method="_on_health_component_enemy_hit"]
+[connection signal="timeout" from="timer" to="StateController" method="_on_attack_timer_timeout"]

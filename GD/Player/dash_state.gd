@@ -5,7 +5,7 @@ extends NodeState
 
 
 @export_category("Dash_state")
-@export var Dash_speed : int = 1500
+@export var Dash_speed : int = 3000
 @export var friction : int = 200
 func on_process(_delta : float):
 	pass
@@ -28,7 +28,9 @@ func on_physics_process(_delta : float):
 			return
 		
 func enter():
+	character_body_2d.set_collision_layer_value(2,false)
 	character_body_2d.set_collision_mask_value(3,false)
+	character_body_2d.set_collision_layer_value(6,true)
 	var direction = GameInputEvents.movement_input()
 	if direction == 0:	
 		direction  = -1 if animated_sprite_2d.flip_h else 1
@@ -40,5 +42,8 @@ func enter():
 	
 	
 func exit():
+	character_body_2d.set_collision_layer_value(2,true)
 	character_body_2d.set_collision_mask_value(3,true)
+	character_body_2d.set_collision_layer_value(6,false)
+	
 	animated_sprite_2d.stop()

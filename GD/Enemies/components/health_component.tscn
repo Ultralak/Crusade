@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccr3u47h0wucr"]
+
+[ext_resource type="Script" uid="uid://cfkx8ipe6ggds" path="res://Enemies/Shooter/health_component.gd" id="1_rtmsk"]
+
+[node name="HealthComponent" type="Node" node_paths=PackedStringArray("characterbody_2d")]
+script = ExtResource("1_rtmsk")
+characterbody_2d = NodePath("")

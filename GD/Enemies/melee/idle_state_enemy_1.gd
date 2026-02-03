@@ -1,8 +1,7 @@
 extends NodeState
-
+@export_category("idle melee state")
 @export var characterbody2d : CharacterBody2D
-@export var animatedsprite2d : AnimatedSprite2D
-
+@export var animation_player : AnimationPlayer
 
 @export var state_machine_controller: Node
 
@@ -18,12 +17,12 @@ func on_physics_process(_delta : float):
 
 func enter():
 	characterbody2d.velocity.x = 0
-	animatedsprite2d.play("idle")
+	animation_player.play("idle")
 	pass
 
 
 func exit():
-	animatedsprite2d.stop()
+	animation_player.stop()
 	
 	
 

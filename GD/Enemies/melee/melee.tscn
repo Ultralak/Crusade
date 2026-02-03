@@ -1,0 +1,277 @@
+[gd_scene load_steps=26 format=3 uid="uid://12ha5loia4lv"]
+
+[ext_resource type="Script" uid="uid://y2qx2gje058j" path="res://Enemies/melee/test_enemy.gd" id="1_n7rj1"]
+[ext_resource type="Shader" uid="uid://fyr6cq44cguf" path="res://Enemies/melee/hit_flash.tres" id="2_gf1hk"]
+[ext_resource type="Texture2D" uid="uid://chm40lduf8uja" path="res://Enemies/melee/sprite_sheet.png" id="3_owqnh"]
+[ext_resource type="PackedScene" uid="uid://dhugkn1u7t8hi" path="res://Enemies/components/gravity.tscn" id="4_fqwkh"]
+[ext_resource type="Script" uid="uid://na74sqiddic8" path="res://State machine/node_finite_state_machine.gd" id="5_x51x2"]
+[ext_resource type="Script" uid="uid://xkbxdaaxnowp" path="res://Enemies/melee/idle_state_enemy_1.gd" id="6_yo3ph"]
+[ext_resource type="Script" uid="uid://s7liprkh7bi3" path="res://Enemies/melee/run_enemy_state.gd" id="7_7sw0t"]
+[ext_resource type="Script" uid="uid://d3d00k25fb30x" path="res://Enemies/melee/attack_state.gd" id="8_ep4ma"]
+[ext_resource type="Script" uid="uid://bm0j8g75to1y5" path="res://Enemies/melee/recovery_enemy_state.gd" id="9_ctv7a"]
+[ext_resource type="Script" uid="uid://s83o32cwk0oy" path="res://Enemies/melee/hurt_enemy_state.gd" id="10_ggdeg"]
+[ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Enemies/melee/state_machine_controller.gd" id="11_tc4f0"]
+[ext_resource type="Script" uid="uid://cysnaf53fo4gh" path="res://Enemies/melee/enemy_label_1.gd" id="12_m5nc4"]
+[ext_resource type="Script" uid="uid://bdj5duyaa27x2" path="res://Enemies/melee/damage_component_melee.gd" id="13_owqnh"]
+[ext_resource type="PackedScene" uid="uid://ccr3u47h0wucr" path="res://Enemies/components/health_component.tscn" id="14_fqwkh"]
+[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://UI/health_bar.tscn" id="15_fqwkh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfo54"]
+resource_local_to_scene = true
+shader = ExtResource("2_gf1hk")
+shader_parameter/Hit_flash_on = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_boaku"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("attack_warning:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [" "]
+}
+
+[sub_resource type="Animation" id="Animation_v7d7q"]
+resource_name = "attack"
+length = 0.5714429
+step = 0.14285715
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857146, 0.5714286),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack_area/hit:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2857143, 0.5714286),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attack_warning:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2857143, 0.42857146),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [" !!", " ", " "]
+}
+
+[sub_resource type="Animation" id="Animation_0vejb"]
+resource_name = "hit_flash"
+length = 0.20000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite2d:material:shader_parameter/Hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dxabd"]
+resource_name = "idle"
+length = 0.60002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_sf7w4"]
+resource_name = "run"
+length = 1.2000201
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1.0352647, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxabd"]
+_data = {
+&"RESET": SubResource("Animation_boaku"),
+&"attack": SubResource("Animation_v7d7q"),
+&"hit_flash": SubResource("Animation_0vejb"),
+&"idle": SubResource("Animation_dxabd"),
+&"run": SubResource("Animation_sf7w4")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gs3km"]
+radius = 11.0
+height = 22.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dj11w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c36ts"]
+size = Vector2(18, 17)
+
+[node name="melee" type="CharacterBody2D" groups=["ENEMY_"]]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_n7rj1")
+health = 20.0
+damage = 3.0
+speed = 200.0
+acceleration = 100.0
+
+[node name="sprite2d" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mfo54")
+position = Vector2(0, -13)
+texture = ExtResource("3_owqnh")
+hframes = 11
+frame = 1
+
+[node name="player_animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dxabd")
+}
+
+[node name="collision shape 2d" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_gs3km")
+
+[node name="GravityComponent" parent="." node_paths=PackedStringArray("character_body_2d") instance=ExtResource("4_fqwkh")]
+character_body_2d = NodePath("..")
+
+[node name="state_machine_enemy" type="Node" parent="." node_paths=PackedStringArray("initial_node_state", "player")]
+script = ExtResource("5_x51x2")
+initial_node_state = NodePath("idle")
+player = NodePath("..")
+
+[node name="idle" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine_controller")]
+script = ExtResource("6_yo3ph")
+characterbody2d = NodePath("../..")
+animation_player = NodePath("../../player_animation")
+state_machine_controller = NodePath("../../StateController")
+
+[node name="run" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine_controller", "sprite_2d", "raycast_floor")]
+script = ExtResource("7_7sw0t")
+characterbody2d = NodePath("../..")
+animation_player = NodePath("../../player_animation")
+state_machine_controller = NodePath("../../StateController")
+sprite_2d = NodePath("../../sprite2d")
+raycast_floor = NodePath("../../floor")
+
+[node name="attack" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "hit", "state_machine_controller", "sprite_2d", "attack_warning")]
+script = ExtResource("8_ep4ma")
+characterbody2d = NodePath("../..")
+animation_player = NodePath("../../player_animation")
+hit = NodePath("../../attack_area/hit")
+state_machine_controller = NodePath("../../StateController")
+sprite_2d = NodePath("../../sprite2d")
+attack_warning = NodePath("../../attack_warning")
+
+[node name="recovery" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy", "test_enemy", "animation_player")]
+script = ExtResource("9_ctv7a")
+state_machine_enemy = NodePath("..")
+test_enemy = NodePath("../..")
+animation_player = NodePath("../../player_animation")
+
+[node name="hurt" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy", "test_enemy", "animation_player")]
+script = ExtResource("10_ggdeg")
+state_machine_enemy = NodePath("..")
+test_enemy = NodePath("../..")
+animation_player = NodePath("../../player_animation")
+
+[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("node_finite_state_machine", "enemy_1", "animation_player")]
+script = ExtResource("11_tc4f0")
+node_finite_state_machine = NodePath("../state_machine_enemy")
+enemy_1 = NodePath("..")
+animation_player = NodePath("../player_animation")
+detect_distance = 90.0
+
+[node name="state_display" type="Label" parent="." node_paths=PackedStringArray("state_machine_enemy", "test_enemy")]
+offset_left = -27.0
+offset_top = -74.0
+offset_right = 29.0
+offset_bottom = -51.0
+script = ExtResource("12_m5nc4")
+state_machine_enemy = NodePath("../state_machine_enemy")
+test_enemy = NodePath("..")
+
+[node name="attack_warning" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -48.0
+offset_right = 27.0
+offset_bottom = -25.0
+text = " "
+label_settings = SubResource("LabelSettings_dj11w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="attack_area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="hit" type="CollisionShape2D" parent="attack_area"]
+position = Vector2(-17, -9)
+shape = SubResource("RectangleShape2D_c36ts")
+disabled = true
+debug_color = Color(0.121805705, 0.13993204, 0.38997775, 0.41960785)
+
+[node name="floor" type="RayCast2D" parent="."]
+position = Vector2(-15, -9)
+target_position = Vector2(0, 14)
+collision_mask = 9
+
+[node name="DamageComponentMelee" type="Node" parent="." node_paths=PackedStringArray("enemy")]
+script = ExtResource("13_owqnh")
+enemy = NodePath("..")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("characterbody_2d", "healthbar") instance=ExtResource("14_fqwkh")]
+characterbody_2d = NodePath("..")
+healthbar = NodePath("../Health_bar")
+
+[node name="Health_bar" parent="." instance=ExtResource("15_fqwkh")]
+visible = false
+offset_left = -12.0
+offset_top = -26.0
+offset_right = 12.0
+offset_bottom = -23.0
+
+[connection signal="animation_finished" from="player_animation" to="StateController" method="_on_player_animation_animation_finished"]
+[connection signal="body_entered" from="attack_area" to="DamageComponentMelee" method="_on_attack_area_body_entered"]
+[connection signal="enemy_hit" from="HealthComponent" to="StateController" method="_on_health_component_enemy_hit"]

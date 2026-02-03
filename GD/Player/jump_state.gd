@@ -4,12 +4,19 @@ extends NodeState
 @export var state_machine  : NodeFiniteStateMachine
 
 @export_category("Jump_State")
-@export var jump_height : float  = -250
-@export var jump_horizontal_speed : int = 200
-@export var max_jump_horizontal_speed : int = 200
-@export var jump_gravity : int  = 1000
 @export var max_jump : int 
 @export var Fall_Node : NodeState
+
+@export var move_speed : float
+@export var jump_height : float  
+@export var time_to_peak : float
+@export var time_to_descent : float
+@export var max_horizontal_speed : float
+
+@onready var jump_velocity : float = ((2.0 * jump_height) / time_to_peak) * -1.0
+@onready var jump_gravity : float = ((-2.0 * jump_height) / (time_to_peak * time_to_peak)) * -1.0
+@onready var fall_gravity : float = ((-2.0 * jump_height) / (time_to_descent * time_to_descent)) * -1.0
+
 
 var jumps : int 
 
@@ -26,13 +33,13 @@ func on_physics_process(delta : float):
 		character_body_2d.velocity.y += jump_gravity * delta
 		if direction != 0:
 			animated_sprite_2d.flip_h = false if direction > 0 else true
-			character_body_2d.velocity.x += direction * jump_horizontal_speed
-			character_body_2d.velocity.x = clamp(character_body_2d.velocity.x, -max_jump_horizontal_speed, max_jump_horizontal_speed)
+			character_body_2d.velocity.x += direction * move_speed
+			character_body_2d.velocity.x = clamp(character_body_2d.velocity.x, -max_horizontal_speed, max_horizontal_speed)
 		else:
 			character_body_2d.velocity.x = 0
 			# multiple jumps
 		if GameInputEvents.jump_input() and jumps > 0 :
-			character_body_2d.velocity.y = jump_height
+			character_body_2d.velocity.y = jump_velocity
 			jumps -= 1
 	else:
 		transition.emit("idle")
@@ -54,6 +61,7 @@ func on_physics_process(delta : float):
 
 func enter():
 	#comes from idle
+	character_body_2d.set_collision_mask_value(4 , false)
 	if max_jump <= 0:
 		transition.emit("idle")
 		return
@@ -64,9 +72,17 @@ func enter():
 		jumps += 1
 		Fall_Node.coyote_jump = false
 	animated_sprite_2d.play("jump")
-	character_body_2d.velocity.y = jump_height
+	character_body_2d.velocity.y = jump_velocity
 	jumps -= 1
-	
+
+		
 
 func exit():
+	character_body_2d.set_collision_mask_value(4, true)
 	animated_sprite_2d.stop()
+
+func get_jump_gravity():
+	return jump_gravity
+	
+func get_fall_gravity():
+	return fall_gravity

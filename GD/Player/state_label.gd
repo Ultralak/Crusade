@@ -16,6 +16,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if jump.jumps:
 		words = "%s" % [jump.jumps]
+	else:
+		words = " 0"
+	if player.collision_layer == 2:
+		words += " 2"
+	if player.collision_layer == 6:
+		words += " 6"
 	text = state_mach.previous_node_state_name + " -> " + state_mach.current_node_state_name+ " " + words	
 	printed = false
 	

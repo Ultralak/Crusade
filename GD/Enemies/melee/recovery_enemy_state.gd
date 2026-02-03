@@ -1,12 +1,13 @@
 extends NodeState
-@export var animated_sprite_2d: AnimatedSprite2D 
+
+@export_category("recovery melee state")
 @export var recovery_time : float = 1
 @export var state_machine_enemy: NodeFiniteStateMachine 
 @export var test_enemy: CharacterBody2D 
+@export var animation_player : AnimationPlayer
 
 func enter():
-	animated_sprite_2d.play("idle")
-	
+	animation_player.play("idle")
 	await get_tree().create_timer(recovery_time).timeout
 	
 	state_machine_enemy.transition_to("idle")

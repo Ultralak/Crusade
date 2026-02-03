@@ -16,7 +16,7 @@ extends NodeState
 @export var jump_friction : int 
 
 
-const GRAVITY : int = 1200
+var fall_gravity : float
 var coyote_jump : bool  = false
 var jump_buffer : bool = false
 var prevNode : String
@@ -26,7 +26,7 @@ func on_process(_delta : float):
 
 func on_physics_process(delta : float):
 	var direction = GameInputEvents.movement_input()
-	character_body_2d.velocity.y += GRAVITY * delta
+	character_body_2d.velocity.y += fall_gravity * delta
 	
 	if !character_body_2d.is_on_floor():
 		if direction != 0 :
@@ -68,6 +68,7 @@ func on_physics_process(delta : float):
 		return
 		
 func enter():
+	fall_gravity = Jump_node.get_fall_gravity()
 	var state_machine = get_parent() as NodeFiniteStateMachine
 	prevNode = state_machine.previous_node_state_name
 	if prevNode.to_lower() ==  "run":

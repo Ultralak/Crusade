@@ -10,4 +10,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	text = state_machine_enemy.current_node_state_name + " %s" % [EnemyHealthManager.get_health_data(test_enemy.name)]
+	text = state_machine_enemy.current_node_state_name 
+	#+ " %s" % [EnemyHealthManager.get_health_data(test_enemy.name)]
