@@ -2,8 +2,7 @@ extends NodeState
 
 
 @export var character_body_2d : CharacterBody2D
-@export var sprite_2d : Sprite2D
-@export var animated_sprite_2d : AnimatedSprite2D
+
 @export var Jump_node : NodeState
 @export var hurt_timer : float = 0.5
 
@@ -25,10 +24,10 @@ func enter():
 	elif projectile_attacking_player:
 		direction = projectile_attacking_player.direction
 	else:
-		direction = 1 if animated_sprite_2d.flip_h else -1
+		direction = 1 if sprite_2d.flip_h else -1
 	
 	character_body_2d.velocity.x += knock_back * direction
-	animated_sprite_2d.play("hurt")
+	animation_player.play("hit_flash")
 	
 	await get_tree().create_timer(hurt_timer).timeout
 	transition.emit("idle")

@@ -4,7 +4,7 @@ extends NodeState
 @export var jump: NodeState 
 
 @export var character_body_2d : CharacterBody2D
-@export var animated_sprite_2d : AnimatedSprite2D
+
 @export var Jump_node : NodeState
 
 @export_category("Fall state")
@@ -32,7 +32,7 @@ func on_physics_process(delta : float):
 		if direction != 0 :
 			character_body_2d.velocity.x += direction * speed
 			character_body_2d.velocity.x = clamp(character_body_2d.velocity.x, -max_horizontal_speed, max_horizontal_speed)
-			animated_sprite_2d.flip_h = false if direction > 0 else true
+			sprite_2d.flip_h = false if direction > 0 else true
 		else:
 			character_body_2d.velocity.x = move_toward(character_body_2d.velocity.x, 0,jump_friction )
 			
@@ -74,10 +74,10 @@ func enter():
 	if prevNode.to_lower() ==  "run":
 		coyote_jump = true
 		jump_buffer_timer.start(jump_buffer_time)
-	animated_sprite_2d.play("fall")
+	animation_player.play("fall")
 
 func exit():
-	animated_sprite_2d.stop()
+	animation_player.stop()
 	coyote_jump = false
 	
 

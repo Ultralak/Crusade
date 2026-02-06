@@ -17,26 +17,8 @@
 [ext_resource type="Script" uid="uid://c57yhkch816jv" path="res://Enemies/Shooter/recovery_shooter_state.gd" id="11_nbbyi"]
 [ext_resource type="Script" uid="uid://diydtkgvoxmhd" path="res://Enemies/Shooter/state_display.gd" id="12_7gejs"]
 [ext_resource type="PackedScene" uid="uid://cqrbqi3wwdfid" path="res://Enemies/components/flip_component.tscn" id="13_k5vtx"]
-[ext_resource type="PackedScene" uid="uid://ccr3u47h0wucr" path="res://Enemies/components/health_component.tscn" id="16_nbbyi"]
+[ext_resource type="Script" uid="uid://cfkx8ipe6ggds" path="res://Enemies/Shooter/health_component.gd" id="16_0wvnk"]
 [ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://UI/health_bar.tscn" id="19_0wvnk"]
-
-[sub_resource type="Animation" id="Animation_tnrwe"]
-resource_name = "Idle"
-length = 0.4
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerMetroid:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 5]
-}
 
 [sub_resource type="Animation" id="Animation_7cw4v"]
 length = 0.001
@@ -84,7 +66,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dmv0w"]
 resource_name = "hit_flash"
-length = 0.2
+length = 0.40002
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -93,10 +75,10 @@ tracks/0/path = NodePath("PlayerMetroid:material:shader_parameter/Hit_flash_on")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.40002),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, false]
 }
 
 [sub_resource type="Animation" id="Animation_nbbyi"]
@@ -121,13 +103,31 @@ tracks/0/keys = {
 "values": [5, 6, 7, 8, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_tnrwe"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerMetroid:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e6vx6"]
 _data = {
-&"Idle": SubResource("Animation_tnrwe"),
 &"RESET": SubResource("Animation_7cw4v"),
 &"death": SubResource("Animation_rec62"),
 &"hit_flash": SubResource("Animation_dmv0w"),
 &"hurt": SubResource("Animation_nbbyi"),
+&"idle": SubResource("Animation_tnrwe"),
 &"run": SubResource("Animation_lu23t")
 }
 
@@ -146,10 +146,10 @@ collision_mask = 9
 script = ExtResource("1_lu23t")
 attack_duration = 3.0
 sprite_2d = NodePath("PlayerMetroid")
-projectile_damage = 1
+projectile_damage = 25
 projectile_speed = 50
 walk_speed = 50
-health = 20
+health = 100
 muzzle = NodePath("muzzle")
 attack_distance = 100.0
 
@@ -181,57 +181,63 @@ script = ExtResource("2_hb0gk")
 initial_node_state = NodePath("walk")
 player = NodePath("..")
 
-[node name="idle" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine_controller", "sprite_2d")]
+[node name="idle" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "animation_player", "sprite_2d")]
 script = ExtResource("6_rec62")
 characterbody2d = NodePath("../..")
-animation_player = NodePath("../../AnimationPlayer")
 state_machine_controller = NodePath("../../StateController")
 acceleration = 200.0
 speed = 300.0
+animation_player = NodePath("../../AnimationPlayer")
 sprite_2d = NodePath("../../PlayerMetroid")
 
-[node name="walk" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "raycast_floor", "state_machine_controller", "sprite_2d")]
+[node name="walk" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "raycast_floor", "state_machine_controller", "animation_player", "sprite_2d")]
 script = ExtResource("5_7cw4v")
 characterbody2d = NodePath("../..")
-animation_player = NodePath("../../AnimationPlayer")
 raycast_floor = NodePath("../../floor")
 state_machine_controller = NodePath("../../StateController")
+animation_player = NodePath("../../AnimationPlayer")
 sprite_2d = NodePath("../../PlayerMetroid")
 
-[node name="fire" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine_controller", "sprite_2d", "gun_sprite", "attack_timer")]
+[node name="fire" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "gun_sprite", "attack_timer", "animation_player", "sprite_2d")]
 script = ExtResource("7_n74op")
 characterbody2d = NodePath("../..")
-animation_player = NodePath("../../AnimationPlayer")
 state_machine_controller = NodePath("../../StateController")
-sprite_2d = NodePath("../../PlayerMetroid")
 gun_sprite = NodePath("../../gun")
-attack_timer = NodePath("../../timer")
+attack_timer = NodePath("../../attack_timer")
 unstoppable = true
+animation_player = NodePath("../../AnimationPlayer")
+sprite_2d = NodePath("../../PlayerMetroid")
 
-[node name="aim" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine", "sprite_2d", "danger", "gun_sprite", "timer")]
+[node name="aim" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "state_machine", "danger", "gun_sprite", "timer", "animation_player", "sprite_2d")]
 script = ExtResource("9_hepy4")
 characterbody2d = NodePath("../..")
-animation_player = NodePath("../../AnimationPlayer")
 state_machine = NodePath("..")
-sprite_2d = NodePath("../../PlayerMetroid")
 danger = NodePath("../../danger_warning")
 gun_sprite = NodePath("../../gun")
-timer = NodePath("../../timer")
+timer = NodePath("../../attack_timer")
+animation_player = NodePath("../../AnimationPlayer")
+sprite_2d = NodePath("../../PlayerMetroid")
 
-[node name="hurt" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy", "test_enemy", "animation_player")]
+[node name="hurt" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("hurt_timer", "state_machine_enemy", "test_enemy", "animation_player", "sprite_2d")]
 script = ExtResource("9_s3aet")
+hurt_timer = NodePath("../../hurt_timer")
 state_machine_enemy = NodePath("..")
 test_enemy = NodePath("../..")
-animation_player = NodePath("../../AnimationPlayer")
 unstoppable = true
+animation_player = NodePath("../../AnimationPlayer")
+sprite_2d = NodePath("../../PlayerMetroid")
 
-[node name="recovery" type="Node" parent="state_machine_enemy"]
+[node name="recovery" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("animation_player", "sprite_2d")]
 script = ExtResource("11_nbbyi")
 unstoppable = true
+animation_player = NodePath("../../AnimationPlayer")
+sprite_2d = NodePath("../../PlayerMetroid")
 
-[node name="preaim" type="Node" parent="state_machine_enemy"]
+[node name="preaim" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("animation_player", "sprite_2d")]
 script = ExtResource("11_hepy4")
 unstoppable = true
+animation_player = NodePath("../../AnimationPlayer")
+sprite_2d = NodePath("../../PlayerMetroid")
 
 [node name="floor" type="RayCast2D" parent="."]
 position = Vector2(11, -8)
@@ -250,7 +256,8 @@ texture = ExtResource("9_qswr5")
 
 [node name="FlipComponent" parent="." instance=ExtResource("13_k5vtx")]
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("characterbody_2d", "healthbar") instance=ExtResource("16_nbbyi")]
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("characterbody_2d", "healthbar")]
+script = ExtResource("16_0wvnk")
 characterbody_2d = NodePath("..")
 healthbar = NodePath("../Health_bar")
 
@@ -283,7 +290,8 @@ text = "!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="timer" type="Timer" parent="."]
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="Health_bar" parent="." instance=ExtResource("19_0wvnk")]
@@ -293,5 +301,8 @@ offset_top = -34.0
 offset_right = 12.0
 offset_bottom = -31.0
 
+[node name="hurt_timer" type="Timer" parent="."]
+
 [connection signal="enemy_hit" from="HealthComponent" to="StateController" method="_on_health_component_enemy_hit"]
-[connection signal="timeout" from="timer" to="StateController" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="attack_timer" to="StateController" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="hurt_timer" to="StateController" method="_on_hurt_timer_timeout"]

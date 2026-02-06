@@ -2,10 +2,8 @@ extends NodeState
 
 @export_category("attack melee state")
 @export var characterbody2d : CharacterBody2D
-@export var animation_player : AnimationPlayer
 @export var hit: CollisionShape2D 
 @export var state_machine_controller: Node 
-@export var sprite_2d : Sprite2D
 @export var attack_warning : Label
 var fixed_offset : float = 17
 

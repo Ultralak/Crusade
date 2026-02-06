@@ -1,9 +1,6 @@
 extends NodeState
 
-@export var character_body_2d : CharacterBody2D
-@export var animated_sprite_2d : AnimatedSprite2D
-@export var collision_normal : CollisionShape2D	
-@export var collision_crouch : CollisionShape2D	
+@export var character_body_2d : CharacterBody2D	
 @export_category("Crouch_state")
 
 signal passthrough
@@ -32,13 +29,11 @@ func on_physics_process(_delta : float):
 		return
 		
 func enter():
-	animated_sprite_2d.play("crouch")
-	collision_normal.set_deferred("disabled", true)
-	collision_crouch.set_deferred("disabled", false)
+	animation_player.speed_scale = 2
+	animation_player.play("crouch")
+
 	
 func exit():
-	animated_sprite_2d.play_backwards("crouch")
-	collision_normal.set_deferred("disabled", false)
-	collision_crouch.set_deferred("disabled", true)
-	animated_sprite_2d.stop()
+	animation_player.speed_scale = 1
+	animation_player.stop()
 	

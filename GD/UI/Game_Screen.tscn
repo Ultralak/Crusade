@@ -18,6 +18,9 @@ layout_mode = 2
 
 [node name="PlayerHealthBar" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("1_v0emu")]
 layout_mode = 1
-offset_left = 20.0
-offset_right = 1896.4481
-offset_bottom = 75.0
+anchor_left = 0.067
+anchor_right = 0.120000005
+anchor_bottom = 0.0
+offset_left = 0.10099983
+offset_right = 2484.36
+offset_bottom = 100.0

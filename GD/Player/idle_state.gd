@@ -1,6 +1,6 @@
 extends NodeState
 @export var character_body_2d : CharacterBody2D
-@export var animated_sprite_2d : AnimatedSprite2D
+
 @export var state_machine: NodeFiniteStateMachine 
 @export var jump: Node 
 
@@ -46,7 +46,7 @@ func on_physics_process(_delta : float):
 func enter():
 	if state_machine.previous_node_state_name.to_lower() == "fall":
 		jump.jumps = jump.max_jump
-	animated_sprite_2d.play("idle")
+	animation_player.play("idle")
 	
 func exit():
-	animated_sprite_2d.stop()
+	animation_player.stop()

@@ -6,7 +6,6 @@ var dash_speed : float = 500
 var dash_friction : float = 200
 @export var state_machine_enemy: NodeFiniteStateMachine
 @export var test_enemy: CharacterBody2D 
-@export var animation_player : AnimationPlayer
 
 
 var player_pos : float

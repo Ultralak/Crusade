@@ -30,23 +30,23 @@ func _physics_process(_delta: float) -> void:
 	current_state = node_finite_state_machine.current_node_state
 	if current_state.unstoppable:
 		return
-	if  distance < attack_distance and in_range(shooter.global_position.y, player_pos.y, height_offset):
+	if  distance <= attack_distance and in_range(shooter.global_position.y, player_pos.y, height_offset) and current_state.name != "aim":
+		if current_state.name != "aim":
 			node_finite_state_machine.transition_to("aim")
-
 
 
 func _on_health_component_enemy_hit() -> void:
 	node_finite_state_machine.transition_to("hurt")
 
 func in_range(height : float, player_height : float , offset : float):
-	return abs(player_height) < abs(height) + offset
+	return abs(height - player_height) <= offset
 
 func _on_attack_timer_timeout() -> void:
-	if current_state.name == "aim":
-		node_finite_state_machine.transition_to("fire")
-		return
-	player_pos = PlayerManager.get_player_position()
-	if  distance < attack_distance and in_range(shooter.global_position.y, player_pos.y, height_offset):
-		node_finite_state_machine.transition_to("aim")
-	else:
+	if current_state.name == "fire":
 		node_finite_state_machine.transition_to("walk")
+	elif current_state.name == "aim":
+		node_finite_state_machine.transition_to("fire")
+		
+
+func _on_hurt_timer_timeout() -> void:
+	node_finite_state_machine.transition_to("idle")

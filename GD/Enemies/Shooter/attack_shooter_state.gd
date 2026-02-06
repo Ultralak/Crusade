@@ -1,11 +1,10 @@
 extends NodeState
 @export_category("idle melee state")
 @export var characterbody2d : CharacterBody2D
-@export var animation_player : AnimationPlayer
 @export var state_machine_controller: Node
 @export var acceleration : float = 500
 @export var speed : float = 600
-@export var sprite_2d : Sprite2D
+
 @export var gun_sprite : Sprite2D	
 @export var attack_timer : Timer
 
@@ -35,7 +34,7 @@ func enter():
 	
 	gun_sprite.show()
 	characterbody2d.velocity.x = 0
-	animation_player.play("Idle")
+	animation_player.play("idle")
 
 func exit():
 	gun_sprite.visible = false

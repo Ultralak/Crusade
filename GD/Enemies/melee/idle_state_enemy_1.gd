@@ -1,8 +1,6 @@
 extends NodeState
 @export_category("idle melee state")
 @export var characterbody2d : CharacterBody2D
-@export var animation_player : AnimationPlayer
-
 @export var state_machine_controller: Node
 
 

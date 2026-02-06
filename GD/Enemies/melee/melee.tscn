@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Enemies/melee/state_machine_controller.gd" id="11_tc4f0"]
 [ext_resource type="Script" uid="uid://cysnaf53fo4gh" path="res://Enemies/melee/enemy_label_1.gd" id="12_m5nc4"]
 [ext_resource type="Script" uid="uid://bdj5duyaa27x2" path="res://Enemies/melee/damage_component_melee.gd" id="13_owqnh"]
-[ext_resource type="PackedScene" uid="uid://ccr3u47h0wucr" path="res://Enemies/components/health_component.tscn" id="14_fqwkh"]
+[ext_resource type="Script" uid="uid://cfkx8ipe6ggds" path="res://Enemies/Shooter/health_component.gd" id="14_fqwkh"]
 [ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://UI/health_bar.tscn" id="15_fqwkh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mfo54"]
@@ -81,6 +81,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_0vejb"]
 resource_name = "hit_flash"
 length = 0.20000334
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -152,8 +153,8 @@ size = Vector2(18, 17)
 collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_n7rj1")
-health = 20.0
-damage = 3.0
+health = 40.0
+damage = 20.0
 speed = 200.0
 acceleration = 100.0
 
@@ -181,40 +182,43 @@ script = ExtResource("5_x51x2")
 initial_node_state = NodePath("idle")
 player = NodePath("..")
 
-[node name="idle" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine_controller")]
+[node name="idle" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "animation_player", "sprite_2d")]
 script = ExtResource("6_yo3ph")
 characterbody2d = NodePath("../..")
-animation_player = NodePath("../../player_animation")
 state_machine_controller = NodePath("../../StateController")
+animation_player = NodePath("../../player_animation")
+sprite_2d = NodePath("../../sprite2d")
 
-[node name="run" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "state_machine_controller", "sprite_2d", "raycast_floor")]
+[node name="run" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "raycast_floor", "animation_player", "sprite_2d")]
 script = ExtResource("7_7sw0t")
 characterbody2d = NodePath("../..")
-animation_player = NodePath("../../player_animation")
 state_machine_controller = NodePath("../../StateController")
-sprite_2d = NodePath("../../sprite2d")
 raycast_floor = NodePath("../../floor")
+animation_player = NodePath("../../player_animation")
+sprite_2d = NodePath("../../sprite2d")
 
-[node name="attack" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "animation_player", "hit", "state_machine_controller", "sprite_2d", "attack_warning")]
+[node name="attack" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("characterbody2d", "hit", "state_machine_controller", "attack_warning", "animation_player", "sprite_2d")]
 script = ExtResource("8_ep4ma")
 characterbody2d = NodePath("../..")
-animation_player = NodePath("../../player_animation")
 hit = NodePath("../../attack_area/hit")
 state_machine_controller = NodePath("../../StateController")
-sprite_2d = NodePath("../../sprite2d")
 attack_warning = NodePath("../../attack_warning")
+animation_player = NodePath("../../player_animation")
+sprite_2d = NodePath("../../sprite2d")
 
-[node name="recovery" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy", "test_enemy", "animation_player")]
+[node name="recovery" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy", "test_enemy", "animation_player", "sprite_2d")]
 script = ExtResource("9_ctv7a")
 state_machine_enemy = NodePath("..")
 test_enemy = NodePath("../..")
 animation_player = NodePath("../../player_animation")
+sprite_2d = NodePath("../../sprite2d")
 
-[node name="hurt" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy", "test_enemy", "animation_player")]
+[node name="hurt" type="Node" parent="state_machine_enemy" node_paths=PackedStringArray("state_machine_enemy", "test_enemy", "animation_player", "sprite_2d")]
 script = ExtResource("10_ggdeg")
 state_machine_enemy = NodePath("..")
 test_enemy = NodePath("../..")
 animation_player = NodePath("../../player_animation")
+sprite_2d = NodePath("../../sprite2d")
 
 [node name="StateController" type="Node" parent="." node_paths=PackedStringArray("node_finite_state_machine", "enemy_1", "animation_player")]
 script = ExtResource("11_tc4f0")
@@ -261,7 +265,8 @@ collision_mask = 9
 script = ExtResource("13_owqnh")
 enemy = NodePath("..")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("characterbody_2d", "healthbar") instance=ExtResource("14_fqwkh")]
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("characterbody_2d", "healthbar")]
+script = ExtResource("14_fqwkh")
 characterbody_2d = NodePath("..")
 healthbar = NodePath("../Health_bar")
 

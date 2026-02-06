@@ -2,10 +2,9 @@ extends NodeState
 
 @export_category("run melee state")
 @export var characterbody2d : CharacterBody2D
-@export var animation_player : AnimationPlayer
 
 @export var state_machine_controller: Node
-@export var sprite_2d : Sprite2D
+
 @export var raycast_floor: RayCast2D
 var player_pos : Vector2
 var direction : int 

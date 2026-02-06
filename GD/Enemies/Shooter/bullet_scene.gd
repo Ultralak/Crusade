@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 
 var speed : int = 600
 var direction : int
-var projectile_damage : int = -1
+@export var projectile_damage : float = 500
 
 func _physics_process(delta: float) -> void:
 	move_local_x(direction * speed * delta)

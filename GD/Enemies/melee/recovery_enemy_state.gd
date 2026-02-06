@@ -4,7 +4,6 @@ extends NodeState
 @export var recovery_time : float = 1
 @export var state_machine_enemy: NodeFiniteStateMachine 
 @export var test_enemy: CharacterBody2D 
-@export var animation_player : AnimationPlayer
 
 func enter():
 	animation_player.play("idle")

@@ -1,6 +1,6 @@
 extends NodeState
 @export var character_body_2d : CharacterBody2D
-@export var animated_sprite_2d : AnimatedSprite2D
+
 @export var state_machine  : NodeFiniteStateMachine
 
 @export_category("Jump_State")
@@ -32,7 +32,7 @@ func on_physics_process(delta : float):
 	if !character_body_2d.is_on_floor():
 		character_body_2d.velocity.y += jump_gravity * delta
 		if direction != 0:
-			animated_sprite_2d.flip_h = false if direction > 0 else true
+			sprite_2d.flip_h = false if direction > 0 else true
 			character_body_2d.velocity.x += direction * move_speed
 			character_body_2d.velocity.x = clamp(character_body_2d.velocity.x, -max_horizontal_speed, max_horizontal_speed)
 		else:
@@ -71,7 +71,7 @@ func enter():
 	elif Fall_Node.coyote_jump : 
 		jumps += 1
 		Fall_Node.coyote_jump = false
-	animated_sprite_2d.play("jump")
+	animation_player.play("jump")
 	character_body_2d.velocity.y = jump_velocity
 	jumps -= 1
 
@@ -79,7 +79,7 @@ func enter():
 
 func exit():
 	character_body_2d.set_collision_mask_value(4, true)
-	animated_sprite_2d.stop()
+	animation_player.stop()
 
 func get_jump_gravity():
 	return jump_gravity
