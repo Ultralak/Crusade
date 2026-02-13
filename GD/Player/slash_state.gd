@@ -56,7 +56,7 @@ func exit():
 	animation_player.speed_scale = 1
 	
 	collision_shape_2d.set_deferred("disabled", true)
-	animation_player.stop()
+
 
 
 	

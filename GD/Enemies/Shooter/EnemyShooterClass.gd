@@ -6,6 +6,6 @@ extends Node
 @export var projectile_damage : int
 @export var projectile_speed : int
 @export var walk_speed : int
-@export var health : int
+@export var health : float
 @export var muzzle : Marker2D
 @export var attack_distance : float

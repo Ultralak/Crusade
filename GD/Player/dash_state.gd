@@ -36,7 +36,7 @@ func enter():
 	var direction = GameInputEvents.movement_input()
 	if direction == 0:	
 		direction  = -1 if sprite_2d.flip_h else 1
-	dash_particles.scale.y = -1 if sprite_2d.flip_h else 1
+	dash_particles.rotation_degrees = 180 if direction > 0 else 0
 	character_body_2d.velocity.x  += direction * Dash_speed
 	character_body_2d.velocity.y = 0
 	
@@ -50,7 +50,4 @@ func exit():
 	
 	
 	animation_player.stop()
-	
-	await  get_tree().create_timer(0.1).timeout
-	
 	dash_particles.emitting  = false

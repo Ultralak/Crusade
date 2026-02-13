@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1d56vp3ibela"]
+
+[ext_resource type="Theme" uid="uid://biqymlx6lgkf6" path="res://UI/theme/UI_theme.tres" id="1_tk8dj"]
+[ext_resource type="Script" uid="uid://7mel8nakaa46" path="res://UI/main_menu_screen.gd" id="1_wne5u"]
+[ext_resource type="Texture2D" uid="uid://cp1ut7dg0dlg" path="res://UI/theme/background_sprite_1.png" id="2_d8nwk"]
+
+[node name="MainMenusScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_wne5u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+offset_left = -139.0
+offset_top = -66.0
+offset_right = 960.0
+offset_bottom = 550.0
+texture = ExtResource("2_d8nwk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tk8dj")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="settigns_button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/settigns_button" to="." method="_on_settigns_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

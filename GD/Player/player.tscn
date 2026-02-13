@@ -358,12 +358,25 @@ state_machine = NodePath("state_machine")
 sprite_2d = NodePath("Sprite2D")
 player_health = 50.0
 
-[node name="dash_particles" type="GPUParticles2D" parent="."]
+[node name="dash_particles_right" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_dkpta")
 position = Vector2(1, -8)
 emitting = false
 amount = 10
 texture = ExtResource("2_p5o4e")
+lifetime = 2.0
+speed_scale = 3.31
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_b1ygp")
+script = ExtResource("3_gu6f8")
+
+[node name="dash_particles_left" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_dkpta")
+position = Vector2(1, -8)
+emitting = false
+amount = 10
+texture = ExtResource("2_p5o4e")
+lifetime = 2.0
 speed_scale = 3.31
 fixed_fps = 20
 process_material = SubResource("ParticleProcessMaterial_b1ygp")
@@ -453,7 +466,7 @@ one_shot = true
 script = ExtResource("16_lfmf2")
 character_body_2d = NodePath("../..")
 Dash_speed = 1250
-dash_particles = NodePath("../../dash_particles")
+dash_particles = NodePath("../../dash_particles_right")
 animation_player = NodePath("../../AnimationPlayer")
 sprite_2d = NodePath("../../Sprite2D")
 
@@ -465,10 +478,10 @@ animation_player = NodePath("../../AnimationPlayer")
 sprite_2d = NodePath("../../Sprite2D")
 
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_mach")]
-offset_left = -163.0
-offset_top = -54.0
-offset_right = 164.0
-offset_bottom = -29.0
+offset_left = -97.0
+offset_top = -93.0
+offset_right = 230.0
+offset_bottom = -68.0
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 vertical_alignment = 1

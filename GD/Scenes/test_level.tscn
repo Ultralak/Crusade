@@ -130,4 +130,3 @@ position = Vector2(840, -117)
 position = Vector2(569, -211)
 
 [node name="GameScreen" parent="." instance=ExtResource("6_btda1")]
-layer = 2

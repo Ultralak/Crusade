@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Crusade"
-run/main_scene="uid://cpe7igoj4lqdp"
+run/main_scene="uid://c1d56vp3ibela"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,13 +20,15 @@ config/icon="res://icon.svg"
 PlayerManager="*res://autoloads/player_manager.gd"
 EnemyHealthManager="*res://autoloads/EnemyHealthManager.gd"
 EnemyManager="*res://autoloads/EnemyManager.gd"
+GameManager="*res://autoloads/GameManager.gd"
+SettingsManager="*res://autoloads/SettingsManager.gd"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=540
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
 
 [editor]
 
@@ -99,3 +101,4 @@ common/physics_interpolation=true
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

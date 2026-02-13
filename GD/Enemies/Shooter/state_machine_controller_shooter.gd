@@ -47,6 +47,3 @@ func _on_attack_timer_timeout() -> void:
 	elif current_state.name == "aim":
 		node_finite_state_machine.transition_to("fire")
 		
-
-func _on_hurt_timer_timeout() -> void:
-	node_finite_state_machine.transition_to("idle")
