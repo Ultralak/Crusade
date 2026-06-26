@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Crusade"
 run/main_scene="uid://c1d56vp3ibela"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -32,7 +36,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/david/OneDrive/Documents/Crusade/Crusade/GD/Videos/Day 18,19,20.avi"
+movie_writer/movie_file="C:/Users/david/OneDrive/Documents/Crusade/Crusade/GD/Videos/Day 25.avi"
 movie_writer/fps=30
 
 [editor_plugins]
