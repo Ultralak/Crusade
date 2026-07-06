@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dlq0hihs8xa0n"]
+
+[ext_resource type="Texture2D" uid="uid://4q03eqgw0hjh" path="res://Old_Crusade_sidescroller/Player/Dash.png" id="1_vecha"]
+
+[sub_resource type="Shader" id="Shader_gu6f8"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+uniform int particles_anim_h_frames;
+uniform int particles_anim_v_frames;
+uniform bool particles_anim_loop;
+
+void vertex() {
+	float h_frames = float(particles_anim_h_frames);
+	float v_frames = float(particles_anim_v_frames);
+	VERTEX.xy /= vec2(h_frames, v_frames);
+	float particle_total_frames = float(particles_anim_h_frames * particles_anim_v_frames);
+	float particle_frame = floor(INSTANCE_CUSTOM.z * float(particle_total_frames));
+	if (!particles_anim_loop) {
+		particle_frame = clamp(particle_frame, 0.0, particle_total_frames - 1.0);
+	} else {
+		particle_frame = mod(particle_frame, particle_total_frames);
+	}	
+	UV /= vec2(h_frames, v_frames);
+	UV += vec2(mod(particle_frame, h_frames) / h_frames, floor((particle_frame + 0.5) / h_frames) / v_frames);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dkpta"]
+shader = SubResource("Shader_gu6f8")
+shader_parameter/particles_anim_h_frames = 12
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_lfmf2"]
+_data = [Vector2(0.0016233772, 0.51469904), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pisgm"]
+curve = SubResource("Curve_lfmf2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b1ygp"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_pisgm")
+anim_speed_min = 3.0
+anim_speed_max = 3.0
+
+[node name="dash_particles" type="GPUParticles2D"]
+material = SubResource("ShaderMaterial_dkpta")
+emitting = false
+amount = 50
+texture = ExtResource("1_vecha")
+lifetime = 0.5
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_b1ygp")

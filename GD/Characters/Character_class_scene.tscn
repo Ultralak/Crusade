@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c01sjo8wihnbf"]
+
+[ext_resource type="Script" uid="uid://b7lg311mc7cgv" path="res://Characters/player.gd" id="1_5mj4t"]
+[ext_resource type="Script" uid="uid://na74sqiddic8" path="res://Old_Crusade_sidescroller/State machine/node_finite_state_machine.gd" id="2_eovys"]
+[ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Old_Crusade_sidescroller/Enemies/melee/state_machine_controller.gd" id="3_vicmk"]
+
+[node name="Character" type="CharacterBody2D" unique_id=246556358]
+script = ExtResource("1_5mj4t")
+
+[node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1679767088]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=12476089]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501961513]
+
+[node name="StateMachine" type="Node" parent="." unique_id=1129076061 node_paths=PackedStringArray("player")]
+script = ExtResource("2_eovys")
+player = NodePath("..")
+
+[node name="StateController" type="Node" parent="." unique_id=1349297060 node_paths=PackedStringArray("node_finite_state_machine", "animation_player")]
+script = ExtResource("3_vicmk")
+node_finite_state_machine = NodePath("../StateMachine")
+animation_player = NodePath("../AnimationPlayer")

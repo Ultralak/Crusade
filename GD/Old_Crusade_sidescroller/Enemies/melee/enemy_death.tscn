@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dwdgli4nlp1pk"]
+
+[ext_resource type="Texture2D" uid="uid://d10he6r12qxjc" path="res://Old_Crusade_sidescroller/Enemies/melee/enemy-death.png" id="1_udwmn"]
+[ext_resource type="Texture2D" uid="uid://d0skshhbudxsi" path="res://Old_Crusade_sidescroller/Enemies/Shooter/Player_metroid.png" id="2_elfeg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1or3"]
+atlas = ExtResource("1_udwmn")
+region = Rect2(0, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0a6i"]
+atlas = ExtResource("1_udwmn")
+region = Rect2(67, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjeu7"]
+atlas = ExtResource("1_udwmn")
+region = Rect2(134, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuifs"]
+atlas = ExtResource("1_udwmn")
+region = Rect2(201, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k56w1"]
+atlas = ExtResource("1_udwmn")
+region = Rect2(268, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx06f"]
+atlas = ExtResource("2_elfeg")
+region = Rect2(256, 384, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tj187"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1or3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0a6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjeu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuifs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k56w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx06f")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]
+
+[node name="Enemy_death" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_tj187")
+animation = &"death"
+autoplay = "death"
+frame = 5
+frame_progress = 1.0

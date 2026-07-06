@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqrbqi3wwdfid"]
-
-[ext_resource type="Script" uid="uid://cochcr6wnp7ci" path="res://Enemies/Shooter/flip_component.gd" id="1_thtyh"]
-
-[node name="FlipComponent" type="Node"]
-script = ExtResource("1_thtyh")

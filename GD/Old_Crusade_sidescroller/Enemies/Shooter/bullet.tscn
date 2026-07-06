@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b3mlpnduiqgih"]
+
+[ext_resource type="Texture2D" uid="uid://b363gnowrj7ig" path="res://Old_Crusade_sidescroller/Enemies/Shooter/shot.png" id="1_5lfuj"]
+[ext_resource type="Script" uid="uid://mgortgigfklk" path="res://Old_Crusade_sidescroller/Enemies/Shooter/bullet_scene.gd" id="2_al76v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al76v"]
+atlas = ExtResource("1_5lfuj")
+region = Rect2(0, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyt0s"]
+atlas = ExtResource("1_5lfuj")
+region = Rect2(6, 0, 6, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7m473"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al76v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyt0s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al76v"]
+size = Vector2(4, 4)
+
+[node name="bullet" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7m473")
+script = ExtResource("2_al76v")
+
+[node name="disappear" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_al76v")
+
+[connection signal="timeout" from="disappear" to="." method="_on_disappear_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

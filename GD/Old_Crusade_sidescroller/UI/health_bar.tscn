@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://c6ed8mlho26ni"]
+
+[ext_resource type="Script" uid="uid://dln7p6jso8uid" path="res://Old_Crusade_sidescroller/UI/health_bar.gd" id="1_m7ell"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f3ms"]
+bg_color = Color(1, 0.99607843, 1, 0.019607844)
+border_color = Color(0.39181867, 0.39181864, 0.39181864, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srckl"]
+bg_color = Color(0.94308746, 0, 0.16945717, 1)
+border_color = Color(0.26779026, 0.26779032, 0.2677901, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yf5l"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxn08"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.5264226, 0.5264226, 0.5264226, 1)
+
+[node name="Health_bar" type="ProgressBar" node_paths=PackedStringArray("timer", "damage_bar", "visibility_timer")]
+z_index = 1
+offset_right = 18.0
+offset_bottom = 2.0
+theme_override_colors/font_color = Color(0.3029834, 0.30290088, 0.79755527, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_6f3ms")
+theme_override_styles/fill = SubResource("StyleBoxFlat_srckl")
+step = 0.001
+value = 60.0
+show_percentage = false
+script = ExtResource("1_m7ell")
+timer = NodePath("Timer")
+damage_bar = NodePath("DamageBar")
+visibility_timer = NodePath("Visibility_timer")
+
+[node name="DamageBar" type="ProgressBar" parent="."]
+z_index = -1
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_0yf5l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dxn08")
+value = 70.0
+show_percentage = false
+
+[node name="Visibility_timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Visibility_timer" to="." method="_on_visibility_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

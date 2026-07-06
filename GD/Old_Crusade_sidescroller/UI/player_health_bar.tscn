@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://xhmxyeeq3l8a"]
+
+[ext_resource type="Script" uid="uid://bc666c6be8xit" path="res://Old_Crusade_sidescroller/UI/player_health_bar.gd" id="1_n6pns"]
+[ext_resource type="Script" uid="uid://cwgt2t0vrqqx0" path="res://Old_Crusade_sidescroller/UI/Damage_number.gd" id="2_yatkb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yatkb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywslx"]
+bg_color = Color(1.8770993e-06, 0.64310306, 0.42630944, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odn8a"]
+bg_color = Color(0.0885599, 0.08855992, 0.08855987, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra1x2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PlayerHealthBar" type="ProgressBar" node_paths=PackedStringArray("DamageBar")]
+anchors_preset = -1
+anchor_right = 0.41599974
+anchor_bottom = 0.046777766
+offset_right = 1600.64
+offset_bottom = 34.739998
+scale = Vector2(0.2, 0.2)
+theme_override_styles/background = SubResource("StyleBoxEmpty_yatkb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ywslx")
+step = 0.001
+value = 50.0
+show_percentage = false
+script = ExtResource("1_n6pns")
+DamageBar = NodePath("DamageBar")
+metadata/_edit_use_anchors_ = true
+
+[node name="DamageBar" type="ProgressBar" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_odn8a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ra1x2")
+step = 0.001
+value = 60.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.6
+anchor_bottom = 1.0
+offset_left = 425.00024
+offset_top = -15.0
+offset_right = 425.00024
+offset_bottom = 13.000008
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_yatkb")

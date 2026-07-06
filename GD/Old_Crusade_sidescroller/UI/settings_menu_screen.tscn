@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://d1iklfyxmi27g"]
+
+[ext_resource type="Script" uid="uid://xu8ewpkr5dwq" path="res://Old_Crusade_sidescroller/UI/settings_menu_screen.gd" id="1_b1ltk"]
+[ext_resource type="Texture2D" uid="uid://cp1ut7dg0dlg" path="res://Old_Crusade_sidescroller/UI/theme/background_sprite_1.png" id="2_oabam"]
+[ext_resource type="Theme" uid="uid://biqymlx6lgkf6" path="res://Old_Crusade_sidescroller/UI/theme/UI_theme.tres" id="3_373f7"]
+
+[node name="SettingsMenusScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_b1ltk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.44459355, 0.8484244, 0.9637702, 1)
+z_index = -2
+offset_left = -139.0
+offset_top = -66.0
+offset_right = 960.0
+offset_bottom = 550.0
+texture = ExtResource("2_oabam")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_373f7")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="WindowModeOptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WindowModeOptionButton" to="." method="_on_window_mode_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]

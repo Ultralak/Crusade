@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://4licmce8sbsk"]
+
+[ext_resource type="Script" uid="uid://chm1deghmh64x" path="res://Old_Crusade_sidescroller/UI/game_screen.gd" id="1_udfbj"]
+[ext_resource type="PackedScene" uid="uid://xhmxyeeq3l8a" path="res://Old_Crusade_sidescroller/UI/player_health_bar.tscn" id="1_v0emu"]
+[ext_resource type="Texture2D" uid="uid://ccte78nn7ldwr" path="res://Old_Crusade_sidescroller/UI/theme/icons8-pause-12.png" id="2_04sp0"]
+
+[node name="GameScreen" type="CanvasLayer"]
+script = ExtResource("1_udfbj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -956.0
+offset_bottom = 500.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerHealthBar" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("1_v0emu")]
+layout_mode = 1
+anchor_left = 0.067
+anchor_right = 0.120000005
+anchor_bottom = 0.0
+offset_left = 0.10099983
+offset_right = 2484.36
+offset_bottom = 100.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_bottom = 46.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_04sp0")
+
+[connection signal="pressed" from="MarginContainer2/TextureButton" to="." method="_on_texture_button_pressed"]
