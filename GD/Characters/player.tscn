@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cc1jg4yy1xowf" path="res://Art/heroes/knight/knight_run_spritesheet.png" id="3_65n15"]
 [ext_resource type="Script" uid="uid://bc3knq817w1lv" path="res://Characters/idle_state_paladin.gd" id="5_l48on"]
 [ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/walk_paladin.gd" id="6_4m0gv"]
+[ext_resource type="Texture2D" uid="uid://dl8vsgnulxjfu" path="res://Art/heroes/knight/weapon_sword_1.png" id="7_p728j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4m0gv"]
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_l48on"]
 length = 0.001
@@ -21,9 +25,51 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_p728j"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.39999998, 0.49999997),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"idle", &"idle"]
+}
 
 [sub_resource type="Animation" id="Animation_4m0gv"]
-resource_name = "idle"
+resource_name = "run"
 length = 0.6
 loop_mode = 1
 step = 0.1
@@ -39,30 +85,24 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
-
-[sub_resource type="Animation" id="Animation_p728j"]
-resource_name = "move"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.19999999, 0.3, 0.39999998, 0.49999997),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [&"run", &"run"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5slg2"]
 _data = {
 &"RESET": SubResource("Animation_l48on"),
-&"idle": SubResource("Animation_4m0gv"),
-&"move": SubResource("Animation_p728j")
+&"idle": SubResource("Animation_p728j"),
+&"run": SubResource("Animation_4m0gv")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbmiu"]
@@ -158,12 +198,20 @@ animations = [{
 "texture": SubResource("AtlasTexture_h3pa0")
 }],
 "loop": 1,
-"name": &"move",
+"name": &"run",
 "speed": 10.0
 }]
 
 [node name="Player" unique_id=246556358 instance=ExtResource("1_5mj4t")]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("2_65n15")
+
+[node name="CollisionBody" parent="." index="0" unique_id=1679767088]
+visible = false
+z_index = 1
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_4m0gv")
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=12476089]
 libraries/ = SubResource("AnimationLibrary_5slg2")
@@ -171,7 +219,7 @@ libraries/ = SubResource("AnimationLibrary_5slg2")
 [node name="AnimatedSprite2D" parent="." index="2" unique_id=1501961513]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_geawy")
-animation = &"move"
+animation = &"idle"
 
 [node name="StateMachine" parent="." index="3" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
 initial_node_state = NodePath("idle")
@@ -182,12 +230,28 @@ characterbody2d = NodePath("../..")
 state_machine_controller = NodePath("..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="walk" type="Node" parent="StateMachine" index="1" unique_id=1120109916 node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "animation_player")]
+[node name="run" type="Node" parent="StateMachine" index="1" unique_id=1120109916 node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "animation_player")]
 script = ExtResource("6_4m0gv")
 characterbody2d = NodePath("../..")
 state_machine_controller = NodePath("..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="StateController" parent="." index="4" unique_id=1349297060 node_paths=PackedStringArray("node_finite_state_machine", "animation_player")]
-node_finite_state_machine = NodePath("../StateMachine")
-animation_player = NodePath("../AnimationPlayer")
+[node name="Test" parent="." index="5" unique_id=1726522527]
+offset_left = -28.0
+offset_top = -30.0
+offset_right = 28.0
+offset_bottom = -18.0
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+
+[node name="sword" type="Node2D" parent="." index="6" unique_id=1867631151]
+
+[node name="Node" type="Node2D" parent="sword" index="0" unique_id=1964963813]
+
+[node name="Sprite2D" type="Sprite2D" parent="sword/Node" index="0" unique_id=97002679]
+position = Vector2(6, -14.999998)
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("7_p728j")
+offset = Vector2(-5, -4)
+flip_h = true

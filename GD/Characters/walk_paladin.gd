@@ -5,12 +5,17 @@ extends NodeState
 @export var state_machine_controller: Node
 
 func on_process(_delta : float):
-	pass
+	
+	if !get_parent().get_parent().get_input() : 
+		transition.emit("idle")
+	else:
+		get_parent().get_parent().get_input()
 	
 func on_physics_process(_delta : float):
 	pass
 func enter():
-	animation_player.play("move")
+	get_parent().get_parent().get_input()
+	animation_player.play("run")
 
 func exit():
 	animation_player.stop()

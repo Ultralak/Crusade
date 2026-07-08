@@ -19,30 +19,33 @@ func _ready():
 			child.transition.connect(transition_to)
 			child.force_transition.connect(force_transition_to) # might remove
 			# checks the children of the scene for any nodestates and adds to the dictionary and connects to the signals
-	
+
+
 	if initial_node_state:
 		initial_node_state.enter()
 		current_node_state = initial_node_state
 		current_node_state_name = initial_node_state.name
+		
 		# if initial node state exists transition to it
 		
 
 		
 func _process(delta : float):
 	# handles player movement per frame 
-	get_parent().get_input()
 	get_parent().move()
 	if current_node_state:
 		current_node_state.on_process(delta)
 	
 func _physics_process(delta: float) -> void:
+	get_parent().move()
 	if current_node_state:
 		current_node_state.on_physics_process(delta)
 	#if  !printed:	
 		#print("Current State: ", current_node_state_name )
 		#printed = true	
 	
-func transition_to(node_state_name	):
+func transition_to(node_state_name: String):
+
 	if node_state_name == current_node_state_name.to_lower():
 		return
 		# doesn't call the same state again
