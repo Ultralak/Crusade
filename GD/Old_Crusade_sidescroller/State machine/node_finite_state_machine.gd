@@ -31,13 +31,11 @@ func _ready():
 
 		
 func _process(delta : float):
-	# handles player movement per frame 
-	get_parent().move()
 	if current_node_state:
 		current_node_state.on_process(delta)
 	
 func _physics_process(delta: float) -> void:
-	get_parent().move()
+	
 	if current_node_state:
 		current_node_state.on_physics_process(delta)
 	#if  !printed:	

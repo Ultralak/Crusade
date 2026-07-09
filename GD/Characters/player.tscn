@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cc1jg4yy1xowf" path="res://Art/heroes/knight/knight_run_spritesheet.png" id="3_65n15"]
 [ext_resource type="Script" uid="uid://bc3knq817w1lv" path="res://Characters/idle_state_paladin.gd" id="5_l48on"]
 [ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/walk_paladin.gd" id="6_4m0gv"]
+[ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/primary_attack_paladin.gd" id="7_5slg2"]
 [ext_resource type="Texture2D" uid="uid://dl8vsgnulxjfu" path="res://Art/heroes/knight/weapon_sword_1.png" id="7_p728j"]
+[ext_resource type="Script" uid="uid://bsjgqhdn8un38" path="res://Characters/velocity_component.gd" id="9_cbmiu"]
+[ext_resource type="Texture2D" uid="uid://c1h4dqettogue" path="res://Art/effects (new)/slash_effect_anim_spritesheet.png" id="9_w3rah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4m0gv"]
 radius = 5.0
@@ -202,6 +205,140 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_5slg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("non-physics/Sword_Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.7853982]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("non-physics/Sword_Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("non-physics/Sword_Sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("non-physics/slash_sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("non-physics/slash_sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_cbmiu"]
+resource_name = "attack"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("non-physics/Sword_Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.7853982, -1.3089969, -0.7853982, 4.799655442984406, 4.799655442984406, -0.7853982]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("non-physics/Sword_Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.19952855),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, -5), Vector2(0, -3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("non-physics/Sword_Sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19952855, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, -8), Vector2(-13, -10), Vector2(-13, -10), Vector2(2, -8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("non-physics/slash_sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("non-physics/slash_sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.15, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w3rah"]
+_data = {
+&"RESET": SubResource("Animation_5slg2"),
+&"attack": SubResource("Animation_cbmiu")
+}
+
 [node name="Player" unique_id=246556358 instance=ExtResource("1_5mj4t")]
 collision_layer = 2
 collision_mask = 5
@@ -224,34 +361,64 @@ animation = &"idle"
 [node name="StateMachine" parent="." index="3" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
 initial_node_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="StateMachine" index="0" unique_id=1308004858 node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "animation_player")]
+[node name="idle" type="Node" parent="StateMachine" index="0" unique_id=1308004858 node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "velocity_component", "animation_player")]
 script = ExtResource("5_l48on")
 characterbody2d = NodePath("../..")
-state_machine_controller = NodePath("..")
+state_machine_controller = NodePath("../../StateController")
+velocity_component = NodePath("../../Velocity_Component")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="run" type="Node" parent="StateMachine" index="1" unique_id=1120109916 node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "animation_player")]
+[node name="run" type="Node" parent="StateMachine" index="1" unique_id=1120109916 node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "velocity_component", "animation_player")]
 script = ExtResource("6_4m0gv")
 characterbody2d = NodePath("../..")
-state_machine_controller = NodePath("..")
+state_machine_controller = NodePath("../../StateController")
+velocity_component = NodePath("../../Velocity_Component")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="attack_run" type="Node" parent="StateMachine" index="2" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
+script = ExtResource("7_5slg2")
+characterbody2d = NodePath("../..")
+weapon_animation_player = NodePath("../../sword/non-physics/sword_anim")
+velocity_component = NodePath("../../Velocity_Component")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Test" parent="." index="5" unique_id=1726522527]
-offset_left = -28.0
-offset_top = -30.0
-offset_right = 28.0
-offset_bottom = -18.0
-theme_override_font_sizes/font_size = 8
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -75.0
+offset_right = 72.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 
 [node name="sword" type="Node2D" parent="." index="6" unique_id=1867631151]
+position = Vector2(0, -6)
 
-[node name="Node" type="Node2D" parent="sword" index="0" unique_id=1964963813]
+[node name="non-physics" type="Node2D" parent="sword" index="0" unique_id=1964963813]
 
-[node name="Sprite2D" type="Sprite2D" parent="sword/Node" index="0" unique_id=97002679]
-position = Vector2(6, -14.999998)
+[node name="sword_anim" type="AnimationPlayer" parent="sword/non-physics" index="0" unique_id=1671544267]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_w3rah")
+
+[node name="Sword_Sprite" type="Sprite2D" parent="sword/non-physics" index="1" unique_id=97002679]
+position = Vector2(0, -3)
 rotation = -0.7853982
-scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("7_p728j")
-offset = Vector2(-5, -4)
+offset = Vector2(2, -8)
 flip_h = true
+
+[node name="slash_sprite" type="Sprite2D" parent="sword/non-physics" index="2" unique_id=2105225901]
+visible = false
+position = Vector2(15, -1)
+texture = ExtResource("9_w3rah")
+hframes = 3
+
+[node name="Velocity_Component" type="Node2D" parent="." index="7" unique_id=287875885]
+script = ExtResource("9_cbmiu")
+
+[connection signal="animation_finished" from="sword/non-physics/sword_anim" to="StateMachine/attack_run" method="_on_sword_anim_animation_finished"]

@@ -26,4 +26,5 @@ animation_player = NodePath("../AnimationPlayer")
 [node name="Test" type="Label" parent="." unique_id=1726522527]
 offset_right = 40.0
 offset_bottom = 23.0
+autowrap_mode = 3
 script = ExtResource("4_3nnoh")
