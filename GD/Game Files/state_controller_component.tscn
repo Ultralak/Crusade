@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://lx02xinctk4c"]
+
+[ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Old_Crusade_sidescroller/Enemies/melee/state_machine_controller.gd" id="1_hevd0"]
+
+[node name="StateControllerComponent" type="Node" unique_id=1271784096 node_paths=PackedStringArray("node_finite_state_machine", "animation_player")]
+script = ExtResource("1_hevd0")
+node_finite_state_machine = NodePath("")
+animation_player = NodePath("")

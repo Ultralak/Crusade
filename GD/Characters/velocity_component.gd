@@ -1,4 +1,3 @@
-@icon("res://Art/heroes/knight/knight_idle_anim_f0.png")
 extends Node2D
 
 # Lowered max speed and raised acceleration for a snappier feel

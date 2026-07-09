@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Character
 #damage and health script
 
 
