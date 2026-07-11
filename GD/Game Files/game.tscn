@@ -164,11 +164,10 @@ sources/0 = SubResource("TileSetAtlasSource_14i50")
 [node name="Game" type="Node2D" unique_id=530434200]
 script = ExtResource("1_1en5x")
 
-[node name="Enemy" parent="." unique_id=246556358 node_paths=PackedStringArray("target") instance=ExtResource("2_hbr0n")]
+[node name="Enemy" parent="." unique_id=246556358 instance=ExtResource("2_hbr0n")]
 position = Vector2(93, 46)
-target = NodePath("../Player")
 
-[node name="Player" parent="." unique_id=628313327 instance=ExtResource("3_hbr0n")]
+[node name="Player" parent="." unique_id=628313327 groups=["PLAYER_"] instance=ExtResource("3_hbr0n")]
 position = Vector2(222, 122)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=653889845]

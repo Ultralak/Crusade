@@ -24,3 +24,6 @@ static func crouch_input() -> bool:
 static func dash_input() -> bool:
 	var dashing : bool = Input.is_action_just_pressed("dash")
 	return dashing
+	
+
+	

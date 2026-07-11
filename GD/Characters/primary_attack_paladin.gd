@@ -17,8 +17,10 @@ func on_physics_process(_delta : float):
 	#when you enter the scene
 func enter():
 	velocity_component.speed_modifier = 0.9
+	characterbody2d.can_turn = false
 	weapon_animation_player.play("attack")
 func exit():
+	characterbody2d.can_turn = true
 	velocity_component.speed_modifier = 1.0
 	animation_player.stop()
 

@@ -53,6 +53,7 @@ PLAYER_="all player characters"
 ENEMY_=""
 GROUND_=""
 NAVIGATION=""
+HITBOX=""
 
 [input]
 
@@ -112,6 +113,7 @@ move_down={
 2d_physics/layer_4="passthrough"
 2d_physics/layer_5="bullets"
 2d_physics/layer_6="invincible"
+2d_physics/layer_7="weapons"
 2d_physics/layer_9="detection"
 
 [navigation]

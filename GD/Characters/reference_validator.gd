@@ -30,7 +30,7 @@ func validate(node : Node):
 				if is_value_null_or_empty(value):
 					missing_count += 1
 					
-					print_rich("[color=yellow][i]⚠️ [VALIDATION ERROR] '%s' [/color]in [color=aqua]'%s'[/color][color = yellow] has an unassigned export: '%s' [/i][/color]" % [target_node.name,node.name, prop_name])
+					print_rich("[color=yellow][i]⚠️ [VALIDATION ERROR] '%s'[/i][/color]in [color=aqua][i]'%s'[/i][/color][color=yellow][i] has an unassigned export: '%s' [/i][/color]" % [target_node.name,node.name, prop_name])
 					
 		if missing_count > 0:
 			print_rich("[color=red][b]Validation failed for '%s' in '%s': %d missing reference(s) found.[/b][/color]" % [target_node.name,node.name, missing_count])

@@ -2,7 +2,7 @@ extends Label
 
 
 @onready var state_machine: NodeFiniteStateMachine = $"../StateMachine"
-@onready var velocity_component: Node2D = $"../Velocity_Component"
+@export var velocity_component: Node2D 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

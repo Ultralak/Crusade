@@ -4,8 +4,12 @@
 [ext_resource type="Script" uid="uid://c3habvls0h7b8" path="res://Characters/flying_enemy.gd" id="2_llo60"]
 [ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/reference_validator.tscn" id="3_ca803"]
 [ext_resource type="Texture2D" uid="uid://cu7m2ultx42b5" path="res://Art/enemies/flying creature/fly_anim_spritesheet.png" id="4_tsej0"]
-[ext_resource type="Script" uid="uid://bihm5bbb5ypge" path="res://Characters/idle_fly_animal.gd" id="5_i70m0"]
+[ext_resource type="Script" uid="uid://bihm5bbb5ypge" path="res://Characters/idle_state_flying_animal.gd" id="5_i70m0"]
+[ext_resource type="Script" uid="uid://dq5dmuhpnngf" path="res://Characters/hurt_state_flying_animal.gd" id="6_7xwgm"]
 [ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Old_Crusade_sidescroller/Enemies/melee/state_machine_controller.gd" id="6_llo60"]
+[ext_resource type="PackedScene" uid="uid://daq8erx21u5qx" path="res://Characters/navigation_component_enemy.tscn" id="7_ca803"]
+[ext_resource type="Script" uid="uid://ckgwxveh3185i" path="res://Characters/dead_state_flying_animal.gd" id="7_ncjnf"]
+[ext_resource type="Script" uid="uid://u8d373rkuxxf" path="res://Characters/health_component.gd" id="10_1d5st"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qa2gp"]
 radius = 3.0
@@ -85,17 +89,19 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Enemy" unique_id=246556358 node_paths=PackedStringArray("navigation_agent_2d") instance=ExtResource("1_vbc1y")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
+radius = 5.0
+
+[node name="Enemy" unique_id=246556358 groups=["ENEMY_"] instance=ExtResource("1_vbc1y")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("2_llo60")
-movement_speed = 50.0
-navigation_agent_2d = NodePath("NavigationAgent2D")
 
 [node name="ReferenceValidator" parent="." index="0" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_ca803")]
 target_node_parent = NodePath("..")
 
 [node name="CollisionBody" parent="." index="1" unique_id=1679767088]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_qa2gp")
 
@@ -114,18 +120,33 @@ script = ExtResource("5_i70m0")
 characterBody2d = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
+[node name="hurt" type="Node" parent="StateMachine" index="1" unique_id=673310595]
+script = ExtResource("6_7xwgm")
+
+[node name="dead" type="Node" parent="StateMachine" index="2" unique_id=1601241287]
+script = ExtResource("7_ncjnf")
+
 [node name="Test" parent="." index="5" unique_id=1726522527]
 visible = false
 script = null
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="6" unique_id=1666571612]
-target_desired_distance = 20.0
-navigation_layers = 2
-simplify_path = true
-simplify_epsilon = 2.0
-debug_enabled = true
-
-[node name="State_Machine_Controller" type="Node" parent="." index="7" unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player")]
+[node name="State_Machine_Controller" type="Node" parent="." index="6" unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player")]
 script = ExtResource("6_llo60")
 node_finite_state_machine = NodePath("../StateMachine")
 animation_player = NodePath("../AnimationPlayer")
+
+[node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("player") instance=ExtResource("7_ca803")]
+player = NodePath("..")
+
+[node name="Health_Component" type="Node" parent="." index="8" unique_id=2055670660 node_paths=PackedStringArray("FSM", "Hitbox_area")]
+script = ExtResource("10_1d5st")
+FSM = NodePath("../StateMachine")
+Hitbox_area = NodePath("HitBox")
+
+[node name="HitBox" type="Area2D" parent="Health_Component" index="0" unique_id=1268156581 groups=["HITBOX"]]
+collision_layer = 4
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Health_Component/HitBox" index="0" unique_id=2031490457]
+shape = SubResource("CircleShape2D_6pmnr")
+debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)

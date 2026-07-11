@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dl8vsgnulxjfu" path="res://Art/heroes/knight/weapon_sword_1.png" id="7_p728j"]
 [ext_resource type="Texture2D" uid="uid://c1h4dqettogue" path="res://Art/effects (new)/slash_effect_anim_spritesheet.png" id="9_w3rah"]
 [ext_resource type="PackedScene" uid="uid://b4065l518r61h" path="res://Game Files/velocity_component.tscn" id="10_w3rah"]
+[ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/hitbox.gd" id="11_642pg"]
+[ext_resource type="Script" uid="uid://crwvhnk3x05sw" path="res://Characters/left_sword_collision_shape.gd" id="12_22qw1"]
+[ext_resource type="Script" uid="uid://cyqekh6m42b5s" path="res://Characters/right_sword_collision_layer.gd" id="13_mevwr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4m0gv"]
 radius = 5.0
@@ -268,6 +271,78 @@ tracks/4/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("physics/Hitbox/left:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -10)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("physics/Hitbox/left:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5707964]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("physics/Hitbox/left:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("physics/Hitbox/right:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("physics/Hitbox/right:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, 10)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("physics/Hitbox/right:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707963267948966]
+}
 
 [sub_resource type="Animation" id="Animation_cbmiu"]
 resource_name = "attack"
@@ -333,6 +408,128 @@ tracks/4/keys = {
 "update": 1,
 "values": [0, 1, 2]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("physics/Hitbox/left:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.13, 0.15, 0.16, 0.18, 0.19999999, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -12), Vector2(-5, -6), Vector2(-8, -7), Vector2(4, -15), Vector2(13, -8), Vector2(14, -1), Vector2(5, 11), Vector2(-11, 9), Vector2(-11, 9), Vector2(-4.000001, -10)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("physics/Hitbox/left:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.13, 0.15, 0.16, 0.18, 0.19999999, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-4.712389, -5.2359877, -4.712389, -3.0543263, -1.8325958, -1.3089969, -0.2617994, 0.7853982, 0.7853982, 1.5707964]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("physics/Hitbox")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("physics/Hitbox")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("physics/Hitbox/left")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable"
+}]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("physics/Hitbox/right:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.13, 0.15, 0.16, 0.18, 0.19999999, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 12), Vector2(-5, -6), Vector2(-8, 7), Vector2(4, 15), Vector2(13, 8), Vector2(14, 1), Vector2(5, -11), Vector2(-11, -9), Vector2(-11, -9), Vector2(-4, 10)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("physics/Hitbox/right:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.13, 0.15, 0.16, 0.18, 0.19999999, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [4.71238898038469, 5.235987755982989, 4.71238898038469, 3.0543261909900767, 1.8325957145940461, 1.3089969389957472, 0.2617993877991494, -0.7853981633974483, -0.7853981633974483, -1.5707963267948966]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("physics/Hitbox/left:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("physics/Hitbox/right:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("physics/Hitbox/right")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w3rah"]
 _data = {
@@ -340,7 +537,11 @@ _data = {
 &"attack": SubResource("Animation_cbmiu")
 }
 
-[node name="Player" unique_id=246556358 instance=ExtResource("1_5mj4t")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6pmnr"]
+radius = 3.0
+height = 17.391312
+
+[node name="Player" unique_id=246556358 groups=["PLAYER_"] instance=ExtResource("1_5mj4t")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_65n15")
@@ -367,23 +568,23 @@ initial_node_state = NodePath("idle")
 [node name="idle" type="Node" parent="StateMachine" index="0" unique_id=1308004858 node_paths=PackedStringArray("characterbody2d", "velocity_component", "animation_player")]
 script = ExtResource("5_l48on")
 characterbody2d = NodePath("../..")
-velocity_component = NodePath("../../Velocity_Component")
+velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="run" type="Node" parent="StateMachine" index="1" unique_id=1120109916 node_paths=PackedStringArray("characterbody2d", "velocity_component", "animation_player")]
 script = ExtResource("6_4m0gv")
 characterbody2d = NodePath("../..")
-velocity_component = NodePath("../../Velocity_Component")
+velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="attack_run" type="Node" parent="StateMachine" index="2" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
 script = ExtResource("7_5slg2")
 characterbody2d = NodePath("../..")
 weapon_animation_player = NodePath("../../sword/non-physics/sword_anim")
-velocity_component = NodePath("../../Velocity_Component")
+velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Test" parent="." index="5" unique_id=1726522527]
+[node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("velocity_component")]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 15
 anchor_right = 1.0
@@ -396,6 +597,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
+velocity_component = NodePath("../Velocity_Component_player")
 
 [node name="sword" type="Node2D" parent="." index="6" unique_id=1867631151]
 position = Vector2(0, -6)
@@ -419,6 +621,33 @@ position = Vector2(15, -1)
 texture = ExtResource("9_w3rah")
 hframes = 3
 
-[node name="Velocity_Component" parent="." index="7" unique_id=590281791 instance=ExtResource("10_w3rah")]
+[node name="physics" type="Node2D" parent="sword" index="1" unique_id=1322744771]
+
+[node name="Hitbox" type="Area2D" parent="sword/physics" index="0" unique_id=1308426130 node_paths=PackedStringArray("left", "right")]
+collision_layer = 64
+collision_mask = 4
+script = ExtResource("11_642pg")
+left = NodePath("left")
+right = NodePath("right")
+
+[node name="left" type="CollisionShape2D" parent="sword/physics/Hitbox" index="0" unique_id=978681972 node_paths=PackedStringArray("player")]
+position = Vector2(-4, -10)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_6pmnr")
+disabled = true
+debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
+script = ExtResource("12_22qw1")
+player = NodePath("../../../..")
+
+[node name="right" type="CollisionShape2D" parent="sword/physics/Hitbox" index="1" unique_id=2049144417 node_paths=PackedStringArray("player")]
+position = Vector2(-4, 10)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6pmnr")
+disabled = true
+debug_color = Color(0.30514878, 0.52160656, 0.9209123, 0.41960785)
+script = ExtResource("13_mevwr")
+player = NodePath("../../../..")
+
+[node name="Velocity_Component_player" parent="." index="7" unique_id=590281791 instance=ExtResource("10_w3rah")]
 
 [connection signal="animation_finished" from="sword/non-physics/sword_anim" to="StateMachine/attack_run" method="_on_sword_anim_animation_finished"]
