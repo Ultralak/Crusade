@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dhby2b3eq0ftw"]
+
+[ext_resource type="Script" uid="uid://bukvlvmqg5d51" path="res://Characters/reference_validator.gd" id="1_kpdar"]
+
+[node name="ReferenceValidator" type="Node" unique_id=950916380]
+script = ExtResource("1_kpdar")

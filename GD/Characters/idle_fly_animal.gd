@@ -9,5 +9,6 @@ func _physics_process(_delta: float) -> void:
 	pass
 func enter():
 	animation_player.play("idle")
+	
 func exit():
 	animation_player.stop()

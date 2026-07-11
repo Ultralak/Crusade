@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cylhxwrqww3j5" path="res://Characters/paladin.gd" id="2_65n15"]
 [ext_resource type="Texture2D" uid="uid://b4odwgdg2htq" path="res://Art/heroes/knight/knight_idle_spritesheet.png" id="2_vb825"]
 [ext_resource type="Texture2D" uid="uid://cc1jg4yy1xowf" path="res://Art/heroes/knight/knight_run_spritesheet.png" id="3_65n15"]
+[ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/reference_validator.tscn" id="3_c4gpq"]
 [ext_resource type="Script" uid="uid://bc3knq817w1lv" path="res://Characters/idle_state_paladin.gd" id="5_l48on"]
 [ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/walk_paladin.gd" id="6_4m0gv"]
 [ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/primary_attack_paladin.gd" id="7_5slg2"]
@@ -344,43 +345,45 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_65n15")
 
-[node name="CollisionBody" parent="." index="0" unique_id=1679767088]
+[node name="ReferenceValidator" parent="." index="0" unique_id=950916380 instance=ExtResource("3_c4gpq")]
+
+[node name="CollisionBody" parent="." index="1" unique_id=1679767088]
 visible = false
 z_index = 1
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_4m0gv")
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=12476089]
+[node name="AnimationPlayer" parent="." index="2" unique_id=12476089]
 libraries/ = SubResource("AnimationLibrary_5slg2")
 
-[node name="AnimatedSprite2D" parent="." index="2" unique_id=1501961513]
+[node name="AnimatedSprite2D" parent="." index="3" unique_id=1501961513]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_geawy")
 animation = &"idle"
 
-[node name="StateMachine" parent="." index="3" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
+[node name="StateMachine" parent="." index="4" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
 initial_node_state = NodePath("idle")
 
 [node name="idle" type="Node" parent="StateMachine" index="0" unique_id=1308004858 node_paths=PackedStringArray("characterbody2d", "velocity_component", "animation_player")]
 script = ExtResource("5_l48on")
 characterbody2d = NodePath("../..")
-velocity_component = NodePath("")
+velocity_component = NodePath("../../Velocity_Component")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="run" type="Node" parent="StateMachine" index="1" unique_id=1120109916 node_paths=PackedStringArray("characterbody2d", "velocity_component", "animation_player")]
 script = ExtResource("6_4m0gv")
 characterbody2d = NodePath("../..")
-velocity_component = NodePath("")
+velocity_component = NodePath("../../Velocity_Component")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="attack_run" type="Node" parent="StateMachine" index="2" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
 script = ExtResource("7_5slg2")
 characterbody2d = NodePath("../..")
 weapon_animation_player = NodePath("../../sword/non-physics/sword_anim")
-velocity_component = NodePath("")
+velocity_component = NodePath("../../Velocity_Component")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Test" parent="." index="4" unique_id=1726522527]
+[node name="Test" parent="." index="5" unique_id=1726522527]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 15
 anchor_right = 1.0
@@ -394,7 +397,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 
-[node name="sword" type="Node2D" parent="." index="5" unique_id=1867631151]
+[node name="sword" type="Node2D" parent="." index="6" unique_id=1867631151]
 position = Vector2(0, -6)
 
 [node name="non-physics" type="Node2D" parent="sword" index="0" unique_id=1964963813]
@@ -416,6 +419,6 @@ position = Vector2(15, -1)
 texture = ExtResource("9_w3rah")
 hframes = 3
 
-[node name="Velocity_Component" parent="." index="6" unique_id=590281791 instance=ExtResource("10_w3rah")]
+[node name="Velocity_Component" parent="." index="7" unique_id=590281791 instance=ExtResource("10_w3rah")]
 
 [connection signal="animation_finished" from="sword/non-physics/sword_anim" to="StateMachine/attack_run" method="_on_sword_anim_animation_finished"]

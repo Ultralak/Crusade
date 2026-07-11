@@ -4,8 +4,6 @@ extends Node
 @export var initial_node_state : NodeState
 @export var player : CharacterBody2D
 
-
-
 var node_states : Dictionary = {}
 
 var current_node_state: NodeState

@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 
 func move(delta: float) -> void:
 	move_direction = move_direction.normalized()
-	
 	if move_direction != Vector2.ZERO:
 		move_velocity += move_direction * Acceleration * delta 
 		move_velocity = move_velocity.limit_length(Max_speed) * speed_modifier

@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://n1rexluimhji"]
+
+[ext_resource type="PackedScene" uid="uid://c01sjo8wihnbf" path="res://Characters/Character_class_scene.tscn" id="1_vbc1y"]
+[ext_resource type="Script" uid="uid://c3habvls0h7b8" path="res://Characters/flying_enemy.gd" id="2_llo60"]
+[ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/reference_validator.tscn" id="3_ca803"]
+[ext_resource type="Texture2D" uid="uid://cu7m2ultx42b5" path="res://Art/enemies/flying creature/fly_anim_spritesheet.png" id="4_tsej0"]
+[ext_resource type="Script" uid="uid://bihm5bbb5ypge" path="res://Characters/idle_fly_animal.gd" id="5_i70m0"]
+[ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Old_Crusade_sidescroller/Enemies/melee/state_machine_controller.gd" id="6_llo60"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qa2gp"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_ca803"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tsej0"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i70m0"]
+_data = {
+&"RESET": SubResource("Animation_ca803"),
+&"idle": SubResource("Animation_tsej0")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xwgm"]
+atlas = ExtResource("4_tsej0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncjnf"]
+atlas = ExtResource("4_tsej0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d5st"]
+atlas = ExtResource("4_tsej0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujm07"]
+atlas = ExtResource("4_tsej0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xwgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncjnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d5st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujm07")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="Enemy" unique_id=246556358 node_paths=PackedStringArray("navigation_agent_2d") instance=ExtResource("1_vbc1y")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_llo60")
+movement_speed = 50.0
+navigation_agent_2d = NodePath("NavigationAgent2D")
+
+[node name="ReferenceValidator" parent="." index="0" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_ca803")]
+target_node_parent = NodePath("..")
+
+[node name="CollisionBody" parent="." index="1" unique_id=1679767088]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_qa2gp")
+
+[node name="AnimationPlayer" parent="." index="2" unique_id=12476089]
+libraries/ = SubResource("AnimationLibrary_i70m0")
+
+[node name="AnimatedSprite2D" parent="." index="3" unique_id=1501961513]
+sprite_frames = SubResource("SpriteFrames_6pmnr")
+animation = &"idle"
+
+[node name="StateMachine" parent="." index="4" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
+initial_node_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="StateMachine" index="0" unique_id=1793172341 node_paths=PackedStringArray("characterBody2d", "animation_player")]
+script = ExtResource("5_i70m0")
+characterBody2d = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="Test" parent="." index="5" unique_id=1726522527]
+visible = false
+script = null
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="6" unique_id=1666571612]
+target_desired_distance = 20.0
+navigation_layers = 2
+simplify_path = true
+simplify_epsilon = 2.0
+debug_enabled = true
+
+[node name="State_Machine_Controller" type="Node" parent="." index="7" unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player")]
+script = ExtResource("6_llo60")
+node_finite_state_machine = NodePath("../StateMachine")
+animation_player = NodePath("../AnimationPlayer")

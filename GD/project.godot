@@ -116,6 +116,7 @@ move_down={
 
 [navigation]
 
+2d/warnings/navmesh_cell_size_mismatch=false
 2d/default_cell_size=4.0
 
 [physics]
