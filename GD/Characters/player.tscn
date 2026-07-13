@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/walk_paladin.gd" id="6_4m0gv"]
 [ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/primary_attack_paladin.gd" id="7_5slg2"]
 [ext_resource type="Texture2D" uid="uid://dl8vsgnulxjfu" path="res://Art/heroes/knight/weapon_sword_1.png" id="7_p728j"]
+[ext_resource type="Script" uid="uid://dk2l3f4k3ypcw" path="res://Characters/generic_sword.gd" id="9_mevwr"]
 [ext_resource type="Texture2D" uid="uid://c1h4dqettogue" path="res://Art/effects (new)/slash_effect_anim_spritesheet.png" id="9_w3rah"]
 [ext_resource type="PackedScene" uid="uid://b4065l518r61h" path="res://Game Files/velocity_component.tscn" id="10_w3rah"]
 [ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/hitbox.gd" id="11_642pg"]
@@ -490,7 +491,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.13, 0.15, 0.16, 0.18, 0.19999999, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [4.71238898038469, 5.235987755982989, 4.71238898038469, 3.0543261909900767, 1.8325957145940461, 1.3089969389957472, 0.2617993877991494, -0.7853981633974483, -0.7853981633974483, -1.5707963267948966]
+"values": [4.71238898038469, 5.235987755982989, 4.71238898038469, 3.0543261909900767, 1.832595714594046, 1.3089969389957472, 0.2617993877991494, -0.7853981633974483, -0.7853981633974483, -1.5707963267948966]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -545,8 +546,10 @@ height = 17.391312
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_65n15")
+knockback_force = 300.0
 
-[node name="ReferenceValidator" parent="." index="0" unique_id=950916380 instance=ExtResource("3_c4gpq")]
+[node name="ReferenceValidator" parent="." index="0" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_c4gpq")]
+target_node_parent = NodePath("..")
 
 [node name="CollisionBody" parent="." index="1" unique_id=1679767088]
 visible = false
@@ -601,6 +604,7 @@ velocity_component = NodePath("../Velocity_Component_player")
 
 [node name="sword" type="Node2D" parent="." index="6" unique_id=1867631151]
 position = Vector2(0, -6)
+script = ExtResource("9_mevwr")
 
 [node name="non-physics" type="Node2D" parent="sword" index="0" unique_id=1964963813]
 
@@ -623,10 +627,11 @@ hframes = 3
 
 [node name="physics" type="Node2D" parent="sword" index="1" unique_id=1322744771]
 
-[node name="Hitbox" type="Area2D" parent="sword/physics" index="0" unique_id=1308426130 node_paths=PackedStringArray("left", "right")]
+[node name="Hitbox" type="Area2D" parent="sword/physics" index="0" unique_id=1308426130 node_paths=PackedStringArray("player", "left", "right")]
 collision_layer = 64
 collision_mask = 4
 script = ExtResource("11_642pg")
+player = NodePath("../../..")
 left = NodePath("left")
 right = NodePath("right")
 

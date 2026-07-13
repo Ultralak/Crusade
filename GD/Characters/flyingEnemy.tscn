@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Old_Crusade_sidescroller/Enemies/melee/state_machine_controller.gd" id="6_llo60"]
 [ext_resource type="PackedScene" uid="uid://daq8erx21u5qx" path="res://Characters/navigation_component_enemy.tscn" id="7_ca803"]
 [ext_resource type="Script" uid="uid://ckgwxveh3185i" path="res://Characters/dead_state_flying_animal.gd" id="7_ncjnf"]
+[ext_resource type="Script" uid="uid://ccvbp8vc12k6s" path="res://Characters/enemy_flying_animal_test.gd" id="8_ncjnf"]
 [ext_resource type="Script" uid="uid://u8d373rkuxxf" path="res://Characters/health_component.gd" id="10_1d5st"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qa2gp"]
@@ -120,28 +121,43 @@ script = ExtResource("5_i70m0")
 characterBody2d = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" index="1" unique_id=673310595]
+[node name="hurt" type="Node" parent="StateMachine" index="1" unique_id=673310595 node_paths=PackedStringArray("healthcomponent", "statemachine", "animation_player")]
 script = ExtResource("6_7xwgm")
+healthcomponent = NodePath("../../Health_Component")
+statemachine = NodePath("..")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="dead" type="Node" parent="StateMachine" index="2" unique_id=1601241287]
 script = ExtResource("7_ncjnf")
 
-[node name="Test" parent="." index="5" unique_id=1726522527]
-visible = false
-script = null
+[node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("health_comp")]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -7.0
+autowrap_mode = 0
+script = ExtResource("8_ncjnf")
+health_comp = NodePath("../Health_Component")
 
 [node name="State_Machine_Controller" type="Node" parent="." index="6" unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player")]
 script = ExtResource("6_llo60")
 node_finite_state_machine = NodePath("../StateMachine")
 animation_player = NodePath("../AnimationPlayer")
 
-[node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("player") instance=ExtResource("7_ca803")]
+[node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "player") instance=ExtResource("7_ca803")]
+navigation_agent_2d = NodePath("NavigationAgent2D")
 player = NodePath("..")
 
-[node name="Health_Component" type="Node" parent="." index="8" unique_id=2055670660 node_paths=PackedStringArray("FSM", "Hitbox_area")]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" index="0" unique_id=542563494]
+target_desired_distance = 2.0
+navigation_layers = 2
+
+[node name="Health_Component" type="Node" parent="." index="8" unique_id=2055670660 node_paths=PackedStringArray("FSM", "Hitbox_area", "player", "hurt_state")]
 script = ExtResource("10_1d5st")
 FSM = NodePath("../StateMachine")
 Hitbox_area = NodePath("HitBox")
+player = NodePath("..")
+hurt_state = NodePath("../StateMachine/hurt")
 
 [node name="HitBox" type="Area2D" parent="Health_Component" index="0" unique_id=1268156581 groups=["HITBOX"]]
 collision_layer = 4

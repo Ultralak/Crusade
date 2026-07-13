@@ -2,13 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dsjs4165dgf68" path="res://Characters/velocity_component_enemy.gd" id="1_etjaw"]
 
-[node name="Navigation_Component_enemy" type="Node2D" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "player")]
+[node name="Navigation_Component_enemy" type="Node2D" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d")]
 script = ExtResource("1_etjaw")
-navigation_agent_2d = NodePath("NavigationAgent2D")
-player = NodePath("")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1131757563]
-target_desired_distance = 20.0
-navigation_layers = 2
-simplify_path = true
-simplify_epsilon = 2.0
+navigation_agent_2d = NodePath("")

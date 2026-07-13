@@ -7,7 +7,8 @@ extends Character
 @onready var sword: Node2D = $sword
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var physics: Node2D = $sword/physics
-
+@export var knockback_force : float = 300
+var knockback_direction : Vector2 
 var can_turn : bool = true
 
 
@@ -28,6 +29,7 @@ func _ready() -> void:
 	left_active = true
 
 func _process(_delta: float) -> void:
+	knockback_direction = (get_global_mouse_position() - global_position).normalized()
 	if can_turn:
 		var mouse_direction : Vector2 = (get_global_mouse_position() - global_position).normalized()
 		if mouse_direction.x > 0 and animated_sprite_2d.flip_h:
@@ -39,6 +41,7 @@ func _process(_delta: float) -> void:
 	
 		non_physics.rotation = mouse_direction.angle()
 		physics.rotation = mouse_direction.angle()
+		
 		if non_physics.scale.y  == 1 and mouse_direction.x < 0:
 			non_physics.scale.y = -1
 			swap_collisions()

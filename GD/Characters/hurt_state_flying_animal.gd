@@ -1,13 +1,29 @@
 extends NodeState
 
-var Knock_back_direction: Vector2 = Vector2.ZERO
+@export var characterbody2d : CharacterBody2D
+@export var healthcomponent : HealthComponent
+@export var statemachine : NodeFiniteStateMachine
 
+var knk_direction : Vector2
+var knk_force : float
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
+	if !characterbody2d:
+		characterbody2d = get_parent().get_parent()
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	knock_back(-knk_direction, knk_force)
+	
+func enter():
+	characterbody2d.velocity = Vector2.ZERO
+	knock_back(-knk_direction, knk_force)
+func exit():
 	pass
+
+func knock_back(direction : Vector2, force : float) -> void:
+	characterbody2d.velocity += direction * force
+
+func set_knockback(direction : Vector2, force : float):
+	knk_direction = direction
+	knk_force = force
