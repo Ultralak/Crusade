@@ -129,8 +129,10 @@ statemachine = NodePath("..")
 friction = 0.05
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="dead" type="Node" parent="StateMachine" index="2" unique_id=1601241287]
+[node name="dead" type="Node" parent="StateMachine" index="2" unique_id=1601241287 node_paths=PackedStringArray("enemy", "animation_player")]
 script = ExtResource("7_ncjnf")
+enemy = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("health_comp")]
 offset_left = -20.0
@@ -141,13 +143,14 @@ autowrap_mode = 0
 script = ExtResource("8_ncjnf")
 health_comp = NodePath("../Health_Component")
 
-[node name="State_Machine_Controller" type="Node" parent="." index="6" unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player")]
+[node name="State_Machine_Controller" type="Node" parent="." index="6" unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player", "health_component")]
 script = ExtResource("6_llo60")
 node_finite_state_machine = NodePath("../StateMachine")
 animation_player = NodePath("../AnimationPlayer")
+health_component = NodePath("../Health_Component")
 
 [node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "player") instance=ExtResource("7_ca803")]
-movement_speed = 40
+movement_speed = 50
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 player = NodePath("..")

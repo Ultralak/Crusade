@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://3er4nc5bjvmo"]
+
+[ext_resource type="Texture2D" uid="uid://bf16cj17gdram" path="res://Art/effects (new)/enemy_afterdead_explosion_anim_spritesheet.png" id="1_ghtow"]
+[ext_resource type="Script" uid="uid://o378i0rrb08w" path="res://Game Files/character_explosion.gd" id="1_u8tky"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8tky"]
+atlas = ExtResource("1_ghtow")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w40p"]
+atlas = ExtResource("1_ghtow")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrnit"]
+atlas = ExtResource("1_ghtow")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6n6m"]
+atlas = ExtResource("1_ghtow")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8tky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w40p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrnit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6n6m")
+}],
+"loop": 0,
+"name": &"dead",
+"speed": 9.0
+}]
+
+[node name="Character_Explosion" type="Node2D" unique_id=1468275300]
+script = ExtResource("1_u8tky")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=678207351]
+sprite_frames = SubResource("SpriteFrames_6pmnr")
+animation = &"dead"
+autoplay = "dead"

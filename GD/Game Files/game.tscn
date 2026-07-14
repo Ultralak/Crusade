@@ -6,12 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/player.tscn" id="3_hbr0n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6pmnr"]
-vertices = PackedVector2Array(378, 234, 461.03906, 247.92969, 19.828125, 245.0625, 278, 234, 218, 170, 218, 134, 278, 150, 461.96094, 21, 378, 150, 202, 134, 202, 86, 186, 86, 186, 70, 118, 170, 166, 170, 166, 186, 202, 186, 202, 170, 16.171875, 21, 118, 70)
+vertices = PackedVector2Array(380, 236, 459.03906, 245.92188, 21.796875, 243.07031, 276, 236, 220, 172, 220, 132, 276, 148, 459.95313, 23, 380, 148, 204, 132, 204, 84, 188, 84, 188, 68, 116, 172, 164, 172, 164, 188, 204, 188, 204, 172, 18.203125, 23, 116, 68)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 3), PackedInt32Array(7, 1, 0, 8), PackedInt32Array(5, 9, 10), PackedInt32Array(10, 11, 12), PackedInt32Array(13, 14, 15, 2), PackedInt32Array(16, 17, 4, 3), PackedInt32Array(16, 3, 2, 15), PackedInt32Array(13, 2, 18, 19), PackedInt32Array(19, 18, 7, 12), PackedInt32Array(10, 12, 7, 8, 6), PackedInt32Array(10, 6, 5)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(6, 11, 472, 11, 471, 258, 10, 255)])
 parsed_geometry_type = 1
 source_geometry_group_name = &"NAVIGATION"
 cell_size = 4.0
+agent_radius = 12.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ct3tq"]
 

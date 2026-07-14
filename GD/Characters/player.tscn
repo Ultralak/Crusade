@@ -460,6 +460,7 @@ hframes = 3
 collision_layer = 64
 collision_mask = 4
 script = ExtResource("11_642pg")
+damage_amount = 5
 knockback_force = 150.0
 player = NodePath("../../..")
 slash_hitbox = NodePath("slash_htibox")
