@@ -14,9 +14,7 @@ func _init() -> void:
 func _ready() -> void:
 	#effects of damage will be dealt in state machine
 	Hitbox_area.connect("body_entered", deal_damage)
-	
 
-	
 	
 func deal_damage(damage : float, direction : Vector2, force : float):
 	health -= damage

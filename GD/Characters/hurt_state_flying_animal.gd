@@ -4,8 +4,10 @@ extends NodeState
 @export var healthcomponent : HealthComponent
 @export var statemachine : NodeFiniteStateMachine
 
+var is_setup  : bool = false
 var knk_direction : Vector2
 var knk_force : float
+@export var friction = 0.01
 
 func _ready() -> void:
 	if !characterbody2d:
@@ -13,17 +15,14 @@ func _ready() -> void:
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	knock_back(-knk_direction, knk_force)
-	
+	characterbody2d.velocity = characterbody2d.velocity.lerp(Vector2.ZERO,friction)
+	characterbody2d.move_and_slide()
 func enter():
-	characterbody2d.velocity = Vector2.ZERO
-	knock_back(-knk_direction, knk_force)
+	characterbody2d.velocity += knk_direction * knk_force
 func exit():
-	pass
-
-func knock_back(direction : Vector2, force : float) -> void:
-	characterbody2d.velocity += direction * force
+	is_setup = false
 
 func set_knockback(direction : Vector2, force : float):
 	knk_direction = direction
 	knk_force = force
+	is_setup = true

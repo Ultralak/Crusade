@@ -121,10 +121,12 @@ script = ExtResource("5_i70m0")
 characterBody2d = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" index="1" unique_id=673310595 node_paths=PackedStringArray("healthcomponent", "statemachine", "animation_player")]
+[node name="hurt" type="Node" parent="StateMachine" index="1" unique_id=673310595 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "statemachine", "animation_player")]
 script = ExtResource("6_7xwgm")
+characterbody2d = NodePath("../..")
 healthcomponent = NodePath("../../Health_Component")
 statemachine = NodePath("..")
+friction = 0.05
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="dead" type="Node" parent="StateMachine" index="2" unique_id=1601241287]
@@ -144,8 +146,10 @@ script = ExtResource("6_llo60")
 node_finite_state_machine = NodePath("../StateMachine")
 animation_player = NodePath("../AnimationPlayer")
 
-[node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "player") instance=ExtResource("7_ca803")]
+[node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "player") instance=ExtResource("7_ca803")]
+movement_speed = 40
 navigation_agent_2d = NodePath("NavigationAgent2D")
+hurt_state = NodePath("../StateMachine/hurt")
 player = NodePath("..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" index="0" unique_id=542563494]

@@ -2,7 +2,7 @@ extends Node
 
 @export var node_finite_state_machine : NodeFiniteStateMachine
 @export var animation_player : AnimationPlayer
-
+@export var wait_time : float = 1.0
 func _ready() -> void:
 	pass
 	

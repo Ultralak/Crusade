@@ -3,17 +3,15 @@ class_name Hitbox
 
 @export var damage_amount : int = 3
 
-@export var knockback_force : float = 300
+@export var knockback_force : float = 900
 @export var player : CharacterBody2D
-@export var left : CollisionShape2D 
-@export var right : CollisionShape2D 
+@export var slash_hitbox : CollisionShape2D
 
 func _init() -> void:
 	connect("body_entered",on_body_entered)
 	
 func _ready() -> void:
-	assert(left != null)
-	assert(right != null)
+	assert(slash_hitbox != null)
 	
 	
 func on_body_entered(body : CharacterBody2D):
