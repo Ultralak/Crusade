@@ -95,7 +95,6 @@ radius = 5.0
 
 [node name="Enemy" unique_id=246556358 groups=["ENEMY_"] instance=ExtResource("1_vbc1y")]
 collision_layer = 4
-collision_mask = 3
 script = ExtResource("2_llo60")
 
 [node name="ReferenceValidator" parent="." index="0" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_ca803")]
@@ -134,14 +133,16 @@ script = ExtResource("7_ncjnf")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("health_comp")]
+[node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy")]
 offset_left = -20.0
 offset_top = -30.0
 offset_right = 20.0
 offset_bottom = -7.0
+theme_override_font_sizes/font_size = 8
 autowrap_mode = 0
 script = ExtResource("8_ncjnf")
 health_comp = NodePath("../Health_Component")
+enemy = NodePath("..")
 
 [node name="State_Machine_Controller" type="Node" parent="." index="6" unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player", "health_component")]
 script = ExtResource("6_llo60")
@@ -149,15 +150,18 @@ node_finite_state_machine = NodePath("../StateMachine")
 animation_player = NodePath("../AnimationPlayer")
 health_component = NodePath("../Health_Component")
 
-[node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "player") instance=ExtResource("7_ca803")]
-movement_speed = 50
+[node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "enemy") instance=ExtResource("7_ca803")]
+movement_speed = 30
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
-player = NodePath("..")
+enemy = NodePath("..")
+debug = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" index="0" unique_id=542563494]
 target_desired_distance = 2.0
 navigation_layers = 2
+avoidance_enabled = true
+max_speed = 1000.0
 
 [node name="Health_Component" type="Node" parent="." index="8" unique_id=2055670660 node_paths=PackedStringArray("FSM", "Hitbox_area", "player", "hurt_state")]
 script = ExtResource("10_1d5st")
@@ -173,3 +177,5 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Health_Component/HitBox" index="0" unique_id=2031490457]
 shape = SubResource("CircleShape2D_6pmnr")
 debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
+
+[connection signal="velocity_computed" from="Navigation_Component_enemy/NavigationAgent2D" to="Navigation_Component_enemy" method="_on_navigation_agent_2d_velocity_computed"]

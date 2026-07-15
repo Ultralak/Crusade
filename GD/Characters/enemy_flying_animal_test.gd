@@ -1,6 +1,7 @@
 extends Label
 
 @export var health_comp : HealthComponent
+@export var enemy : CharacterBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -8,4 +9,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	text = "Health : %s" % [health_comp.health]
+	text = "Health : %s, Velocity : %s" % [health_comp.health,enemy.velocity ]
