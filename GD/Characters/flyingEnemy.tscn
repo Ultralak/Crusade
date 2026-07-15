@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://n1rexluimhji"]
 
-[ext_resource type="PackedScene" uid="uid://c01sjo8wihnbf" path="res://Characters/Character_class_scene.tscn" id="1_vbc1y"]
 [ext_resource type="Script" uid="uid://c3habvls0h7b8" path="res://Characters/flying_enemy.gd" id="2_llo60"]
 [ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/reference_validator.tscn" id="3_ca803"]
 [ext_resource type="Texture2D" uid="uid://cu7m2ultx42b5" path="res://Art/enemies/flying creature/fly_anim_spritesheet.png" id="4_tsej0"]
+[ext_resource type="Shader" uid="uid://fyr6cq44cguf" path="res://Old_Crusade_sidescroller/Enemies/melee/hit_flash.tres" id="4_ujm07"]
 [ext_resource type="Script" uid="uid://bihm5bbb5ypge" path="res://Characters/idle_state_flying_animal.gd" id="5_i70m0"]
+[ext_resource type="Script" uid="uid://na74sqiddic8" path="res://Old_Crusade_sidescroller/State machine/node_finite_state_machine.gd" id="5_ujm07"]
 [ext_resource type="Script" uid="uid://dq5dmuhpnngf" path="res://Characters/hurt_state_flying_animal.gd" id="6_7xwgm"]
 [ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Old_Crusade_sidescroller/Enemies/melee/state_machine_controller.gd" id="6_llo60"]
 [ext_resource type="PackedScene" uid="uid://daq8erx21u5qx" path="res://Characters/navigation_component_enemy.tscn" id="7_ca803"]
 [ext_resource type="Script" uid="uid://ckgwxveh3185i" path="res://Characters/dead_state_flying_animal.gd" id="7_ncjnf"]
+[ext_resource type="Script" uid="uid://qpf3jgwagcc" path="res://Characters/attack_flying_animal.gd" id="8_1d5st"]
 [ext_resource type="Script" uid="uid://ccvbp8vc12k6s" path="res://Characters/enemy_flying_animal_test.gd" id="8_ncjnf"]
 [ext_resource type="Script" uid="uid://u8d373rkuxxf" path="res://Characters/health_component.gd" id="10_1d5st"]
 
@@ -28,6 +30,35 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/Hit_flash_on")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ud4e0"]
+resource_name = "hit"
+length = 0.19999999999999998
+step = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_tsej0"]
@@ -51,8 +82,15 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i70m0"]
 _data = {
 &"RESET": SubResource("Animation_ca803"),
+&"hit": SubResource("Animation_ud4e0"),
 &"idle": SubResource("Animation_tsej0")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6x5r"]
+resource_local_to_scene = true
+shader = ExtResource("4_ujm07")
+shader_parameter/Hit_flash_on = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xwgm"]
 atlas = ExtResource("4_tsej0")
@@ -93,34 +131,37 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
 radius = 5.0
 
-[node name="Enemy" unique_id=246556358 groups=["ENEMY_"] instance=ExtResource("1_vbc1y")]
+[node name="Enemy" type="CharacterBody2D" unique_id=246556358 groups=["ENEMY_"]]
 collision_layer = 4
 script = ExtResource("2_llo60")
 
-[node name="ReferenceValidator" parent="." index="0" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_ca803")]
+[node name="ReferenceValidator" parent="." unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_ca803")]
 target_node_parent = NodePath("..")
 
-[node name="CollisionBody" parent="." index="1" unique_id=1679767088]
+[node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1679767088]
 visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_qa2gp")
 
-[node name="AnimationPlayer" parent="." index="2" unique_id=12476089]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=12476089]
 libraries/ = SubResource("AnimationLibrary_i70m0")
 
-[node name="AnimatedSprite2D" parent="." index="3" unique_id=1501961513]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501961513]
+material = SubResource("ShaderMaterial_q6x5r")
 sprite_frames = SubResource("SpriteFrames_6pmnr")
 animation = &"idle"
 
-[node name="StateMachine" parent="." index="4" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1129076061 node_paths=PackedStringArray("initial_node_state", "player")]
+script = ExtResource("5_ujm07")
 initial_node_state = NodePath("idle")
+player = NodePath("..")
 
-[node name="idle" type="Node" parent="StateMachine" index="0" unique_id=1793172341 node_paths=PackedStringArray("characterBody2d", "animation_player")]
+[node name="idle" type="Node" parent="StateMachine" unique_id=1793172341 node_paths=PackedStringArray("characterBody2d", "animation_player")]
 script = ExtResource("5_i70m0")
 characterBody2d = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" index="1" unique_id=673310595 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "statemachine", "animation_player")]
+[node name="hurt" type="Node" parent="StateMachine" unique_id=673310595 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "statemachine", "animation_player")]
 script = ExtResource("6_7xwgm")
 characterbody2d = NodePath("../..")
 healthcomponent = NodePath("../../Health_Component")
@@ -128,53 +169,55 @@ statemachine = NodePath("..")
 friction = 0.05
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="dead" type="Node" parent="StateMachine" index="2" unique_id=1601241287 node_paths=PackedStringArray("enemy", "animation_player")]
+[node name="dead" type="Node" parent="StateMachine" unique_id=1601241287 node_paths=PackedStringArray("enemy", "animation_player")]
 script = ExtResource("7_ncjnf")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy")]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("8_1d5st")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy")]
 offset_left = -20.0
 offset_top = -30.0
 offset_right = 20.0
 offset_bottom = -7.0
 theme_override_font_sizes/font_size = 8
-autowrap_mode = 0
 script = ExtResource("8_ncjnf")
 health_comp = NodePath("../Health_Component")
 enemy = NodePath("..")
 
-[node name="State_Machine_Controller" type="Node" parent="." index="6" unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player", "health_component")]
+[node name="State_Machine_Controller" type="Node" parent="." unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player", "health_component")]
 script = ExtResource("6_llo60")
 node_finite_state_machine = NodePath("../StateMachine")
 animation_player = NodePath("../AnimationPlayer")
 health_component = NodePath("../Health_Component")
 
-[node name="Navigation_Component_enemy" parent="." index="7" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "enemy") instance=ExtResource("7_ca803")]
+[node name="Navigation_Component_enemy" parent="." unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "enemy") instance=ExtResource("7_ca803")]
 movement_speed = 30
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
-debug = true
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" index="0" unique_id=542563494]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" unique_id=542563494]
 target_desired_distance = 2.0
 navigation_layers = 2
 avoidance_enabled = true
 max_speed = 1000.0
 
-[node name="Health_Component" type="Node" parent="." index="8" unique_id=2055670660 node_paths=PackedStringArray("FSM", "Hitbox_area", "player", "hurt_state")]
+[node name="Health_Component" type="Node" parent="." unique_id=2055670660 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state")]
 script = ExtResource("10_1d5st")
 FSM = NodePath("../StateMachine")
 Hitbox_area = NodePath("HitBox")
-player = NodePath("..")
+entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
 
-[node name="HitBox" type="Area2D" parent="Health_Component" index="0" unique_id=1268156581 groups=["HITBOX"]]
+[node name="HitBox" type="Area2D" parent="Health_Component" unique_id=1268156581 groups=["HITBOX"]]
 collision_layer = 4
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Health_Component/HitBox" index="0" unique_id=2031490457]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Health_Component/HitBox" unique_id=2031490457]
 shape = SubResource("CircleShape2D_6pmnr")
 debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
 

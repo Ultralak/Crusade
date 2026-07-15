@@ -167,8 +167,8 @@ script = ExtResource("1_1en5x")
 [node name="Enemy" parent="." unique_id=246556358 instance=ExtResource("2_hbr0n")]
 position = Vector2(93, 46)
 
-[node name="Enemy2" parent="." unique_id=1707442355 instance=ExtResource("2_hbr0n")]
-position = Vector2(53, 46)
+[node name="Enemy2" parent="." unique_id=1679795938 instance=ExtResource("2_hbr0n")]
+position = Vector2(93, 46)
 
 [node name="Player" parent="." unique_id=628313327 instance=ExtResource("3_hbr0n")]
 position = Vector2(222, 122)

@@ -19,9 +19,10 @@ func _physics_process(_delta: float) -> void:
 	characterbody2d.move_and_slide()
 func enter():
 	characterbody2d.velocity += knk_direction * knk_force
+	animation_player.play("hit")
 func exit():
 	is_setup = false
-
+	
 func set_knockback(direction : Vector2, force : float):
 	knk_direction = direction
 	knk_force = force
