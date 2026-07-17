@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://qpf3jgwagcc" path="res://Characters/attack_flying_animal.gd" id="8_1d5st"]
 [ext_resource type="Script" uid="uid://ccvbp8vc12k6s" path="res://Characters/enemy_flying_animal_test.gd" id="8_ncjnf"]
 [ext_resource type="Script" uid="uid://u8d373rkuxxf" path="res://Characters/health_component.gd" id="10_1d5st"]
+[ext_resource type="Script" uid="uid://butqtc0npaki1" path="res://Characters/prepare_flying_animal.gd" id="10_ud4e0"]
+[ext_resource type="Script" uid="uid://b1q5lhjvst3iy" path="res://Characters/chase_flying_animal.gd" id="11_5qtg4"]
+[ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="15_c4p14"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qa2gp"]
 radius = 3.0
@@ -46,7 +49,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ud4e0"]
 resource_name = "hit"
-length = 0.19999999999999998
+length = 0.2
 step = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,10 +58,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Hit_flash_o
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_tsej0"]
@@ -131,6 +134,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
 radius = 5.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_6pmnr"]
+font = ExtResource("15_c4p14")
+font_color = Color(18.892157, 3.538639, 0, 1)
+outline_size = 1
+outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=246556358 groups=["ENEMY_"]]
 collision_layer = 4
 script = ExtResource("2_llo60")
@@ -161,49 +170,88 @@ script = ExtResource("5_i70m0")
 characterBody2d = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" unique_id=673310595 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "statemachine", "animation_player")]
+[node name="hurt" type="Node" parent="StateMachine" unique_id=673310595 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "node_finite_state_machine", "Navigation_component", "timer", "animation_player")]
 script = ExtResource("6_7xwgm")
 characterbody2d = NodePath("../..")
 healthcomponent = NodePath("../../Health_Component")
-statemachine = NodePath("..")
-friction = 0.05
+node_finite_state_machine = NodePath("..")
+Navigation_component = NodePath("../../Navigation_Component_enemy")
+timer = NodePath("hurt_timer")
+time = 2.0
+friction = 3
 animation_player = NodePath("../../AnimationPlayer")
+
+[node name="hurt_timer" type="Timer" parent="StateMachine/hurt" unique_id=630165371]
+one_shot = true
 
 [node name="dead" type="Node" parent="StateMachine" unique_id=1601241287 node_paths=PackedStringArray("enemy", "animation_player")]
 script = ExtResource("7_ncjnf")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("animation_player")]
+[node name="attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("Navigation_node", "enemy", "timer", "FSM", "Navigation_component", "animation_player")]
 script = ExtResource("8_1d5st")
+Navigation_node = NodePath("../../Navigation_Component_enemy")
+enemy = NodePath("../..")
+timer = NodePath("attack_timer")
+FSM = NodePath("..")
+Navigation_component = NodePath("../../Navigation_Component_enemy")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy")]
+[node name="attack_timer" type="Timer" parent="StateMachine/attack" unique_id=543468190]
+one_shot = true
+
+[node name="prepare" type="Node" parent="StateMachine" unique_id=2003357433 node_paths=PackedStringArray("timer", "enemy", "FSM", "warning_label", "animation_player")]
+script = ExtResource("10_ud4e0")
+timer = NodePath("prepare_timer")
+enemy = NodePath("../..")
+FSM = NodePath("..")
+warning_label = NodePath("../../warning")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="prepare_timer" type="Timer" parent="StateMachine/prepare" unique_id=130053965]
+one_shot = true
+
+[node name="chase" type="Node" parent="StateMachine" unique_id=86743397]
+script = ExtResource("11_5qtg4")
+
+[node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy", "FSM")]
+custom_maximum_size = Vector2(100, 100)
 offset_left = -20.0
 offset_top = -30.0
 offset_right = 20.0
 offset_bottom = -7.0
 theme_override_font_sizes/font_size = 8
+autowrap_mode = 3
 script = ExtResource("8_ncjnf")
 health_comp = NodePath("../Health_Component")
 enemy = NodePath("..")
+FSM = NodePath("../StateMachine")
 
-[node name="State_Machine_Controller" type="Node" parent="." unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "animation_player", "health_component")]
+[node name="State_Machine_Controller" type="Node" parent="." unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "enemy", "Navigationagent2d", "Navigation_component", "animation_player", "health_component", "timer")]
 script = ExtResource("6_llo60")
 node_finite_state_machine = NodePath("../StateMachine")
+enemy = NodePath("..")
+Navigationagent2d = NodePath("../Navigation_Component_enemy/NavigationAgent2D")
+Navigation_component = NodePath("../Navigation_Component_enemy")
 animation_player = NodePath("../AnimationPlayer")
 health_component = NodePath("../Health_Component")
+timer = NodePath("potential_to_attack_timer")
+
+[node name="potential_to_attack_timer" type="Timer" parent="State_Machine_Controller" unique_id=158591092]
 
 [node name="Navigation_Component_enemy" parent="." unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "enemy") instance=ExtResource("7_ca803")]
 movement_speed = 30
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
+avoidance = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" unique_id=542563494]
-target_desired_distance = 2.0
+target_desired_distance = 20.0
 navigation_layers = 2
 avoidance_enabled = true
+radius = 7.0
 max_speed = 1000.0
 
 [node name="Health_Component" type="Node" parent="." unique_id=2055670660 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state")]
@@ -221,4 +269,23 @@ collision_mask = 64
 shape = SubResource("CircleShape2D_6pmnr")
 debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
 
+[node name="warning" type="Label" parent="." unique_id=1947060253]
+visible = false
+custom_maximum_size = Vector2(20, 20)
+offset_left = -9.0
+offset_top = -26.0
+offset_right = 9.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 8
+text = "!"
+label_settings = SubResource("LabelSettings_6pmnr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
+[connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="StateMachine/prepare/prepare_timer" to="StateMachine/prepare" method="_on_prepare_timer_timeout"]
+[connection signal="timeout" from="State_Machine_Controller/potential_to_attack_timer" to="State_Machine_Controller" method="_on_potential_to_attack_timer_timeout"]
+[connection signal="target_reached" from="Navigation_Component_enemy/NavigationAgent2D" to="State_Machine_Controller" method="_on_navigation_agent_2d_target_reached"]
 [connection signal="velocity_computed" from="Navigation_Component_enemy/NavigationAgent2D" to="Navigation_Component_enemy" method="_on_navigation_agent_2d_velocity_computed"]

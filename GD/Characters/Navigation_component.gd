@@ -7,6 +7,9 @@ extends Node2D
 @export var enemy : CharacterBody2D
 @export var avoidance : bool = true
 @export var debug : bool = false
+var is_active  :bool = true
+
+var target_direction : Vector2
 var target : Node2D = null
 
 func _ready() -> void:
@@ -20,6 +23,9 @@ func _physics_process(_delta: float) -> void:
 	# 1. Dynamically update the target position every frame so the path recalculates
 	if target:
 		navigation_agent_2d.target_position = target.global_position
+		target_direction = target.global_position
+		
+
 	if navigation_agent_2d.avoidance_enabled:
 		navigate_safe()
 	else:
@@ -29,49 +35,38 @@ func _physics_process(_delta: float) -> void:
 
 func navigate() -> void:
 	if navigation_agent_2d.is_navigation_finished() :
-		if !hurt_state.is_setup:
-			#we reached enemy and not being hit
-			enemy.velocity = Vector2.ZERO
-		else:
-			pass
+		enemy.velocity = Vector2.ZERO
 	else:
-		if !hurt_state.is_setup:
-			#we have not reached enemy and not being hit
-			# 3. Calculate movement direction
-			var current_agent_position = global_position
-			var next_path_position = navigation_agent_2d.get_next_path_position()
-			# 4. Set velocity and move
-			enemy.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-			#navigation_agent_2d.set_velocity(new_velocity)
-		else:
-			# we reached the enemy and being hit 
-			pass
-	
+		var current_agent_position = global_position
+		var next_path_position = navigation_agent_2d.get_next_path_position()
+		# 4. Set velocity and move
+		enemy.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+
 func navigate_safe() -> void:
 	if navigation_agent_2d.is_navigation_finished() :
-		if !hurt_state.is_setup:
 			#we reached enemy and not being hit
-			enemy.velocity = Vector2.ZERO
-		else:
-			pass
+		enemy.velocity = Vector2.ZERO
 	else :
-		if !hurt_state.is_setup:
-			#we have not reached enemy and not being hit
-			# 3. Calculate movement direction
-			var current_agent_position = global_position
-			var next_path_position = navigation_agent_2d.get_next_path_position()
-			# 4. Set velocity and move
-			var new_velocity : Vector2 = current_agent_position.direction_to(next_path_position) * movement_speed
-			navigation_agent_2d.set_velocity(new_velocity)
-		else:
-			# we reached the enemy and being hit 
-			pass
-	
+		#we have not reached enemy and not being hit
+		# 3. Calculate movement direction
+		var current_agent_position = global_position
+		var next_path_position = navigation_agent_2d.get_next_path_position()
+		# 4. Set velocity and move
+		var new_velocity : Vector2 = current_agent_position.direction_to(next_path_position) * movement_speed
+		navigation_agent_2d.set_velocity(new_velocity)
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	if hurt_state.is_setup:
+	if !is_active:
 		return
 	enemy.velocity = safe_velocity
 	enemy.move_and_slide()
 	
+func disable_navigation():
+	is_active = false
+	set_physics_process(false)
+	enemy.velocity = Vector2.ZERO
+	
+func enable_navigation():
+	is_active = true
+	set_physics_process(true)
 	
