@@ -21,7 +21,7 @@ config/icon="res://Old_Crusade_sidescroller/icon.svg"
 
 [autoload]
 
-PlayerManager="res://Old_Crusade_sidescroller/autoloads/player_manager.gd"
+PlayerManager="*res://Old_Crusade_sidescroller/autoloads/player_manager.gd"
 EnemyHealthManager="res://Old_Crusade_sidescroller/autoloads/EnemyHealthManager.gd"
 EnemyManager="res://Old_Crusade_sidescroller/autoloads/EnemyManager.gd"
 GameManager="res://Old_Crusade_sidescroller/autoloads/GameManager.gd"

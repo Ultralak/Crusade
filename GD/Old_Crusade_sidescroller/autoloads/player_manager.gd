@@ -13,12 +13,12 @@ var time  : float
 var can_get_health : bool
 var called : bool = false
 
-func register_player(player_node : Player):
-	called = true
+func register_player(player_node : CharacterBody2D):
+	#called = true
 	player = player_node
-	time = player_node.damage_tween_time
-	health = player_node.player_health
-	max_health = health
+	#time = player_node.damage_tween_time
+	#health = player_node.player_health
+	#max_health = health
 
 					
 func register_healthbar(damagebar : CustomProgressBar):

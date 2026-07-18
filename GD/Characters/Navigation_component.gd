@@ -8,7 +8,7 @@ extends Node2D
 @export var avoidance : bool = true
 @export var debug : bool = false
 var is_active  :bool = true
-
+var new_velocity : Vector2
 var target_direction : Vector2
 var target : Node2D = null
 
@@ -19,47 +19,50 @@ func _ready() -> void:
 	await get_tree().physics_frame
 	target = get_tree().get_nodes_in_group("PLAYER_")[0]
 	
-func _physics_process(_delta: float) -> void:
+func recalculate_path() -> void:
 	# 1. Dynamically update the target position every frame so the path recalculates
 	if target:
 		navigation_agent_2d.target_position = target.global_position
 		target_direction = target.global_position
-		
 
+	
+	if hurt_state.is_setup : 
+		return
 	if navigation_agent_2d.avoidance_enabled:
 		navigate_safe()
 	else:
 		navigate()
-		enemy.move_and_slide()
 	
 
 func navigate() -> void:
 	if navigation_agent_2d.is_navigation_finished() :
-		enemy.velocity = Vector2.ZERO
+			new_velocity = Vector2.ZERO
 	else:
 		var current_agent_position = global_position
 		var next_path_position = navigation_agent_2d.get_next_path_position()
 		# 4. Set velocity and move
-		enemy.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+		new_velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 
 func navigate_safe() -> void:
 	if navigation_agent_2d.is_navigation_finished() :
+		
 			#we reached enemy and not being hit
-		enemy.velocity = Vector2.ZERO
+		new_velocity = Vector2.ZERO
 	else :
 		#we have not reached enemy and not being hit
 		# 3. Calculate movement direction
 		var current_agent_position = global_position
 		var next_path_position = navigation_agent_2d.get_next_path_position()
 		# 4. Set velocity and move
-		var new_velocity : Vector2 = current_agent_position.direction_to(next_path_position) * movement_speed
+		new_velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 		navigation_agent_2d.set_velocity(new_velocity)
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+
 	if !is_active:
 		return
-	enemy.velocity = safe_velocity
-	enemy.move_and_slide()
+	new_velocity = safe_velocity
+	
 	
 func disable_navigation():
 	is_active = false

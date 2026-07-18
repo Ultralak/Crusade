@@ -20,4 +20,4 @@ func on_body_entered(body : CharacterBody2D):
 	for node in body.get_children():
 		if node is HealthComponent:
 			node.deal_damage(damage_amount, player.knockback_direction,knockback_force)
-			break
+			return

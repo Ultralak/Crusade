@@ -12,7 +12,7 @@ var can_turn : bool = true
 
 
 func _ready() -> void:
-	pass
+	PlayerManager.register_player(self)
 	
 
 func _process(_delta: float) -> void:

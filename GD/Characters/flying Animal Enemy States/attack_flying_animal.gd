@@ -19,11 +19,11 @@ func enter():
 
 func exit():
 	pass
-func _physics_process(_delta: float) -> void:
+func on_physics_process(_delta: float) -> void:
 	
 	enemy.velocity = direction * dash_speed 
 	enemy.move_and_slide()
-func _process(_delta: float) -> void:
+func on_process(_delta: float) -> void:
 	pass
 	
 func timer_setup() -> void:
