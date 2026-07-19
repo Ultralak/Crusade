@@ -12,10 +12,17 @@
 [ext_resource type="Script" uid="uid://ckgwxveh3185i" path="res://Characters/flying Animal Enemy States/dead_state_flying_animal.gd" id="7_ncjnf"]
 [ext_resource type="Script" uid="uid://qpf3jgwagcc" path="res://Characters/flying Animal Enemy States/attack_flying_animal.gd" id="8_1d5st"]
 [ext_resource type="Script" uid="uid://ccvbp8vc12k6s" path="res://Characters/enemy_flying_animal_test.gd" id="8_ncjnf"]
-[ext_resource type="Script" uid="uid://u8d373rkuxxf" path="res://Characters/health_component.gd" id="10_1d5st"]
 [ext_resource type="Script" uid="uid://butqtc0npaki1" path="res://Characters/flying Animal Enemy States/prepare_flying_animal.gd" id="10_ud4e0"]
 [ext_resource type="Script" uid="uid://b1q5lhjvst3iy" path="res://Characters/flying Animal Enemy States/chase_flying_animal.gd" id="11_5qtg4"]
+[ext_resource type="PackedScene" uid="uid://fef1e3niawen" path="res://Characters/Components/health_component.tscn" id="15_4flht"]
 [ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="15_c4p14"]
+[ext_resource type="Script" uid="uid://b5vnhlehxw8cl" path="res://Characters/damage_component.gd" id="17_4flht"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxjdc"]
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qa2gp"]
 radius = 3.0
@@ -131,9 +138,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
-radius = 5.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_6pmnr"]
 font = ExtResource("15_c4p14")
 font_color = Color(18.892157, 3.538639, 0, 1)
@@ -143,6 +147,21 @@ outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 [node name="Enemy" type="CharacterBody2D" unique_id=246556358 groups=["ENEMY_"]]
 collision_layer = 4
 script = ExtResource("2_llo60")
+knockback_force = 50.0
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1268156581 groups=["HITBOX"]]
+collision_layer = 4
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2031490457]
+z_index = -1
+shape = SubResource("CircleShape2D_6pmnr")
+debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
+
+[node name="AttackBox" type="Area2D" parent="." unique_id=358844900]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=751511983]
+shape = SubResource("CircleShape2D_cxjdc")
 
 [node name="ReferenceValidator" parent="." unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_ca803")]
 target_node_parent = NodePath("..")
@@ -174,7 +193,7 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="hurt" type="Node" parent="StateMachine" unique_id=673310595 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "node_finite_state_machine", "Navigation_component", "timer", "animation_player")]
 script = ExtResource("6_7xwgm")
 characterbody2d = NodePath("../..")
-healthcomponent = NodePath("../../Health_Component")
+healthcomponent = NodePath("")
 node_finite_state_machine = NodePath("..")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
 timer = NodePath("hurt_timer")
@@ -192,11 +211,14 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("Navigation_node", "enemy", "timer", "FSM", "Navigation_component", "animation_player")]
 script = ExtResource("8_1d5st")
+dash_speed = 400.0
 Navigation_node = NodePath("../../Navigation_Component_enemy")
 enemy = NodePath("../..")
 timer = NodePath("attack_timer")
+time = 0.15
 FSM = NodePath("..")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
+friction = 500.0
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="attack_timer" type="Timer" parent="StateMachine/attack" unique_id=543468190]
@@ -207,6 +229,7 @@ script = ExtResource("10_ud4e0")
 timer = NodePath("prepare_timer")
 enemy = NodePath("../..")
 FSM = NodePath("..")
+time = 1.0
 warning_label = NodePath("../../warning")
 animation_player = NodePath("../../AnimationPlayer")
 
@@ -228,7 +251,7 @@ offset_bottom = -7.0
 theme_override_font_sizes/font_size = 8
 autowrap_mode = 3
 script = ExtResource("8_ncjnf")
-health_comp = NodePath("../Health_Component")
+health_comp = NodePath("")
 enemy = NodePath("..")
 FSM = NodePath("../StateMachine")
 
@@ -239,7 +262,7 @@ enemy = NodePath("..")
 Navigationagent2d = NodePath("../Navigation_Component_enemy/NavigationAgent2D")
 Navigation_component = NodePath("../Navigation_Component_enemy")
 animation_player = NodePath("../AnimationPlayer")
-health_component = NodePath("../Health_Component")
+health_component = NodePath("")
 timer = NodePath("potential_to_attack_timer")
 
 [node name="potential_to_attack_timer" type="Timer" parent="State_Machine_Controller" unique_id=158591092]
@@ -256,21 +279,12 @@ navigation_layers = 2
 radius = 7.0
 max_speed = 1000.0
 
-[node name="Health_Component" type="Node" parent="." unique_id=2055670660 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state", "Navigation_component")]
-script = ExtResource("10_1d5st")
+[node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state", "Navigation_component") instance=ExtResource("15_4flht")]
 FSM = NodePath("../StateMachine")
-Hitbox_area = NodePath("HitBox")
+Hitbox_area = NodePath("../HitBox")
 entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
 Navigation_component = NodePath("../Navigation_Component_enemy")
-
-[node name="HitBox" type="Area2D" parent="Health_Component" unique_id=1268156581 groups=["HITBOX"]]
-collision_layer = 4
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Health_Component/HitBox" unique_id=2031490457]
-shape = SubResource("CircleShape2D_6pmnr")
-debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
 
 [node name="warning" type="Label" parent="." unique_id=1947060253]
 visible = false
@@ -285,6 +299,11 @@ label_settings = SubResource("LabelSettings_6pmnr")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="DamageComponent" type="Node" parent="." unique_id=927314073 node_paths=PackedStringArray("entity", "attackbox")]
+script = ExtResource("17_4flht")
+entity = NodePath("..")
+attackbox = NodePath("../HitBox")
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]

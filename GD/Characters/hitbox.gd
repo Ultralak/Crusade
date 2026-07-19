@@ -15,9 +15,10 @@ func _ready() -> void:
 	
 	
 func on_body_entered(body : CharacterBody2D):
+	var knockback_direction : Vector2 =  player.knockback_direction
 	# stuff sends to health component that deals damage and and sets up direction thig
 	# and then enters into hurt state where knock back occurs
 	for node in body.get_children():
 		if node is HealthComponent:
-			node.deal_damage(damage_amount, player.knockback_direction,knockback_force)
+			node.take_damage(damage_amount,knockback_direction,knockback_force)
 			return

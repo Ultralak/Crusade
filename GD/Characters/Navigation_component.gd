@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name NavigationComponent
 
 @export var movement_speed = 25
 @export var navigation_agent_2d : NavigationAgent2D
@@ -63,7 +63,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 		return
 	new_velocity = safe_velocity
 	
-	
+	# depracated . remeber to remove in the future
 func disable_navigation():
 	is_active = false
 	set_physics_process(false)

@@ -5,6 +5,7 @@ extends Character
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@export var max_health : float = 10
 var knockback_direction : Vector2 
 var can_turn : bool = true
 

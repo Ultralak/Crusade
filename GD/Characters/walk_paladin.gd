@@ -9,7 +9,7 @@ func on_process(_delta : float):
 	if velocity_component.move_direction.length() < 1 : 
 		transition.emit("idle")
 	elif Input.is_action_pressed("primary_attack"):
-		transition.emit("attack_run")
+		transition.emit("primary_attack")
 		
 	
 func on_physics_process(_delta : float):

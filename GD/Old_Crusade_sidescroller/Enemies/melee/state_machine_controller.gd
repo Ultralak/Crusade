@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 	
 	match node_finite_state_machine.current_node_state_name:
 		"chase":
-			if !player_is_still() or !close_to_player():
+			if !player_is_still() or !close_to_player() and !timer.is_stopped():
 				timer.stop()
 				print("One or more conditions failed . Potentital attack timer stopped")
 

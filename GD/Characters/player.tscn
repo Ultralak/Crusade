@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/walk_paladin.gd" id="6_4m0gv"]
 [ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/primary_attack_paladin.gd" id="7_5slg2"]
 [ext_resource type="Texture2D" uid="uid://dl8vsgnulxjfu" path="res://Art/heroes/knight/weapon_sword_1.png" id="7_p728j"]
+[ext_resource type="Script" uid="uid://ddjwsv10im0us" path="res://Characters/hurt_state_paladin.gd" id="9_22qw1"]
 [ext_resource type="Script" uid="uid://dk2l3f4k3ypcw" path="res://Characters/generic_sword.gd" id="9_mevwr"]
 [ext_resource type="Texture2D" uid="uid://c1h4dqettogue" path="res://Art/effects (new)/slash_effect_anim_spritesheet.png" id="9_w3rah"]
 [ext_resource type="PackedScene" uid="uid://b4065l518r61h" path="res://Game Files/velocity_component.tscn" id="10_w3rah"]
@@ -273,7 +274,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("physics/Hitbox/slash_htibox:disabled")
+tracks/5/path = NodePath("physics/Hitbox/slash_hitbox:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -350,7 +351,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("physics/Hitbox/slash_htibox:disabled")
+tracks/5/path = NodePath("physics/Hitbox/slash_hitbox:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -373,6 +374,7 @@ height = 35.0
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("2_65n15")
+max_health = 10.0
 
 [node name="ReferenceValidator" parent="." index="0" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_c4gpq")]
 target_node_parent = NodePath("..")
@@ -405,14 +407,19 @@ characterbody2d = NodePath("../..")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="attack_run" type="Node" parent="StateMachine" index="2" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
+[node name="primary_attack" type="Node" parent="StateMachine" index="2" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
 script = ExtResource("7_5slg2")
 characterbody2d = NodePath("../..")
 weapon_animation_player = NodePath("../../sword/non-physics/sword_anim")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" index="3" unique_id=100788297]
+[node name="hurt" type="Node" parent="StateMachine" index="3" unique_id=100788297 node_paths=PackedStringArray("player", "animation_player")]
+script = ExtResource("9_22qw1")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="hurt_timer" type="Timer" parent="StateMachine/hurt" index="0" unique_id=509223481]
 
 [node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("velocity_component")]
 custom_minimum_size = Vector2(50, 50)
@@ -465,13 +472,13 @@ script = ExtResource("11_642pg")
 damage_amount = 2
 knockback_force = 300.0
 player = NodePath("../../..")
-slash_hitbox = NodePath("slash_htibox")
+slash_hitbox = NodePath("slash_hitbox")
 
-[node name="slash_htibox" type="CollisionShape2D" parent="sword/physics/Hitbox" index="0" unique_id=1430684432]
+[node name="slash_hitbox" type="CollisionShape2D" parent="sword/physics/Hitbox" index="0" unique_id=1430684432]
 position = Vector2(10, -0.5)
 shape = SubResource("CapsuleShape2D_75smw")
 disabled = true
 
 [node name="Velocity_Component_player" parent="." index="7" unique_id=590281791 instance=ExtResource("10_w3rah")]
 
-[connection signal="animation_finished" from="sword/non-physics/sword_anim" to="StateMachine/attack_run" method="_on_sword_anim_animation_finished"]
+[connection signal="animation_finished" from="sword/non-physics/sword_anim" to="StateMachine/primary_attack" method="_on_sword_anim_animation_finished"]
