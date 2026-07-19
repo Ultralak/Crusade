@@ -57,6 +57,8 @@ func transition_to(node_state_name: String):
 	new_node_state.enter()
 	current_node_state = new_node_state
 	current_node_state_name = current_node_state.name.to_lower()
+	
+	print(" %s state : %s" % [get_parent().name, current_node_state_name])
 		
 
 func force_transition_to(node_state_name	):

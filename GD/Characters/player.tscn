@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b4odwgdg2htq" path="res://Art/heroes/knight/knight_idle_spritesheet.png" id="2_vb825"]
 [ext_resource type="Texture2D" uid="uid://cc1jg4yy1xowf" path="res://Art/heroes/knight/knight_run_spritesheet.png" id="3_65n15"]
 [ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/reference_validator.tscn" id="3_c4gpq"]
+[ext_resource type="PackedScene" uid="uid://fef1e3niawen" path="res://Characters/Components/health_component.tscn" id="3_mevwr"]
 [ext_resource type="Script" uid="uid://bc3knq817w1lv" path="res://Characters/idle_state_paladin.gd" id="5_l48on"]
 [ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/walk_paladin.gd" id="6_4m0gv"]
 [ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/primary_attack_paladin.gd" id="7_5slg2"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c1h4dqettogue" path="res://Art/effects (new)/slash_effect_anim_spritesheet.png" id="9_w3rah"]
 [ext_resource type="PackedScene" uid="uid://b4065l518r61h" path="res://Game Files/velocity_component.tscn" id="10_w3rah"]
 [ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/hitbox.gd" id="11_642pg"]
+[ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/state_machine_controller_paladin.gd" id="16_iga2k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4m0gv"]
 radius = 5.0
@@ -370,29 +372,39 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75smw"]
 height = 35.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxjdc"]
+radius = 4.0
+height = 12.0
+
 [node name="Player" unique_id=246556358 groups=["PLAYER_"] instance=ExtResource("1_5mj4t")]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("2_65n15")
 max_health = 10.0
 
-[node name="ReferenceValidator" parent="." index="0" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_c4gpq")]
+[node name="Health_Component" parent="." index="0" unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("3_mevwr")]
+FSM = NodePath("../StateMachine")
+Hitbox_area = NodePath("../player_hitbox")
+entity = NodePath("..")
+hurt_state = NodePath("../StateMachine/hurt")
+
+[node name="ReferenceValidator" parent="." index="1" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_c4gpq")]
 target_node_parent = NodePath("..")
 
-[node name="CollisionBody" parent="." index="1" unique_id=1679767088]
+[node name="CollisionBody" parent="." index="2" unique_id=1679767088]
 visible = false
 z_index = 1
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_4m0gv")
 
-[node name="AnimationPlayer" parent="." index="2" unique_id=12476089]
+[node name="AnimationPlayer" parent="." index="3" unique_id=12476089]
 libraries/ = SubResource("AnimationLibrary_5slg2")
 
-[node name="AnimatedSprite2D" parent="." index="3" unique_id=1501961513]
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=1501961513]
 sprite_frames = SubResource("SpriteFrames_geawy")
 animation = &"idle"
 
-[node name="StateMachine" parent="." index="4" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
+[node name="StateMachine" parent="." index="5" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
 initial_node_state = NodePath("idle")
 
 [node name="idle" type="Node" parent="StateMachine" index="0" unique_id=1308004858 node_paths=PackedStringArray("characterbody2d", "velocity_component", "animation_player")]
@@ -421,7 +433,7 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="hurt_timer" type="Timer" parent="StateMachine/hurt" index="0" unique_id=509223481]
 
-[node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("velocity_component")]
+[node name="Test" parent="." index="6" unique_id=1726522527 node_paths=PackedStringArray("velocity_component", "health_component")]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 15
 anchor_right = 1.0
@@ -435,8 +447,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 velocity_component = NodePath("../Velocity_Component_player")
+health_component = NodePath("../Health_Component")
 
-[node name="sword" type="Node2D" parent="." index="6" unique_id=1867631151 node_paths=PackedStringArray("player", "physics", "non_physics")]
+[node name="sword" type="Node2D" parent="." index="7" unique_id=1867631151 node_paths=PackedStringArray("player", "physics", "non_physics")]
 script = ExtResource("9_mevwr")
 player = NodePath("..")
 physics = NodePath("physics")
@@ -479,6 +492,19 @@ position = Vector2(10, -0.5)
 shape = SubResource("CapsuleShape2D_75smw")
 disabled = true
 
-[node name="Velocity_Component_player" parent="." index="7" unique_id=590281791 instance=ExtResource("10_w3rah")]
+[node name="Velocity_Component_player" parent="." index="8" unique_id=590281791 instance=ExtResource("10_w3rah")]
+
+[node name="player_hitbox" type="Area2D" parent="." index="9" unique_id=1953454412]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox" index="0" unique_id=946931530]
+shape = SubResource("CapsuleShape2D_cxjdc")
+
+[node name="State Machine Controller" type="Node" parent="." index="10" unique_id=1683635688 node_paths=PackedStringArray("FSM", "velocity_component", "player")]
+script = ExtResource("16_iga2k")
+FSM = NodePath("../StateMachine")
+velocity_component = NodePath("../Velocity_Component_player")
+player = NodePath("..")
 
 [connection signal="animation_finished" from="sword/non-physics/sword_anim" to="StateMachine/primary_attack" method="_on_sword_anim_animation_finished"]

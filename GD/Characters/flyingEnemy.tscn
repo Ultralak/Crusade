@@ -159,6 +159,8 @@ shape = SubResource("CircleShape2D_6pmnr")
 debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
 
 [node name="AttackBox" type="Area2D" parent="." unique_id=358844900]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=751511983]
 shape = SubResource("CircleShape2D_cxjdc")
@@ -251,7 +253,7 @@ offset_bottom = -7.0
 theme_override_font_sizes/font_size = 8
 autowrap_mode = 3
 script = ExtResource("8_ncjnf")
-health_comp = NodePath("")
+health_comp = NodePath("../Health_Component")
 enemy = NodePath("..")
 FSM = NodePath("../StateMachine")
 
@@ -262,7 +264,7 @@ enemy = NodePath("..")
 Navigationagent2d = NodePath("../Navigation_Component_enemy/NavigationAgent2D")
 Navigation_component = NodePath("../Navigation_Component_enemy")
 animation_player = NodePath("../AnimationPlayer")
-health_component = NodePath("")
+health_component = NodePath("../Health_Component")
 timer = NodePath("potential_to_attack_timer")
 
 [node name="potential_to_attack_timer" type="Timer" parent="State_Machine_Controller" unique_id=158591092]
@@ -279,12 +281,11 @@ navigation_layers = 2
 radius = 7.0
 max_speed = 1000.0
 
-[node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state", "Navigation_component") instance=ExtResource("15_4flht")]
+[node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("15_4flht")]
 FSM = NodePath("../StateMachine")
 Hitbox_area = NodePath("../HitBox")
 entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
-Navigation_component = NodePath("../Navigation_Component_enemy")
 
 [node name="warning" type="Label" parent="." unique_id=1947060253]
 visible = false

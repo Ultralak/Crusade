@@ -23,17 +23,17 @@ func move(delta: float) -> void:
 		move_velocity = move_velocity.limit_length(Max_speed) * speed_modifier
 	else:
 		move_velocity = lerp(move_velocity, Vector2.ZERO, FRICTION) * speed_modifier
-		#if move_velocity.length() < 1:
-			#move_velocity = Vector2.ZERO
+		if move_velocity.length() < 1:
+			move_velocity = Vector2.ZERO
 	
 func get_input() -> void:
 	move_direction = Vector2.ZERO
 
 	if Input.is_action_pressed("move_down"):
-		move_direction += Vector2.DOWN
+		move_direction = Vector2.DOWN
 	if Input.is_action_pressed("move_up"):
-		move_direction += Vector2.UP
+		move_direction = Vector2.UP
 	if Input.is_action_pressed("move_left"):
-		move_direction += Vector2.LEFT
+		move_direction = Vector2.LEFT
 	if Input.is_action_pressed("move_right"):
-		move_direction += Vector2.RIGHT
+		move_direction = Vector2.RIGHT

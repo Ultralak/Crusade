@@ -13,9 +13,13 @@ func _ready() -> void:
 		damage_amount = entity.damage_amount
 		knockback_dir = entity.knockback_dir
 		knockback_force = entity.knockback_force
-	# need to do for player
 
 
 
 func deal_damage(body : CharacterBody2D):
-	body.take_damage(damage_amount, knockback_dir, knockback_force)
+	for node in body.get_children():
+		if node is HealthComponent:
+			node.take_damage(damage_amount, knockback_dir, knockback_force)
+			return
+
+	

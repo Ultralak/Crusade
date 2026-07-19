@@ -10,7 +10,7 @@ extends Node
 @export var player_still_velocity : float = 20
 @export var potential_to_wait_time : float = 0.2
 @export var target_desired_distance : float
-
+@export var show_debug_code : bool  = false
 var target : CharacterBody2D 
 var setup : bool = false
 func _ready() -> void:
@@ -26,14 +26,16 @@ func _process(_delta: float) -> void:
 		"chase":
 			if !player_is_still() or !close_to_player() and !timer.is_stopped():
 				timer.stop()
-				print("One or more conditions failed . Potentital attack timer stopped")
+				if show_debug_code:
+					print("One or more conditions failed . Potentital attack timer stopped")
 
 func _on_navigation_agent_2d_target_reached() -> void:
 	timer.wait_time = potential_to_wait_time
 	timer.one_shot = true
 	if timer.is_stopped():
 		timer.start()
-	print("Potential attack timer started")
+	if show_debug_code:
+		print("Potential attack timer started")
 	 
 	# when player reached. start timer and if player doesn't move within a certain treshold
 	# enter into attack state.
@@ -47,7 +49,8 @@ func close_to_player() -> bool:
 	return enemy.global_position.distance_to(target.global_position) <= target_desired_distance
 
 func _on_potential_to_attack_timer_timeout() -> void:
-	print("potential attack timer timed out so conditions met")
+	if show_debug_code:
+		print("potential attack timer timed out so conditions met")
 	if node_finite_state_machine.current_node_state_name == "chase":
 		node_finite_state_machine.transition_to("prepare")
 		

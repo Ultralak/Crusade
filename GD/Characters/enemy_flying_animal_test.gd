@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var state_name : String = FSM.current_node_state_name
 	if is_state_changed(state_name):
-		print("Enemy Flying Animal State : %s" % state_name)
+		#print("Enemy Flying Animal State : %s" % state_name)
 		new_state_name = state_name
 	text = "Health : %s, Velocity : %s, State : %s" % [health_comp.health,enemy.velocity,state_name ]
 
