@@ -195,7 +195,7 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="hurt" type="Node" parent="StateMachine" unique_id=673310595 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "node_finite_state_machine", "Navigation_component", "timer", "animation_player")]
 script = ExtResource("6_7xwgm")
 characterbody2d = NodePath("../..")
-healthcomponent = NodePath("")
+healthcomponent = NodePath("../../Health_Component")
 node_finite_state_machine = NodePath("..")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
 timer = NodePath("hurt_timer")

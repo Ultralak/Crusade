@@ -11,15 +11,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	current_state = FSM.current_node_state_name
 	velocity_component.get_input()
 	match current_state:
 		"idle":
 			if velocity_component.move_velocity != Vector2.ZERO: 
 				FSM.transition_to("run")
+				
 			elif Input.is_action_pressed("primary_attack"):
 				FSM.transition_to("primary_attack")
 		"run":
-			if velocity_component.move_velocity == Vector2.ZERO : 
+			if velocity_component.move_velocity.length() < 3 : 
 				FSM.transition_to("idle")
 			elif Input.is_action_pressed("primary_attack"):
 				FSM.transition_to("primary_attack")
