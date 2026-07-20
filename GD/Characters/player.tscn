@@ -427,9 +427,11 @@ weapon_animation_player = NodePath("../../sword/non-physics/sword_anim")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" index="3" unique_id=100788297 node_paths=PackedStringArray("player", "animation_player")]
+[node name="hurt" type="Node" parent="StateMachine" index="3" unique_id=100788297 node_paths=PackedStringArray("player", "FSM", "hurt_timer", "animation_player")]
 script = ExtResource("9_22qw1")
 player = NodePath("../..")
+FSM = NodePath("..")
+hurt_timer = NodePath("hurt_timer")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="hurt_timer" type="Timer" parent="StateMachine/hurt" index="0" unique_id=509223481]
@@ -508,4 +510,5 @@ FSM = NodePath("../StateMachine")
 velocity_component = NodePath("../Velocity_Component_player")
 player = NodePath("..")
 
+[connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="animation_finished" from="sword/non-physics/sword_anim" to="StateMachine/primary_attack" method="_on_sword_anim_animation_finished"]

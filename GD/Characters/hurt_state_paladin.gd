@@ -1,16 +1,18 @@
 extends NodeState
 
 @export var player : CharacterBody2D
+@export var FSM : NodeFiniteStateMachine
 @export var friction : float = 50
 var knk_direction : Vector2
 var  knk_force : float
 var is_setup  : bool = false
-
+@export var hurt_timer : Timer
 func enter():
 	
 	if is_setup:
 		player.velocity = knk_direction * knk_force
 		player.can_turn = false
+		
 	else:
 		print("knockback not received")
 		
@@ -31,4 +33,5 @@ func set_knockback(direction : Vector2, force : float) -> void:
 
 
 func _on_hurt_timer_timeout() -> void:
-	pass # Replace with function body.
+	FSM.transition_to("idle")
+	
