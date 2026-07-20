@@ -20,10 +20,15 @@ func exit():
 	
 	
 func on_physics_process(_delta: float) -> void:
-	player.velocity.move_toward(Vector2.ZERO, friction)
+	player.velocity.move_toward(Vector2.ZERO, friction )
 	player.move_and_slide()
 
 func set_knockback(direction : Vector2, force : float) -> void:
 	knk_direction = direction
 	knk_force = force
 	is_setup = true
+	print("knock_back is setup")
+
+
+func _on_hurt_timer_timeout() -> void:
+	pass # Replace with function body.

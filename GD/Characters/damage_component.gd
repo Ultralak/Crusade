@@ -5,6 +5,7 @@ class_name DamageComponent
 @export var attackbox : Area2D
 var knockback_dir : Vector2
 var knockback_force : float
+
 var damage_amount : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,11 +16,11 @@ func _ready() -> void:
 		knockback_force = entity.knockback_force
 
 
-
 func deal_damage(body : CharacterBody2D):
 	for node in body.get_children():
 		if node is HealthComponent:
 			node.take_damage(damage_amount, knockback_dir, knockback_force)
 			return
+
 
 	

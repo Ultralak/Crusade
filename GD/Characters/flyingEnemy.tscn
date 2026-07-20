@@ -145,22 +145,22 @@ outline_size = 1
 outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=246556358 groups=["ENEMY_"]]
-collision_layer = 4
+collision_layer = 3588
 script = ExtResource("2_llo60")
-knockback_force = 50.0
+knockback_force = 500.0
 
-[node name="HitBox" type="Area2D" parent="." unique_id=1268156581 groups=["HITBOX"]]
-collision_layer = 4
+[node name="HurtBox" type="Area2D" parent="." unique_id=1268156581 groups=["HITBOX"]]
+collision_layer = 2048
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2031490457]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2031490457]
 z_index = -1
 shape = SubResource("CircleShape2D_6pmnr")
 debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
 
 [node name="AttackBox" type="Area2D" parent="." unique_id=358844900]
-collision_layer = 4
-collision_mask = 2
+collision_layer = 1024
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=751511983]
 shape = SubResource("CircleShape2D_cxjdc")
@@ -283,7 +283,7 @@ max_speed = 1000.0
 
 [node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("15_4flht")]
 FSM = NodePath("../StateMachine")
-Hitbox_area = NodePath("../HitBox")
+Hitbox_area = NodePath("../HurtBox")
 entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
 
@@ -304,7 +304,7 @@ autowrap_mode = 3
 [node name="DamageComponent" type="Node" parent="." unique_id=927314073 node_paths=PackedStringArray("entity", "attackbox")]
 script = ExtResource("17_4flht")
 entity = NodePath("..")
-attackbox = NodePath("../HitBox")
+attackbox = NodePath("../HurtBox")
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]
