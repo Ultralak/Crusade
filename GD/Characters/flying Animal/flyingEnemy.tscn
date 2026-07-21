@@ -1,22 +1,24 @@
 [gd_scene format=3 uid="uid://n1rexluimhji"]
 
-[ext_resource type="Script" uid="uid://c3habvls0h7b8" path="res://Characters/flying_enemy.gd" id="2_llo60"]
-[ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/reference_validator.tscn" id="3_ca803"]
+[ext_resource type="Script" uid="uid://c3habvls0h7b8" path="res://Characters/flying Animal/flying_enemy.gd" id="2_llo60"]
+[ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/Components/reference_validator.tscn" id="3_ca803"]
 [ext_resource type="Texture2D" uid="uid://cu7m2ultx42b5" path="res://Art/enemies/flying creature/fly_anim_spritesheet.png" id="4_tsej0"]
 [ext_resource type="Shader" uid="uid://fyr6cq44cguf" path="res://Old_Crusade_sidescroller/Enemies/melee/hit_flash.tres" id="4_ujm07"]
-[ext_resource type="Script" uid="uid://bihm5bbb5ypge" path="res://Characters/flying Animal Enemy States/idle_state_flying_animal.gd" id="5_i70m0"]
+[ext_resource type="Script" uid="uid://bihm5bbb5ypge" path="res://Characters/flying Animal/idle_state_flying_animal.gd" id="5_i70m0"]
 [ext_resource type="Script" uid="uid://na74sqiddic8" path="res://Old_Crusade_sidescroller/State machine/node_finite_state_machine.gd" id="5_ujm07"]
-[ext_resource type="Script" uid="uid://dq5dmuhpnngf" path="res://Characters/flying Animal Enemy States/hurt_state_flying_animal.gd" id="6_7xwgm"]
+[ext_resource type="Script" uid="uid://dq5dmuhpnngf" path="res://Characters/flying Animal/hurt_state_flying_animal.gd" id="6_7xwgm"]
 [ext_resource type="Script" uid="uid://bm5pcao4gny5l" path="res://Old_Crusade_sidescroller/Enemies/melee/state_machine_controller.gd" id="6_llo60"]
-[ext_resource type="PackedScene" uid="uid://daq8erx21u5qx" path="res://Characters/navigation_component_enemy.tscn" id="7_ca803"]
-[ext_resource type="Script" uid="uid://ckgwxveh3185i" path="res://Characters/flying Animal Enemy States/dead_state_flying_animal.gd" id="7_ncjnf"]
-[ext_resource type="Script" uid="uid://qpf3jgwagcc" path="res://Characters/flying Animal Enemy States/attack_flying_animal.gd" id="8_1d5st"]
-[ext_resource type="Script" uid="uid://ccvbp8vc12k6s" path="res://Characters/enemy_flying_animal_test.gd" id="8_ncjnf"]
-[ext_resource type="Script" uid="uid://butqtc0npaki1" path="res://Characters/flying Animal Enemy States/prepare_flying_animal.gd" id="10_ud4e0"]
-[ext_resource type="Script" uid="uid://b1q5lhjvst3iy" path="res://Characters/flying Animal Enemy States/chase_flying_animal.gd" id="11_5qtg4"]
+[ext_resource type="PackedScene" uid="uid://daq8erx21u5qx" path="res://Characters/Components/navigation_component_enemy.tscn" id="7_ca803"]
+[ext_resource type="Script" uid="uid://ckgwxveh3185i" path="res://Characters/flying Animal/dead_state_flying_animal.gd" id="7_ncjnf"]
+[ext_resource type="Script" uid="uid://qpf3jgwagcc" path="res://Characters/flying Animal/attack_flying_animal.gd" id="8_1d5st"]
+[ext_resource type="Script" uid="uid://ccvbp8vc12k6s" path="res://Characters/flying Animal/enemy_flying_animal_test.gd" id="8_ncjnf"]
+[ext_resource type="Script" uid="uid://butqtc0npaki1" path="res://Characters/flying Animal/prepare_flying_animal.gd" id="10_ud4e0"]
+[ext_resource type="Script" uid="uid://b1q5lhjvst3iy" path="res://Characters/flying Animal/chase_flying_animal.gd" id="11_5qtg4"]
+[ext_resource type="Script" uid="uid://cdi0m6ckharg" path="res://Characters/flying Animal/rest_state_flying_animal.gd" id="12_qdnxx"]
 [ext_resource type="PackedScene" uid="uid://fef1e3niawen" path="res://Characters/Components/health_component.tscn" id="15_4flht"]
 [ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="15_c4p14"]
-[ext_resource type="Script" uid="uid://b5vnhlehxw8cl" path="res://Characters/damage_component.gd" id="17_4flht"]
+[ext_resource type="Script" uid="uid://b5vnhlehxw8cl" path="res://Characters/Components/damage_component.gd" id="17_ik5d7"]
+[ext_resource type="Script" uid="uid://cl1fso8uxi7b" path="res://Characters/flying Animal/player_detection_component.gd" id="19_7imsr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
 radius = 5.0
@@ -70,6 +72,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 3, 3]
+}
 
 [sub_resource type="Animation" id="Animation_tsej0"]
 resource_name = "idle"
@@ -120,6 +134,11 @@ region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
 animations = [{
+"frames": [],
+"loop": 1,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7xwgm")
@@ -145,22 +164,22 @@ outline_size = 1
 outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=246556358 groups=["ENEMY_"]]
-collision_layer = 3588
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("2_llo60")
 knockback_force = 500.0
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1268156581 groups=["HITBOX"]]
-collision_layer = 2048
-collision_mask = 64
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2031490457]
-z_index = -1
 shape = SubResource("CircleShape2D_6pmnr")
 debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
 
 [node name="AttackBox" type="Area2D" parent="." unique_id=358844900]
-collision_layer = 1024
-collision_mask = 128
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=751511983]
 shape = SubResource("CircleShape2D_cxjdc")
@@ -183,7 +202,7 @@ animation = &"idle"
 
 [node name="StateMachine" type="Node" parent="." unique_id=1129076061 node_paths=PackedStringArray("initial_node_state", "player")]
 script = ExtResource("5_ujm07")
-initial_node_state = NodePath("chase")
+initial_node_state = NodePath("idle")
 player = NodePath("..")
 
 [node name="idle" type="Node" parent="StateMachine" unique_id=1793172341 node_paths=PackedStringArray("characterBody2d", "Navigation_component", "animation_player")]
@@ -244,6 +263,15 @@ navigation_component = NodePath("../../Navigation_Component_enemy")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
+[node name="rest" type="Node" parent="StateMachine" unique_id=767429176 node_paths=PackedStringArray("rest_timer", "enemy", "FSM", "animation_player")]
+script = ExtResource("12_qdnxx")
+rest_timer = NodePath("rest_timer")
+enemy = NodePath("../..")
+FSM = NodePath("..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="rest_timer" type="Timer" parent="StateMachine/rest" unique_id=981954949]
+
 [node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy", "FSM")]
 custom_maximum_size = Vector2(100, 100)
 offset_left = -20.0
@@ -301,10 +329,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DamageComponent" type="Node" parent="." unique_id=927314073 node_paths=PackedStringArray("entity", "attackbox")]
-script = ExtResource("17_4flht")
+[node name="DamageComponent" type="Node2D" parent="." unique_id=630039083 node_paths=PackedStringArray("entity", "attackbox")]
+script = ExtResource("17_ik5d7")
 entity = NodePath("..")
-attackbox = NodePath("../HurtBox")
+attackbox = NodePath("../AttackBox")
+
+[node name="PlayerDetectionComponent" type="Node2D" parent="." unique_id=157829987 node_paths=PackedStringArray("FSM", "enemy", "raycast")]
+script = ExtResource("19_7imsr")
+FSM = NodePath("../StateMachine")
+enemy = NodePath("..")
+raycast = NodePath("player_detection")
+
+[node name="player_detection" type="RayCast2D" parent="PlayerDetectionComponent" unique_id=344353043]
+collision_mask = 3
+hit_from_inside = true
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]

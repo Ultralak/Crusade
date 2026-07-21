@@ -12,8 +12,7 @@ func on_process(_delta : float):
 	else:
 		animation_player.play("idle")
 	#physics frame
-func on_physics_process(_delta : float):
-	pass
+
 	#when you enter the scene
 func enter():
 	velocity_component.speed_modifier = 0.9

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://daq8erx21u5qx"]
 
-[ext_resource type="Script" uid="uid://dsjs4165dgf68" path="res://Characters/Navigation_component.gd" id="1_etjaw"]
+[ext_resource type="Script" uid="uid://dsjs4165dgf68" path="res://Characters/Components/Navigation_component.gd" id="1_etjaw"]
 
 [node name="Navigation_Component_enemy" type="Node2D" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d")]
 script = ExtResource("1_etjaw")

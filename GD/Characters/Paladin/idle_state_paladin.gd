@@ -5,8 +5,7 @@ extends NodeState
 @export var state_machine_controller: Node
 @export var velocity_component : Node2D
 		
-func on_physics_process(_delta : float):
-	pass
+
 func enter():
 	velocity_component.move_velocity = Vector2.ZERO
 	animation_player.play("idle")

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://de04wiy7xnef" path="res://Game Files/New_Crusade_game.gd" id="1_1en5x"]
 [ext_resource type="Texture2D" uid="uid://ygdq6k8q7ocr" path="res://Art/full tilemap.png" id="2_ct3tq"]
-[ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flyingEnemy.tscn" id="2_hbr0n"]
-[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/player.tscn" id="3_hbr0n"]
+[ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="2_hbr0n"]
+[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="3_hbr0n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6pmnr"]
 vertices = PackedVector2Array(380, 236, 459.03906, 245.92188, 21.796875, 243.07031, 276, 236, 220, 172, 220, 132, 276, 148, 459.95313, 23, 380, 148, 204, 132, 204, 84, 188, 84, 188, 68, 116, 172, 164, 172, 164, 188, 204, 188, 204, 172, 18.203125, 23, 116, 68)

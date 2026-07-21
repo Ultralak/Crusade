@@ -8,17 +8,18 @@ class_name Hitbox
 @export var slash_hitbox : CollisionShape2D
 
 func _init() -> void:
-	connect("body_entered",on_body_entered)
+	pass
 	
 func _ready() -> void:
 	assert(slash_hitbox != null)
+	self.area_entered.connect(on_area_entered)
 	
 	
-func on_body_entered(body : CharacterBody2D):
+func on_area_entered(body : Area2D):
 	var knockback_direction : Vector2 =  player.knockback_direction
 	# stuff sends to health component that deals damage and and sets up direction thig
 	# and then enters into hurt state where knock back occurs
-	for node in body.get_children():
+	for node in body.get_parent().get_children():
 		if node is HealthComponent:
 			node.take_damage(damage_amount,knockback_direction,knockback_force)
 			return

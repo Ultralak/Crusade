@@ -1,21 +1,23 @@
 [gd_scene format=3 uid="uid://cppvfe7oq5n4b"]
 
-[ext_resource type="PackedScene" uid="uid://c01sjo8wihnbf" path="res://Characters/Character_class_scene.tscn" id="1_5mj4t"]
-[ext_resource type="Script" uid="uid://cylhxwrqww3j5" path="res://Characters/paladin.gd" id="2_65n15"]
+[ext_resource type="Script" uid="uid://cylhxwrqww3j5" path="res://Characters/Paladin/paladin.gd" id="2_65n15"]
 [ext_resource type="Texture2D" uid="uid://b4odwgdg2htq" path="res://Art/heroes/knight/knight_idle_spritesheet.png" id="2_vb825"]
 [ext_resource type="Texture2D" uid="uid://cc1jg4yy1xowf" path="res://Art/heroes/knight/knight_run_spritesheet.png" id="3_65n15"]
-[ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/reference_validator.tscn" id="3_c4gpq"]
+[ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/Components/reference_validator.tscn" id="3_c4gpq"]
 [ext_resource type="PackedScene" uid="uid://fef1e3niawen" path="res://Characters/Components/health_component.tscn" id="3_mevwr"]
-[ext_resource type="Script" uid="uid://bc3knq817w1lv" path="res://Characters/idle_state_paladin.gd" id="5_l48on"]
-[ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/walk_paladin.gd" id="6_4m0gv"]
-[ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/primary_attack_paladin.gd" id="7_5slg2"]
+[ext_resource type="Script" uid="uid://bc3knq817w1lv" path="res://Characters/Paladin/idle_state_paladin.gd" id="5_l48on"]
+[ext_resource type="Shader" uid="uid://fyr6cq44cguf" path="res://Old_Crusade_sidescroller/Enemies/melee/hit_flash.tres" id="5_y0e2x"]
+[ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/Paladin/walk_paladin.gd" id="6_4m0gv"]
+[ext_resource type="Script" uid="uid://na74sqiddic8" path="res://Old_Crusade_sidescroller/State machine/node_finite_state_machine.gd" id="7_4r6qk"]
+[ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/Paladin/primary_attack_paladin.gd" id="7_5slg2"]
 [ext_resource type="Texture2D" uid="uid://dl8vsgnulxjfu" path="res://Art/heroes/knight/weapon_sword_1.png" id="7_p728j"]
-[ext_resource type="Script" uid="uid://ddjwsv10im0us" path="res://Characters/hurt_state_paladin.gd" id="9_22qw1"]
-[ext_resource type="Script" uid="uid://dk2l3f4k3ypcw" path="res://Characters/generic_sword.gd" id="9_mevwr"]
+[ext_resource type="Script" uid="uid://ddjwsv10im0us" path="res://Characters/Paladin/hurt_state_paladin.gd" id="9_22qw1"]
+[ext_resource type="Script" uid="uid://dk2l3f4k3ypcw" path="res://Characters/Paladin/generic_sword.gd" id="9_mevwr"]
 [ext_resource type="Texture2D" uid="uid://c1h4dqettogue" path="res://Art/effects (new)/slash_effect_anim_spritesheet.png" id="9_w3rah"]
 [ext_resource type="PackedScene" uid="uid://b4065l518r61h" path="res://Game Files/velocity_component.tscn" id="10_w3rah"]
-[ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/hitbox.gd" id="11_642pg"]
-[ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/state_machine_controller_paladin.gd" id="16_iga2k"]
+[ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/Paladin/hitbox.gd" id="11_642pg"]
+[ext_resource type="Script" uid="uid://dfx68rwy4a5i0" path="res://Characters/Components/debug_label.gd" id="12_5k0dx"]
+[ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xys2l"]
 radius = 1.0
@@ -46,6 +48,35 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:material:shader_parameter/Hit_flash_on")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4r6qk"]
+resource_name = "hurt"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.09, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_p728j"]
@@ -111,9 +142,15 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5slg2"]
 _data = {
 &"RESET": SubResource("Animation_l48on"),
+&"hurt": SubResource("Animation_4r6qk"),
 &"idle": SubResource("Animation_p728j"),
 &"run": SubResource("Animation_4m0gv")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ce124"]
+shader = ExtResource("5_y0e2x")
+shader_parameter/Hit_flash_on = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbmiu"]
 atlas = ExtResource("2_vb825")
@@ -377,66 +414,71 @@ height = 35.0
 radius = 4.0
 height = 12.0
 
-[node name="Player" unique_id=246556358 groups=["PLAYER_"] instance=ExtResource("1_5mj4t")]
-collision_layer = 194
+[node name="Player" type="CharacterBody2D" unique_id=246556358 groups=["PLAYER_"]]
+collision_layer = 2
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("2_65n15")
-max_health = 10.0
 
-[node name="Health_Component" parent="." index="0" unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("3_mevwr")]
+[node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("3_mevwr")]
 FSM = NodePath("../StateMachine")
-Hitbox_area = NodePath("../player_hitbox")
+Hitbox_area = NodePath("../player_hurtbox")
 entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
 
-[node name="ReferenceValidator" parent="." index="1" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_c4gpq")]
+[node name="ReferenceValidator" parent="." unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_c4gpq")]
 target_node_parent = NodePath("..")
 
-[node name="CollisionBody" parent="." index="2" unique_id=1679767088]
+[node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1679767088]
 z_index = 1
 position = Vector2(1, 7)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_xys2l")
 
-[node name="AnimationPlayer" parent="." index="3" unique_id=12476089]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=12476089]
 libraries/ = SubResource("AnimationLibrary_5slg2")
 
-[node name="AnimatedSprite2D" parent="." index="4" unique_id=1501961513]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501961513]
+material = SubResource("ShaderMaterial_ce124")
 sprite_frames = SubResource("SpriteFrames_geawy")
 animation = &"idle"
 
-[node name="StateMachine" parent="." index="5" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1129076061 node_paths=PackedStringArray("initial_node_state", "player")]
+script = ExtResource("7_4r6qk")
 initial_node_state = NodePath("idle")
+player = NodePath("..")
 
-[node name="idle" type="Node" parent="StateMachine" index="0" unique_id=1308004858 node_paths=PackedStringArray("characterbody2d", "velocity_component", "animation_player")]
+[node name="idle" type="Node" parent="StateMachine" unique_id=1308004858 node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "velocity_component", "animation_player")]
 script = ExtResource("5_l48on")
 characterbody2d = NodePath("../..")
+state_machine_controller = NodePath("../../State Machine Controller")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="run" type="Node" parent="StateMachine" index="1" unique_id=1120109916 node_paths=PackedStringArray("characterbody2d", "velocity_component", "animation_player")]
+[node name="run" type="Node" parent="StateMachine" unique_id=1120109916 node_paths=PackedStringArray("characterbody2d", "state_machine_controller", "velocity_component", "animation_player")]
 script = ExtResource("6_4m0gv")
 characterbody2d = NodePath("../..")
+state_machine_controller = NodePath("../../State Machine Controller")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="primary_attack" type="Node" parent="StateMachine" index="2" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
+[node name="primary_attack" type="Node" parent="StateMachine" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
 script = ExtResource("7_5slg2")
 characterbody2d = NodePath("../..")
 weapon_animation_player = NodePath("../../sword/non-physics/sword_anim")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" index="3" unique_id=100788297 node_paths=PackedStringArray("player", "FSM", "hurt_timer", "animation_player")]
+[node name="hurt" type="Node" parent="StateMachine" unique_id=100788297 node_paths=PackedStringArray("player", "FSM", "hurt_timer", "animation_player")]
 script = ExtResource("9_22qw1")
 player = NodePath("../..")
 FSM = NodePath("..")
 hurt_timer = NodePath("hurt_timer")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt_timer" type="Timer" parent="StateMachine/hurt" index="0" unique_id=509223481]
+[node name="hurt_timer" type="Timer" parent="StateMachine/hurt" unique_id=509223481]
 
-[node name="Test" parent="." index="6" unique_id=1726522527 node_paths=PackedStringArray("velocity_component", "health_component")]
+[node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("velocity_component", "health_component")]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 15
 anchor_right = 1.0
@@ -449,29 +491,31 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("12_5k0dx")
 velocity_component = NodePath("../Velocity_Component_player")
 health_component = NodePath("../Health_Component")
 
-[node name="sword" type="Node2D" parent="." index="7" unique_id=1867631151 node_paths=PackedStringArray("player", "physics", "non_physics")]
+[node name="sword" type="Node2D" parent="." unique_id=1867631151 node_paths=PackedStringArray("player", "physics", "non_physics")]
 script = ExtResource("9_mevwr")
 player = NodePath("..")
 physics = NodePath("physics")
 non_physics = NodePath("non-physics")
 
-[node name="non-physics" type="Node2D" parent="sword" index="0" unique_id=1964963813]
+[node name="non-physics" type="Node2D" parent="sword" unique_id=1964963813]
 
-[node name="sword_anim" type="AnimationPlayer" parent="sword/non-physics" index="0" unique_id=1671544267]
+[node name="sword_anim" type="AnimationPlayer" parent="sword/non-physics" unique_id=1671544267]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_w3rah")
 
-[node name="Sword_Sprite" type="Sprite2D" parent="sword/non-physics" index="1" unique_id=97002679]
+[node name="Sword_Sprite" type="Sprite2D" parent="sword/non-physics" unique_id=97002679]
 position = Vector2(2, 2)
 rotation = -0.7853982
 texture = ExtResource("7_p728j")
 offset = Vector2(4, -13)
 flip_h = true
 
-[node name="slash_sprite" type="Sprite2D" parent="sword/non-physics" index="2" unique_id=2105225901]
+[node name="slash_sprite" type="Sprite2D" parent="sword/non-physics" unique_id=2105225901]
 visible = false
 position = Vector2(1, -0.5)
 scale = Vector2(1.25, 1.1875)
@@ -479,32 +523,33 @@ texture = ExtResource("9_w3rah")
 offset = Vector2(12, 0)
 hframes = 3
 
-[node name="physics" type="Node2D" parent="sword" index="1" unique_id=1322744771]
+[node name="physics" type="Node2D" parent="sword" unique_id=1322744771]
 
-[node name="Hitbox" type="Area2D" parent="sword/physics" index="0" unique_id=1308426130 node_paths=PackedStringArray("player", "slash_hitbox")]
-collision_layer = 64
-collision_mask = 2048
+[node name="Hitbox" type="Area2D" parent="sword/physics" unique_id=1308426130 node_paths=PackedStringArray("player", "slash_hitbox")]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("11_642pg")
 damage_amount = 2
 knockback_force = 300.0
 player = NodePath("../../..")
 slash_hitbox = NodePath("slash_hitbox")
 
-[node name="slash_hitbox" type="CollisionShape2D" parent="sword/physics/Hitbox" index="0" unique_id=1430684432]
+[node name="slash_hitbox" type="CollisionShape2D" parent="sword/physics/Hitbox" unique_id=1430684432]
 position = Vector2(10, -1)
 shape = SubResource("CapsuleShape2D_75smw")
 disabled = true
 
-[node name="Velocity_Component_player" parent="." index="8" unique_id=590281791 instance=ExtResource("10_w3rah")]
+[node name="Velocity_Component_player" parent="." unique_id=590281791 node_paths=PackedStringArray("player") instance=ExtResource("10_w3rah")]
+player = NodePath("..")
 
-[node name="player_hitbox" type="Area2D" parent="." index="9" unique_id=1953454412]
-collision_layer = 128
-collision_mask = 1536
+[node name="player_hurtbox" type="Area2D" parent="." unique_id=1953454412]
+collision_layer = 8
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox" index="0" unique_id=946931530]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox" unique_id=946931530]
 shape = SubResource("CapsuleShape2D_cxjdc")
 
-[node name="State Machine Controller" type="Node" parent="." index="10" unique_id=1683635688 node_paths=PackedStringArray("FSM", "velocity_component", "player")]
+[node name="State Machine Controller" type="Node" parent="." unique_id=1683635688 node_paths=PackedStringArray("FSM", "velocity_component", "player")]
 script = ExtResource("16_iga2k")
 FSM = NodePath("../StateMachine")
 velocity_component = NodePath("../Velocity_Component_player")

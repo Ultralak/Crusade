@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cpe7igoj4lqdp"]
 
 [ext_resource type="Texture2D" uid="uid://y70ssknqlp5x" path="res://Old_Crusade_sidescroller/tile_sets/game_tileset.png" id="1_iti4p"]
-[ext_resource type="PackedScene" uid="uid://dnnka5th1gldj" path="res://Old_Crusade_sidescroller/Player/player.tscn" id="2_dtjkg"]
+[ext_resource type="PackedScene" uid="uid://dnnka5th1gldj" path="res://Old_Crusade_sidescroller/Player/depracated_player.tscn" id="2_dtjkg"]
 [ext_resource type="Script" uid="uid://b5u003i26il3q" path="res://Old_Crusade_sidescroller/Scenes/player_camera.gd" id="3_eglq2"]
 [ext_resource type="PackedScene" uid="uid://ojx7uiirw8s6" path="res://Old_Crusade_sidescroller/Enemies/Shooter/shooter.tscn" id="4_rsyfn"]
 [ext_resource type="PackedScene" uid="uid://12ha5loia4lv" path="res://Old_Crusade_sidescroller/Enemies/melee/melee.tscn" id="5_7w7ni"]

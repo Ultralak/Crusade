@@ -9,15 +9,18 @@ var knockback_force : float
 var damage_amount : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	attackbox.connect("body_entered", deal_damage)
+	attackbox.area_entered.connect(deal_damage)
+	
+	
+
+
+func deal_damage(body : Area2D):
+	print("Signal is connected")
 	if entity.is_in_group("ENEMY_"):
 		damage_amount = entity.damage_amount
 		knockback_dir = entity.knockback_dir
 		knockback_force = entity.knockback_force
-
-
-func deal_damage(body : CharacterBody2D):
-	for node in body.get_children():
+	for node in body.get_parent().get_children():
 		if node is HealthComponent:
 			node.take_damage(damage_amount, knockback_dir, knockback_force)
 			return

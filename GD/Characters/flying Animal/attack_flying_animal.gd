@@ -16,7 +16,6 @@ func enter():
 	direction = enemy.global_position.direction_to(target.global_position)
 	
 	enemy.knockback_dir = direction
-	
 	enemy.velocity = dash_speed * direction
 	timer_setup()
 	animation_player.play("idle")
@@ -38,4 +37,4 @@ func timer_setup() -> void:
 
 
 func _on_attack_timer_timeout() -> void:
-	FSM.transition_to("chase")
+	FSM.transition_to("rest")

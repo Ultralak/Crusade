@@ -6,8 +6,7 @@ extends NodeState
 @export var velocity_component : Node2D
 
 
-func on_physics_process(_delta : float):
-	pass
+
 func enter():
 	animation_player.play("run")
 

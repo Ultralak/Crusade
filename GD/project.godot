@@ -107,16 +107,11 @@ move_down={
 
 2d_physics/layer_1="World"
 2d_navigation/layer_1="Obstacle"
-2d_physics/layer_2="player_body"
+2d_physics/layer_2="Player_body"
 2d_navigation/layer_2="floor"
 2d_physics/layer_3="Enemy_body"
-2d_physics/layer_4="passthrough"
-2d_physics/layer_5="bullets"
-2d_physics/layer_7="weapons"
-2d_physics/layer_8="player_hurtbox"
-2d_physics/layer_10="Enemy_hitbox_projectiles"
-2d_physics/layer_11="Enemy_hitbox_melee/magic"
-2d_physics/layer_12="Enemy_hurtbox"
+2d_physics/layer_4="Player_hurtbox"
+2d_physics/layer_5="Enemy_hurtbox"
 
 [navigation]
 

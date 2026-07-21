@@ -4,7 +4,7 @@ extends Node2D
 const FRICTION : float = 0.15
 @export var Acceleration : int = 1000
 @export var Max_speed : int = 300     
-
+@export var player : CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 var move_direction: Vector2 = Vector2.ZERO

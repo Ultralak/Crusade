@@ -8,7 +8,7 @@ extends Character
 @export var max_health : float = 10
 var knockback_direction : Vector2 
 var can_turn : bool = true
-
+var can_attack  :bool = true
 
 
 
