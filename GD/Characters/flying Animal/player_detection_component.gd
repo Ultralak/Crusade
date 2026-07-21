@@ -9,7 +9,8 @@ var target : CharacterBody2D
 var is_target_setup  : bool = false
 var detection_radius : float
 var distance_to_player : float
-
+var has_seen_player : bool = false
+var is_out_of_bounds : bool 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	detection_radius = enemy.detection_radius
@@ -17,7 +18,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if FSM.current_node_state_name != "idle":
+	if FSM.current_node_state_name != "idle" and:
 		return
 	if !is_target_setup:
 		target = PlayerManager.player
@@ -30,6 +31,7 @@ func _process(_delta: float) -> void:
 			if raycast.is_colliding():
 				if raycast.get_collider() is Character:
 					raycast.enabled = false
+					has_seen_player = true
 					FSM.transition_to("chase")
 				else:
 					pass
