@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name VelocityComponent
 # Lowered max speed and raised acceleration for a snappier feel
 const FRICTION : float = 0.15
 @export var Acceleration : int = 1000
@@ -10,6 +10,7 @@ const FRICTION : float = 0.15
 var move_direction: Vector2 = Vector2.ZERO
 var move_velocity : Vector2 = Vector2.ZERO
 var speed_modifier : float = 1.0
+
 
 func _physics_process(delta: float) -> void:
 	get_input()

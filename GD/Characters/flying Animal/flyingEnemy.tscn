@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://n1rexluimhji"]
 
+[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://Old_Crusade_sidescroller/UI/health_bar.tscn" id="2_ifb76"]
 [ext_resource type="Script" uid="uid://c3habvls0h7b8" path="res://Characters/flying Animal/flying_enemy.gd" id="2_llo60"]
 [ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/Components/reference_validator.tscn" id="3_ca803"]
 [ext_resource type="Texture2D" uid="uid://cu7m2ultx42b5" path="res://Art/enemies/flying creature/fly_anim_spritesheet.png" id="4_tsej0"]
@@ -163,13 +164,18 @@ font_color = Color(18.892157, 3.538639, 0, 1)
 outline_size = 1
 outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=246556358 groups=["ENEMY_"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=246556358 groups=["ENEMY"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("2_llo60")
 detection_radius = 100.0
 max_chase_distance = 200.0
 knockback_force = 500.0
+
+[node name="enemy_healthbar" parent="." unique_id=1236487796 node_paths=PackedStringArray("entity", "healthComp") instance=ExtResource("2_ifb76")]
+position = Vector2(-9, 9)
+entity = NodePath("..")
+healthComp = NodePath("../Health_Component")
 
 [node name="player_detection" type="RayCast2D" parent="." unique_id=344353043]
 target_position = Vector2(0, 10)
@@ -194,9 +200,9 @@ shape = SubResource("CircleShape2D_cxjdc")
 target_node_parent = NodePath("..")
 
 [node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1679767088]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_qa2gp")
+debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=12476089]
 libraries/ = SubResource("AnimationLibrary_i70m0")
@@ -313,6 +319,7 @@ enemy = NodePath("..")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" unique_id=542563494]
 target_desired_distance = 20.0
 navigation_layers = 2
+avoidance_enabled = true
 radius = 7.0
 max_speed = 1000.0
 

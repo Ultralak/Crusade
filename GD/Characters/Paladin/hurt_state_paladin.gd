@@ -5,12 +5,14 @@ extends NodeState
 @export var friction : float = 50
 @export var hurt_time : float = 0.2
 @export var healthComp : HealthComponent
+@export var velocityComp : VelocityComponent
 
 var knk_direction : Vector2
 var  knk_force : float
 var is_setup  : bool = false
 @export var hurt_timer : Timer
 func enter():
+	velocityComp.speed_modifier = 0.01
 	if healthComp.health <= 0:
 		FSM.transition_to("dead")
 	if is_setup:
@@ -26,6 +28,7 @@ func enter():
 		print("knockback not received")
 		
 func exit():
+	velocityComp.speed_modifier = 1.0
 	is_setup = false
 	player.can_turn = true
 	animation_player.stop()

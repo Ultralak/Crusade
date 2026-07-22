@@ -9,7 +9,7 @@ func _ready() -> void:
 func enter():
 	var timer = Timer.new()
 	timer.one_shot = true
-	timer.wait_time = 0.5
+	timer.wait_time = 1.0
 	add_child(timer)
 	timer.timeout.connect(on_timer_timeout)
 	

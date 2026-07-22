@@ -149,7 +149,7 @@ height = 22.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c36ts"]
 size = Vector2(18, 17)
 
-[node name="melee" type="CharacterBody2D" groups=["ENEMY_"]]
+[node name="melee" type="CharacterBody2D" groups=["ENEMY"]]
 collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_n7rj1")

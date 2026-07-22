@@ -49,11 +49,11 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [global_group]
 
-PLAYER_="all player characters"
-ENEMY_=""
 GROUND_=""
 NAVIGATION=""
 HITBOX=""
+ENEMY=""
+PLAYER="all player characters"
 
 [input]
 

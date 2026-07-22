@@ -6,6 +6,7 @@ class_name NavigationComponent
 @export var hurt_state : NodeState
 @export var enemy : CharacterBody2D
 @export var avoidance : bool = true
+@export var avoidance_radius  :float = 7.0
 @export var debug : bool = false
 var is_active  :bool = true
 var new_velocity : Vector2
@@ -14,10 +15,11 @@ var target : Node2D = null
 
 func _ready() -> void:
 	navigation_agent_2d.avoidance_enabled = avoidance
+	navigation_agent_2d.radius = avoidance_radius
 	navigation_agent_2d.debug_enabled = debug
 	# Wait for the navigation map to sync before doing anything
 	await get_tree().physics_frame
-	target = get_tree().get_nodes_in_group("PLAYER_")[0]
+	target = get_tree().get_nodes_in_group("PLAYER")[0]
 	
 func recalculate_path() -> void:
 	# 1. Dynamically update the target position every frame so the path recalculates
