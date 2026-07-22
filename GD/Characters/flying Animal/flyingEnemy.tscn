@@ -167,7 +167,13 @@ outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("2_llo60")
+detection_radius = 100.0
+max_chase_distance = 200.0
 knockback_force = 500.0
+
+[node name="player_detection" type="RayCast2D" parent="." unique_id=344353043]
+target_position = Vector2(0, 42)
+collision_mask = 3
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1268156581 groups=["HITBOX"]]
 collision_layer = 16
@@ -272,7 +278,7 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="rest_timer" type="Timer" parent="StateMachine/rest" unique_id=981954949]
 
-[node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy", "FSM")]
+[node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy", "FSM", "player_detection")]
 custom_maximum_size = Vector2(100, 100)
 offset_left = -20.0
 offset_top = -30.0
@@ -284,6 +290,7 @@ script = ExtResource("8_ncjnf")
 health_comp = NodePath("../Health_Component")
 enemy = NodePath("..")
 FSM = NodePath("../StateMachine")
+player_detection = NodePath("../PlayerDetectionComponent")
 
 [node name="State_Machine_Controller" type="Node" parent="." unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "enemy", "Navigationagent2d", "Navigation_component", "animation_player", "health_component", "timer")]
 script = ExtResource("6_llo60")
@@ -338,11 +345,7 @@ attackbox = NodePath("../AttackBox")
 script = ExtResource("19_7imsr")
 FSM = NodePath("../StateMachine")
 enemy = NodePath("..")
-raycast = NodePath("player_detection")
-
-[node name="player_detection" type="RayCast2D" parent="PlayerDetectionComponent" unique_id=344353043]
-collision_mask = 3
-hit_from_inside = true
+raycast = NodePath("../player_detection")
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]
