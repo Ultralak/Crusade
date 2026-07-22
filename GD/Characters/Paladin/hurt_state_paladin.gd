@@ -4,14 +4,15 @@ extends NodeState
 @export var FSM : NodeFiniteStateMachine
 @export var friction : float = 50
 @export var hurt_time : float = 0.2
+@export var healthComp : HealthComponent
 
 var knk_direction : Vector2
 var  knk_force : float
 var is_setup  : bool = false
 @export var hurt_timer : Timer
 func enter():
-	
-	
+	if healthComp.health <= 0:
+		FSM.transition_to("dead")
 	if is_setup:
 		player.velocity = knk_direction * knk_force
 		player.can_turn = false

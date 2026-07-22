@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b4065l518r61h" path="res://Game Files/velocity_component.tscn" id="10_w3rah"]
 [ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/Paladin/hitbox.gd" id="11_642pg"]
 [ext_resource type="Script" uid="uid://dfx68rwy4a5i0" path="res://Characters/Components/debug_label.gd" id="12_5k0dx"]
+[ext_resource type="Script" uid="uid://62wlikeoq6ph" path="res://Characters/Paladin/dead_state_paladin.gd" id="12_qrkjl"]
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xys2l"]
@@ -469,14 +470,20 @@ weapon_animation_player = NodePath("../../sword/non-physics/sword_anim")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" unique_id=100788297 node_paths=PackedStringArray("player", "FSM", "hurt_timer", "animation_player")]
+[node name="hurt" type="Node" parent="StateMachine" unique_id=100788297 node_paths=PackedStringArray("player", "FSM", "healthComp", "hurt_timer", "animation_player")]
 script = ExtResource("9_22qw1")
 player = NodePath("../..")
 FSM = NodePath("..")
+healthComp = NodePath("../../Health_Component")
 hurt_timer = NodePath("hurt_timer")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="hurt_timer" type="Timer" parent="StateMachine/hurt" unique_id=509223481]
+
+[node name="dead" type="Node" parent="StateMachine" unique_id=587929785 node_paths=PackedStringArray("player", "animation_player")]
+script = ExtResource("12_qrkjl")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("velocity_component", "health_component")]
 custom_minimum_size = Vector2(50, 50)

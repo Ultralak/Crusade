@@ -172,7 +172,7 @@ max_chase_distance = 200.0
 knockback_force = 500.0
 
 [node name="player_detection" type="RayCast2D" parent="." unique_id=344353043]
-target_position = Vector2(0, 42)
+target_position = Vector2(0, 10)
 collision_mask = 3
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1268156581 groups=["HITBOX"]]
@@ -346,6 +346,8 @@ script = ExtResource("19_7imsr")
 FSM = NodePath("../StateMachine")
 enemy = NodePath("..")
 raycast = NodePath("../player_detection")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=477250301]
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]
