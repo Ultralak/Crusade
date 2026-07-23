@@ -25,7 +25,7 @@ func recalculate_path() -> void:
 	# 1. Dynamically update the target position every frame so the path recalculates
 	if target:
 		navigation_agent_2d.target_position = target.global_position
-		target_direction = target.global_position
+		
 
 	
 	if hurt_state.is_setup : 
@@ -43,7 +43,8 @@ func navigate() -> void:
 		var current_agent_position = global_position
 		var next_path_position = navigation_agent_2d.get_next_path_position()
 		# 4. Set velocity and move
-		new_velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+		target_direction = current_agent_position.direction_to(next_path_position)
+		new_velocity = target_direction * movement_speed
 
 func navigate_safe() -> void:
 	if navigation_agent_2d.is_navigation_finished() :
@@ -56,7 +57,8 @@ func navigate_safe() -> void:
 		var current_agent_position = global_position
 		var next_path_position = navigation_agent_2d.get_next_path_position()
 		# 4. Set velocity and move
-		new_velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+		target_direction = current_agent_position.direction_to(next_path_position)
+		new_velocity = target_direction * movement_speed
 		navigation_agent_2d.set_velocity(new_velocity)
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:

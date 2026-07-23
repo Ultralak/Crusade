@@ -15,8 +15,8 @@ func _ready() -> void:
 
 
 func deal_damage(body : Area2D):
-	print("Signal is connected")
-	if entity.is_in_group("ENEMY_"):
+	#print("damage function runs")
+	if entity.is_in_group("ENEMY"):
 		damage_amount = entity.damage_amount
 		knockback_dir = entity.knockback_dir
 		knockback_force = entity.knockback_force

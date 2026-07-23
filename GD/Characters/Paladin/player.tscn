@@ -417,7 +417,7 @@ height = 12.0
 
 [node name="Player" type="CharacterBody2D" unique_id=246556358 groups=["PLAYER"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("2_65n15")
 
@@ -543,7 +543,7 @@ player = NodePath("../../..")
 slash_hitbox = NodePath("slash_hitbox")
 
 [node name="slash_hitbox" type="CollisionShape2D" parent="sword/physics/Hitbox" unique_id=1430684432]
-position = Vector2(10, -1)
+position = Vector2(10, 0)
 shape = SubResource("CapsuleShape2D_75smw")
 disabled = true
 

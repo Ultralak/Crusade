@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://n1rexluimhji"]
 
-[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://Old_Crusade_sidescroller/UI/health_bar.tscn" id="2_ifb76"]
+[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://Game Files/health_bar_new_crusade.tscn" id="2_ifb76"]
 [ext_resource type="Script" uid="uid://c3habvls0h7b8" path="res://Characters/flying Animal/flying_enemy.gd" id="2_llo60"]
 [ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/Components/reference_validator.tscn" id="3_ca803"]
 [ext_resource type="Texture2D" uid="uid://cu7m2ultx42b5" path="res://Art/enemies/flying creature/fly_anim_spritesheet.png" id="4_tsej0"]
@@ -168,6 +168,7 @@ outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_llo60")
+damage_amount = 3.0
 detection_radius = 100.0
 max_chase_distance = 200.0
 knockback_force = 500.0

@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cysnaf53fo4gh" path="res://Old_Crusade_sidescroller/Enemies/melee/enemy_label_1.gd" id="12_m5nc4"]
 [ext_resource type="Script" uid="uid://bdj5duyaa27x2" path="res://Old_Crusade_sidescroller/Enemies/melee/damage_component_melee.gd" id="13_owqnh"]
 [ext_resource type="Script" uid="uid://cfkx8ipe6ggds" path="res://Old_Crusade_sidescroller/Enemies/Shooter/health_component.gd" id="14_fqwkh"]
-[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://Old_Crusade_sidescroller/UI/health_bar.tscn" id="15_fqwkh"]
+[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://Game Files/health_bar_new_crusade.tscn" id="15_fqwkh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mfo54"]
 resource_local_to_scene = true

@@ -19,7 +19,8 @@ func _ready() -> void:
 	visible = false
 	visibility_timer.wait_time = visibility_time
 	if !entity:
-		entity = get_parent()
+		entity = PlayerManager.player
+		visible = true
 	if entity:
 		health = entity.max_health
 		healthbar.max_value = health
@@ -53,7 +54,9 @@ func health_decrease(new_health : float) -> void:
 		current_damage_tween = create_tween()
 		current_damage_tween.tween_interval(0.5)
 		setup_tween(current_damage_tween)
-		visibility_timer.start()
+		if !entity.is_in_group("PLAYER"):
+			visibility_timer.start()
+		
 	else:
 		damage_bar.value = health
 	

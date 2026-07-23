@@ -13,7 +13,7 @@ var done_prepare
 # when the player stops for an extended period of time dash into them and attack them dealing damage
 func enter():
 	target = Navigation_component.target
-	direction = enemy.global_position.direction_to(target.global_position)
+	direction = Navigation_component.target_direction
 	
 	enemy.knockback_dir = direction
 	enemy.velocity = dash_speed * direction

@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://diydtkgvoxmhd" path="res://Old_Crusade_sidescroller/Enemies/Shooter/state_display.gd" id="12_7gejs"]
 [ext_resource type="PackedScene" uid="uid://cqrbqi3wwdfid" path="res://Old_Crusade_sidescroller/Enemies/components/flip_component.tscn" id="13_k5vtx"]
 [ext_resource type="Script" uid="uid://cfkx8ipe6ggds" path="res://Old_Crusade_sidescroller/Enemies/Shooter/health_component.gd" id="16_0wvnk"]
-[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://Old_Crusade_sidescroller/UI/health_bar.tscn" id="19_0wvnk"]
+[ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://Game Files/health_bar_new_crusade.tscn" id="19_0wvnk"]
 
 [sub_resource type="Animation" id="Animation_7cw4v"]
 length = 0.001

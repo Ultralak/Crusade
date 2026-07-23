@@ -21,6 +21,7 @@ func _ready() -> void:
 
 	
 func take_damage(damage : float, direction : Vector2, force : float):
+	#print("take_damage runs")
 	health -= damage
 	hurt_state.set_knockback(direction, force)
 	FSM.transition_to("hurt")

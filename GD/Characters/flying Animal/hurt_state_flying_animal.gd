@@ -24,6 +24,7 @@ func _ready() -> void:
 func on_physics_process(delta: float) -> void:
 	characterbody2d.velocity = characterbody2d.velocity.move_toward(Vector2.ZERO,friction * delta)
 	characterbody2d.move_and_slide()
+	
 func enter():
 	timer.one_shot = true
 	timer.wait_time = time
