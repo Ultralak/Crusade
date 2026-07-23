@@ -16,6 +16,7 @@ var damage_tween_array : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visible = false
 	visibility_timer.wait_time = visibility_time
 	if !entity:
 		entity = get_parent()
@@ -63,7 +64,7 @@ func setup_tween(tween : Tween):
 	
 
 func _on_visibility_timer_timeout() -> void:
-	pass
+	visible = false
 
 
 

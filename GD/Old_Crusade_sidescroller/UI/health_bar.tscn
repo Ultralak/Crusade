@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cxtkqgifnefo6" path="res://Art/Pixel Health Bar Asset Pack 1 by Adwit Rahman/Pixel Health Bar 1/Pixel1_Healthbar_0001_pixel1_healthbar.png" id="3_d3fdh"]
 
 [node name="HealthBar" type="Node2D" unique_id=1150709564 node_paths=PackedStringArray("healthbar", "damage_bar", "visibility_timer")]
-scale = Vector2(6, 6)
+scale = Vector2(0.2, 0.3)
 script = ExtResource("1_m7ell")
 healthbar = NodePath("healthbar")
 damage_bar = NodePath("DamageBar")
@@ -19,32 +19,32 @@ one_shot = true
 [node name="DamageBar" type="TextureProgressBar" parent="." unique_id=1680994787]
 custom_minimum_size = Vector2(1, 1)
 anchors_preset = -1
-offset_left = 0.8333334
-offset_top = -3.1666667
-offset_right = 6.3333335
-offset_bottom = 1.8333333
+offset_left = -41.499996
+offset_top = 0.3333333
+offset_right = 41.500004
+offset_bottom = 11.333333
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+offset_transform_enabled = true
 step = 0.01
 value = 80.0
-nine_patch_stretch = true
-texture_over = ExtResource("2_4up48")
+texture_under = ExtResource("2_4up48")
 texture_progress = ExtResource("3_d3fdh")
-texture_progress_offset = Vector2(0, 0.665)
+texture_progress_offset = Vector2(2, 1)
 tint_over = Color(0, 0, 0, 1)
 tint_progress = Color(10.178017, 10.178017, 10.178017, 1)
 
 [node name="healthbar" type="TextureProgressBar" parent="." unique_id=149706074]
 z_index = 1
-offset_left = -7.0
-offset_top = 4.666667
-offset_right = 7.333333
-offset_bottom = 6.0
+offset_left = -39.0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 7.0
+offset_transform_enabled = true
 step = 0.001
-nine_patch_stretch = true
+value = 70.0
 texture_progress = ExtResource("3_d3fdh")
-texture_progress_offset = Vector2(0, 0.665)
 
 [connection signal="timeout" from="Visibility_timer" to="." method="_on_visibility_timer_timeout"]
