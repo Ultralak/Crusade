@@ -38,12 +38,11 @@ tint_progress = Color(10.178017, 10.178017, 10.178017, 1)
 
 [node name="healthbar" type="TextureProgressBar" parent="." unique_id=149706074]
 z_index = 1
-offset_left = 1.3333334
-offset_top = -3.333333
-offset_right = 6.8333335
-offset_bottom = 1.666667
+offset_left = -7.0
+offset_top = 4.666667
+offset_right = 7.333333
+offset_bottom = 6.0
 step = 0.001
-value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_d3fdh")
 texture_progress_offset = Vector2(0, 0.665)
