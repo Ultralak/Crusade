@@ -24,10 +24,10 @@ func take_damage(damage : float, direction : Vector2, force : float):
 	health -= damage
 	hurt_state.set_knockback(direction, force)
 	FSM.transition_to("hurt")
-	health_increased.emit(health)
+	health_decreased.emit(health)
 
 func heal_health(heal_amount : float):
 	health += heal_amount
 	if health >= max_health:
 		health = max_health
-	health_decreased.emit(health)
+	health_increased.emit(health)

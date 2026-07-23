@@ -173,7 +173,7 @@ max_chase_distance = 200.0
 knockback_force = 500.0
 
 [node name="enemy_healthbar" parent="." unique_id=1236487796 node_paths=PackedStringArray("entity", "healthComp") instance=ExtResource("2_ifb76")]
-position = Vector2(-9, 9)
+position = Vector2(0, 8)
 entity = NodePath("..")
 healthComp = NodePath("../Health_Component")
 
