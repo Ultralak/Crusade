@@ -13,7 +13,7 @@ var is_setup  : bool = false
 @export var hurt_timer : Timer
 func enter():
 	velocityComp.speed_modifier = 0.01
-	if healthComp.health <= 0:
+	if healthComp.health < 0:
 		FSM.transition_to("dead")
 	if is_setup:
 		player.velocity = knk_direction * knk_force
@@ -46,5 +46,7 @@ func set_knockback(direction : Vector2, force : float) -> void:
 
 
 func _on_hurt_timer_timeout() -> void:
+	if healthComp.health < 0:
+		FSM.transition_to("dead")
 	FSM.transition_to("idle")
 	

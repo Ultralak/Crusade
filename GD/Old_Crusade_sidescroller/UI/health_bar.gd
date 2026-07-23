@@ -16,12 +16,13 @@ var damage_tween_array : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	visible = false
 	visibility_timer.wait_time = visibility_time
 	if !entity:
 		entity = PlayerManager.player
 		visible = true
 	if entity:
+		if entity.is_in_group("ENEMY"):
+			visible = false
 		health = entity.max_health
 		healthbar.max_value = health
 		healthbar.value = health

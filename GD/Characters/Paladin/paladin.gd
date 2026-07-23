@@ -10,9 +10,6 @@ var knockback_direction : Vector2
 var can_turn : bool = true
 var can_attack  :bool = true
 
-
-
-
 func _ready() -> void:
 	PlayerManager.register_player(self)
 	
