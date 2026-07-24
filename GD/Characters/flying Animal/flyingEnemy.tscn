@@ -170,7 +170,6 @@ collision_mask = 5
 script = ExtResource("2_llo60")
 damage_amount = 3.0
 detection_radius = 100.0
-max_chase_distance = 200.0
 knockback_force = 500.0
 
 [node name="enemy_healthbar" parent="." unique_id=1236487796 node_paths=PackedStringArray("entity", "healthComp") instance=ExtResource("2_ifb76")]
@@ -317,6 +316,7 @@ movement_speed = 50
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
+avoidance_radius = 15.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" unique_id=542563494]
 target_desired_distance = 20.0

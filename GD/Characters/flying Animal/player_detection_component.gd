@@ -10,8 +10,7 @@ var target : CharacterBody2D
 var detection_radius : float
 var distance_to_player : float
 var max_chase_distance : float
-var angle_cone_of_vision : float = deg_to_rad(15.0)
-
+var chase_begun : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,15 +23,20 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if FSM.current_node_state_name != "idle" :
 		if is_out_of_bounds():
+				chase_begun = false
 				FSM.transition_to("idle")
 	else:
 		if !target:
 			target = PlayerManager.player
 		if target :
+			if chase_begun : 
+				FSM.transition_to("chase")
 			distance_to_player = enemy.global_position.distance_to(target.global_position)
 			if distance_to_player <= detection_radius  :
-				if check_if_player_detected():
+				if check_if_player_detected() and !chase_begun:
 					FSM.transition_to("chase")
+					chase_begun = true
+					
 	
 func check_if_player_detected() -> bool:
 	raycast.enabled = true

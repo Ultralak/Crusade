@@ -5,6 +5,5 @@ extends CharacterBody2D
 @export var damage_amount : float  = 4
 @export var detection_radius : float = 50
 @export var max_chase_distance : float = 1000
-@export var angle_cone_of_vision : float = 15
 var knockback_dir : Vector2
 @export var knockback_force : float
