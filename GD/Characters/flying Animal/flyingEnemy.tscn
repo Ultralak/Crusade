@@ -322,8 +322,7 @@ movement_speed = 50
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
-avoidance_radius = 20.0
-debug = true
+avoidance_radius = 10.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" unique_id=542563494]
 target_desired_distance = 20.0
