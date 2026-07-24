@@ -18,9 +18,10 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if !setup : 
-		target = PlayerManager.player
-		target_desired_distance = Navigationagent2d.target_desired_distance
-		setup = true
+		if PlayerManager.player:
+			target = PlayerManager.player
+			target_desired_distance = Navigationagent2d.target_desired_distance
+			setup = true
 	
 	match node_finite_state_machine.current_node_state_name:
 		"chase":
@@ -43,10 +44,14 @@ func _on_navigation_agent_2d_target_reached() -> void:
 
 
 func player_is_still() -> bool:
-	return target.velocity.length() <= player_still_velocity
+	if target:
+		return target.velocity.length() <= player_still_velocity
+	return true
 	
 func close_to_player() -> bool: 
-	return enemy.global_position.distance_to(target.global_position) <= target_desired_distance
+	if target:
+		return enemy.global_position.distance_to(target.global_position) <= target_desired_distance
+	return false
 
 func _on_potential_to_attack_timer_timeout() -> void:
 	if show_debug_code:

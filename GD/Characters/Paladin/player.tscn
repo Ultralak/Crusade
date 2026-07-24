@@ -415,11 +415,13 @@ height = 35.0
 radius = 4.0
 height = 12.0
 
-[node name="Player" type="CharacterBody2D" unique_id=246556358 groups=["PLAYER"]]
+[node name="Player" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("debug_label") groups=["PLAYER"]]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("2_65n15")
+debug_label = NodePath("Test")
+debug_enabled = true
 
 [node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("3_mevwr")]
 FSM = NodePath("../StateMachine")

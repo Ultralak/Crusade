@@ -21,6 +21,8 @@ func _ready() -> void:
 
 	
 func take_damage(damage : float, direction : Vector2, force : float):
+	if entity.is_in_group("PLAYER"):
+		print("Player health reduced by : %s" % damage)
 	#print("take_damage runs")
 	health -= damage
 	hurt_state.set_knockback(direction, force)

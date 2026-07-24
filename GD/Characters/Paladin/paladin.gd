@@ -6,13 +6,14 @@ extends Character
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var max_health : float = 10
+@export var debug_label : Label
 var knockback_direction : Vector2 
 var can_turn : bool = true
 var can_attack  :bool = true
-
+@export var debug_enabled : bool 
 func _ready() -> void:
 	PlayerManager.register_player(self)
-	
+	debug_label.visible = debug_enabled
 
 func _process(_delta: float) -> void:
 	knockback_direction = (get_global_mouse_position() - global_position).normalized()

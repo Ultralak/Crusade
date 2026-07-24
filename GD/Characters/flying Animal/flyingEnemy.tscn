@@ -164,10 +164,12 @@ font_color = Color(18.892157, 3.538639, 0, 1)
 outline_size = 1
 outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=246556358 groups=["ENEMY"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("debug_text") groups=["ENEMY"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_llo60")
+debug_text_enabled = true
+debug_text = NodePath("Test")
 damage_amount = 3.0
 detection_radius = 100.0
 knockback_force = 500.0
@@ -193,6 +195,8 @@ debug_color = Color(0.6069528, 0.5408298, 0, 0.41960785)
 [node name="AttackBox" type="Area2D" parent="." unique_id=358844900]
 collision_layer = 0
 collision_mask = 8
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=751511983]
 shape = SubResource("CircleShape2D_cxjdc")
@@ -243,7 +247,7 @@ script = ExtResource("7_ncjnf")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("Navigation_node", "enemy", "timer", "FSM", "Navigation_component", "animation_player")]
+[node name="attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("Navigation_node", "enemy", "timer", "FSM", "DamageComponent", "Navigation_component", "Attackbox", "animation_player")]
 script = ExtResource("8_1d5st")
 dash_speed = 400.0
 Navigation_node = NodePath("../../Navigation_Component_enemy")
@@ -251,7 +255,9 @@ enemy = NodePath("../..")
 timer = NodePath("attack_timer")
 time = 0.15
 FSM = NodePath("..")
+DamageComponent = NodePath("../../DamageComponent")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
+Attackbox = NodePath("../../AttackBox")
 friction = 500.0
 animation_player = NodePath("../../AnimationPlayer")
 
@@ -316,13 +322,14 @@ movement_speed = 50
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
-avoidance_radius = 15.0
+avoidance_radius = 20.0
+debug = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" unique_id=542563494]
 target_desired_distance = 20.0
 navigation_layers = 2
 avoidance_enabled = true
-radius = 7.0
+radius = 69.09
 max_speed = 1000.0
 
 [node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("15_4flht")]
