@@ -165,18 +165,6 @@ sources/0 = SubResource("TileSetAtlasSource_14i50")
 [node name="Game" type="Node2D" unique_id=530434200]
 script = ExtResource("1_1en5x")
 
-[node name="Enemy" parent="." unique_id=246556358 instance=ExtResource("2_hbr0n")]
-position = Vector2(93, 46)
-debug_text_enabled = false
-
-[node name="Enemy2" parent="." unique_id=1307607329 instance=ExtResource("2_hbr0n")]
-position = Vector2(93, 89.115)
-debug_text_enabled = false
-
-[node name="Enemy3" parent="." unique_id=1576283545 instance=ExtResource("2_hbr0n")]
-position = Vector2(149, 46)
-debug_text_enabled = false
-
 [node name="Player" parent="." unique_id=628313327 instance=ExtResource("3_hbr0n")]
 position = Vector2(222, 122)
 
@@ -203,3 +191,6 @@ position = Vector2(83, -38)
 scale = Vector2(2, 2)
 entity = NodePath("../../Player")
 damage_bar_tween_duration = 2.0
+
+[node name="Enemy" parent="." unique_id=246556358 instance=ExtResource("2_hbr0n")]
+position = Vector2(33.37, 47)

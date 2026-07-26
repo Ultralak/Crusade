@@ -183,6 +183,8 @@ healthComp = NodePath("../Health_Component")
 [node name="player_detection" type="RayCast2D" parent="." unique_id=344353043]
 target_position = Vector2(0, 10)
 collision_mask = 3
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1268156581 groups=["HITBOX"]]
 collision_layer = 16
@@ -247,7 +249,7 @@ script = ExtResource("7_ncjnf")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("Navigation_node", "enemy", "timer", "FSM", "DamageComponent", "Navigation_component", "Attackbox", "animation_player")]
+[node name="attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("Navigation_node", "enemy", "timer", "FSM", "Damage_Component", "Navigation_component", "Attackbox", "animation_player")]
 script = ExtResource("8_1d5st")
 dash_speed = 400.0
 Navigation_node = NodePath("../../Navigation_Component_enemy")
@@ -255,7 +257,7 @@ enemy = NodePath("../..")
 timer = NodePath("attack_timer")
 time = 0.15
 FSM = NodePath("..")
-DamageComponent = NodePath("../../DamageComponent")
+Damage_Component = NodePath("../../DamageComponent")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
 Attackbox = NodePath("../../AttackBox")
 friction = 500.0

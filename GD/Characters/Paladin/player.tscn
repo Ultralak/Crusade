@@ -21,8 +21,8 @@
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xys2l"]
-radius = 4.5
-height = 16.0
+radius = 1.0
+height = 11.0
 
 [sub_resource type="Animation" id="Animation_l48on"]
 length = 0.001
@@ -432,9 +432,10 @@ hurt_state = NodePath("../StateMachine/hurt")
 [node name="ReferenceValidator" parent="." unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("3_c4gpq")]
 target_node_parent = NodePath("..")
 
-[node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1679767088]
+[node name="player collision" type="CollisionShape2D" parent="." unique_id=1679767088]
 z_index = 1
-position = Vector2(0.5, 0)
+position = Vector2(0, 7)
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_xys2l")
 debug_color = Color(0.9348049, 0.15500244, 0.51353186, 0.41960785)
 

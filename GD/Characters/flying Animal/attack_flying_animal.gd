@@ -5,7 +5,7 @@ extends NodeState
 @export var timer : Timer
 @export var time : float = 0.5
 @export var FSM : NodeFiniteStateMachine
-@export var DamageComponent : DamageComponent
+@export var Damage_Component : DamageComponent
 @export var Navigation_component : Node2D
 @export var Attackbox : Area2D
 var target : CharacterBody2D
@@ -32,7 +32,7 @@ func exit():
 	Attackbox.monitoring = false
 	
 	#remove hit entities so hits are registered once
-	DamageComponent.entities_hit.clear()
+	Damage_Component.entities_hit.clear()
 func on_physics_process(_delta: float) -> void:
 	
 	enemy.velocity.move_toward(Vector2.ZERO, friction)
