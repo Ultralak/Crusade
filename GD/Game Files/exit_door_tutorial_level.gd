@@ -4,13 +4,9 @@ extends StaticBody2D
 
 
 
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-
-func open_door()->void:
+func open()->void:
+	animation_player.speed_scale = 1.5
 	animation_player.play("open")
 	
-func close_door() -> void:
+func close() -> void:
 	animation_player.play_backwards("open")

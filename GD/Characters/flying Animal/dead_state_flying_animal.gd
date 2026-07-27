@@ -15,7 +15,6 @@ func enter():
 	
 	var death_explosion_instance = death_explosion.instantiate() as Node2D
 	death_explosion_instance.global_position = enemy.global_position
-	death_explosion_instance.enemy_spawning = false
 	enemy.visible = false
 	get_parent().add_child(death_explosion_instance)
 	timer.start()

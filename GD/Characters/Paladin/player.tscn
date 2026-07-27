@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/Paladin/hitbox.gd" id="11_642pg"]
 [ext_resource type="Script" uid="uid://dfx68rwy4a5i0" path="res://Characters/Components/debug_label.gd" id="12_5k0dx"]
 [ext_resource type="Script" uid="uid://62wlikeoq6ph" path="res://Characters/Paladin/dead_state_paladin.gd" id="12_qrkjl"]
+[ext_resource type="Script" uid="uid://dbpbtjxqhhbh4" path="res://Characters/Paladin/dash_state_paladin.gd" id="13_qrkjl"]
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xys2l"]
@@ -489,6 +490,10 @@ script = ExtResource("12_qrkjl")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
+[node name="dash" type="Node" parent="StateMachine" unique_id=167716045 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("13_qrkjl")
+animation_player = NodePath("../../AnimationPlayer")
+
 [node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("velocity_component", "health_component")]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 15
@@ -540,7 +545,7 @@ hframes = 3
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("11_642pg")
-damage_amount = 2
+damage_amount = 5
 knockback_force = 300.0
 player = NodePath("../../..")
 slash_hitbox = NodePath("slash_hitbox")

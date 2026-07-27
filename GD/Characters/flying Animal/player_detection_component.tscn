@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://prmp6kxnhbnd"]
+
+[ext_resource type="Script" uid="uid://cl1fso8uxi7b" path="res://Characters/flying Animal/player_detection_component.gd" id="1_st1pk"]
+
+[node name="PlayerDetectionComponent" type="Node2D" unique_id=1985377515]
+script = ExtResource("1_st1pk")

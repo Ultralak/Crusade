@@ -20,16 +20,14 @@ func _ready() -> void:
 	navigation_agent_2d.debug_enabled = debug
 	# Wait for the navigation map to sync before doing anything
 	await get_tree().physics_frame
-	target = get_tree().get_nodes_in_group("PLAYER")[0]
+	target = PlayerManager.player
 	
 func recalculate_path() -> void:
 
 	# 1. Dynamically update the target position every frame so the path recalculates
 	if target:
 		navigation_agent_2d.target_position = target.global_position
-		
 
-	
 	if hurt_state.is_setup : 
 		return
 	if navigation_agent_2d.avoidance_enabled:

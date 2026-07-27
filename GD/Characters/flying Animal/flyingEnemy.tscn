@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://fef1e3niawen" path="res://Characters/Components/health_component.tscn" id="15_4flht"]
 [ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="15_c4p14"]
 [ext_resource type="Script" uid="uid://b5vnhlehxw8cl" path="res://Characters/Components/damage_component.gd" id="17_ik5d7"]
-[ext_resource type="Script" uid="uid://cl1fso8uxi7b" path="res://Characters/flying Animal/player_detection_component.gd" id="19_7imsr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
 radius = 5.0
@@ -168,7 +167,6 @@ outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_llo60")
-debug_text_enabled = true
 debug_text = NodePath("Test")
 damage_amount = 3.0
 detection_radius = 100.0
@@ -293,7 +291,7 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="rest_timer" type="Timer" parent="StateMachine/rest" unique_id=981954949]
 
-[node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy", "FSM", "player_detection")]
+[node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy", "FSM")]
 custom_maximum_size = Vector2(100, 100)
 offset_left = -20.0
 offset_top = -30.0
@@ -305,7 +303,6 @@ script = ExtResource("8_ncjnf")
 health_comp = NodePath("../Health_Component")
 enemy = NodePath("..")
 FSM = NodePath("../StateMachine")
-player_detection = NodePath("../PlayerDetectionComponent")
 
 [node name="State_Machine_Controller" type="Node" parent="." unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "enemy", "Navigationagent2d", "Navigation_component", "animation_player", "health_component", "timer")]
 script = ExtResource("6_llo60")
@@ -316,6 +313,7 @@ Navigation_component = NodePath("../Navigation_Component_enemy")
 animation_player = NodePath("../AnimationPlayer")
 health_component = NodePath("../Health_Component")
 timer = NodePath("potential_to_attack_timer")
+show_debug_code = true
 
 [node name="potential_to_attack_timer" type="Timer" parent="State_Machine_Controller" unique_id=158591092]
 
@@ -357,12 +355,6 @@ autowrap_mode = 3
 script = ExtResource("17_ik5d7")
 entity = NodePath("..")
 attackbox = NodePath("../AttackBox")
-
-[node name="PlayerDetectionComponent" type="Node2D" parent="." unique_id=157829987 node_paths=PackedStringArray("FSM", "enemy", "raycast")]
-script = ExtResource("19_7imsr")
-FSM = NodePath("../StateMachine")
-enemy = NodePath("..")
-raycast = NodePath("../player_detection")
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]

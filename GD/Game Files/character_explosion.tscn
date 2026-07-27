@@ -39,12 +39,10 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="Character_Explosion" type="Node2D" unique_id=1468275300]
-script = ExtResource("1_u8tky")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=678207351]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=678207351]
 sprite_frames = SubResource("SpriteFrames_6pmnr")
 animation = &"dead"
 autoplay = "dead"
+script = ExtResource("1_u8tky")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

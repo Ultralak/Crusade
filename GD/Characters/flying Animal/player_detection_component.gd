@@ -17,6 +17,7 @@ func _ready() -> void:
 	detection_radius = enemy.detection_radius
 	max_chase_distance  = enemy.max_chase_distance
 	
+	
 	if detection_radius >= max_chase_distance:
 		printerr("Detection radius is bigger than max distance")
 
@@ -32,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 			for node in target.get_children(false) : 
 				if node is CollisionShape2D:
 					target_collision_shape = node
-					#print("Collision_shape_acquired : %s" % target_collision_shape.name)
+					print("Collision_shape_acquired : %s" % target_collision_shape.name)
 					break
 		if target :
 			if chase_begun : 

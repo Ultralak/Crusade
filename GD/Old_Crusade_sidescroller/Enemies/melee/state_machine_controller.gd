@@ -18,25 +18,27 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if !setup : 
-		if PlayerManager.player:
+		if PlayerManager.player and Navigation_component.target :
 			target = PlayerManager.player
+			node_finite_state_machine.transition_to("chase")
 			target_desired_distance = Navigationagent2d.target_desired_distance
 			setup = true
 	
 	match node_finite_state_machine.current_node_state_name:
 		"chase":
-			if !player_is_still() or !close_to_player() and !timer.is_stopped():
+			if (!player_is_still() or !close_to_player()) and !timer.is_stopped():
 				timer.stop()
 				if show_debug_code:
-					print("One or more conditions failed . Potentital attack timer stopped")
+					print("%s : One or more conditions failed . Potentital attack timer stopped" % [get_parent().name])
 
 func _on_navigation_agent_2d_target_reached() -> void:
 	timer.wait_time = potential_to_wait_time
 	timer.one_shot = true
 	if timer.is_stopped():
 		timer.start()
-	if show_debug_code:
-		print("Potential attack timer started")
+		if show_debug_code:
+			print("%s : Potential attack timer started" % [get_parent().name])
+	
 	 
 	# when player reached. start timer and if player doesn't move within a certain treshold
 	# enter into attack state.
@@ -55,7 +57,7 @@ func close_to_player() -> bool:
 
 func _on_potential_to_attack_timer_timeout() -> void:
 	if show_debug_code:
-		print("potential attack timer timed out so conditions met")
+		print("%s : potential attack timer timed out so conditions met" % [get_parent().name])
 	if node_finite_state_machine.current_node_state_name == "chase":
 		node_finite_state_machine.transition_to("prepare")
 		

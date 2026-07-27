@@ -19,4 +19,4 @@ func exit():
 	animation_player.stop()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func on_timeout() -> void:
-	FSM.transition_to("idle")
+	FSM.transition_to("chase")

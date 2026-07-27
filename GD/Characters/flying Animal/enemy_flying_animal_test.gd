@@ -3,7 +3,6 @@ extends Label
 @export var health_comp : HealthComponent
 @export var enemy : CharacterBody2D
 @export var FSM : NodeFiniteStateMachine
-@export var player_detection : PlayerDetectionComponent
 var new_state_name : String = "null"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +15,7 @@ func _process(_delta: float) -> void:
 	if is_state_changed(state_name):
 		#print("Enemy Flying Animal State : %s" % state_name)
 		new_state_name = state_name
-	text = "Health : %s, Velocity : %s, State : %s DTP : %s" % [health_comp.health,enemy.velocity,state_name,round(player_detection.distance_to_player) ]
+	text = "Health : %s, Velocity : %s, State : %s" % [health_comp.health,enemy.velocity,state_name ]
 
 func is_state_changed(s_name :String):
 	return new_state_name != s_name
