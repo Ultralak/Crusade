@@ -1,0 +1,82 @@
+{
+	"categories": [
+		{
+			"uuid": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"title": "Task",
+			"color": "569eff"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "3ba11125-433d-4083-bc6e-ade84fbe7253",
+			"title": "Todo",
+			"tasks": [
+				"050a8799-2671-4ea9-87e5-42759ba5886a",
+				"e0898a91-4c62-495f-9e9d-062627fb33a2",
+				"5387ddef-117f-4267-807e-5f40f7fbcc6f",
+				"8d71eb62-6cbd-4cb0-aa6a-081e3c7db434",
+				"bb29bd7d-fd9e-4aed-9d3f-9f4495698e83"
+			]
+		},
+		{
+			"uuid": "71d1506b-ba83-45d2-b85f-56d67c6af2ec",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "4aca4f9e-93ce-4604-82f3-b0cb5de7dced",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "050a8799-2671-4ea9-87e5-42759ba5886a",
+			"title": "check and make sure player initialized properly",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "e0898a91-4c62-495f-9e9d-062627fb33a2",
+			"title": "Add dash",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "5387ddef-117f-4267-807e-5f40f7fbcc6f",
+			"title": "Improve combat",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "8d71eb62-6cbd-4cb0-aa6a-081e3c7db434",
+			"title": "Make more rooms",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "bb29bd7d-fd9e-4aed-9d3f-9f4495698e83",
+			"title": "improve z-axis rendering",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"3ba11125-433d-4083-bc6e-ade84fbe7253"
+			],
+			[
+				"71d1506b-ba83-45d2-b85f-56d67c6af2ec"
+			],
+			[
+				"4aca4f9e-93ce-4604-82f3-b0cb5de7dced"
+			]
+		]
+	}
+}

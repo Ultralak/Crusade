@@ -1,16 +1,8 @@
-[gd_scene format=3 uid="uid://ut1jsfwgdut5"]
+[gd_scene format=4 uid="uid://d1edps7gru046"]
 
-[ext_resource type="Texture2D" uid="uid://ygdq6k8q7ocr" path="res://Art/full tilemap.png" id="1_ajl2i"]
-[ext_resource type="Script" uid="uid://cwiw076c8mbr4" path="res://Game Files/rooms.gd" id="1_dk3gb"]
-[ext_resource type="PackedScene" uid="uid://bi0o148hknwv7" path="res://Game Files/exit_door_tutorial_level.tscn" id="2_u2rqj"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_cxjdc"]
-resource_local_to_scene = true
-vertices = PackedVector2Array(396, 210.07031, 15.90625, 212.92188, 14.078125, 2.796875, 396, -4.7890625)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(4, -7, 406, -15, 406, 220, 6, 223)])
-parsed_geometry_type = 1
-source_geometry_group_name = &"NAVIGATION"
+[ext_resource type="Script" uid="uid://cpnivwaae1caj" path="res://Game Files/spawn_room.gd" id="1_o6meu"]
+[ext_resource type="Texture2D" uid="uid://ygdq6k8q7ocr" path="res://Art/full tilemap.png" id="2_my3u4"]
+[ext_resource type="PackedScene" uid="uid://bi0o148hknwv7" path="res://Game Files/exit_door_tutorial_level.tscn" id="3_m8v3q"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u2rqj"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -49,7 +41,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4152"]
-texture = ExtResource("1_ajl2i")
+texture = ExtResource("2_my3u4")
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -8, 6, -8, 6, 6, -6, 6)
@@ -158,7 +150,7 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_b4152")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t6ie4"]
-texture = ExtResource("1_ajl2i")
+texture = ExtResource("2_my3u4")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -217,35 +209,45 @@ texture = ExtResource("1_ajl2i")
 [sub_resource type="TileSet" id="TileSet_6oopx"]
 sources/0 = SubResource("TileSetAtlasSource_t6ie4")
 
-[node name="Rooms" type="Node2D" unique_id=277495275]
-script = ExtResource("1_dk3gb")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isbpb"]
+size = Vector2(56, 26.5)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1505995234]
-navigation_polygon = SubResource("NavigationPolygon_cxjdc")
+[node name="Spawn Room" type="Node2D" unique_id=277495275]
+script = ExtResource("1_o6meu")
 
-[node name="Ground" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1992311770]
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1992311770]
+tile_map_data = PackedByteArray("AAADAAAAAAADAAEAAAADAAEAAAADAAEAAAADAAIAAAADAAEAAAADAAMAAAADAAEAAAADAAQAAAADAAEAAAADAAUAAAAEAAIAAAAEAAAAAAADAAEAAAAEAAEAAAADAAEAAAAEAAIAAAADAAEAAAAEAAMAAAADAAEAAAAEAAQAAAADAAEAAAAEAAUAAAAFAAIAAAAFAAAAAAADAAEAAAAFAAEAAAADAAEAAAAFAAIAAAACAAIAAAAFAAMAAAADAAEAAAAFAAQAAAAEAAIAAAAFAAUAAAAFAAIAAAAFAAYAAAAFAAIAAAAFAAcAAAADAAMAAAAGAAAAAAADAAEAAAAGAAEAAAADAAEAAAAGAAIAAAADAAEAAAAGAAMAAAADAAEAAAAGAAQAAAADAAEAAAAGAAUAAAADAAEAAAAGAAYAAAADAAMAAAAGAAcAAAADAAEAAAAHAAAAAAADAAEAAAAHAAEAAAADAAEAAAAHAAIAAAADAAEAAAAHAAMAAAADAAEAAAAHAAQAAAADAAEAAAAHAAUAAAADAAEAAAAHAAYAAAADAAEAAAAHAAcAAAADAAEAAAAIAAAAAAADAAEAAAAIAAEAAAADAAEAAAAIAAIAAAADAAEAAAAIAAMAAAACAAIAAAAIAAQAAAADAAEAAAAIAAUAAAADAAEAAAAIAAYAAAADAAEAAAAIAAcAAAADAAEAAAAJAAAAAAADAAEAAAAJAAEAAAACAAEAAAAJAAIAAAADAAEAAAAJAAMAAAADAAEAAAAJAAQAAAADAAEAAAAJAAUAAAADAAEAAAAJAAYAAAADAAEAAAAJAAcAAAACAAEAAAAKAAAAAAADAAEAAAAKAAEAAAADAAEAAAAKAAIAAAADAAEAAAAKAAMAAAACAAEAAAAKAAQAAAADAAEAAAAKAAUAAAADAAEAAAAKAAYAAAADAAEAAAAKAAcAAAADAAEAAAALAAAAAAADAAEAAAALAAEAAAADAAEAAAALAAIAAAADAAEAAAALAAMAAAADAAEAAAALAAQAAAADAAEAAAALAAUAAAACAAIAAAALAAYAAAADAAEAAAALAAcAAAADAAEAAAAMAAAAAAADAAEAAAAMAAEAAAADAAEAAAAMAAIAAAADAAEAAAAMAAMAAAADAAEAAAAMAAQAAAADAAEAAAAMAAUAAAADAAEAAAAMAAYAAAADAAEAAAAMAAcAAAADAAEAAAANAAAAAAADAAEAAAANAAEAAAACAAIAAAANAAIAAAADAAEAAAANAAMAAAACAAEAAAAOAAAAAAADAAEAAAAOAAEAAAADAAEAAAAOAAIAAAADAAEAAAAOAAMAAAADAAEAAAAPAAAAAAADAAEAAAAPAAEAAAADAAEAAAAPAAIAAAADAAEAAAAPAAMAAAADAAEAAAAQAAAAAAADAAEAAAAQAAEAAAADAAEAAAAQAAIAAAACAAIAAAAQAAMAAAADAAEAAAARAAAAAAADAAEAAAARAAEAAAADAAEAAAARAAIAAAADAAEAAAARAAMAAAADAAEAAAADAAYAAAAFAAMAAAAEAAYAAAAFAAMAAAADAAcAAAAFAAMAAAAEAAcAAAAFAAMAAAA=")
 tile_set = SubResource("TileSet_qa2gp")
 
-[node name="floor objects" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1130803577]
+[node name="floor objects" type="TileMapLayer" parent="." unique_id=1130803577]
+tile_map_data = PackedByteArray("AAADAAYAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAEAAYAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_6oopx")
 
-[node name="wall" type="TileMapLayer" parent="NavigationRegion2D" unique_id=829569184]
+[node name="wall" type="TileMapLayer" parent="." unique_id=829569184]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAADAP//AAAGAAQAAAAEAP//AAAGAAUAAAAFAP//AAAIAAUAAAAGAP//AAAGAAQAAAAHAP//AAAGAAQAAAADAP7/AAACAAcAAAAEAP7/AAACAAcAAAAFAP7/AAACAAcAAAAGAP7/AAACAAcAAAAHAP7/AAACAAcAAAACAP//AAAEAAUAAAACAAAAAAAEAAUAAAACAAEAAAAEAAUAAAACAAIAAAAEAAUAAAACAAMAAAAEAAUAAAACAAQAAAAEAAUAAAACAAUAAAAEAAUAAAACAAYAAAAEAAUAAAACAAcAAAAEAAYAAAACAP7/AAAEAAQAAAADAAcAAAACAAYAAAAEAAcAAAACAAYAAAAFAAcAAAACAAYAAAAGAAcAAAACAAYAAAAHAAcAAAACAAYAAAAIAP7/AAACAAcAAAAIAAcAAAACAAYAAAAJAP7/AAACAAcAAAAJAAcAAAACAAYAAAAKAP7/AAACAAcAAAAKAAcAAAACAAYAAAALAP7/AAACAAcAAAALAAcAAAACAAYAAAAMAP7/AAACAAcAAAAMAP//AAAGAAQAAAAMAAcAAAACAAYAAAANAP7/AAACAAcAAAANAP//AAAGAAUAAAANAAcAAAADAAYAAAAOAP7/AAACAAcAAAAOAP//AAAGAAQAAAAPAP7/AAACAAcAAAAPAP//AAAHAAUAAAAQAP7/AAACAAcAAAAQAP//AAAGAAQAAAAQAAMAAAACAAYAAAARAP7/AAACAAcAAAARAP//AAAGAAQAAAARAAMAAAACAAYAAAASAP7/AAADAAQAAAASAP//AAADAAUAAAASAAMAAAADAAYAAAANAAMAAAABAAYAAAANAAQAAAADAAUAAAANAAUAAAADAAUAAAANAAYAAAADAAUAAAAOAAMAAAACAAYAAAAPAAMAAAACAAYAAAASAAAAAAADAAUAAAASAAEAAAADAAUAAAASAAIAAAADAAUAAAAIAP//AAAHAAQAAAALAP//AAAHAAQAAAA=")
 tile_set = SubResource("TileSet_qa2gp")
 
-[node name="wall objects" type="TileMapLayer" parent="NavigationRegion2D" unique_id=21313061]
+[node name="wall objects" type="TileMapLayer" parent="." unique_id=21313061]
+tile_map_data = PackedByteArray("AAALAP//AAAEAAAAAAAIAP//AAAEAAAAAAAMAP//AAADAAAAAAAHAP//AAADAAAAAAA=")
 tile_set = SubResource("TileSet_6oopx")
+occlusion_enabled = false
 
 [node name="Doors" type="Node2D" parent="." unique_id=789333698]
 
-[node name="Door" parent="Doors" unique_id=91666086 instance=ExtResource("2_u2rqj")]
+[node name="Door" parent="Doors" unique_id=91666086 instance=ExtResource("3_m8v3q")]
+position = Vector2(160, -16)
 
-[node name="Entrance" type="Node2D" parent="." unique_id=985537253]
+[node name="player_spawn_position" type="Node2D" parent="." unique_id=1317409160]
 
-[node name="Enemy_Positions" type="Node2D" parent="." unique_id=1317409160]
+[node name="Marker2D" type="Marker2D" parent="player_spawn_position" unique_id=1965168318]
+position = Vector2(160, 88)
 
 [node name="Player_Detection" type="Area2D" parent="." unique_id=574446673]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detection" unique_id=1212212046]
+position = Vector2(160, 13.25)
+shape = SubResource("RectangleShape2D_isbpb")
 
 [connection signal="body_entered" from="Player_Detection" to="." method="_on_player_detection_body_entered"]
