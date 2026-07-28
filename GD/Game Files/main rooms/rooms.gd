@@ -9,7 +9,8 @@ const ENEMY_SCENES: Dictionary = {
 var num_enemies: int
 @onready var ground: TileMapLayer = $NavigationRegion2D/Ground
 @onready var wall: TileMapLayer = $NavigationRegion2D/wall
-@onready var objects: TileMapLayer = $NavigationRegion2D/objects
+@onready var floor_objects: TileMapLayer = $"NavigationRegion2D/floor objects"
+@onready var wall_objects: TileMapLayer = $"NavigationRegion2D/wall objects"
 @onready var doors: Node2D = $Doors
 @onready var enemy_positions: Node2D = $Enemy_Positions
 @onready var player_detection: Area2D = $Player_Detection

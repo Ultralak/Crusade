@@ -4,6 +4,7 @@ extends Node2D
 @export var player : Character
 @export var physics : Node2D
 @export var non_physics : Node2D
+@export var damage_amount : float = 10.0
 
 func _ready() -> void:
 	if !player:

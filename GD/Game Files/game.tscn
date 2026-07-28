@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://de04wiy7xnef" path="res://Game Files/New_Crusade_game.gd" id="1_1en5x"]
 [ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="3_hbr0n"]
-[ext_resource type="PackedScene" uid="uid://bprb15pjpdnib" path="res://Game Files/room_0.tscn" id="4_75vv0"]
+[ext_resource type="PackedScene" uid="uid://bprb15pjpdnib" path="res://Game Files/main rooms/room_0.tscn" id="4_75vv0"]
 [ext_resource type="PackedScene" uid="uid://cbcdvnmwxcpkn" path="res://Game Files/Player_health_bar.tscn" id="5_3nhi0"]
 
 [node name="Game" type="Node2D" unique_id=530434200]

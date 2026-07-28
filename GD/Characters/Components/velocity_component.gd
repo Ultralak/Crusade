@@ -28,13 +28,4 @@ func move(delta: float) -> void:
 			move_velocity = Vector2.ZERO
 	
 func get_input() -> void:
-	move_direction = Vector2.ZERO
-
-	if Input.is_action_pressed("move_down"):
-		move_direction = Vector2.DOWN
-	if Input.is_action_pressed("move_up"):
-		move_direction = Vector2.UP
-	if Input.is_action_pressed("move_left"):
-		move_direction = Vector2.LEFT
-	if Input.is_action_pressed("move_right"):
-		move_direction = Vector2.RIGHT
+	move_direction = Input.get_vector("move_left","move_right","move_up","move_down")

@@ -182,7 +182,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi2pm"]
 size = Vector2(32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlmju"]
+size = Vector2(31, 3)
+
 [node name="Door" type="StaticBody2D" unique_id=91666086]
+z_index = 1
 collision_mask = 6
 script = ExtResource("1_urva8")
 
@@ -194,4 +198,16 @@ sprite_frames = SubResource("SpriteFrames_of8ll")
 frame = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=63053604]
+visible = false
 shape = SubResource("RectangleShape2D_mi2pm")
+
+[node name="player_y_sort" type="Area2D" parent="." unique_id=1067444325]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_y_sort" unique_id=639024936]
+position = Vector2(0.5, 14.5)
+shape = SubResource("RectangleShape2D_jlmju")
+
+[connection signal="area_entered" from="player_y_sort" to="." method="_on_player_y_sort_area_entered"]
+[connection signal="area_exited" from="player_y_sort" to="." method="_on_player_y_sort_area_exited"]

@@ -12,27 +12,32 @@
 			"title": "Todo",
 			"tasks": [
 				"050a8799-2671-4ea9-87e5-42759ba5886a",
-				"e0898a91-4c62-495f-9e9d-062627fb33a2",
 				"5387ddef-117f-4267-807e-5f40f7fbcc6f",
-				"8d71eb62-6cbd-4cb0-aa6a-081e3c7db434",
-				"bb29bd7d-fd9e-4aed-9d3f-9f4495698e83"
+				"efe17565-9208-4ee8-8da4-9a39b75a4b0d",
+				"d98558bf-4fa7-4c69-b635-4688467a2c5f",
+				"78f530b4-3d3b-4b46-803f-c612e912c5d4"
 			]
 		},
 		{
 			"uuid": "71d1506b-ba83-45d2-b85f-56d67c6af2ec",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"8d71eb62-6cbd-4cb0-aa6a-081e3c7db434"
+			]
 		},
 		{
 			"uuid": "4aca4f9e-93ce-4604-82f3-b0cb5de7dced",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"e0898a91-4c62-495f-9e9d-062627fb33a2",
+				"bb29bd7d-fd9e-4aed-9d3f-9f4495698e83"
+			]
 		}
 	],
 	"tasks": [
 		{
 			"uuid": "050a8799-2671-4ea9-87e5-42759ba5886a",
-			"title": "check and make sure player initialized properly",
+			"title": "check and make sure player initialized properly for spawn room",
 			"description": "",
 			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
 			"steps": []
@@ -60,7 +65,28 @@
 		},
 		{
 			"uuid": "bb29bd7d-fd9e-4aed-9d3f-9f4495698e83",
-			"title": "improve z-axis rendering",
+			"title": "fix door rendering",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "efe17565-9208-4ee8-8da4-9a39b75a4b0d",
+			"title": "Dash effect",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "d98558bf-4fa7-4c69-b635-4688467a2c5f",
+			"title": "return enemy detection script",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "78f530b4-3d3b-4b46-803f-c612e912c5d4",
+			"title": "new tilemaps",
 			"description": "",
 			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
 			"steps": []
