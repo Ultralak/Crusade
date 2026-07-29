@@ -246,7 +246,10 @@ tile_set = SubResource("TileSet_6oopx")
 
 [node name="Doors" type="Node2D" parent="." unique_id=789333698]
 
-[node name="Door" parent="Doors" unique_id=91666086 instance=ExtResource("2_u2rqj")]
+[node name="Door_1" parent="Doors" unique_id=91666086 instance=ExtResource("2_u2rqj")]
+
+[node name="Door_2" parent="Doors" unique_id=350168104 instance=ExtResource("2_u2rqj")]
+position = Vector2(-20, 132)
 
 [node name="Entrance" type="Node2D" parent="." unique_id=985537253]
 

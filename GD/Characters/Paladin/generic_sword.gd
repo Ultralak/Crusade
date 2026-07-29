@@ -5,19 +5,19 @@ extends Node2D
 @export var physics : Node2D
 @export var non_physics : Node2D
 @export var damage_amount : float = 10.0
+@export var weapon_pivot : Marker2D
 
 func _ready() -> void:
 	if !player:
 		player = get_parent()
 		
 func _physics_process(_delta: float) -> void:
-	var mouse_direction : Vector2 = (get_global_mouse_position() - player.global_position).normalized()
+	var mouse_direction : Vector2 = (get_global_mouse_position() - weapon_pivot.global_position).normalized()
 	if player.can_turn:
-		non_physics.rotation = mouse_direction.angle()
-		physics.rotation = mouse_direction.angle()
+		weapon_pivot.rotation = mouse_direction.angle()
 		
-		if non_physics.scale.y  == 1 and mouse_direction.x < 0:
-			non_physics.scale.y = -1
+		if mouse_direction.x < 0:
+			non_physics.flip_sprites_v(true)
 			
-		elif non_physics.scale.y == -1 and mouse_direction.x > 0:
-			non_physics.scale.y = 1
+		elif mouse_direction.x > 0:
+			non_physics.flip_sprites_v(false)

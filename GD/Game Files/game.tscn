@@ -10,7 +10,7 @@ script = ExtResource("1_1en5x")
 
 [node name="Player" parent="." unique_id=628313327 instance=ExtResource("3_hbr0n")]
 z_index = 1
-position = Vector2(256, 258)
+position = Vector2(213, 281)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1312132268]
 layer = 2

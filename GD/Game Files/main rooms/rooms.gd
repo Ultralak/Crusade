@@ -25,7 +25,7 @@ func _open_doors()->void:
 			door.open()
 			
 			
-func _close_entrance()->void:
+func _close_entrance_DEPRACATED()->void:
 	var left_entry : Marker2D
 	var right_entry : Marker2D
 	if entrance.get_child_count() > 2:
@@ -50,6 +50,10 @@ func _close_entrance()->void:
 		if door is StaticBody2D:
 			door.close()
 
+func _close_entrance()->void:
+	for door in doors.get_children():
+		if door is StaticBody2D:
+			door.close()
 func _spawn_enemies(markers : Marker2D) -> void:
 	var spawn_explosion_instance : Node2D = SPAWN_EXPLOSION_SCENE.instantiate() as Node2D
 	spawn_explosion_instance.global_position = markers.global_position

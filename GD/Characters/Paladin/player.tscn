@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://dfx68rwy4a5i0" path="res://Characters/Components/debug_label.gd" id="12_5k0dx"]
 [ext_resource type="Script" uid="uid://62wlikeoq6ph" path="res://Characters/Paladin/dead_state_paladin.gd" id="12_qrkjl"]
 [ext_resource type="Script" uid="uid://dbpbtjxqhhbh4" path="res://Characters/Paladin/dash_state_paladin.gd" id="13_qrkjl"]
+[ext_resource type="Script" uid="uid://cl8mw7mjr5f32" path="res://Characters/Paladin/non_physics_generic_sword.gd" id="16_epe0v"]
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xys2l"]
@@ -251,6 +252,10 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxjdc"]
+radius = 4.0
+height = 12.0
+
 [sub_resource type="Animation" id="Animation_5slg2"]
 length = 0.001
 tracks/0/type = "value"
@@ -275,7 +280,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2, 2)]
+"values": [Vector2(2, -7)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -352,7 +357,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.29999998, 0.35, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(3, 2), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(2, 2)]
+"values": [Vector2(2, -7), Vector2(3, -7), Vector2(0, -9), Vector2(0, -9), Vector2(0, -9), Vector2(0, -9), Vector2(2, -7)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -409,15 +414,8 @@ _data = {
 &"attack": SubResource("Animation_q6x5r")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75smw"]
-height = 35.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxjdc"]
-radius = 4.0
-height = 12.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjdc"]
-size = Vector2(12, 33)
+[sub_resource type="CircleShape2D" id="CircleShape2D_epe0v"]
+radius = 6.0827627
 
 [node name="Player" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("debug_label") groups=["PLAYER"]]
 collision_layer = 2
@@ -439,7 +437,7 @@ target_node_parent = NodePath("..")
 
 [node name="player collision" type="CollisionShape2D" parent="." unique_id=1679767088]
 z_index = 1
-position = Vector2(0, 7)
+position = Vector2(0, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_xys2l")
 debug_color = Color(0.9348049, 0.15500244, 0.51353186, 0.41960785)
@@ -449,6 +447,7 @@ libraries/ = SubResource("AnimationLibrary_5slg2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501961513]
 material = SubResource("ShaderMaterial_ce124")
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_geawy")
 animation = &"idle"
 
@@ -474,7 +473,7 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="primary_attack" type="Node" parent="StateMachine" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
 script = ExtResource("7_5slg2")
 characterbody2d = NodePath("../..")
-weapon_animation_player = NodePath("../../sword/non-physics/sword_anim")
+weapon_animation_player = NodePath("../../weapon_pivot/sword/non-physics/sword_anim")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
@@ -519,49 +518,6 @@ script = ExtResource("12_5k0dx")
 velocity_component = NodePath("../Velocity_Component_player")
 health_component = NodePath("../Health_Component")
 
-[node name="sword" type="Node2D" parent="." unique_id=1867631151 node_paths=PackedStringArray("player", "physics", "non_physics")]
-script = ExtResource("9_mevwr")
-player = NodePath("..")
-physics = NodePath("physics")
-non_physics = NodePath("non-physics")
-
-[node name="non-physics" type="Node2D" parent="sword" unique_id=1964963813]
-
-[node name="sword_anim" type="AnimationPlayer" parent="sword/non-physics" unique_id=1671544267]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_w3rah")
-
-[node name="Sword_Sprite" type="Sprite2D" parent="sword/non-physics" unique_id=97002679]
-position = Vector2(2, 2)
-rotation = -0.7853982
-texture = ExtResource("7_p728j")
-offset = Vector2(4, -13)
-flip_h = true
-
-[node name="slash_sprite" type="Sprite2D" parent="sword/non-physics" unique_id=2105225901]
-visible = false
-position = Vector2(1, -0.5)
-scale = Vector2(1.25, 1.1875)
-texture = ExtResource("9_w3rah")
-offset = Vector2(12, 0)
-hframes = 3
-
-[node name="physics" type="Node2D" parent="sword" unique_id=1322744771]
-
-[node name="Hitbox" type="Area2D" parent="sword/physics" unique_id=1308426130 node_paths=PackedStringArray("player", "slash_hitbox", "sword")]
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("11_642pg")
-knockback_force = 300.0
-player = NodePath("../../..")
-slash_hitbox = NodePath("slash_hitbox")
-sword = NodePath("../..")
-
-[node name="slash_hitbox" type="CollisionShape2D" parent="sword/physics/Hitbox" unique_id=1430684432]
-position = Vector2(10, 0)
-shape = SubResource("CapsuleShape2D_75smw")
-disabled = true
-
 [node name="Velocity_Component_player" parent="." unique_id=590281791 node_paths=PackedStringArray("player") instance=ExtResource("10_w3rah")]
 Max_speed = 150
 player = NodePath("..")
@@ -571,6 +527,7 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox" unique_id=946931530]
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_cxjdc")
 
 [node name="State Machine Controller" type="Node" parent="." unique_id=1683635688 node_paths=PackedStringArray("FSM", "velocity_component", "player")]
@@ -579,13 +536,54 @@ FSM = NodePath("../StateMachine")
 velocity_component = NodePath("../Velocity_Component_player")
 player = NodePath("..")
 
-[node name="player Y sort" type="Area2D" parent="." unique_id=1729743052]
-collision_layer = 32
-collision_mask = 0
+[node name="weapon_pivot" type="Marker2D" parent="." unique_id=1705097112]
+position = Vector2(0, -7)
 
-[node name="collisionshape2d" type="CollisionShape2D" parent="player Y sort" unique_id=2033393715]
-position = Vector2(0, -8.5)
-shape = SubResource("RectangleShape2D_cxjdc")
+[node name="sword" type="Node2D" parent="weapon_pivot" unique_id=1867631151 node_paths=PackedStringArray("player", "physics", "non_physics", "weapon_pivot")]
+position = Vector2(0, 7)
+script = ExtResource("9_mevwr")
+player = NodePath("../..")
+physics = NodePath("physics")
+non_physics = NodePath("non-physics")
+weapon_pivot = NodePath("..")
+
+[node name="non-physics" type="Node2D" parent="weapon_pivot/sword" unique_id=1964963813]
+script = ExtResource("16_epe0v")
+
+[node name="sword_anim" type="AnimationPlayer" parent="weapon_pivot/sword/non-physics" unique_id=1671544267]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_w3rah")
+
+[node name="Sword_Sprite" type="Sprite2D" parent="weapon_pivot/sword/non-physics" unique_id=97002679]
+position = Vector2(2, -7)
+rotation = -0.7853982
+texture = ExtResource("7_p728j")
+offset = Vector2(4, -13)
+flip_h = true
+
+[node name="slash_sprite" type="Sprite2D" parent="weapon_pivot/sword/non-physics" unique_id=2105225901]
+visible = false
+position = Vector2(1, -9)
+scale = Vector2(1.25, 1.1875)
+texture = ExtResource("9_w3rah")
+offset = Vector2(12, 0)
+hframes = 3
+
+[node name="physics" type="Node2D" parent="weapon_pivot/sword" unique_id=1322744771]
+
+[node name="Hitbox" type="Area2D" parent="weapon_pivot/sword/physics" unique_id=1308426130 node_paths=PackedStringArray("player", "slash_hitbox", "sword")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("11_642pg")
+knockback_force = 300.0
+player = NodePath("../../../..")
+slash_hitbox = NodePath("slash_hitbox")
+sword = NodePath("../..")
+
+[node name="slash_hitbox" type="CollisionShape2D" parent="weapon_pivot/sword/physics/Hitbox" unique_id=1430684432]
+position = Vector2(10, -7)
+shape = SubResource("CircleShape2D_epe0v")
+disabled = true
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
-[connection signal="animation_finished" from="sword/non-physics/sword_anim" to="StateMachine/primary_attack" method="_on_sword_anim_animation_finished"]
+[connection signal="animation_finished" from="weapon_pivot/sword/non-physics/sword_anim" to="StateMachine/primary_attack" method="_on_sword_anim_animation_finished"]

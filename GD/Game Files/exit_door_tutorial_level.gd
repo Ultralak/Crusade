@@ -10,7 +10,8 @@ func open()->void:
 	animation_player.play("open")
 	
 func close() -> void:
-	animation_player.play_backwards("open")
+	animation_player.speed_scale = 0.8
+	animation_player.play("close")
 
 
 

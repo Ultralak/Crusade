@@ -28,7 +28,36 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xfmd6"]
+resource_name = "close"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45000002, 0.5, 0.55, 0.6, 0.65000004, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_ivrvr"]
@@ -63,6 +92,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xfmd6"]
 _data = {
 &"RESET": SubResource("Animation_urva8"),
+&"close": SubResource("Animation_xfmd6"),
 &"open": SubResource("Animation_ivrvr")
 }
 
@@ -175,7 +205,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vgkpt")
 }],
 "loop": 0,
-"name": &"default",
+"name": &"open",
 "speed": 10.0
 }]
 
@@ -194,19 +224,22 @@ script = ExtResource("1_urva8")
 libraries/ = SubResource("AnimationLibrary_xfmd6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2044689906]
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_of8ll")
+animation = &"open"
 frame = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=63053604]
-visible = false
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_mi2pm")
+disabled = true
 
 [node name="player_y_sort" type="Area2D" parent="." unique_id=1067444325]
 collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_y_sort" unique_id=639024936]
-position = Vector2(0.5, 14.5)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_jlmju")
 
 [connection signal="area_entered" from="player_y_sort" to="." method="_on_player_y_sort_area_entered"]
