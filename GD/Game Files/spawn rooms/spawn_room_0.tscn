@@ -17,8 +17,7 @@ tile_map_data = PackedByteArray("AAAHAAgAAAAEAAUAAAARAAIAAAACAAcAAAARAAMAAAAGAAQ
 tile_map_data = PackedByteArray("AAAGAAMAAAAEAAEAAAAHAAMAAAAHAAUAAAAMAAMAAAADAAAAAAANAAMAAAAEAAAAAAAQAAMAAAAEAAAAAAARAAMAAAADAAAAAAA=")
 
 [node name="Door" parent="Doors" parent_id_path=PackedInt32Array(789333698) index="0" unique_id=91666086]
-z_index = 1
-position = Vector2(240, 48)
+position = Vector2(240, 64)
 
 [node name="Marker2D" parent="player_spawn_position" parent_id_path=PackedInt32Array(1317409160) index="0" unique_id=1965168318]
 position = Vector2(240, 160)

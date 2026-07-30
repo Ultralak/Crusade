@@ -17,7 +17,9 @@ func _physics_process(_delta: float) -> void:
 		weapon_pivot.rotation = mouse_direction.angle()
 		
 		if mouse_direction.x < 0:
-			non_physics.flip_sprites_v(true)
+			non_physics.scale.y = -1
+			#non_physics.flip_sprites_v(true)
 			
 		elif mouse_direction.x > 0:
-			non_physics.flip_sprites_v(false)
+			#non_physics.flip_sprites_v(false)
+			non_physics.scale.y = 1

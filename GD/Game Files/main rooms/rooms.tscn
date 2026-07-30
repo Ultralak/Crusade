@@ -6,9 +6,6 @@
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cxjdc"]
 resource_local_to_scene = true
-vertices = PackedVector2Array(270, 230, 270, 199.52344, 278, 200.67188, 272, 230, 278, 234, 272, 236, 282, 236, 322, 234, 322, 238, 282, 238, 322, 10, 322, 198, 316.07813, 122.859375, 316.07813, 42.859375, 188.07813, 138.85938, 280, 134.67188, 311.0078, 139.10156, 270, 142, 194, 142, 122, 138, 142, 142, 74, 142, 74, 140, 311.0078, 59.101563, 310, 119.82031, 310, 102, 300.07813, 186.85938, 204.07813, 90.859375, 202.35938, 90, 266, 90, 296.60156, 198, 310, 39.820313, 310, 22, 310, 10, 280, 22, 294, 183.82031, 294, 166, 70, 138, 64, 140, 64, 134, 70, 102, 306, -6, 310, -6, 270, 166, 183.00781, 155.10156, 194, 238, 178, 238, 178, 262, 174, 262, 174, 238, 154, 238, 154, 236, 144, 236, 144, 230, 152, 150.67188, 142, 230, 152, 118, 62, 134, 62, 90, 138, 90, 122, 102, 138, 74, 142, 74, 168, 102.671875, 142, 42, 186, 42, 168, 70, 186, 10, 194, 10, 194, 70, 266, 74, 270, 74, 280, 102, 298, 10, 298, -6, 302, -6, 302, -22, 306, -22, 280, 54.671875, 182, 118, 199.00781, 107.10156, 182, 135.82031, 270, 10)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17, 18), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(23, 13, 12, 24, 25), PackedInt32Array(16, 12, 11, 26), PackedInt32Array(27, 28, 29), PackedInt32Array(11, 30, 26), PackedInt32Array(10, 13, 31, 32), PackedInt32Array(33, 10, 32, 34), PackedInt32Array(16, 26, 35, 36), PackedInt32Array(37, 19, 22, 38), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(41, 42, 33), PackedInt32Array(36, 43, 17, 16), PackedInt32Array(44, 14, 18, 45, 46), PackedInt32Array(46, 47, 48, 49), PackedInt32Array(49, 50, 51, 44), PackedInt32Array(51, 52, 53, 54, 44), PackedInt32Array(54, 53, 55, 20, 56), PackedInt32Array(39, 57, 58, 40), PackedInt32Array(40, 58, 59, 60), PackedInt32Array(59, 61, 62, 63, 56), PackedInt32Array(62, 64, 65, 66), PackedInt32Array(65, 67, 68, 69), PackedInt32Array(65, 69, 66), PackedInt32Array(62, 66, 63), PackedInt32Array(29, 70, 71, 72), PackedInt32Array(73, 74, 75, 33), PackedInt32Array(75, 76, 77, 41), PackedInt32Array(78, 23, 25, 72, 71), PackedInt32Array(79, 80, 29, 72, 15, 14, 81), PackedInt32Array(44, 46, 49), PackedInt32Array(56, 20, 19, 60, 59), PackedInt32Array(79, 56, 63, 80), PackedInt32Array(75, 41, 33), PackedInt32Array(73, 33, 34), PackedInt32Array(82, 73, 34), PackedInt32Array(71, 82, 34, 78), PackedInt32Array(80, 27, 29)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(47, 55, 124, 56, 126, -24, 209, -26, 210, 57, 254, 55, 255, -26, 338, -27, 341, 267, 255, 273, 252, 176, 209.81798, 172.25804, 209, 271, 129, 271, 128, 165, 46, 172)])
 parsed_geometry_type = 1
 source_geometry_group_name = &"NAVIGATION"
 
@@ -247,9 +244,6 @@ tile_set = SubResource("TileSet_6oopx")
 [node name="Doors" type="Node2D" parent="." unique_id=789333698]
 
 [node name="Door_1" parent="Doors" unique_id=91666086 instance=ExtResource("2_u2rqj")]
-
-[node name="Door_2" parent="Doors" unique_id=350168104 instance=ExtResource("2_u2rqj")]
-position = Vector2(-20, 132)
 
 [node name="Entrance" type="Node2D" parent="." unique_id=985537253]
 

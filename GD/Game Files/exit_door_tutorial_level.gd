@@ -20,7 +20,7 @@ func _on_player_y_sort_area_entered(area: Area2D) -> void:
 	if entity.is_in_group("PLAYER"):
 		player_y_sorted = true
 		prev_z_index_player = entity.z_index
-		entity.z_index = z_index + 1
+		entity.z_index = z_index - 2
 
 
 func _on_player_y_sort_area_exited(area: Area2D) -> void:

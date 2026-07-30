@@ -16,4 +16,4 @@ func _process(_delta: float) -> void:
 	var move_direction : String = " %s" % [velocity_component.move_direction]
 	var velocity = "%s" % [get_parent().velocity]
 	var health =  "%s" % [health_component.health]
-	text = state +" move: " + move_direction + " Velocity: " + velocity + "health : " + health
+	text = state +" move: " + move_direction + " Velocity: " + velocity + " health : " + health

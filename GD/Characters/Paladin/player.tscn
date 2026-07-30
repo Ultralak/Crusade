@@ -261,151 +261,128 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("non-physics/Sword_Sprite:offset")
+tracks/0/path = NodePath("non-physics/slash_sprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, -13)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("non-physics/Sword_Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, -7)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("non-physics/Sword_Sprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.7853982]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("non-physics/slash_sprite:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("non-physics/slash_sprite:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("non-physics/slash_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("physics/Hitbox/slash_hitbox:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("physics/Hitbox/slash_hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_q6x5r"]
-resource_name = "new_attack"
-length = 0.6
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("non-physics/Sword_Sprite:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.29999998, 0.35, 0.55, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(4, -13), Vector2(4, -13), Vector2(-11, -11), Vector2(-11, -11), Vector2(-11, -11), Vector2(-11, -11), Vector2(4, -13)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("non-physics/Sword_Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.29999998, 0.35, 0.55, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(2, -7), Vector2(3, -7), Vector2(0, -9), Vector2(0, -9), Vector2(0, -9), Vector2(0, -9), Vector2(2, -7)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("non-physics/Sword_Sprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.29999998, 0.34861222, 0.35, 0.5, 0.54861224, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [-0.7853982, -1.3631022, 0.7853982, 3.9269907, 4.4505897, 4.4505897, 4.4505897, 1.5707964, -0.7853982]
-}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("non-physics/slash_sprite:visible")
+tracks/3/path = NodePath("non-physics/Sword_Sprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, -11)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("non-physics/slash_sprite:frame")
+tracks/4/path = NodePath("non-physics/Sword_Sprite:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.099999994, 0.3, 0.4),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.7853982]
+}
+
+[sub_resource type="Animation" id="Animation_q6x5r"]
+resource_name = "new_attack"
+length = 0.39999999999999997
+step = 0.05
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("non-physics/slash_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("non-physics/slash_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994, 0.225, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("physics/Hitbox/slash_hitbox:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("physics/Hitbox/slash_hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("non-physics/Sword_Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.15, 0.175, 0.1875, 0.19999999, 0.21249999, 0.22499998, 0.23749998, 0.24999999, 0.3, 0.35, 0.375, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 2,
+"values": [Vector2(-6, -11), Vector2(-7, -7), Vector2(-3, -12), Vector2(7, -10), Vector2(11, -5), Vector2(12, 0), Vector2(11, 6), Vector2(7, 10), Vector2(2, 12), Vector2(-3, 11), Vector2(-3, 11), Vector2(12, 0), Vector2(8, -14), Vector2(-6, -11)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("non-physics/Sword_Sprite:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.15, 0.175, 0.1875, 0.19999999, 0.21249999, 0.22499998, 0.23749998, 0.24999999, 0.3, 0.35, 0.375, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 2,
+"values": [-0.7853982, -1.3089969, 0.488692, 1.422443, 1.889319, 2.3561947, 2.8400877, 3.3239796, 3.8078723, 4.2917647, 4.2917647, 2.3561945, 0.7853982, -0.7853982]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w3rah"]
@@ -414,10 +391,13 @@ _data = {
 &"attack": SubResource("Animation_q6x5r")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_epe0v"]
-radius = 6.0827627
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epe0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjdc"]
+size = Vector2(32, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("debug_label") groups=["PLAYER"]]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
@@ -540,7 +520,6 @@ player = NodePath("..")
 position = Vector2(0, -7)
 
 [node name="sword" type="Node2D" parent="weapon_pivot" unique_id=1867631151 node_paths=PackedStringArray("player", "physics", "non_physics", "weapon_pivot")]
-position = Vector2(0, 7)
 script = ExtResource("9_mevwr")
 player = NodePath("../..")
 physics = NodePath("physics")
@@ -555,15 +534,13 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_w3rah")
 
 [node name="Sword_Sprite" type="Sprite2D" parent="weapon_pivot/sword/non-physics" unique_id=97002679]
-position = Vector2(2, -7)
+position = Vector2(-6, -11)
 rotation = -0.7853982
 texture = ExtResource("7_p728j")
-offset = Vector2(4, -13)
 flip_h = true
 
 [node name="slash_sprite" type="Sprite2D" parent="weapon_pivot/sword/non-physics" unique_id=2105225901]
 visible = false
-position = Vector2(1, -9)
 scale = Vector2(1.25, 1.1875)
 texture = ExtResource("9_w3rah")
 offset = Vector2(12, 0)
@@ -581,9 +558,17 @@ slash_hitbox = NodePath("slash_hitbox")
 sword = NodePath("../..")
 
 [node name="slash_hitbox" type="CollisionShape2D" parent="weapon_pivot/sword/physics/Hitbox" unique_id=1430684432]
-position = Vector2(10, -7)
-shape = SubResource("CircleShape2D_epe0v")
+position = Vector2(10, -1)
+shape = SubResource("CapsuleShape2D_epe0v")
 disabled = true
+
+[node name="player_entrance_y_sorted" type="Area2D" parent="." unique_id=136711370]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_entrance_y_sorted" unique_id=1273656074]
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_cxjdc")
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="animation_finished" from="weapon_pivot/sword/non-physics/sword_anim" to="StateMachine/primary_attack" method="_on_sword_anim_animation_finished"]

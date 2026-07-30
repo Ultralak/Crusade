@@ -7,6 +7,10 @@ const ENEMY_SCENES: Dictionary = {
 }
 
 var num_enemies: int
+var prev_player_z_index : int
+var left_entry : Marker2D
+var right_entry : Marker2D
+var entrance_closed : bool = false
 @onready var ground: TileMapLayer = $NavigationRegion2D/Ground
 @onready var wall: TileMapLayer = $NavigationRegion2D/wall
 @onready var floor_objects: TileMapLayer = $"NavigationRegion2D/floor objects"
@@ -23,15 +27,19 @@ func _open_doors()->void:
 	for door in doors.get_children():
 		if door is StaticBody2D:
 			door.open()
+	if entrance_closed:
+		var coords = ground.local_to_map(left_entry.global_position)
+		wall.set_cell(coords,-1,Vector2i(7,6))
+		
+		coords = ground.local_to_map(right_entry.global_position)
+		wall.set_cell(coords,-1,Vector2i(8,6))
 			
 			
-func _close_entrance_DEPRACATED()->void:
-	var left_entry : Marker2D
-	var right_entry : Marker2D
+func _close_entrance()->void:
+	entrance_closed = true
 	if entrance.get_child_count() > 2:
 		printerr("Many entrance marker 2d is not handled")
 	assert(entrance.get_child_count() == 2)
-	
 	
 	if entrance.get_child(0).global_position.x - entrance.get_child(1).global_position.x > 0:
 		right_entry = entrance.get_child(0)
@@ -50,10 +58,13 @@ func _close_entrance_DEPRACATED()->void:
 		if door is StaticBody2D:
 			door.close()
 
-func _close_entrance()->void:
+
+func _close_entrance_DEPRACATED()->void:
 	for door in doors.get_children():
 		if door is StaticBody2D:
 			door.close()
+			
+			
 func _spawn_enemies(markers : Marker2D) -> void:
 	var spawn_explosion_instance : Node2D = SPAWN_EXPLOSION_SCENE.instantiate() as Node2D
 	spawn_explosion_instance.global_position = markers.global_position
