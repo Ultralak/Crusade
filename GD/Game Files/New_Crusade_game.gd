@@ -1,7 +1,7 @@
 extends Node2D
 
 func _init() -> void:
-	pass
+	randomize()
 	#DisplayServer.window_set_current_screen(DisplayServer.window_get_current_screen()) 
 	#get_window().move_to_center()
 	#

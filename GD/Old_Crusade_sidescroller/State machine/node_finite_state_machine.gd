@@ -15,7 +15,6 @@ func _ready():
 		if child is NodeState:
 			node_states[child.name.to_lower()] = child
 			child.transition.connect(transition_to)
-			child.force_transition.connect(force_transition_to) # might remove
 			# checks the children of the scene for any nodestates and adds to the dictionary and connects to the signals
 
 

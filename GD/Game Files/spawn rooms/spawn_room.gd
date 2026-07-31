@@ -3,16 +3,19 @@ extends Node2D
 var PLAYER : PackedScene = preload("res://Characters/Paladin/player.tscn")
 @onready var doors: Node2D = $Doors
 @onready var player_spawn_position: Node2D = $player_spawn_position
+var player : CharacterBody2D
 @onready var player_detection: Area2D = $Player_Detection
 
 
 func _ready() -> void:
-	var player_instance : CharacterBody2D = PLAYER.instantiate() as CharacterBody2D
-	player_instance.global_position = player_spawn_position.get_child(0).global_position
+	player = PlayerManager.player
+	#var player_instance : CharacterBody2D = PLAYER.instantiate() as CharacterBody2D
 	
+
 	# TODO : Check to make sure player is added to scene correctly
 	
-	get_parent().call_deferred("add_child",player_instance)
+	#get_parent().call_deferred("add_child",player_instance)
+	player.global_position = player_spawn_position.get_child(0).global_position
 	call_deferred("close_door")
 	# Spawn Logic
 func open_door()->void:

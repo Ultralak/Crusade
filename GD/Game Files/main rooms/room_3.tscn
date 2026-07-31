@@ -41,11 +41,11 @@ position = Vector2(272, 32)
 [node name="Entrance" parent="." index="2" unique_id=985537253]
 position = Vector2(53, 24)
 
-[node name="left" type="Marker2D" parent="Entrance" index="0" unique_id=2010501397]
-position = Vector2(210, 213)
+[node name="left" parent="Entrance" index="0" unique_id=371469270]
+position = Vector2(210.08261, 212.58447)
 
-[node name="right" type="Marker2D" parent="Entrance" index="1" unique_id=813232038]
-position = Vector2(227, 212)
+[node name="right" parent="Entrance" index="1" unique_id=43833516]
+position = Vector2(226.01416, 211.71548)
 
 [node name="Enemy_Positions" parent="." index="3" unique_id=1317409160]
 position = Vector2(37, 49)

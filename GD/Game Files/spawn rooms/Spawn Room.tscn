@@ -225,6 +225,10 @@ tile_set = SubResource("TileSet_6oopx")
 y_sort_enabled = true
 tile_set = SubResource("TileSet_qa2gp")
 
+[node name="roof top" type="TileMapLayer" parent="." unique_id=1351001916]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_qa2gp")
+
 [node name="wall objects" type="TileMapLayer" parent="." unique_id=21313061]
 tile_set = SubResource("TileSet_6oopx")
 occlusion_enabled = false

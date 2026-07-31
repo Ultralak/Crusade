@@ -7,6 +7,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func enter():
+	enemy.emit_is_dead()
 	var timer = Timer.new()
 	timer.one_shot = true
 	timer.wait_time = 1.0

@@ -247,6 +247,10 @@ tile_set = SubResource("TileSet_6oopx")
 
 [node name="Entrance" type="Node2D" parent="." unique_id=985537253]
 
+[node name="left" type="Marker2D" parent="Entrance" unique_id=371469270]
+
+[node name="right" type="Marker2D" parent="Entrance" unique_id=43833516]
+
 [node name="Enemy_Positions" type="Node2D" parent="." unique_id=1317409160]
 
 [node name="Player_Detection" type="Area2D" parent="." unique_id=574446673]

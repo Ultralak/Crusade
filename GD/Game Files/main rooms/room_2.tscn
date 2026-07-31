@@ -38,11 +38,11 @@ tile_map_data = PackedByteArray("AAAJAP//AAACAAAAAAALAP//AAACAAAAAAAKAP//AAAEAAA
 [node name="Door_1" parent="Doors" parent_id_path=PackedInt32Array(789333698) index="0" unique_id=91666086]
 position = Vector2(304, -16)
 
-[node name="LEFT" type="Marker2D" parent="Entrance" parent_id_path=PackedInt32Array(985537253) index="0" unique_id=704916469]
-position = Vector2(171.63715, 266.86697)
+[node name="left" parent="Entrance" parent_id_path=PackedInt32Array(985537253) index="0" unique_id=371469270]
+position = Vector2(171.33331, 265.48523)
 
-[node name="RIGHT" type="Marker2D" parent="Entrance" parent_id_path=PackedInt32Array(985537253) index="1" unique_id=914177347]
-position = Vector2(180.96729, 266.01877)
+[node name="right" parent="Entrance" parent_id_path=PackedInt32Array(985537253) index="1" unique_id=43833516]
+position = Vector2(179.74516, 265.83575)
 
 [node name="enemy 1" type="Marker2D" parent="Enemy_Positions" parent_id_path=PackedInt32Array(1317409160) index="0" unique_id=784914894]
 position = Vector2(72, 104)
