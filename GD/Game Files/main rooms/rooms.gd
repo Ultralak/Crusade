@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name INTERROOM
 const SPAWN_EXPLOSION_SCENE : PackedScene = preload("res://Game Files/character_explosion.tscn")
 enum ENEMYTYPE {FLYING, RANGE}
 const ENEMY_SCENES: Dictionary = {
@@ -21,6 +21,7 @@ var entrance_closed : bool = false
 @onready var entrance: Node2D = $Entrance
 @onready var left: Marker2D = $Entrance/left
 @onready var right: Marker2D = $Entrance/right
+@onready var door: StaticBody2D = $Doors/Door
 
 func _ready() -> void:
 	num_enemies  = enemy_positions.get_child_count()

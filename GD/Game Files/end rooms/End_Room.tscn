@@ -214,6 +214,9 @@ texture = ExtResource("2_gv66v")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_t6ie4")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fseyx"]
+radius = 16.0
+
 [node name="End Room" type="Node2D" unique_id=277495275]
 script = ExtResource("1_fseyx")
 
@@ -240,5 +243,13 @@ tile_set = SubResource("TileSet_6oopx")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detection" unique_id=1212212046]
+position = Vector2(256, 176)
+shape = SubResource("CircleShape2D_fseyx")
 
-[connection signal="body_entered" from="Player_Detection" to="." method="_on_player_detection_body_entered"]
+[node name="Entrance" type="Node2D" parent="." unique_id=1968017406]
+
+[node name="left" type="Marker2D" parent="Entrance" unique_id=2080691379]
+position = Vector2(248, 192)
+
+[node name="right" type="Marker2D" parent="Entrance" unique_id=1712722042]
+position = Vector2(264, 192)
