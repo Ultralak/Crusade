@@ -21,7 +21,6 @@ var entrance_closed : bool = false
 @onready var entrance: Node2D = $Entrance
 @onready var left: Marker2D = $Entrance/left
 @onready var right: Marker2D = $Entrance/right
-@onready var door: StaticBody2D = $Doors/Door
 
 func _ready() -> void:
 	num_enemies  = enemy_positions.get_child_count()

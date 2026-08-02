@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://cas00jww21b46"]
 
 [ext_resource type="PackedScene" uid="uid://d1edps7gru046" path="res://Game Files/spawn rooms/Spawn Room.tscn" id="1_pev3e"]
-[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="3_fim3u"]
 
 [node name="Spawn Room 2" unique_id=277495275 instance=ExtResource("1_pev3e")]
 y_sort_enabled = true
@@ -30,5 +29,8 @@ position = Vector2(232, 184)
 [node name="CollisionShape2D" parent="Player_Detection" parent_id_path=PackedInt32Array(574446673) index="0" unique_id=1212212046]
 position = Vector2(224, 96)
 
-[node name="Player" parent="." index="8" unique_id=246556358 instance=ExtResource("3_fim3u")]
-position = Vector2(289.80936, 128.6936)
+[node name="left" parent="exit" parent_id_path=PackedInt32Array(1092528117) index="0" unique_id=713584487]
+position = Vector2(216, 24)
+
+[node name="right" parent="exit" parent_id_path=PackedInt32Array(1092528117) index="1" unique_id=2063457875]
+position = Vector2(232, 24)

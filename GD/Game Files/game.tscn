@@ -6,11 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://cbcdvnmwxcpkn" path="res://Game Files/Player_health_bar.tscn" id="5_3nhi0"]
 
 [node name="Game" type="Node2D" unique_id=530434200]
+y_sort_enabled = true
 script = ExtResource("1_1en5x")
 
 [node name="Player" parent="." unique_id=628313327 instance=ExtResource("3_hbr0n")]
 z_index = 1
 position = Vector2(213, 281)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=549543690]
+physics_interpolation_mode = 1
+process_callback = 0
+position_smoothing_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1312132268]
 layer = 2
@@ -23,6 +29,3 @@ damage_bar_tween_duration = 2.0
 
 [node name="Rooms" type="Node2D" parent="." unique_id=2073198002]
 script = ExtResource("4_3nhi0")
-floor_atlas_coords = Vector2i(3, 1)
-left_wall_atlas_coords = Vector2i(4, 5)
-right_wall_atlas_coords = Vector2i(3, 5)
