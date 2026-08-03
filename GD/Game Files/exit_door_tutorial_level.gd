@@ -4,13 +4,15 @@ extends StaticBody2D
 @onready var player_y_sort: Area2D = $player_y_sort
 var player_y_sorted : bool  = false
 var prev_z_door : int
-
+var speed_scale_open : float = randf_range(1,1.7)
+var speed_scale_close : float = randf_range(0.6,0.8)
 func open()->void:
-	animation_player.speed_scale = 1.5
+	
+	animation_player.speed_scale = speed_scale_open
 	animation_player.play("open")
 	
 func close() -> void:
-	animation_player.speed_scale = 0.8
+	animation_player.speed_scale = speed_scale_close
 	animation_player.play("close")
 
 
