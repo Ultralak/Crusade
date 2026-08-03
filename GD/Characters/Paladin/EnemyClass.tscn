@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bletq75nkhack"]
+
+[ext_resource type="Script" uid="uid://b14mt1p05q3m6" path="res://Characters/Paladin/enemy_class.gd" id="1_dtmwc"]
+[ext_resource type="Script" uid="uid://na74sqiddic8" path="res://Old_Crusade_sidescroller/State machine/node_finite_state_machine.gd" id="1_tlnxy"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=719343528]
+script = ExtResource("1_dtmwc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=481227106]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1145389843]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1756139476]
+
+[node name="StateMachine" type="Node" parent="." unique_id=2000440499]
+script = ExtResource("1_tlnxy")
+metadata/_custom_type_script = "uid://na74sqiddic8"

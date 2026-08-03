@@ -7,6 +7,7 @@ class_name ENDROOM
 @onready var wall_objects: TileMapLayer = $"wall objects"
 @onready var left: Marker2D = $Entrance/left
 @onready var right: Marker2D = $Entrance/right
+@onready var center: Marker2D = $Entrance/center
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

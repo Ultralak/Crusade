@@ -138,9 +138,9 @@ texture = ExtResource("1_ajl2i")
 5:6/0 = 0
 5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
 7:6/0 = 0
-7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -4, 8, 8, -8, 8)
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.6978817, 8, -3.2374563, 8, 3.057598, -8, 8)
 8:6/0 = 0
-8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, 0, 8, 8, -8, 8)
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.877739, 8, 0.5395775, 8, 8, -8, 3.2374573)
 1:7/0 = 0
 1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -2, -8, -2, -2, 8, -2, 8, 8, -8, 8)
 2:7/0 = 0
@@ -250,6 +250,8 @@ tile_set = SubResource("TileSet_6oopx")
 [node name="left" type="Marker2D" parent="Entrance" unique_id=371469270]
 
 [node name="right" type="Marker2D" parent="Entrance" unique_id=43833516]
+
+[node name="center" type="Marker2D" parent="Entrance" unique_id=593554421]
 
 [node name="Enemy_Positions" type="Node2D" parent="." unique_id=1317409160]
 

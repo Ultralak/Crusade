@@ -4,6 +4,7 @@ var PLAYER : PackedScene = preload("res://Characters/Paladin/player.tscn")
 @onready var doors: Node2D = $Doors
 @onready var player_spawn_position: Node2D = $player_spawn_position
 @export var player : CharacterBody2D
+@onready var center: Marker2D = $exit/center
 @onready var player_detection: Area2D = $Player_Detection
 @onready var ground: TileMapLayer = $Ground
 @onready var floor_objects: TileMapLayer = $"floor objects"
@@ -14,17 +15,7 @@ var PLAYER : PackedScene = preload("res://Characters/Paladin/player.tscn")
 @onready var right: Marker2D = $exit/right
 const TILE_SIZE = 16
 
-func test(tile_num : int)->void:
-	for i in tile_num:
-		change_tile_at_position(ground,left.global_position + Vector2.UP * i * TILE_SIZE,Vector2i(3,1))
-		change_tile_at_position(ground,right.global_position + Vector2.UP * i * TILE_SIZE,Vector2i(3,1))
-	change_tile_at_position(wall, right.global_position + Vector2.UP  * TILE_SIZE + Vector2.RIGHT * TILE_SIZE ,Vector2i(1,7))
-	change_tile_at_position(wall,left.global_position + Vector2.UP * TILE_SIZE + Vector2.LEFT * TILE_SIZE,Vector2i(5,7))
-	for i in tile_num - 2:
-		change_tile_at_position(wall,left.global_position + Vector2.UP * (i + 2)* TILE_SIZE + Vector2.LEFT * TILE_SIZE,Vector2i(4,5))
-		change_tile_at_position(wall, right.global_position + Vector2.UP * (i + 2) * TILE_SIZE + Vector2.RIGHT * TILE_SIZE ,Vector2i(3,5))
 
-	
 func _ready() -> void:
 	if !player:
 		player = PlayerManager.player
@@ -41,7 +32,7 @@ func open_door()->void:
 	for door in doors.get_children():
 		if door is StaticBody2D:
 			door.open()
-	test(5)
+	
 
 func close_door()->void:
 	for door in doors.get_children():
@@ -53,7 +44,3 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("PLAYER"):
 		player_detection.queue_free()
 		open_door()
-
-func change_tile_at_position(layer : TileMapLayer, tile_position : Vector2, atlasTextureCoords : Vector2i) -> void:
-	var coordinates = layer.local_to_map(tile_position)
-	layer.set_cell(coordinates ,0,atlasTextureCoords)

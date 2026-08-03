@@ -14,14 +14,19 @@
 				"5387ddef-117f-4267-807e-5f40f7fbcc6f",
 				"efe17565-9208-4ee8-8da4-9a39b75a4b0d",
 				"d98558bf-4fa7-4c69-b635-4688467a2c5f",
-				"043c4201-49b9-4527-821f-bd9b94fbbf46"
+				"043c4201-49b9-4527-821f-bd9b94fbbf46",
+				"4aef4f9c-5ae3-4b0e-b2a3-67ce81baacac",
+				"dce727f2-da84-4db3-bfb0-4e3f7cd7f06a",
+				"429400e1-3c34-421e-8d18-2ad8f1715ee0",
+				"f2ef4d54-6ead-4f37-be2c-b6b59f3462aa",
+				"ada97201-19a4-4f74-a986-63347fb5f968"
 			]
 		},
 		{
 			"uuid": "71d1506b-ba83-45d2-b85f-56d67c6af2ec",
 			"title": "Doing",
 			"tasks": [
-				"78f530b4-3d3b-4b46-803f-c612e912c5d4"
+				"4f9709fa-dc1d-4633-9359-83e166149b29"
 			]
 		},
 		{
@@ -32,7 +37,11 @@
 				"bb29bd7d-fd9e-4aed-9d3f-9f4495698e83",
 				"8d71eb62-6cbd-4cb0-aa6a-081e3c7db434",
 				"050a8799-2671-4ea9-87e5-42759ba5886a",
-				"608e8776-df55-4e1f-b5fe-783294bd96ca"
+				"608e8776-df55-4e1f-b5fe-783294bd96ca",
+				"78f530b4-3d3b-4b46-803f-c612e912c5d4",
+				"172c8250-415b-499b-acd5-0acc13e83340",
+				"35d92e76-4f5b-4cae-991d-670941d871b4",
+				"e5937fce-ca04-48eb-9096-2b8d8366433f"
 			]
 		}
 	],
@@ -103,6 +112,69 @@
 		{
 			"uuid": "043c4201-49b9-4527-821f-bd9b94fbbf46",
 			"title": "fix player rendering for arch",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "35d92e76-4f5b-4cae-991d-670941d871b4",
+			"title": "radius of reaching player ( change ) ",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "172c8250-415b-499b-acd5-0acc13e83340",
+			"title": "finish first type procedural generation",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "4aef4f9c-5ae3-4b0e-b2a3-67ce81baacac",
+			"title": "make hallways standalone scenes",
+			"description": "also use marker based procedural generation so a exit Marker2d and a entrance Marker2d in the next iteration",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "dce727f2-da84-4db3-bfb0-4e3f7cd7f06a",
+			"title": "Get New TileSet(s)",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "e5937fce-ca04-48eb-9096-2b8d8366433f",
+			"title": "change code so they attack player from afar",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "429400e1-3c34-421e-8d18-2ad8f1715ee0",
+			"title": "fix enemy so it attacks if player is in line of sight",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "f2ef4d54-6ead-4f37-be2c-b6b59f3462aa",
+			"title": "fix enemy getting stuck",
+			"description": "recalculate path or give enemy a slight boost\n",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "4f9709fa-dc1d-4633-9359-83e166149b29",
+			"title": "new enemy",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "ada97201-19a4-4f74-a986-63347fb5f968",
+			"title": "enemy should be a generic class",
 			"description": "",
 			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
 			"steps": []

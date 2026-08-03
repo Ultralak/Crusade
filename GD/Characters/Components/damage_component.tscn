@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://iskp6mcfd2ks"]
+
+[ext_resource type="Script" uid="uid://b5vnhlehxw8cl" path="res://Characters/Components/damage_component.gd" id="1_pened"]
+
+[node name="DamageComponent" type="Node2D" unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox")]
+script = ExtResource("1_pened")
+entity = NodePath("")
+attackbox = NodePath("")

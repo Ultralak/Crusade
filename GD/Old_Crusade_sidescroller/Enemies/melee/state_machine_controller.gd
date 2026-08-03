@@ -10,13 +10,16 @@ extends Node
 @export var player_still_velocity : float = 20
 @export var potential_to_wait_time : float = 0.2
 @export var target_desired_distance : float
+@export var player_acceptable_distance : float = 250
 @export var show_debug_code : bool  = false
 var target : CharacterBody2D 
 var setup : bool = false
+var cooldown_attack_timer : float = randf_range(2,3.5)
 func _ready() -> void:
 	pass
 	
 func _process(_delta: float) -> void:
+	cooldown_attack_timer -= _delta
 	if !setup : 
 		if PlayerManager.player and Navigation_component.target :
 			target = PlayerManager.player
@@ -26,11 +29,18 @@ func _process(_delta: float) -> void:
 	
 	match node_finite_state_machine.current_node_state_name:
 		"chase":
-			if (!player_is_still() or !close_to_player()) and !timer.is_stopped():
+			if cooldown_attack_timer<= 0:
+				if player_is_still() and close_to_player(player_acceptable_distance):
+					if !timer.is_stopped():
+						timer.stop()
+					node_finite_state_machine.transition_to("prepare")
+					
+			if (!player_is_still() or !close_to_player(target_desired_distance)) and !timer.is_stopped():
 				timer.stop()
 				if show_debug_code:
 					print("%s : One or more conditions failed . Potentital attack timer stopped" % [get_parent().name])
-
+	if cooldown_attack_timer <= 0:
+		cooldown_attack_timer = randf_range(0.5,1.5)
 func _on_navigation_agent_2d_target_reached() -> void:
 	timer.wait_time = potential_to_wait_time
 	timer.one_shot = true
@@ -49,10 +59,10 @@ func player_is_still() -> bool:
 	if target:
 		return target.velocity.length() <= player_still_velocity
 	return true
-	
-func close_to_player() -> bool: 
+		
+func close_to_player(accepted_distance : float) -> bool: 
 	if target:
-		return enemy.global_position.distance_to(target.global_position) <= target_desired_distance
+		return enemy.global_position.distance_to(target.global_position) <= accepted_distance
 	return false
 
 func _on_potential_to_attack_timer_timeout() -> void:

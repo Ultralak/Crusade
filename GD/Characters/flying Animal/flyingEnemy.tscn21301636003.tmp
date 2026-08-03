@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://cdi0m6ckharg" path="res://Characters/flying Animal/rest_state_flying_animal.gd" id="12_qdnxx"]
 [ext_resource type="PackedScene" uid="uid://fef1e3niawen" path="res://Characters/Components/health_component.tscn" id="15_4flht"]
 [ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="15_c4p14"]
-[ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="19_7imsr"]
+[ext_resource type="Script" uid="uid://b5vnhlehxw8cl" path="res://Characters/Components/damage_component.gd" id="17_ik5d7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
 radius = 5.0
@@ -168,20 +168,10 @@ outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_llo60")
+debug_text = NodePath("Test")
+damage_amount = 3.0
 detection_radius = 100.0
 knockback_force = 500.0
-damage_amount = 3.0
-debug_text = NodePath("Test")
-
-[node name="Line2D" type="Line2D" parent="." unique_id=2053792831]
-top_level = true
-z_index = 7
-position = Vector2(-0.051952362, -0.03284836)
-width = 2.0
-default_color = Color(0.720869, 0.1527426, 0.83111924, 1)
-joint_mode = 2
-end_cap_mode = 2
-sharp_limit = 0.0
 
 [node name="enemy_healthbar" parent="." unique_id=1236487796 node_paths=PackedStringArray("entity", "healthComp") instance=ExtResource("2_ifb76")]
 visible = false
@@ -268,7 +258,7 @@ enemy = NodePath("../..")
 timer = NodePath("attack_timer")
 time = 0.15
 FSM = NodePath("..")
-Damage_Component = NodePath("")
+Damage_Component = NodePath("../../DamageComponent")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
 Attackbox = NodePath("../../AttackBox")
 friction = 500.0
@@ -289,11 +279,11 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="prepare_timer" type="Timer" parent="StateMachine/prepare" unique_id=130053965]
 one_shot = true
 
-[node name="chase" type="Node" parent="StateMachine" unique_id=86743397 node_paths=PackedStringArray("navigation_component", "enemy", "line", "animation_player")]
+[node name="chase" type="Node" parent="StateMachine" unique_id=86743397 node_paths=PackedStringArray("line", "navigation_component", "enemy", "animation_player")]
 script = ExtResource("11_5qtg4")
+line = NodePath("../../Line2D")
 navigation_component = NodePath("../../Navigation_Component_enemy")
 enemy = NodePath("../..")
-line = NodePath("../../Line2D")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="rest" type="Node" parent="StateMachine" unique_id=767429176 node_paths=PackedStringArray("rest_timer", "enemy", "FSM", "animation_player")]
@@ -366,7 +356,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DamageComponent" parent="." unique_id=87847977 instance=ExtResource("19_7imsr")]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=630039083 node_paths=PackedStringArray("entity", "attackbox")]
+script = ExtResource("17_ik5d7")
+entity = NodePath("..")
+attackbox = NodePath("../AttackBox")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=2053792831]
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]

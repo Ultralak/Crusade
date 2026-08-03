@@ -3,9 +3,10 @@ extends Character
 
 
 
-
+@export var DEBUGMODE : bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var max_health : float = 10
+@export var velocity_comp : VelocityComponent
 @export var debug_label : Label
 @export var dash_speed : float = 500
 @export var dashTime : float = 0.2
@@ -15,6 +16,8 @@ var can_attack  :bool = true
 var mouse_direction : Vector2
 @export var debug_enabled : bool 
 func _ready() -> void:
+	if DEBUGMODE:
+		debug_mode()
 	PlayerManager.register_player(self)
 	debug_label.visible = debug_enabled
 
@@ -30,3 +33,8 @@ func _process(_delta: float) -> void:
 	
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
+
+func debug_mode()->void:
+	velocity_comp.Max_speed = 400
+	set_collision_layer_value(2,false)
+	set_collision_mask_value(1,false)

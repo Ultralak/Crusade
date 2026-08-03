@@ -260,4 +260,6 @@ shape = SubResource("RectangleShape2D_isbpb")
 
 [node name="right" type="Marker2D" parent="exit" unique_id=2063457875]
 
+[node name="center" type="Marker2D" parent="exit" unique_id=1274171958]
+
 [connection signal="body_entered" from="Player_Detection" to="." method="_on_player_detection_body_entered"]
