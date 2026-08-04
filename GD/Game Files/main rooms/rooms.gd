@@ -4,7 +4,7 @@ const SPAWN_EXPLOSION_SCENE : PackedScene = preload("res://Game Files/character_
 enum ENEMYTYPE {FLYING, RANGE}
 const ENEMY_SCENES: Dictionary[ENEMYTYPE,PackedScene] = {
 		ENEMYTYPE.FLYING : preload("res://Characters/flying Animal/flyingEnemy.tscn")
-		
+		,ENEMYTYPE.RANGE : preload("res://Characters/goblin/goblin.tscn")
 }
 
 var num_enemies: int
@@ -67,7 +67,7 @@ func _spawn_enemies(markers : Marker2D) -> void:
 	await get_tree().create_timer(spawn_explosion_instance.animation_time + 0.3).timeout
 	
 	if is_instance_valid(markers) and is_inside_tree():
-		var enemy_instance : CharacterBody2D = ENEMY_SCENES.get(ENEMYTYPE.FLYING).instantiate() as CharacterBody2D
+		var enemy_instance : CharacterBody2D = ENEMY_SCENES.get(ENEMYTYPE.RANGE).instantiate() as CharacterBody2D
 		enemy_instance.global_position = markers.position
 		enemy_instance.enemy_killed.connect(on_enemy_killed)
 		call_deferred("add_child", enemy_instance)

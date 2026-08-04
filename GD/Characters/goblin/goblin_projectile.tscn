@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c2dxnaou5uqe3"]
+
+[ext_resource type="Script" uid="uid://n6p73ekq4hdw" path="res://Characters/goblin/goblin_projectile.gd" id="1_lxoa7"]
+[ext_resource type="Texture2D" uid="uid://emuwg2ar0r2q" path="res://Art/enemies/goblin/goblin_knife.png" id="1_qi3sm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
+size = Vector2(10, 4)
+
+[node name="goblin projectile" type="CharacterBody2D" unique_id=990992544]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_lxoa7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1549141753]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_6pmnr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=209185298]
+rotation = 0.7853982
+texture = ExtResource("1_qi3sm")
+
+[node name="disappear" type="Timer" parent="." unique_id=27475741]

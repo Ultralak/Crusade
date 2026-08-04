@@ -9,7 +9,8 @@ var damage_amount : float
 var entities_hit : Array
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	attackbox.area_entered.connect(deal_damage)
+	if attackbox:
+		attackbox.area_entered.connect(deal_damage)
 
 func deal_damage(body : Area2D):
 	if entities_hit.has(body):

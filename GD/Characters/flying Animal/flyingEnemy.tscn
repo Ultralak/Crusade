@@ -268,7 +268,7 @@ enemy = NodePath("../..")
 timer = NodePath("attack_timer")
 time = 0.15
 FSM = NodePath("..")
-Damage_Component = NodePath("")
+Damage_Component = NodePath("../../DamageComponent")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
 Attackbox = NodePath("../../AttackBox")
 friction = 500.0
@@ -366,7 +366,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DamageComponent" parent="." unique_id=87847977 instance=ExtResource("19_7imsr")]
+[node name="DamageComponent" parent="." unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox") instance=ExtResource("19_7imsr")]
+entity = NodePath("..")
+attackbox = NodePath("../AttackBox")
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]
