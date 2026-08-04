@@ -10,6 +10,8 @@ extends Character
 @export var debug_label : Label
 @export var dash_speed : float = 500
 @export var dashTime : float = 0.2
+@onready var weapon_pivot: Marker2D = $weapon_pivot
+
 var knockback_direction : Vector2 
 var can_turn : bool = true
 var can_attack  :bool = true

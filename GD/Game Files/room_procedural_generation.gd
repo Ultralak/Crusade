@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var disable_generation : bool = false
 const SPAWN_ROOMS : Array[PackedScene] =[preload("res://Game Files/spawn rooms/spawn_room_0.tscn"),
 							preload("res://Game Files/spawn rooms/spawn_room_1.tscn"),
 							preload("res://Game Files/spawn rooms/spawn_room_2.tscn")]
@@ -26,10 +27,15 @@ var previous_room_door : StaticBody2D
 # player is already handled in spawn room script
 
 func _ready() -> void:
-	_spawn_rooms()
+	if !disable_generation:
+		_spawn_rooms()
 	
 	
 func _spawn_rooms()->void:
+	for node in get_children():
+		remove_child(node)
+		
+		
 	for i in num_levels:
 		if i == 0:
 			current_room = SPAWN_ROOMS.pick_random().instantiate() as Node2D

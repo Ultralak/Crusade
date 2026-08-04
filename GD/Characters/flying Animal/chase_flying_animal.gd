@@ -10,8 +10,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func enter():
-	
-	
+
 	navigation_component.enable_navigation()
 	navigation_component.recalculate_path()
 	animation_player.play("idle")

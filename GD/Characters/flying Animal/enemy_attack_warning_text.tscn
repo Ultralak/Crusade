@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://wp1y40pmqbfq"]
+
+[ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="1_rlxpn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6pmnr"]
+font = ExtResource("1_rlxpn")
+font_color = Color(18.892157, 3.538639, 0, 1)
+outline_size = 1
+outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[node name="warning" type="Label" unique_id=1964284329]
+visible = false
+custom_maximum_size = Vector2(20, 20)
+offset_left = -9.0
+offset_top = -26.0
+offset_right = 9.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 8
+text = "!"
+label_settings = SubResource("LabelSettings_6pmnr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

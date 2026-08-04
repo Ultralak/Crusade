@@ -8,8 +8,10 @@ var dash_time : float
 var dash_direction : Vector2
 var dash_speed : float
 var timer : Timer
+@onready var player_hurtbox: Area2D = $"../../player_hurtbox"
 
 func enter():
+	player_hurtbox.set_collision_layer_value(4,false)
 	# HACK : May remove dashing when stationary
 	if velocity_component.move_direction.length() != 0:
 		dash_direction = velocity_component.move_direction
@@ -31,6 +33,7 @@ func on_timer_timeout()->void:
 	FSM.transition_to("idle")
 	
 func exit():
+	player_hurtbox.set_collision_layer_value(4,true)
 	player.velocity = Vector2.ZERO
 
 func on_physics_process(_delta : float):

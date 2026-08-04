@@ -26,7 +26,7 @@ func enter():
 		
 	else:
 		print("knockback not received")
-		
+	print("Player Knockback  : %s %s" % [knk_direction, knk_force])
 func exit():
 	velocityComp.speed_modifier = 1.0
 	is_setup = false
@@ -35,7 +35,7 @@ func exit():
 	
 	
 func on_physics_process(_delta: float) -> void:
-	player.velocity.move_toward(Vector2.ZERO, friction )
+	player.velocity = player.velocity.move_toward(Vector2.ZERO, friction * _delta)
 	player.move_and_slide()
 
 func set_knockback(direction : Vector2, force : float) -> void:

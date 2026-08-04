@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://ddjwsv10im0us" path="res://Characters/Paladin/hurt_state_paladin.gd" id="9_22qw1"]
 [ext_resource type="Script" uid="uid://dk2l3f4k3ypcw" path="res://Characters/Paladin/generic_sword.gd" id="9_mevwr"]
 [ext_resource type="Texture2D" uid="uid://c1h4dqettogue" path="res://Art/effects (new)/slash_effect_anim_spritesheet.png" id="9_w3rah"]
-[ext_resource type="PackedScene" uid="uid://b4065l518r61h" path="res://Game Files/velocity_component.tscn" id="10_w3rah"]
+[ext_resource type="PackedScene" uid="uid://b4065l518r61h" path="res://Characters/Components/velocity_component.tscn" id="10_w3rah"]
 [ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/Paladin/hitbox.gd" id="11_642pg"]
 [ext_resource type="Script" uid="uid://dfx68rwy4a5i0" path="res://Characters/Components/debug_label.gd" id="12_5k0dx"]
 [ext_resource type="Script" uid="uid://62wlikeoq6ph" path="res://Characters/Paladin/dead_state_paladin.gd" id="12_qrkjl"]
@@ -464,6 +464,7 @@ animation_player = NodePath("../../AnimationPlayer")
 script = ExtResource("9_22qw1")
 player = NodePath("../..")
 FSM = NodePath("..")
+friction = 5.0
 healthComp = NodePath("../../Health_Component")
 velocityComp = NodePath("../../Velocity_Component_player")
 hurt_timer = NodePath("hurt_timer")

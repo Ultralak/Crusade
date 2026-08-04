@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="3_hbr0n"]
 [ext_resource type="Script" uid="uid://ck7i7esh4j2xt" path="res://Game Files/room_procedural_generation.gd" id="4_3nhi0"]
 [ext_resource type="PackedScene" uid="uid://cbcdvnmwxcpkn" path="res://Game Files/Player_health_bar.tscn" id="5_3nhi0"]
+[ext_resource type="PackedScene" uid="uid://bprb15pjpdnib" path="res://Game Files/main rooms/room_0.tscn" id="5_w7bpn"]
 
 [sub_resource type="Environment" id="Environment_cxjdc"]
 background_mode = 1
@@ -39,6 +40,9 @@ damage_bar_tween_duration = 2.0
 
 [node name="Rooms" type="Node2D" parent="." unique_id=2073198002]
 script = ExtResource("4_3nhi0")
+disable_generation = true
+
+[node name="Room0" parent="Rooms" unique_id=277495275 instance=ExtResource("5_w7bpn")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1818127101]
 environment = SubResource("Environment_cxjdc")

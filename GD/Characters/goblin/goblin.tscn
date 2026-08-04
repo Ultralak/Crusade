@@ -4,15 +4,23 @@
 [ext_resource type="Script" uid="uid://c4baxvq7bqsca" path="res://Characters/goblin/goblin.gd" id="2_bdq1f"]
 [ext_resource type="Texture2D" uid="uid://d0tged3txv4a1" path="res://Art/enemies/goblin/goblin_idle_spritesheet.png" id="2_l83oc"]
 [ext_resource type="Texture2D" uid="uid://smrxo3m4aq2x" path="res://Art/enemies/goblin/goblin_run_spritesheet.png" id="3_bdq1f"]
-[ext_resource type="Shader" uid="uid://fyr6cq44cguf" path="res://Old_Crusade_sidescroller/Enemies/melee/hit_flash.tres" id="3_ma16b"]
+[ext_resource type="Script" uid="uid://p45d45oci5fm" path="res://Characters/goblin/goblin_approach.gd" id="5_u5q41"]
 [ext_resource type="Script" uid="uid://bfh8qvkfqc52m" path="res://Characters/goblin/goblin_idle.gd" id="5_y7tjj"]
 [ext_resource type="Script" uid="uid://dkjlq8ot2k776" path="res://Characters/goblin/goblin_hurt.gd" id="6_nus2b"]
+[ext_resource type="Script" uid="uid://d22yk1tc1qd16" path="res://Characters/goblin/goblin_retreat.gd" id="6_ta2kv"]
 [ext_resource type="Script" uid="uid://1kt6c6sny3hs" path="res://Characters/goblin/goblin_run.gd" id="7_nus2b"]
 [ext_resource type="PackedScene" uid="uid://c6ed8mlho26ni" path="res://Game Files/health_bar_new_crusade.tscn" id="7_othkt"]
 [ext_resource type="Script" uid="uid://u8d373rkuxxf" path="res://Characters/Components/health_component.gd" id="8_8h2ln"]
 [ext_resource type="Script" uid="uid://cy3qfgxsa5c0e" path="res://Characters/goblin/goblin_shoot.gd" id="8_othkt"]
+[ext_resource type="Script" uid="uid://dpfwoyv6rhv6g" path="res://Characters/goblin/goblin_prepare.gd" id="9_wi1pg"]
 [ext_resource type="Script" uid="uid://dwui0bo3f30si" path="res://Characters/goblin/enemy_goblin_test.gd" id="10_pc5ce"]
-[ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="11_8h2ln"]
+[ext_resource type="Script" uid="uid://byealyk8usvh3" path="res://Characters/goblin/state_machine_controller.gd" id="12_pc5ce"]
+[ext_resource type="Script" uid="uid://ebcdrjp7wvpp" path="res://Characters/goblin/goblin_melee.gd" id="12_ta2kv"]
+[ext_resource type="Script" uid="uid://bx7ipwvy8auh8" path="res://Characters/goblin/goblin_cooldown.gd" id="13_5jbbf"]
+[ext_resource type="Script" uid="uid://dvfwd8kqhdj60" path="res://Characters/goblin/goblin_dead.gd" id="14_0crro"]
+[ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/Components/reference_validator.tscn" id="14_wi1pg"]
+[ext_resource type="PackedScene" uid="uid://wp1y40pmqbfq" path="res://Characters/flying Animal/enemy_attack_warning_text.tscn" id="15_rq1gr"]
+[ext_resource type="PackedScene" uid="uid://daq8erx21u5qx" path="res://Characters/Components/navigation_component_enemy.tscn" id="20_gk6pq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l83oc"]
 radius = 2.0
@@ -43,6 +51,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
 }
 
 [sub_resource type="Animation" id="Animation_pc5ce"]
@@ -79,6 +99,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
 
 [sub_resource type="Animation" id="Animation_3t3vp"]
 resource_name = "run"
@@ -97,6 +129,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dsawu"]
 _data = {
@@ -106,9 +150,44 @@ _data = {
 &"run": SubResource("Animation_3t3vp")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7imsr"]
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_wi1pg"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_rq1gr"]
+parameter_name = "Hit_flash_on"
+default_value = true
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_e2ax8"]
+resource_local_to_scene = false
+resource_name = ""
+output_port_for_preview = -1
+default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+expanded_output_ports = []
+linked_parent_graph_frame = -1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_u5q41"]
+input_name = "color"
+
+[sub_resource type="VisualShader" id="VisualShader_ta2kv"]
 resource_local_to_scene = true
-shader = ExtResource("3_ma16b")
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(180, 60)
+nodes/fragment/0/position = Vector2(580, 260)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_wi1pg")
+nodes/fragment/2/position = Vector2(-140, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_rq1gr")
+nodes/fragment/3/position = Vector2(140, 160)
+nodes/fragment/4/node = SubResource("VisualShaderNodeIf_e2ax8")
+nodes/fragment/4/position = Vector2(400, 340)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_u5q41")
+nodes/fragment/5/position = Vector2(-160, 440)
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 3, 0, 4, 0, 2, 0, 4, 3, 5, 0, 4, 4, 5, 0, 4, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jbbf"]
+resource_local_to_scene = true
+shader = SubResource("VisualShader_ta2kv")
 shader_parameter/Hit_flash_on = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
@@ -213,13 +292,18 @@ animations = [{
 radius = 6.0
 height = 16.0
 
-[node name="enemy" unique_id=246556358 node_paths=PackedStringArray("sprite", "debug_text") instance=ExtResource("1_fg1qs")]
+[node name="Goblin" unique_id=246556358 node_paths=PackedStringArray("sprite", "debug_text") groups=["ENEMY"] instance=ExtResource("1_fg1qs")]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("2_bdq1f")
+projectile_speed = 500.0
+knockback_force = 150.0
 sprite = NodePath("AnimatedSprite2D")
-damage_amount = 4.0
+damage_amount = 0.0
 max_health = 10.0
 debug_text_enabled = false
 debug_text = NodePath("Test")
+movement_speed = 50.0
 
 [node name="muzzle" type="Marker2D" parent="." index="0" unique_id=402600856]
 position = Vector2(8, 0)
@@ -234,48 +318,92 @@ debug_color = Color(0.95425063, 2.9841065e-06, 0.55190396, 0.41960785)
 libraries/ = SubResource("AnimationLibrary_dsawu")
 
 [node name="AnimatedSprite2D" parent="." index="3" unique_id=1501961513]
-material = SubResource("ShaderMaterial_7imsr")
+material = SubResource("ShaderMaterial_5jbbf")
 sprite_frames = SubResource("SpriteFrames_75vv0")
-animation = &"run"
+animation = &"idle"
 
 [node name="StateMachine" parent="." index="4" unique_id=1129076061 node_paths=PackedStringArray("initial_node_state")]
 initial_node_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="StateMachine" index="0" unique_id=678984056 node_paths=PackedStringArray("animation_player")]
+[node name="Approach" type="Node" parent="StateMachine" index="0" unique_id=1985424604 node_paths=PackedStringArray("entity", "navigation_component", "navAgent", "animation_player")]
+script = ExtResource("5_u5q41")
+entity = NodePath("../..")
+navigation_component = NodePath("../../Navigation_Component_enemy")
+navAgent = NodePath("../../Navigation_Component_enemy/NavigationAgent2D")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="retreat" type="Node" parent="StateMachine" index="1" unique_id=878474628 node_paths=PackedStringArray("entity", "navigation_component", "navAgent", "animation_player")]
+script = ExtResource("6_ta2kv")
+entity = NodePath("../..")
+navigation_component = NodePath("../../Navigation_Component_enemy")
+navAgent = NodePath("../../Navigation_Component_enemy/NavigationAgent2D")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="idle" type="Node" parent="StateMachine" index="2" unique_id=678984056 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("5_y7tjj")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" index="1" unique_id=880902138 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "node_finite_state_machine", "timer", "animation_player")]
+[node name="hurt" type="Node" parent="StateMachine" index="3" unique_id=880902138 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "node_finite_state_machine", "Navigation_component", "timer", "animation_player")]
 script = ExtResource("6_nus2b")
 characterbody2d = NodePath("../..")
 healthcomponent = NodePath("../../HealthComponent")
 node_finite_state_machine = NodePath("..")
+Navigation_component = NodePath("../../Navigation_Component_enemy")
 timer = NodePath("hurt_timer")
 friction = 500
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="hurt_timer" type="Timer" parent="StateMachine/hurt" index="0" unique_id=1899203164]
 
-[node name="run" type="Node" parent="StateMachine" index="2" unique_id=1437192189 node_paths=PackedStringArray("animation_player")]
+[node name="run" type="Node" parent="StateMachine" index="4" unique_id=1437192189 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("7_nus2b")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="shoot" type="Node" parent="StateMachine" index="3" unique_id=390576517 node_paths=PackedStringArray("muzzle", "animation_player")]
+[node name="shoot" type="Node" parent="StateMachine" index="5" unique_id=390576517 node_paths=PackedStringArray("muzzle", "entity", "FSM", "animation_player")]
 script = ExtResource("8_othkt")
 muzzle = NodePath("../../muzzle")
+entity = NodePath("../..")
+FSM = NodePath("..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("healthcomp")]
+[node name="has_shot" type="Timer" parent="StateMachine/shoot" index="0" unique_id=1723709012]
+
+[node name="prepare" type="Node" parent="StateMachine" index="6" unique_id=1663077767 node_paths=PackedStringArray("FSM", "warning_text", "entity", "animation_player")]
+script = ExtResource("9_wi1pg")
+FSM = NodePath("..")
+warning_text = NodePath("../../warning")
+entity = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="prepare" type="Timer" parent="StateMachine/prepare" index="0" unique_id=1166936528]
+
+[node name="melee" type="Node" parent="StateMachine" index="7" unique_id=726925855 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("12_ta2kv")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="cooldown" type="Node" parent="StateMachine" index="8" unique_id=809569818 node_paths=PackedStringArray("entity", "animation_player")]
+script = ExtResource("13_5jbbf")
+entity = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="dead" type="Node" parent="StateMachine" index="9" unique_id=1645953202 node_paths=PackedStringArray("enemy", "animation_player")]
+script = ExtResource("14_0crro")
+enemy = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("healthcomp", "FSM", "enemy")]
 z_index = 20
 custom_minimum_size = Vector2(10, 10)
 custom_maximum_size = Vector2(50, 50)
 offset_left = -20.0
-offset_top = -21.0
+offset_top = -38.0
 offset_right = 20.0
-offset_bottom = -9.0
-theme_override_font_sizes/font_size = 8
+offset_bottom = -26.0
+theme_override_font_sizes/font_size = 6
 script = ExtResource("10_pc5ce")
 healthcomp = NodePath("../HealthComponent")
+FSM = NodePath("../StateMachine")
+enemy = NodePath("..")
 
 [node name="HitBox" type="Area2D" parent="." index="6" unique_id=1417739298]
 collision_layer = 16
@@ -297,9 +425,30 @@ entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
 metadata/_custom_type_script = "uid://u8d373rkuxxf"
 
-[node name="StateMachine Controller" type="Node" parent="." index="9" unique_id=812689681]
-
-[node name="DamageComponent" parent="." index="10" unique_id=87847977 node_paths=PackedStringArray("entity") instance=ExtResource("11_8h2ln")]
+[node name="StateMachine Controller" type="Node" parent="." index="9" unique_id=812689681 node_paths=PackedStringArray("entity", "FSM")]
+script = ExtResource("12_pc5ce")
 entity = NodePath("..")
+FSM = NodePath("../StateMachine")
+sweet_spot = 50.0
+deadzone = 20.0
+
+[node name="ReferenceValidator" parent="." index="10" unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("14_wi1pg")]
+target_node_parent = NodePath("..")
+
+[node name="warning" parent="." index="11" unique_id=1964284329 instance=ExtResource("15_rq1gr")]
+
+[node name="Navigation_Component_enemy" parent="." index="12" unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "enemy") instance=ExtResource("20_gk6pq")]
+navigation_agent_2d = NodePath("NavigationAgent2D")
+hurt_state = NodePath("../StateMachine/hurt")
+enemy = NodePath("..")
+avoidance = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" index="0" unique_id=604236777]
+navigation_layers = 2
+avoidance_enabled = true
+radius = 100.0
+max_speed = 1000.0
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
+[connection signal="timeout" from="StateMachine/shoot/has_shot" to="StateMachine/shoot" method="_on_has_shot_timeout"]
+[connection signal="timeout" from="StateMachine/prepare/prepare" to="StateMachine/prepare" method="_on_prepare_timeout"]

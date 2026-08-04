@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://b1q5lhjvst3iy" path="res://Characters/flying Animal/chase_flying_animal.gd" id="11_5qtg4"]
 [ext_resource type="Script" uid="uid://cdi0m6ckharg" path="res://Characters/flying Animal/rest_state_flying_animal.gd" id="12_qdnxx"]
 [ext_resource type="PackedScene" uid="uid://fef1e3niawen" path="res://Characters/Components/health_component.tscn" id="15_4flht"]
-[ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="15_c4p14"]
+[ext_resource type="PackedScene" uid="uid://wp1y40pmqbfq" path="res://Characters/flying Animal/enemy_attack_warning_text.tscn" id="18_7imsr"]
 [ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="19_7imsr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
@@ -158,13 +158,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_6pmnr"]
-font = ExtResource("15_c4p14")
-font_color = Color(18.892157, 3.538639, 0, 1)
-outline_size = 1
-outline_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
-
-[node name="Enemy" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("debug_text") groups=["ENEMY"]]
+[node name="FlyingEnemy" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("debug_text") groups=["ENEMY"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_llo60")
@@ -333,7 +327,6 @@ show_debug_code = true
 [node name="potential_to_attack_timer" type="Timer" parent="State_Machine_Controller" unique_id=158591092]
 
 [node name="Navigation_Component_enemy" parent="." unique_id=1570720178 node_paths=PackedStringArray("navigation_agent_2d", "hurt_state", "enemy") instance=ExtResource("7_ca803")]
-movement_speed = 80
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
@@ -352,19 +345,7 @@ Hitbox_area = NodePath("../HurtBox")
 entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
 
-[node name="warning" type="Label" parent="." unique_id=1947060253]
-visible = false
-custom_maximum_size = Vector2(20, 20)
-offset_left = -9.0
-offset_top = -26.0
-offset_right = 9.0
-offset_bottom = -6.0
-theme_override_font_sizes/font_size = 8
-text = "!"
-label_settings = SubResource("LabelSettings_6pmnr")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+[node name="warning" parent="." unique_id=1964284329 instance=ExtResource("18_7imsr")]
 
 [node name="DamageComponent" parent="." unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox") instance=ExtResource("19_7imsr")]
 entity = NodePath("..")

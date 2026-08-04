@@ -5,7 +5,7 @@ signal enemy_killed(body : CharacterBody2D)
 @export var max_health : float  = 10.0
 @export var debug_text_enabled : bool
 @export var debug_text : Label
-
+@export var movement_speed : float = 25
 func _ready() -> void:
 	debug_text.visible = debug_text_enabled
 

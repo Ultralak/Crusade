@@ -3,10 +3,10 @@ extends NodeState
 @export var characterbody2d : CharacterBody2D
 @export var healthcomponent : HealthComponent
 @export var node_finite_state_machine : NodeFiniteStateMachine
-@export var Navigation_component : Node2D
+@export var Navigation_component : NavigationComponent
 @export var timer : Timer
 @export var time : float = 1.000
-
+var is_dead : bool = false
 @export var friction = 50
 var knk_direction : Vector2
 var knk_force : float
@@ -29,7 +29,8 @@ func on_physics_process(delta : float):
 	characterbody2d.move_and_slide()
 	
 func exit():
-	pass
+	if is_dead:
+		Navigation_component.disable_navigation()
 
 func set_knockback(direction : Vector2, force : float):
 	knk_direction = direction
@@ -42,7 +43,8 @@ func _on_hurt_timer_timeout() -> void:
 	print("hurt state : is_setup = false")
 	node_finite_state_machine.transition_to("idle")
 	
-	#if healthcomponent.health <= 0:
-		#node_finite_state_machine.transition_to("dead")
-	#else:
-		#node_finite_state_machine.transition_to("chase")
+	if healthcomponent.health <= 0:
+		is_dead = true
+		node_finite_state_machine.transition_to("dead")
+	else:
+		node_finite_state_machine.transition_to("idle")

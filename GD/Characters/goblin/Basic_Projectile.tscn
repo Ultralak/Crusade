@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c2dxnaou5uqe3"]
+
+[ext_resource type="Script" uid="uid://n6p73ekq4hdw" path="res://Characters/goblin/Basic Projectile.gd" id="1_4a1ic"]
+
+[node name="Projectile" type="CharacterBody2D" unique_id=990992544]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_4a1ic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1549141753]
+position = Vector2(-0.1484375, -0.0859375)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=209185298]
+
+[node name="disappear" type="Timer" parent="." unique_id=27475741]
+
+[node name="AttackBox" type="Area2D" parent="." unique_id=646875869]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=1925796586]
