@@ -14,8 +14,7 @@ func _ready() -> void:
 	enemy.velocity = Vector2.ZERO
 
 func enter():
-	var direction_to_player : Vector2 = enemy.global_position.direction_to(player.weapon_pivot.global_position ) 
-	enemy.direction_to_player = direction_to_player
+	
 	can_attack = true
 	timer.one_shot = true
 	timer.wait_time = time

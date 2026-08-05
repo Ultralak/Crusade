@@ -12,8 +12,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	distance_to_player = enemy.global_position.distance_to(player.global_position)
-	var state : String = " State : %s" % [FSM.current_node_state_name]
-	var health : String = "Health : %s" % [healthcomp.health]
-	var dts : String  = " DTS : %s" % [round(distance_to_player)]
-	text = health + state + dts
+	if player:
+		distance_to_player = enemy.global_position.distance_to(player.global_position)
+		var state : String = " State : %s" % [FSM.current_node_state_name]
+		var health : String = "Health : %s" % [healthcomp.health]
+		var dts : String  = " DTS : %s" % [round(distance_to_player)]
+		text = health + state + dts

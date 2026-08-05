@@ -150,44 +150,39 @@ _data = {
 &"run": SubResource("Animation_3t3vp")
 }
 
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_wi1pg"]
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_0crro"]
 parameter_name = "ColorParameter"
 default_value_enabled = true
 
-[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_rq1gr"]
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_4pllu"]
 parameter_name = "Hit_flash_on"
 default_value = true
 
-[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_e2ax8"]
-resource_local_to_scene = false
-resource_name = ""
-output_port_for_preview = -1
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_2fpsw"]
 default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
-expanded_output_ports = []
-linked_parent_graph_frame = -1
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_u5q41"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_knyi4"]
 input_name = "color"
 
-[sub_resource type="VisualShader" id="VisualShader_ta2kv"]
+[sub_resource type="VisualShader" id="VisualShader_6pgba"]
 resource_local_to_scene = true
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(180, 60)
 nodes/fragment/0/position = Vector2(580, 260)
-nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_wi1pg")
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_0crro")
 nodes/fragment/2/position = Vector2(-140, 240)
-nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_rq1gr")
+nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_4pllu")
 nodes/fragment/3/position = Vector2(140, 160)
-nodes/fragment/4/node = SubResource("VisualShaderNodeIf_e2ax8")
+nodes/fragment/4/node = SubResource("VisualShaderNodeIf_2fpsw")
 nodes/fragment/4/position = Vector2(400, 340)
-nodes/fragment/5/node = SubResource("VisualShaderNodeInput_u5q41")
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_knyi4")
 nodes/fragment/5/position = Vector2(-160, 440)
 nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 3, 0, 4, 0, 2, 0, 4, 3, 5, 0, 4, 4, 5, 0, 4, 5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jbbf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1skbl"]
 resource_local_to_scene = true
-shader = SubResource("VisualShader_ta2kv")
+shader = SubResource("VisualShader_6pgba")
 shader_parameter/Hit_flash_on = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
@@ -299,7 +294,7 @@ script = ExtResource("2_bdq1f")
 projectile_speed = 500.0
 knockback_force = 150.0
 sprite = NodePath("AnimatedSprite2D")
-damage_amount = 0.0
+damage_amount = 1.0
 max_health = 10.0
 debug_text_enabled = false
 debug_text = NodePath("Test")
@@ -318,7 +313,7 @@ debug_color = Color(0.95425063, 2.9841065e-06, 0.55190396, 0.41960785)
 libraries/ = SubResource("AnimationLibrary_dsawu")
 
 [node name="AnimatedSprite2D" parent="." index="3" unique_id=1501961513]
-material = SubResource("ShaderMaterial_5jbbf")
+material = SubResource("ShaderMaterial_1skbl")
 sprite_frames = SubResource("SpriteFrames_75vv0")
 animation = &"idle"
 
@@ -441,12 +436,11 @@ target_node_parent = NodePath("..")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
-avoidance = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" index="0" unique_id=604236777]
 navigation_layers = 2
 avoidance_enabled = true
-radius = 100.0
+radius = 117.24
 max_speed = 1000.0
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]

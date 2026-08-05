@@ -6,7 +6,7 @@ extends NodeState
 @export var Navigation_component : Node2D
 @export var timer : Timer
 @export var time : float = 1.0
-
+@export var dust_particles : CPUParticles2D
 var is_setup : bool = false
 
 # is_setup is a boolean that is sent to the navigation node so i can turn of navigation
@@ -26,6 +26,7 @@ func on_physics_process(delta: float) -> void:
 	characterbody2d.move_and_slide()
 	
 func enter():
+	dust_particles.rotation = knk_direction.angle_to(Vector2.ZERO)
 	timer.one_shot = true
 	timer.wait_time = time
 	timer.start()

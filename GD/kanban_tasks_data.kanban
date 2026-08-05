@@ -17,8 +17,9 @@
 				"4aef4f9c-5ae3-4b0e-b2a3-67ce81baacac",
 				"429400e1-3c34-421e-8d18-2ad8f1715ee0",
 				"f2ef4d54-6ead-4f37-be2c-b6b59f3462aa",
-				"36c1dcbd-cc09-4515-934d-9707f16bef79",
-				"4f6caef5-f0ae-40d3-9059-35e5d81a43b1"
+				"4f6caef5-f0ae-40d3-9059-35e5d81a43b1",
+				"7f84e7d5-22c4-46e6-8dec-a4868d5c9647",
+				"e61255ac-3899-48a8-ba26-bdef98e5bd56"
 			]
 		},
 		{
@@ -42,6 +43,7 @@
 				"e5937fce-ca04-48eb-9096-2b8d8366433f",
 				"dce727f2-da84-4db3-bfb0-4e3f7cd7f06a",
 				"ada97201-19a4-4f74-a986-63347fb5f968",
+				"36c1dcbd-cc09-4515-934d-9707f16bef79",
 				"043c4201-49b9-4527-821f-bd9b94fbbf46"
 			]
 		}
@@ -190,6 +192,20 @@
 		{
 			"uuid": "4f6caef5-f0ae-40d3-9059-35e5d81a43b1",
 			"title": "Retexture Everything!!!!!!!!!!!!!!!!!!",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "7f84e7d5-22c4-46e6-8dec-a4868d5c9647",
+			"title": "add player knockback when attacking",
+			"description": "",
+			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
+			"steps": []
+		},
+		{
+			"uuid": "e61255ac-3899-48a8-ba26-bdef98e5bd56",
+			"title": "maybe enemy knockback",
 			"description": "",
 			"category": "869676ba-5235-4dfe-94ea-d5bedd3794fa",
 			"steps": []

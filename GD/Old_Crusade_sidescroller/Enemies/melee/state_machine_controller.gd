@@ -10,7 +10,7 @@ extends Node
 @export var player_still_velocity : float = 20
 @export var potential_to_wait_time : float = 0.2
 @export var target_desired_distance : float
-@export var player_acceptable_distance : float = 250
+@export var player_acceptable_distance : float = 100
 @export var show_debug_code : bool  = false
 var target : CharacterBody2D 
 var setup : bool = false

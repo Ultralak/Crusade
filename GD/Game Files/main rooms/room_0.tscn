@@ -135,6 +135,12 @@ position = Vector2(256, 216)
 [node name="Marker2D" type="Marker2D" parent="Enemy_Positions" parent_id_path=PackedInt32Array(1317409160) index="0" unique_id=1643000396]
 position = Vector2(304, 80)
 
+[node name="Marker2D2" type="Marker2D" parent="Enemy_Positions" parent_id_path=PackedInt32Array(1317409160) index="1" unique_id=1253390712]
+position = Vector2(80.355225, 104.105255)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemy_Positions" parent_id_path=PackedInt32Array(1317409160) index="2" unique_id=1076064339]
+position = Vector2(323.07898, 136.94737)
+
 [node name="CollisionShape2D" parent="Player_Detection" parent_id_path=PackedInt32Array(574446673) index="0" unique_id=1212212046]
 position = Vector2(256, 200)
 shape = SubResource("RectangleShape2D_6pmnr")

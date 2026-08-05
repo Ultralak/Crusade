@@ -67,7 +67,8 @@ func _spawn_enemies(markers : Marker2D) -> void:
 	await get_tree().create_timer(spawn_explosion_instance.animation_time + 0.3).timeout
 	
 	if is_instance_valid(markers) and is_inside_tree():
-		var enemy_instance : CharacterBody2D = ENEMY_SCENES.get(ENEMYTYPE.RANGE).instantiate() as CharacterBody2D
+		var choice : ENEMYTYPE = ENEMY_SCENES.keys().pick_random()
+		var enemy_instance : CharacterBody2D = ENEMY_SCENES.get(choice).instantiate() as CharacterBody2D
 		enemy_instance.global_position = markers.position
 		enemy_instance.enemy_killed.connect(on_enemy_killed)
 		call_deferred("add_child", enemy_instance)

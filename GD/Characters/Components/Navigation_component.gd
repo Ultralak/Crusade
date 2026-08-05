@@ -20,6 +20,7 @@ var target : Node2D = null
 
 func _ready() -> void:
 	
+	navigation_agent_2d.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
 	navigation_agent_2d.avoidance_enabled = avoidance
 	navigation_agent_2d.radius = avoidance_radius
 	navigation_agent_2d.debug_enabled = debug
