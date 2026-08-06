@@ -1,5 +1,6 @@
 extends NodeState
 
+
 @export_category("Primary Attack Paladin State")
 @export var characterbody2d : CharacterBody2D
 @export var weapon_animation_player : AnimationPlayer

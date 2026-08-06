@@ -17,7 +17,6 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if player:
-		direction_to_player = global_position.direction_to(player.weapon_pivot.global_position)
 		if direction_to_player.x >= 0:
 			sprite.flip_h = false
 		if direction_to_player.x < 0:

@@ -11,6 +11,8 @@ var knk_direction : Vector2
 var  knk_force : float
 var is_setup  : bool = false
 @export var hurt_timer : Timer
+
+
 func enter():
 	velocityComp.speed_modifier = 0.01
 	if healthComp.health < 0:

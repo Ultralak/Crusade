@@ -6,6 +6,8 @@ extends NodeState
 @export var Navigation_component : NavigationComponent
 @export var timer : Timer
 @export var time : float = 1.000
+@export var damage_particles : CPUParticles2D
+
 var is_dead : bool = false
 @export var friction = 50
 var knk_direction : Vector2
@@ -14,12 +16,18 @@ var knk_force : float
 var is_setup : bool = false
 
 func enter():
+	
+	damage_particles.rotation = knk_direction.angle_to(Vector2.ZERO)
 	timer.one_shot = true
 	timer.wait_time = time
 	timer.start()
 	
 	characterbody2d.velocity = knk_direction * knk_force
 	animation_player.play("hit")
+	if healthcomponent.health <= 0:
+		is_dead = true
+		node_finite_state_machine.transition_to("dead")
+
 
 func on_process(_delta : float):
 	pass
@@ -43,8 +51,4 @@ func _on_hurt_timer_timeout() -> void:
 	print("hurt state : is_setup = false")
 	node_finite_state_machine.transition_to("idle")
 	
-	if healthcomponent.health <= 0:
-		is_dead = true
-		node_finite_state_machine.transition_to("dead")
-	else:
-		node_finite_state_machine.transition_to("idle")
+	

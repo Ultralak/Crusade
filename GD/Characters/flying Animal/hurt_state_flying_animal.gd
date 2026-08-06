@@ -33,6 +33,9 @@ func enter():
 	
 	characterbody2d.velocity = knk_direction * knk_force
 	animation_player.play("hit")
+	if healthcomponent.health <= 0:
+		node_finite_state_machine.transition_to("dead")
+
 
 func exit():
 	Navigation_component.enable_navigation()
@@ -48,7 +51,5 @@ func set_knockback(direction : Vector2, force : float):
 func _on_hurt_timer_timeout() -> void:
 	is_setup = false
 	print("hurt state : is_setup = false")
-	if healthcomponent.health <= 0:
-		node_finite_state_machine.transition_to("dead")
-	else:
-		node_finite_state_machine.transition_to("chase")
+	node_finite_state_machine.transition_to("chase")
+	

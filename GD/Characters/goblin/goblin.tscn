@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/Components/reference_validator.tscn" id="14_wi1pg"]
 [ext_resource type="PackedScene" uid="uid://wp1y40pmqbfq" path="res://Characters/flying Animal/enemy_attack_warning_text.tscn" id="15_rq1gr"]
 [ext_resource type="PackedScene" uid="uid://daq8erx21u5qx" path="res://Characters/Components/navigation_component_enemy.tscn" id="20_gk6pq"]
+[ext_resource type="PackedScene" uid="uid://ck8yldn2rr1na" path="res://Characters/flying Animal/enemy_hit_splash.tscn" id="22_4pllu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l83oc"]
 radius = 2.0
@@ -64,6 +65,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [&"idle"]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_pc5ce"]
 resource_name = "hit"
@@ -76,10 +89,22 @@ tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Hit_flash_o
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"times": PackedFloat32Array(0, 0.099999994, 0.25, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.049999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_dknwi"]
@@ -150,39 +175,39 @@ _data = {
 &"run": SubResource("Animation_3t3vp")
 }
 
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_0crro"]
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_4pllu"]
 parameter_name = "ColorParameter"
 default_value_enabled = true
 
-[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_4pllu"]
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_2fpsw"]
 parameter_name = "Hit_flash_on"
 default_value = true
 
-[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_2fpsw"]
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_knyi4"]
 default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_knyi4"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6pgba"]
 input_name = "color"
 
-[sub_resource type="VisualShader" id="VisualShader_6pgba"]
+[sub_resource type="VisualShader" id="VisualShader_1skbl"]
 resource_local_to_scene = true
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(180, 60)
 nodes/fragment/0/position = Vector2(580, 260)
-nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_0crro")
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_4pllu")
 nodes/fragment/2/position = Vector2(-140, 240)
-nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_4pllu")
+nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_2fpsw")
 nodes/fragment/3/position = Vector2(140, 160)
-nodes/fragment/4/node = SubResource("VisualShaderNodeIf_2fpsw")
+nodes/fragment/4/node = SubResource("VisualShaderNodeIf_knyi4")
 nodes/fragment/4/position = Vector2(400, 340)
-nodes/fragment/5/node = SubResource("VisualShaderNodeInput_knyi4")
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_6pgba")
 nodes/fragment/5/position = Vector2(-160, 440)
 nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 3, 0, 4, 0, 2, 0, 4, 3, 5, 0, 4, 4, 5, 0, 4, 5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1skbl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6oarf"]
 resource_local_to_scene = true
-shader = SubResource("VisualShader_6pgba")
+shader = SubResource("VisualShader_1skbl")
 shader_parameter/Hit_flash_on = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
@@ -313,7 +338,7 @@ debug_color = Color(0.95425063, 2.9841065e-06, 0.55190396, 0.41960785)
 libraries/ = SubResource("AnimationLibrary_dsawu")
 
 [node name="AnimatedSprite2D" parent="." index="3" unique_id=1501961513]
-material = SubResource("ShaderMaterial_1skbl")
+material = SubResource("ShaderMaterial_6oarf")
 sprite_frames = SubResource("SpriteFrames_75vv0")
 animation = &"idle"
 
@@ -338,13 +363,14 @@ animation_player = NodePath("../../AnimationPlayer")
 script = ExtResource("5_y7tjj")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="hurt" type="Node" parent="StateMachine" index="3" unique_id=880902138 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "node_finite_state_machine", "Navigation_component", "timer", "animation_player")]
+[node name="hurt" type="Node" parent="StateMachine" index="3" unique_id=880902138 node_paths=PackedStringArray("characterbody2d", "healthcomponent", "node_finite_state_machine", "Navigation_component", "timer", "damage_particles", "animation_player")]
 script = ExtResource("6_nus2b")
 characterbody2d = NodePath("../..")
 healthcomponent = NodePath("../../HealthComponent")
 node_finite_state_machine = NodePath("..")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
 timer = NodePath("hurt_timer")
+damage_particles = NodePath("../../CPUParticles2D")
 friction = 500
 animation_player = NodePath("../../AnimationPlayer")
 
@@ -442,6 +468,8 @@ navigation_layers = 2
 avoidance_enabled = true
 radius = 117.24
 max_speed = 1000.0
+
+[node name="CPUParticles2D" parent="." index="13" unique_id=1548876848 instance=ExtResource("22_4pllu")]
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/shoot/has_shot" to="StateMachine/shoot" method="_on_has_shot_timeout"]

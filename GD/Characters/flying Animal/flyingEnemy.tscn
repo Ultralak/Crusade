@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://fef1e3niawen" path="res://Characters/Components/health_component.tscn" id="15_4flht"]
 [ext_resource type="PackedScene" uid="uid://wp1y40pmqbfq" path="res://Characters/flying Animal/enemy_attack_warning_text.tscn" id="18_7imsr"]
 [ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="19_7imsr"]
-[ext_resource type="Script" uid="uid://bvpykg2kir5qg" path="res://Characters/flying Animal/Enemy_Hit_dust_effect.gd" id="20_ifb76"]
+[ext_resource type="PackedScene" uid="uid://ck8yldn2rr1na" path="res://Characters/flying Animal/enemy_hit_splash.tscn" id="20_ifb76"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
 radius = 5.0
@@ -188,7 +188,7 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_llo60")
 detection_radius = 100.0
-knockback_force = 500.0
+knockback_force = 300.0
 damage_amount = 3.0
 debug_text = NodePath("Test")
 
@@ -377,26 +377,7 @@ hurt_state = NodePath("../StateMachine/hurt")
 entity = NodePath("..")
 attackbox = NodePath("../AttackBox")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=722605154]
-emitting = false
-amount = 30
-lifetime = 0.3
-local_coords = true
-emission_shape = 1
-emission_sphere_radius = 0.5
-spread = 30.0
-gravity = Vector2(50, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 169.18
-linear_accel_min = 20.0
-linear_accel_max = 30.0
-radial_accel_min = -77.7
-radial_accel_max = -45.0
-damping_min = 90.0
-damping_max = 100.0
-scale_amount_min = 0.5
-scale_amount_max = 2.0
-script = ExtResource("20_ifb76")
+[node name="CPUParticles2D" parent="." unique_id=1548876848 instance=ExtResource("20_ifb76")]
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]

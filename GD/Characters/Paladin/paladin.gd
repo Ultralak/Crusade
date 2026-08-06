@@ -10,6 +10,8 @@ extends Character
 @export var debug_label : Label
 @export var dash_speed : float = 500
 @export var dashTime : float = 0.2
+@export var freeze_slow := 0.07
+@export var freeze_time := 0.3
 @onready var weapon_pivot: Marker2D = $weapon_pivot
 
 var knockback_direction : Vector2 
@@ -40,3 +42,22 @@ func debug_mode()->void:
 	velocity_comp.Max_speed = 400
 	set_collision_layer_value(2,false)
 	set_collision_mask_value(1,false)
+
+func hit_stop() ->void:
+	Engine.time_scale = freeze_slow
+	await get_tree().create_timer(freeze_time,true,false,true).timeout
+	Engine.time_scale = 1
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

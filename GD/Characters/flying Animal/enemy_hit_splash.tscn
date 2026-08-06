@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ck8yldn2rr1na"]
+
+[ext_resource type="Script" uid="uid://bvpykg2kir5qg" path="res://Characters/flying Animal/Enemy_Hit_dust_effect.gd" id="1_gy2tr"]
+[ext_resource type="Texture2D" uid="uid://buherss1pvc7i" path="res://Art/effects (new)/explosion_anim_f0.png" id="1_r6x3j"]
+
+[sub_resource type="Curve" id="Curve_ifb76"]
+_limits = [-169.7479, 200.0, 0.0, 1.0]
+_data = [Vector2(0.02572348, 85.03635), 0.0, 0.0, 0, 0, Vector2(0.98070747, 35.322342), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_epe0v"]
+_data = [Vector2(0.0096462965, 1), 0.0, 0.0, 0, 0, Vector2(0.12540193, 0.5546219), -1.5320196, -1.5320196, 0, 0, Vector2(0.99999994, 0.09243691), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CPUParticles2D" type="CPUParticles2D" unique_id=1548876848]
+emitting = false
+amount = 50
+texture = ExtResource("1_r6x3j")
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.9
+randomness = 0.5
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+spread = 25.0
+gravity = Vector2(50, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+linear_accel_min = 20.0
+linear_accel_max = 40.0
+linear_accel_curve = SubResource("Curve_ifb76")
+damping_min = 90.0
+damping_max = 100.0
+scale_amount_curve = SubResource("Curve_epe0v")
+script = ExtResource("1_gy2tr")
