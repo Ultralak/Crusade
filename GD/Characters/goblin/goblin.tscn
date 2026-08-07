@@ -438,12 +438,13 @@ position = Vector2(0, 10)
 entity = NodePath("..")
 healthComp = NodePath("../HealthComponent")
 
-[node name="HealthComponent" type="Node" parent="." index="8" unique_id=119788654 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state")]
+[node name="HealthComponent" type="Node" parent="." index="8" unique_id=119788654 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state", "damage_number_position")]
 script = ExtResource("8_8h2ln")
 FSM = NodePath("../StateMachine")
 Hitbox_area = NodePath("../HitBox")
 entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
+damage_number_position = NodePath("../DamageNumber")
 metadata/_custom_type_script = "uid://u8d373rkuxxf"
 
 [node name="StateMachine Controller" type="Node" parent="." index="9" unique_id=812689681 node_paths=PackedStringArray("entity", "FSM")]
@@ -470,6 +471,13 @@ radius = 117.24
 max_speed = 1000.0
 
 [node name="CPUParticles2D" parent="." index="13" unique_id=1548876848 instance=ExtResource("22_4pllu")]
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="14" unique_id=252905787]
+
+[node name="PlayerSight" type="Node2D" parent="." index="15" unique_id=1577757369]
+
+[node name="DamageNumber" type="Node2D" parent="." index="16" unique_id=1479610752]
+position = Vector2(0, -10)
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/shoot/has_shot" to="StateMachine/shoot" method="_on_has_shot_timeout"]

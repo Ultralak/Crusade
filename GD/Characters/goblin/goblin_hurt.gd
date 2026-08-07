@@ -8,6 +8,7 @@ extends NodeState
 @export var time : float = 1.000
 @export var damage_particles : CPUParticles2D
 
+
 var is_dead : bool = false
 @export var friction = 50
 var knk_direction : Vector2
@@ -17,7 +18,7 @@ var is_setup : bool = false
 
 func enter():
 	
-	damage_particles.rotation = knk_direction.angle_to(Vector2.ZERO)
+	damage_particles.rotation = knk_direction.angle()
 	timer.one_shot = true
 	timer.wait_time = time
 	timer.start()

@@ -365,11 +365,12 @@ avoidance_enabled = true
 radius = 69.09
 max_speed = 1000.0
 
-[node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("15_4flht")]
+[node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state", "damage_number_position") instance=ExtResource("15_4flht")]
 FSM = NodePath("../StateMachine")
 Hitbox_area = NodePath("../HurtBox")
 entity = NodePath("..")
 hurt_state = NodePath("../StateMachine/hurt")
+damage_number_position = NodePath("../DamageNumber")
 
 [node name="warning" parent="." unique_id=1964284329 instance=ExtResource("18_7imsr")]
 
@@ -378,6 +379,9 @@ entity = NodePath("..")
 attackbox = NodePath("../AttackBox")
 
 [node name="CPUParticles2D" parent="." unique_id=1548876848 instance=ExtResource("20_ifb76")]
+
+[node name="DamageNumber" type="Node2D" parent="." unique_id=778405599]
+position = Vector2(0, -8)
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]

@@ -15,6 +15,7 @@ func _ready() -> void:
 		attackbox.area_entered.connect(deal_damage)
 
 func deal_damage(body : Area2D):
+	CameraManager.add_trauma(0.2)
 	if entities_hit.has(body):
 		return
 	entities_hit.append(body)

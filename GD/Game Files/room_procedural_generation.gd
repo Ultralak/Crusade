@@ -1,14 +1,14 @@
 extends Node2D
 
 @export var disable_generation : bool = false
-const SPAWN_ROOMS : Array[PackedScene] =[preload("res://Game Files/spawn rooms/spawn_room_0.tscn"),
-							preload("res://Game Files/spawn rooms/spawn_room_1.tscn"),
-							preload("res://Game Files/spawn rooms/spawn_room_2.tscn")]
-const INTERMEDIATE_ROOMS : Array[PackedScene]  = [preload("res://Game Files/main rooms/room_0.tscn"),
-									preload("res://Game Files/main rooms/rooms_1.tscn"),
-									preload("res://Game Files/main rooms/room_2.tscn"),
-									preload("res://Game Files/main rooms/room_3.tscn")]
-const END_ROOM : Array[PackedScene]  = [preload("res://Game Files/end rooms/End_Room.tscn")]
+const SPAWN_ROOMS : Array[PackedScene] =[preload("uid://3f2xb27i75p3"),
+							preload("uid://dmncmfdussgj4"),
+							preload("uid://cas00jww21b46")]
+const INTERMEDIATE_ROOMS : Array[PackedScene]  = [preload("uid://bprb15pjpdnib"),
+									preload("uid://cjncnuqsgejvw"),
+									preload("uid://ncsebkw1qjx2"),
+									preload("uid://c02w8dvo7rdmd")]
+const END_ROOM : Array[PackedScene]  = [preload("uid://6v2r30vu5x7i")]
 const TILESIZE : int = 16
 
 
@@ -77,8 +77,8 @@ func create_bridge(tile_num : int, ground : TileMapLayer, roof_top : TileMapLaye
 		change_tile_at_position(ground,left_position + Vector2.UP * i * TILESIZE,Vector2i(3,1))
 		change_tile_at_position(ground,right_position + Vector2.UP * i * TILESIZE,Vector2i(3,1))
 	for i in tile_num  :
-		change_tile_at_position(roof_top,left_position + Vector2.UP * (i + 1)* TILESIZE + Vector2.LEFT * TILESIZE,Vector2i(4,5))
-		change_tile_at_position(roof_top, right_position + Vector2.UP * (i + 1) * TILESIZE + Vector2.RIGHT * TILESIZE ,Vector2i(3,5))
+		change_tile_at_position(roof_top,left_position + Vector2.UP * (i )* TILESIZE + Vector2.LEFT * TILESIZE,Vector2i(4,5))
+		change_tile_at_position(roof_top, right_position + Vector2.UP * (i) * TILESIZE + Vector2.RIGHT * TILESIZE ,Vector2i(3,5))
 	change_tile_at_position(roof_top, right_position + Vector2.UP  * TILESIZE + Vector2.RIGHT * TILESIZE ,Vector2i(1,7))
 	change_tile_at_position(roof_top,left_position + Vector2.UP * TILESIZE + Vector2.LEFT * TILESIZE,Vector2i(5,7))
 	

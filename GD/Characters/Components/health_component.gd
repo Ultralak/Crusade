@@ -9,7 +9,7 @@ signal health_decreased(new_health : float)
 @export var Hitbox_area : Area2D
 @export var entity : CharacterBody2D
 @export var hurt_state : NodeState
-
+@export var damage_number_position : Node2D
 
 	
 func _ready() -> void:
@@ -21,6 +21,9 @@ func _ready() -> void:
 
 	
 func take_damage(damage : float, direction : Vector2, force : float):
+	if damage_number_position:
+		DamageNumbers.display_number(damage,damage_number_position.global_position,false)
+	
 	if entity.is_in_group("PLAYER"):
 		print("Player health reduced by : %s" % damage)
 	#print("take_damage runs")

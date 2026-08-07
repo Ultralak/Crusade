@@ -27,6 +27,7 @@ EnemyManager="res://Old_Crusade_sidescroller/autoloads/EnemyManager.gd"
 GameManager="res://Old_Crusade_sidescroller/autoloads/GameManager.gd"
 SettingsManager="res://Old_Crusade_sidescroller/autoloads/SettingsManager.gd"
 CameraManager="*uid://myrlbcxo1d0i"
+DamageNumbers="*uid://cye1oa2dhkxc4"
 
 [display]
 

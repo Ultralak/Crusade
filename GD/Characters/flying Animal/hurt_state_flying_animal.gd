@@ -26,7 +26,7 @@ func on_physics_process(delta: float) -> void:
 	characterbody2d.move_and_slide()
 	
 func enter():
-	dust_particles.rotation = knk_direction.angle_to(Vector2.ZERO)
+	dust_particles.rotation = knk_direction.angle()
 	timer.one_shot = true
 	timer.wait_time = time
 	timer.start()

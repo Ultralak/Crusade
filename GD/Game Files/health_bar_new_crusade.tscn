@@ -46,5 +46,6 @@ offset_transform_enabled = true
 step = 0.001
 value = 70.0
 texture_progress = ExtResource("3_f13fi")
+tint_progress = Color(1.4954206, 1.4954206, 1.4954206, 1)
 
 [connection signal="timeout" from="Visibility_timer" to="." method="_on_visibility_timer_timeout"]
