@@ -21,6 +21,8 @@ func _process(_delta: float) -> void:
 				FSM.transition_to("dash")
 			elif Input.is_action_pressed("primary_attack"):
 				FSM.transition_to("primary_attack")
+			elif Input.is_action_pressed("shoot"):
+				FSM.transition_to("shoot")
 		"run":
 			if velocity_component.move_velocity.length() < 3 : 
 				FSM.transition_to("idle")
@@ -28,5 +30,7 @@ func _process(_delta: float) -> void:
 				FSM.transition_to("dash")
 			elif Input.is_action_pressed("primary_attack"):
 				FSM.transition_to("primary_attack")
+			elif Input.is_action_pressed("shoot"):
+				FSM.transition_to("shoot")
 		"primary_attack":
 			pass

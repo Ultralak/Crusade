@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://clm3d5eiagjp3"]
+
+[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/goblin/Basic_Projectile.tscn" id="1_dcj6o"]
+[ext_resource type="Texture2D" uid="uid://b363gnowrj7ig" path="res://Old_Crusade_sidescroller/Enemies/Shooter/shot.png" id="2_2nvki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
+size = Vector2(6, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1wpy"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_dcj6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2nvki"]
+resource_name = "idle"
+length = 0.051000000000000004
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cg0rk"]
+_data = {
+&"RESET": SubResource("Animation_dcj6o"),
+&"idle": SubResource("Animation_2nvki")
+}
+
+[node name="PlayerBullet" unique_id=990992544 node_paths=PackedStringArray("sprite2d") instance=ExtResource("1_dcj6o")]
+sprite2d = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_6pmnr")
+
+[node name="Sprite2D" parent="." index="1" unique_id=209185298]
+texture = ExtResource("2_2nvki")
+hframes = 2
+
+[node name="AttackBox" parent="." index="3" unique_id=646875869]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="AttackBox" index="0" unique_id=1925796586]
+shape = SubResource("CircleShape2D_d1wpy")
+debug_color = Color(0.9092908, 0.00011243344, 0.73561233, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4" unique_id=1321422941]
+libraries/ = SubResource("AnimationLibrary_cg0rk")

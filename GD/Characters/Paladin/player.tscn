@@ -19,8 +19,10 @@
 [ext_resource type="Script" uid="uid://dfx68rwy4a5i0" path="res://Characters/Components/debug_label.gd" id="12_5k0dx"]
 [ext_resource type="Script" uid="uid://62wlikeoq6ph" path="res://Characters/Paladin/dead_state_paladin.gd" id="12_qrkjl"]
 [ext_resource type="Script" uid="uid://dbpbtjxqhhbh4" path="res://Characters/Paladin/dash_state_paladin.gd" id="13_qrkjl"]
+[ext_resource type="Script" uid="uid://bckep84n2e06d" path="res://Characters/Paladin/shoot_state_paladin.gd" id="14_e0g0d"]
 [ext_resource type="Script" uid="uid://cl8mw7mjr5f32" path="res://Characters/Paladin/non_physics_generic_sword.gd" id="16_epe0v"]
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
+[ext_resource type="Texture2D" uid="uid://8detilfebbxg" path="res://Art/heroes/knight/knight_run_anim_f1.png" id="23_rxvsy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xys2l"]
 radius = 1.0
@@ -63,6 +65,36 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rxvsy"]
+resource_name = "dash"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
 }
 
 [sub_resource type="Animation" id="Animation_4r6qk"]
@@ -145,6 +177,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5slg2"]
 _data = {
 &"RESET": SubResource("Animation_l48on"),
+&"dash": SubResource("Animation_rxvsy"),
 &"hurt": SubResource("Animation_4r6qk"),
 &"idle": SubResource("Animation_p728j"),
 &"run": SubResource("Animation_4m0gv")
@@ -397,7 +430,7 @@ height = 26.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjdc"]
 size = Vector2(32, 20)
 
-[node name="Player" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("velocity_comp", "debug_label") groups=["PLAYER"]]
+[node name="Player" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("velocity_comp", "debug_label", "dash_effect") groups=["PLAYER"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 3
@@ -406,6 +439,7 @@ script = ExtResource("2_65n15")
 velocity_comp = NodePath("Velocity_Component_player")
 debug_label = NodePath("Test")
 dash_speed = 300.0
+dash_effect = NodePath("DashEffect")
 debug_enabled = true
 
 [node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("3_mevwr")]
@@ -476,12 +510,22 @@ script = ExtResource("12_qrkjl")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="dash" type="Node" parent="StateMachine" unique_id=167716045 node_paths=PackedStringArray("player", "velocity_component", "FSM", "animation_player")]
+[node name="dash" type="Node" parent="StateMachine" unique_id=167716045 node_paths=PackedStringArray("player", "velocity_component", "FSM", "Dash_Effect", "animation_player")]
 script = ExtResource("13_qrkjl")
 player = NodePath("../..")
 velocity_component = NodePath("../../Velocity_Component_player")
 FSM = NodePath("..")
+Dash_Effect = NodePath("../../DashEffect")
 animation_player = NodePath("../../AnimationPlayer")
+
+[node name="shoot" type="Node" parent="StateMachine" unique_id=453686625 node_paths=PackedStringArray("muzzle", "FSM", "timer", "animation_player")]
+script = ExtResource("14_e0g0d")
+muzzle = NodePath("../../muzzle")
+FSM = NodePath("..")
+timer = NodePath("can_shoot")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="can_shoot" type="Timer" parent="StateMachine/shoot" unique_id=788530869]
 
 [node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("velocity_component", "health_component")]
 custom_minimum_size = Vector2(50, 50)
@@ -574,5 +618,19 @@ collision_mask = 0
 position = Vector2(1, -10)
 shape = SubResource("RectangleShape2D_cxjdc")
 
+[node name="muzzle" type="Marker2D" parent="." unique_id=268688010]
+position = Vector2(10, -8)
+
+[node name="DashEffect" type="CPUParticles2D" parent="." unique_id=1839803369]
+position = Vector2(0, -7)
+emitting = false
+amount = 12
+texture = ExtResource("23_rxvsy")
+lifetime = 0.5
+spread = 0.0
+gravity = Vector2(-50, 0)
+color = Color(0.2592937, 0.2592937, 0.2592937, 0.45490196)
+
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
+[connection signal="timeout" from="StateMachine/shoot/can_shoot" to="StateMachine/shoot" method="_on_can_shoot_timeout"]
 [connection signal="animation_finished" from="weapon_pivot/sword/non-physics/sword_anim" to="StateMachine/primary_attack" method="_on_sword_anim_animation_finished"]

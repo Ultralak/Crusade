@@ -4,15 +4,21 @@ extends Character
 
 
 @export var DEBUGMODE : bool = false
+
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var max_health : float = 10
 @export var velocity_comp : VelocityComponent
 @export var debug_label : Label
+
 @export var dash_speed : float = 500
 @export var dashTime : float = 0.2
+
+
 @export var freeze_slow := 0.07
 @export var freeze_time := 0.3
 @onready var weapon_pivot: Marker2D = $weapon_pivot
+@export var dash_effect : CPUParticles2D
 
 var knockback_direction : Vector2 
 var can_turn : bool = true
@@ -24,15 +30,20 @@ func _ready() -> void:
 		debug_mode()
 	PlayerManager.register_player(self)
 	debug_label.visible = debug_enabled
-
+	fire()
+func fire()->void:
+	for i in range(5):
+		print("done")
 func _process(_delta: float) -> void:
 	knockback_direction = (get_global_mouse_position() - global_position).normalized()
 	if can_turn:
 		mouse_direction = (get_global_mouse_position() - global_position).normalized()
 		if mouse_direction.x > 0 and animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = false
+			dash_effect.scale.x = 1
 		elif mouse_direction.x < 0 and not animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = true
+			dash_effect.scale.x = -1
 
 	
 func _physics_process(_delta: float) -> void:
@@ -50,7 +61,7 @@ func hit_stop() ->void:
 	
 	
 	
-	
+
 	
 	
 	
