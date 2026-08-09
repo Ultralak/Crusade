@@ -34,3 +34,8 @@ func _process(_delta: float) -> void:
 				FSM.transition_to("shoot")
 		"primary_attack":
 			pass
+		"shoot":
+			if Input.is_action_just_released("shoot"):
+				FSM.transition_to("idle")
+			elif Input.is_action_pressed("dash"):
+				FSM.transition_to("dash")
