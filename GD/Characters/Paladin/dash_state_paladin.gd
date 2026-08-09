@@ -15,7 +15,6 @@ var timer : Timer
 @onready var player_hurtbox: Area2D = $"../../player_hurtbox"
 
 func enter():
-	Dash_Effect.emitting = true
 	
 	animation_player.play("dash")
 	
@@ -34,6 +33,12 @@ func enter():
 	
 	timer_setup()
 	
+	if dash_direction.x >= 0:
+		Dash_Effect.scale.x = -1
+	else:
+		Dash_Effect.scale.x = 1
+	Dash_Effect.restart()
+	Dash_Effect.emitting = true
 	
 func on_timer_timeout()->void:
 	FSM.transition_to("idle")

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ceef2w0xnwx1x"]
+
+[ext_resource type="Texture2D" uid="uid://8detilfebbxg" path="res://Art/heroes/knight/knight_run_anim_f1.png" id="1_2f6n1"]
+[ext_resource type="Script" uid="uid://r8ehtec3r5m1" path="res://dash_effect_particles.gd" id="1_mb5tt"]
+
+[node name="DashEffect" type="Node2D" unique_id=1626183301 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_mb5tt")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=783877705]
+position = Vector2(165, 125)
+texture = ExtResource("1_2f6n1")

@@ -18,7 +18,7 @@ extends Character
 @export var freeze_slow := 0.07
 @export var freeze_time := 0.3
 @onready var weapon_pivot: Marker2D = $weapon_pivot
-@export var dash_effect : CPUParticles2D
+
 
 var knockback_direction : Vector2 
 var can_turn : bool = true
@@ -40,10 +40,10 @@ func _process(_delta: float) -> void:
 		mouse_direction = (get_global_mouse_position() - global_position).normalized()
 		if mouse_direction.x > 0 and animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = false
-			dash_effect.scale.x = 1
+
 		elif mouse_direction.x < 0 and not animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = true
-			dash_effect.scale.x = -1
+
 
 	
 func _physics_process(_delta: float) -> void:
