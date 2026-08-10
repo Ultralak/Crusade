@@ -18,6 +18,7 @@ var can_shoot : bool  = true
 var can_shoot_time : float
 
 func enter():
+	animation_player.play("run")
 	print("Setting up player bullet scene")
 	can_shoot_time = 1/rate_of_fire
 	player_direction = get_parent().get_parent().mouse_direction
@@ -31,7 +32,7 @@ func on_process(_delta : float):
 	
 	
 func exit():
-	pass
+	animation_player.stop()
 
 func shoot_bullet()->void:
 	var BulletInstance = bullet.instantiate() as BasicProjectile

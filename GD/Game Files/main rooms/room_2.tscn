@@ -1,8 +1,9 @@
 [gd_scene format=4 uid="uid://ncsebkw1qjx2"]
 
 [ext_resource type="PackedScene" uid="uid://ut1jsfwgdut5" path="res://Game Files/main rooms/rooms.tscn" id="1_6no2o"]
+[ext_resource type="PackedScene" uid="uid://dumrroosi82tl" path="res://Spikes.tscn" id="2_s3lsu"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_6no2o"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_41nol"]
 resource_local_to_scene = true
 vertices = PackedVector2Array(313.67188, 123.890625, 324, 8, 324, 240, 185.67188, 139.89063, 282, 132.9375, 309.60938, 136.88281, 268, 144, 196, 144, 280, 240, 280, 238, 308, 121.046875, 308, 104, 312, 8, 270, 238, 270, 232, 268, 232, 181.60938, 152.88281, 196, 240, 184, 240, 184, 264, 168, 264, 168, 240, 154, 148.9375, 152, 240, 152, 238, 142, 238, 142, 232, 140, 232, 140, 144, 154, 120, 72, 144, 72, 142, 136, 88, 62, 142, 62, 136, 60, 136, 60, 88, 136, 72, 140, 72, 140, 8, 196, 8, 196, 72, 180, 137.04688, 180, 120, 200, 72, 200, 88, 282, 104, 264, 88, 264, 72, 268, 72, 268, 8, 296, 8, 296, -24, 312, -24)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7), PackedInt32Array(5, 0, 2, 8, 9), PackedInt32Array(1, 0, 10, 11, 12), PackedInt32Array(9, 13, 14, 5), PackedInt32Array(14, 15, 6, 5), PackedInt32Array(16, 3, 7, 17, 18), PackedInt32Array(18, 19, 20, 21, 16), PackedInt32Array(22, 16, 21, 23, 24), PackedInt32Array(24, 25, 26, 22), PackedInt32Array(22, 26, 27, 28, 29), PackedInt32Array(28, 30, 31, 32, 29), PackedInt32Array(31, 33, 34, 32), PackedInt32Array(34, 35, 36, 32), PackedInt32Array(32, 37, 38), PackedInt32Array(38, 39, 40, 41), PackedInt32Array(42, 43, 41, 44, 45, 3), PackedInt32Array(46, 47, 48, 49, 11), PackedInt32Array(49, 50, 51, 11), PackedInt32Array(51, 52, 53, 12, 11), PackedInt32Array(47, 46, 4, 3, 45), PackedInt32Array(29, 32, 38, 41, 43)])
@@ -17,7 +18,7 @@ size = Vector2(34, 18)
 [node name="Room2" unique_id=277495275 instance=ExtResource("1_6no2o")]
 
 [node name="NavigationRegion2D" parent="." index="0" unique_id=1505995234]
-navigation_polygon = SubResource("NavigationPolygon_6no2o")
+navigation_polygon = SubResource("NavigationPolygon_41nol")
 navigation_layers = 2
 
 [node name="Ground" parent="NavigationRegion2D" index="0" unique_id=1992311770]
@@ -25,6 +26,18 @@ tile_map_data = PackedByteArray("AAAIAAAAAAADAAEAAAAIAAEAAAADAAEAAAAIAAIAAAADAAE
 
 [node name="floor objects" parent="NavigationRegion2D" index="1" unique_id=1130803577]
 tile_map_data = PackedByteArray("AAASAAcAAAABAAAAAAAKAAgAAAABAAAAAAA=")
+
+[node name="Moving Spikes" parent="NavigationRegion2D/floor objects" index="0" unique_id=970121578 instance=ExtResource("2_s3lsu")]
+position = Vector2(216, 104)
+
+[node name="Moving Spikes2" parent="NavigationRegion2D/floor objects" index="1" unique_id=2024326375 instance=ExtResource("2_s3lsu")]
+position = Vector2(232, 120)
+
+[node name="Moving Spikes3" parent="NavigationRegion2D/floor objects" index="2" unique_id=39262058 instance=ExtResource("2_s3lsu")]
+position = Vector2(216, 120)
+
+[node name="Moving Spikes4" parent="NavigationRegion2D/floor objects" index="3" unique_id=163835050 instance=ExtResource("2_s3lsu")]
+position = Vector2(232, 104)
 
 [node name="wall" parent="NavigationRegion2D" index="2" unique_id=829569184]
 tile_map_data = PackedByteArray("AAAIAP//AAAGAAQAAAAJAP//AAAGAAQAAAAKAP//AAAGAAQAAAALAP//AAAGAAQAAAAMAP//AAAGAAQAAAAQAP//AAAGAAQAAAARAP//AAAGAAQAAAAUAP//AAAGAAQAAAANAAoAAAAGAAUAAAAOAAoAAAAIAAUAAAAPAAoAAAAGAAUAAAADAAoAAAAGAAUAAAAEAAoAAAAGAAUAAAAFAAoAAAAGAAUAAAAGAAoAAAAGAAUAAAAHAAoAAAAGAAUAAAADAAQAAAAGAAQAAAAEAAQAAAAGAAQAAAAFAAQAAAAGAAQAAAAGAAQAAAAGAAQAAAAHAAQAAAAIAAUAAAAIABAAAAAGAAUAAAAJABAAAAAGAAUAAAAMABAAAAAGAAUAAAAQABAAAAAGAAUAAAARABAAAAAGAAUAAAASABAAAAAGAAUAAAATABAAAAAGAAUAAAAUABAAAAAGAAUAAAAPAAQAAAAGAAQAAAAOAAQAAAAHAAUAAAANAAQAAAAGAAQAAAA=")

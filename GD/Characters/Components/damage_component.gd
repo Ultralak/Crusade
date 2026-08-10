@@ -1,7 +1,7 @@
 extends Node
 class_name DamageComponent
 
-@export var entity : CharacterBody2D
+@export var entity : Node2D
 @export var attackbox : Area2D
 
 var knockback_dir : Vector2
@@ -15,7 +15,8 @@ func _ready() -> void:
 		attackbox.area_entered.connect(deal_damage)
 
 func deal_damage(body : Area2D):
-	CameraManager.add_trauma(0.2)
+	if body.get_parent() is Character:
+		CameraManager.add_trauma(0.4)
 	if entities_hit.has(body):
 		return
 	entities_hit.append(body)
@@ -25,7 +26,18 @@ func deal_damage(body : Area2D):
 		damage_amount = entity.damage_amount
 		knockback_dir = entity.knockback_dir
 		knockback_force = entity.knockback_force
+	elif entity is EnvironmentalHazard:
+		damage_amount = entity.damage_amount
+		knockback_force = entity.knockback_force
+		for node in body.get_parent().get_children():
+			if node is HealthComponent:
+				knockback_dir = node.get_knockback_force()
+				break
+				
+				
 	for node in body.get_parent().get_children():
 		if node is HealthComponent:
 			node.take_damage(damage_amount, knockback_dir, knockback_force)
+			entities_hit.clear()
 			return
+	

@@ -11,6 +11,7 @@ signal health_decreased(new_health : float)
 @export var hurt_state : NodeState
 @export var damage_number_position : Node2D
 
+var pseudo_knockback_dir : Vector2
 	
 func _ready() -> void:
 	
@@ -18,6 +19,9 @@ func _ready() -> void:
 	max_health = entity.max_health
 	health = max_health
 	
+func _process(_delta: float) -> void:
+	if entity.velocity.length() >= 1:
+		pseudo_knockback_dir = -entity.velocity.normalized()
 
 	
 func take_damage(damage : float, direction : Vector2, force : float):
@@ -37,3 +41,6 @@ func heal_health(heal_amount : float):
 	if health >= max_health:
 		health = max_health
 	health_increased.emit(health)
+
+func get_knockback_force()->Vector2:
+	return pseudo_knockback_dir
