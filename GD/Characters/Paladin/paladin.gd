@@ -17,23 +17,21 @@ extends Character
 
 @export var freeze_slow := 0.07
 @export var freeze_time := 0.3
+@export var debug_enabled : bool
+
 @onready var weapon_pivot: Marker2D = $weapon_pivot
-
-
 var knockback_direction : Vector2 
 var can_turn : bool = true
 var can_attack  :bool = true
 var mouse_direction : Vector2
-@export var debug_enabled : bool 
+
+
 func _ready() -> void:
 	if DEBUGMODE:
 		debug_mode()
 	PlayerManager.register_player(self)
 	debug_label.visible = debug_enabled
-	fire()
-func fire()->void:
-	for i in range(5):
-		print("done")
+
 func _process(_delta: float) -> void:
 	knockback_direction = (get_global_mouse_position() - global_position).normalized()
 	if can_turn:

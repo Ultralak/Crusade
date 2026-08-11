@@ -5,6 +5,11 @@ extends NodeState
 @export var characterbody2d : CharacterBody2D
 @export var weapon_animation_player : AnimationPlayer
 @export var velocity_component : Node2D
+
+var meleeWeapon : Node2D
+var projectileWeapon : ProjectileWeapon
+var magicWeapon : Node2D
+
 #frame by frame
 func on_process(_delta : float):
 	velocity_component.get_input()

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://duoetiog44jd8"]
+
+[ext_resource type="Script" uid="uid://5k3vdmb7on5k" path="res://projectile_weapon.gd" id="1_xvyu7"]
+
+[node name="ProjectileWeapon" type="Node2D" unique_id=859750544]
+script = ExtResource("1_xvyu7")
+
+[node name="physics" type="Node2D" parent="." unique_id=1413375991]
+
+[node name="non physics" type="Node2D" parent="." unique_id=1062263897]
+
+[node name="weapon skin" type="Sprite2D" parent="non physics" unique_id=796010820]
+
+[node name="muzzle" type="Marker2D" parent="." unique_id=940464424]
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1130506084]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

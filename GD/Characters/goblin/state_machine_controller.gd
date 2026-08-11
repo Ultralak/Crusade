@@ -1,3 +1,4 @@
+@icon("uid://dior6ofoq1cca")
 extends Node
 
 @export var entity : CharacterBody2D

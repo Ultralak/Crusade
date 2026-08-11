@@ -9,7 +9,7 @@
 [ext_resource type="Shader" uid="uid://fyr6cq44cguf" path="res://Old_Crusade_sidescroller/Enemies/melee/hit_flash.tres" id="5_y0e2x"]
 [ext_resource type="Script" uid="uid://cse7mvkbi4r45" path="res://Characters/Paladin/walk_paladin.gd" id="6_4m0gv"]
 [ext_resource type="Script" uid="uid://na74sqiddic8" path="res://Old_Crusade_sidescroller/State machine/node_finite_state_machine.gd" id="7_4r6qk"]
-[ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/Paladin/primary_attack_paladin.gd" id="7_5slg2"]
+[ext_resource type="Script" uid="uid://b2r7mm83jm5te" path="res://Characters/Paladin/slot_1_attack.gd" id="7_5slg2"]
 [ext_resource type="Texture2D" uid="uid://dl8vsgnulxjfu" path="res://Art/heroes/knight/weapon_sword_1.png" id="7_p728j"]
 [ext_resource type="Script" uid="uid://ddjwsv10im0us" path="res://Characters/Paladin/hurt_state_paladin.gd" id="9_22qw1"]
 [ext_resource type="Script" uid="uid://dk2l3f4k3ypcw" path="res://Characters/Paladin/generic_sword.gd" id="9_mevwr"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://62wlikeoq6ph" path="res://Characters/Paladin/dead_state_paladin.gd" id="12_qrkjl"]
 [ext_resource type="Script" uid="uid://dbpbtjxqhhbh4" path="res://Characters/Paladin/dash_state_paladin.gd" id="13_qrkjl"]
 [ext_resource type="Script" uid="uid://bckep84n2e06d" path="res://Characters/Paladin/shoot_state_paladin.gd" id="14_e0g0d"]
+[ext_resource type="Script" uid="uid://0nu340j7gxmr" path="res://Characters/Paladin/slot_2_attack.gd" id="15_kxfcp"]
 [ext_resource type="Script" uid="uid://cl8mw7mjr5f32" path="res://Characters/Paladin/non_physics_generic_sword.gd" id="16_epe0v"]
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
 [ext_resource type="Texture2D" uid="uid://8detilfebbxg" path="res://Art/heroes/knight/knight_run_anim_f1.png" id="23_rxvsy"]
@@ -485,7 +486,7 @@ state_machine_controller = NodePath("../../State Machine Controller")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="primary_attack" type="Node" parent="StateMachine" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
+[node name="slot_1_attack" type="Node" parent="StateMachine" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "weapon_animation_player", "velocity_component", "animation_player")]
 script = ExtResource("7_5slg2")
 characterbody2d = NodePath("../..")
 weapon_animation_player = NodePath("../../weapon_pivot/sword/non-physics/sword_anim")
@@ -519,12 +520,18 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="shoot" type="Node" parent="StateMachine" unique_id=453686625 node_paths=PackedStringArray("muzzle", "FSM", "timer", "animation_player")]
 script = ExtResource("14_e0g0d")
+rate_of_fire = 20.0
 muzzle = NodePath("../../muzzle")
 FSM = NodePath("..")
 timer = NodePath("can_shoot")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="can_shoot" type="Timer" parent="StateMachine/shoot" unique_id=788530869]
+
+[node name="slot_2_attack" type="Node" parent="StateMachine" unique_id=84779316 node_paths=PackedStringArray("velocity_component", "animation_player")]
+script = ExtResource("15_kxfcp")
+velocity_component = NodePath("../../Velocity_Component_player")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("velocity_component", "health_component")]
 custom_minimum_size = Vector2(50, 50)
@@ -621,6 +628,7 @@ shape = SubResource("RectangleShape2D_cxjdc")
 position = Vector2(10, -8)
 
 [node name="DashEffect" type="CPUParticles2D" parent="." unique_id=1839803369]
+z_index = 12
 z_as_relative = false
 position = Vector2(0, -7)
 emitting = false
@@ -634,4 +642,4 @@ color = Color(0.2592937, 0.2592937, 0.2592937, 0.45490196)
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/shoot/can_shoot" to="StateMachine/shoot" method="_on_can_shoot_timeout"]
-[connection signal="animation_finished" from="weapon_pivot/sword/non-physics/sword_anim" to="StateMachine/primary_attack" method="_on_sword_anim_animation_finished"]
+[connection signal="animation_finished" from="weapon_pivot/sword/non-physics/sword_anim" to="StateMachine/slot_1_attack" method="_on_sword_anim_animation_finished"]

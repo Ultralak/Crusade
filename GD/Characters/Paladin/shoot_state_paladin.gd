@@ -28,6 +28,7 @@ func on_physics_process(_delta : float):
 	
 func on_process(_delta : float):
 	if can_shoot:
+		player_direction = get_parent().get_parent().mouse_direction
 		shoot_bullet()
 	
 	

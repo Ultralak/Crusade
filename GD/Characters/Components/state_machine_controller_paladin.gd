@@ -1,3 +1,4 @@
+@icon("uid://dior6ofoq1cca")
 extends Node
 
 @export var FSM : NodeFiniteStateMachine
@@ -32,9 +33,9 @@ func _process(_delta: float) -> void:
 				FSM.transition_to("primary_attack")
 			elif Input.is_action_pressed("shoot"):
 				FSM.transition_to("shoot")
-		"primary_attack":
+		"slot_1":
 			pass
-		"shoot":
+		"slot_2":
 			if Input.is_action_just_released("shoot"):
 				FSM.transition_to("idle")
 			elif Input.is_action_pressed("dash"):

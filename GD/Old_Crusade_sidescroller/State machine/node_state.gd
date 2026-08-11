@@ -4,7 +4,7 @@ extends Node
 
 signal transition
 
-@export var unstoppable : bool = false
+
 @export var animation_player : AnimationPlayer
 func on_process(_delta : float):
 	pass

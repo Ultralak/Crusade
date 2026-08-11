@@ -1,3 +1,5 @@
+
+@icon("uid://dior6ofoq1cca")
 extends Node
 
 @export var node_finite_state_machine : NodeFiniteStateMachine
