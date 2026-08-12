@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ctb2e758hgyyb"]
+
+[ext_resource type="PackedScene" uid="uid://bqc85b4ajog1p" path="res://MeleeWeapon.tscn" id="1_vguq3"]
+[ext_resource type="Texture2D" uid="uid://d4hxolsrnglig" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0009.png" id="2_uiyh3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0up2"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_vguq3"]
+resource_name = "slash"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uiyh3"]
+_data = {
+&"slash": SubResource("Animation_vguq3")
+}
+
+[node name="MeleeWeapon" unique_id=949604806 instance=ExtResource("1_vguq3")]
+
+[node name="Area2D" parent="Physics" parent_id_path=PackedInt32Array(1783817814) index="0" unique_id=511793790]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="Physics/Area2D" index="0" unique_id=301836236]
+position = Vector2(20, -13)
+shape = SubResource("CapsuleShape2D_x0up2")
+
+[node name="AnimationPlayer" parent="Non-Physics" parent_id_path=PackedInt32Array(971151981) index="0" unique_id=337419149]
+libraries/ = SubResource("AnimationLibrary_uiyh3")
+
+[node name="weapon" parent="Non-Physics" parent_id_path=PackedInt32Array(971151981) index="1" unique_id=971184176]
+position = Vector2(7, -15)
+texture = ExtResource("2_uiyh3")
+
+[node name="pivot" parent="." index="2" unique_id=1222718773]
+position = Vector2(-0.043807983, -7.4973373)

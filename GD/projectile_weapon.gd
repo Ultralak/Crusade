@@ -1,3 +1,4 @@
+@icon("uid://etwv8bj0u7l7")
 extends Node2D
 class_name ProjectileWeapon
 
@@ -18,21 +19,22 @@ var bullet_setup : bool = false
 var can_shoot : bool  = true
 var mouse_direction : Vector2
 var weapon_pivot : Marker2D 
+var slot_index : int
 
 func _physics_process(_delta: float) -> void:
-	if weapon_user is Character:
-		mouse_direction  = (get_global_mouse_position() - weapon_pivot.global_position).normalized()
-		if weapon_user.can_turn:
-			weapon_pivot.rotation = mouse_direction.angle()
-func setup_gun_paladin(direction : Vector2, user : CharacterBody2D, pivot : Marker2D)->void:
+	rotate_gun()
+			
+func setup_gun_paladin(direction : Vector2, user : CharacterBody2D, pivot : Marker2D, slot : int)->void:
 	gun_direction = direction
 	weapon_user = user
+	slot_index = slot
 	weapon_pivot = pivot
 	bullet_setup = true
-	
+
 func setup_gun_enemy()->void:
 	#for enemies
 	pass
+
 func shoot()->void:
 	if !bullet_setup:
 		return
@@ -59,6 +61,12 @@ func shoot()->void:
 	fire_rate_timer.one_shot = true
 	fire_rate_timer.start()
 
-
 func _on_fire_rate_timer_timeout() -> void:
 	can_shoot = true
+
+func rotate_gun()->void:
+	if weapon_user is Character:
+		mouse_direction  = (get_global_mouse_position() - weapon_pivot.global_position).normalized()
+		if weapon_user.can_turn:
+			weapon_pivot.rotation = mouse_direction.angle()
+			

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://duoetiog44jd8"]
 
 [ext_resource type="Script" uid="uid://5k3vdmb7on5k" path="res://projectile_weapon.gd" id="1_xvyu7"]
+[ext_resource type="Script" uid="uid://2mn4ctohriyd" path="res://input_manager_projectiles.gd" id="2_biiek"]
 
 [node name="ProjectileWeapon" type="Node2D" unique_id=859750544]
 script = ExtResource("1_xvyu7")
@@ -15,5 +16,8 @@ script = ExtResource("1_xvyu7")
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1130506084]
 one_shot = true
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1428178888]
+script = ExtResource("2_biiek")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

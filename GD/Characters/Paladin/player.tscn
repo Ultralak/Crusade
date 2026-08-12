@@ -521,7 +521,7 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="shoot" type="Node" parent="StateMachine" unique_id=453686625 node_paths=PackedStringArray("muzzle", "FSM", "timer", "animation_player")]
 script = ExtResource("14_e0g0d")
 rate_of_fire = 20.0
-muzzle = NodePath("../../muzzle")
+muzzle = NodePath("")
 FSM = NodePath("..")
 timer = NodePath("can_shoot")
 animation_player = NodePath("../../AnimationPlayer")
@@ -624,9 +624,6 @@ collision_mask = 0
 position = Vector2(1, -10)
 shape = SubResource("RectangleShape2D_cxjdc")
 
-[node name="muzzle" type="Marker2D" parent="." unique_id=268688010]
-position = Vector2(10, -8)
-
 [node name="DashEffect" type="CPUParticles2D" parent="." unique_id=1839803369]
 z_index = 12
 z_as_relative = false
@@ -639,6 +636,8 @@ one_shot = true
 spread = 0.0
 gravity = Vector2(0, 0)
 color = Color(0.2592937, 0.2592937, 0.2592937, 0.45490196)
+
+[node name="InventorySystem" type="Node2D" parent="." unique_id=1415035902]
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/shoot/can_shoot" to="StateMachine/shoot" method="_on_can_shoot_timeout"]
