@@ -21,6 +21,9 @@ var mouse_direction : Vector2
 var weapon_pivot : Marker2D 
 var slot_index : int
 
+# Checks if is in state so that weapon can work
+var in_state : bool
+
 func _physics_process(_delta: float) -> void:
 	rotate_gun()
 			

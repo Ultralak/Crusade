@@ -20,11 +20,12 @@ var weapon_user_pivot : Marker2D
 var mouse_direction : Vector2
 var melee_setup : bool = false
 var slot_index : int 
-
+var in_state : bool = false
 
 func _process(_delta: float) -> void:
 	rotate_and_flip_weapon()
-	input_manager.InputManaging()
+	if in_state:
+		input_manager.InputManaging()
 
 func setup_weapon_paladin( direction : Vector2, user : CharacterBody2D, userpivot : Marker2D, slot)->void:
 	slash_direction = direction

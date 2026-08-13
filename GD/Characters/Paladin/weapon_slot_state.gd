@@ -3,12 +3,11 @@ extends NodeState
 
 @export_category("Primary Attack Paladin State")
 @export var characterbody2d : CharacterBody2D
-@export var weapon_animation_player : AnimationPlayer
 @export var velocity_component : Node2D
+@export var Inventory : InventorySystem
+@export var slot_index : int = 0
 
-var meleeWeapon : Node2D
-var projectileWeapon : ProjectileWeapon
-var magicWeapon : Node2D
+var weapon : Node2D
 
 #frame by frame
 func on_process(_delta : float):
@@ -17,20 +16,46 @@ func on_process(_delta : float):
 		animation_player.play("run")
 	else:
 		animation_player.play("idle")
-	#physics frame
 
-	#when you enter the scene
 func enter():
 	velocity_component.speed_modifier = 0.9
-	characterbody2d.can_turn = false
-	weapon_animation_player.play("attack")
+	
+	weapon = Inventory.get_weapon(slot_index)
+	if weapon :
+		weapon.in_state = true
+	if weapon is MeleeWeapon:
+		characterbody2d.can_turn = false
+
+	
 func exit():
+	if weapon:
+		weapon.in_state = false
+	weapon = null
 	characterbody2d.can_turn = true
 	velocity_component.speed_modifier = 1.0
 	animation_player.stop()
-
-func _on_sword_anim_animation_finished(_anim_name: StringName) -> void:
-	if velocity_component.move_direction.length() > 0 : 
-		transition.emit("run")
-	else:
-		transition.emit("idle")
+	
+func melee_setup(weapon : MeleeWeapon)->void:
+	pass
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

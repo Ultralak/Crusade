@@ -26,6 +26,8 @@ func _on_slash_rate_timer_timeout() -> void:
 	can_slash = true
 	
 func is_default_attacking() -> bool:
-	var first_slot = weapon.slot_index == 1 and Input.is_action_pressed("slot_1")
-	var second_slot = weapon.slot_index == 2 and Input.is_action_pressed("slot_2")
-	return first_slot and second_slot
+	if weapon.slot_index == 0: 
+		return Input.is_action_pressed("slot_1")
+	if weapon.slot_index == 1:
+		return Input.is_action_pressed("slot_2")
+	return false

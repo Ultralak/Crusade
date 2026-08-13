@@ -11,9 +11,9 @@ script = ExtResource("1_u7sf1")
 
 [node name="Physics" type="Node2D" parent="pivot" unique_id=1783817814]
 
-[node name="Area2D" type="Area2D" parent="pivot/Physics" unique_id=511793790]
+[node name="AttackBox" type="Area2D" parent="pivot/Physics" unique_id=511793790]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/Physics/Area2D" unique_id=301836236]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/Physics/AttackBox" unique_id=301836236]
 
 [node name="Non-Physics" type="Node2D" parent="pivot" unique_id=971151981]
 

@@ -17,7 +17,8 @@ script = ExtResource("1_xvyu7")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1130506084]
 one_shot = true
 
-[node name="InputManager" type="Node2D" parent="." unique_id=1428178888]
+[node name="InputManager" type="Node2D" parent="." unique_id=1428178888 node_paths=PackedStringArray("weapon")]
 script = ExtResource("2_biiek")
+weapon = NodePath("..")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

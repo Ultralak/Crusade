@@ -20,23 +20,26 @@ func _process(_delta: float) -> void:
 				FSM.transition_to("run")
 			elif Input.is_action_just_pressed("dash"):
 				FSM.transition_to("dash")
-			elif Input.is_action_pressed("primary_attack"):
-				FSM.transition_to("primary_attack")
-			elif Input.is_action_pressed("shoot"):
-				FSM.transition_to("shoot")
+			elif Input.is_action_pressed("slot_1"):
+				FSM.transition_to("slot_1")
+			elif Input.is_action_pressed("slot_2"):
+				FSM.transition_to("slot_2")
 		"run":
 			if velocity_component.move_velocity.length() < 3 : 
 				FSM.transition_to("idle")
 			elif Input.is_action_just_pressed("dash"):
 				FSM.transition_to("dash")
-			elif Input.is_action_pressed("primary_attack"):
-				FSM.transition_to("primary_attack")
-			elif Input.is_action_pressed("shoot"):
-				FSM.transition_to("shoot")
+			elif Input.is_action_pressed("slot_1"):
+				FSM.transition_to("slot_1")
+			elif Input.is_action_pressed("slot_2"):
+				FSM.transition_to("slot_2")
 		"slot_1":
-			pass
+			if Input.is_action_pressed("slot_2"):
+				FSM.transition_to("slot_2")
+			elif Input.is_action_pressed("dash"):
+				FSM.transition_to("dash")
 		"slot_2":
-			if Input.is_action_just_released("shoot"):
-				FSM.transition_to("idle")
+			if Input.is_action_pressed("slot_2"):
+				FSM.transition_to("slot_2")
 			elif Input.is_action_pressed("dash"):
 				FSM.transition_to("dash")

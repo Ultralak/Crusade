@@ -3,33 +3,115 @@
 [ext_resource type="PackedScene" uid="uid://bqc85b4ajog1p" path="res://MeleeWeapon.tscn" id="1_vguq3"]
 [ext_resource type="Texture2D" uid="uid://d4hxolsrnglig" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0009.png" id="2_uiyh3"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0up2"]
-radius = 13.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5iva6"]
+
+[sub_resource type="Animation" id="Animation_uiyh3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -6.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Physics/AttackBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_vguq3"]
 resource_name = "slash"
+length = 0.39999999999999997
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.225, 0.25, 0.275, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8, -6.5), Vector2(8.043808, -11.502663), Vector2(-4.956192, -14.502663), Vector2(-4.956192, -12.502663), Vector2(5.043808, -11.502663), Vector2(9.043808, -8.502665), Vector2(12.043807, -4.5026603), Vector2(12.043809, 5.497338), Vector2(9.043808, 9.497338), Vector2(9.043808, -9.502662), Vector2(8, -6.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.225, 0.25, 0.275, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.7853982, -1.5707964, -0.3926991, 0.3926991, 0.7853982, 1.1780972, 1.9634954, 2.3561945, 0.7853982, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Physics/AttackBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uiyh3"]
 _data = {
+&"RESET": SubResource("Animation_uiyh3"),
 &"slash": SubResource("Animation_vguq3")
 }
 
 [node name="MeleeWeapon" unique_id=949604806 instance=ExtResource("1_vguq3")]
 
-[node name="Area2D" parent="Physics" parent_id_path=PackedInt32Array(1783817814) index="0" unique_id=511793790]
+[node name="pivot" parent="." index="0" unique_id=1222718773]
+position = Vector2(-0.043807983, -7.4973373)
+
+[node name="AttackBox" parent="pivot/Physics" parent_id_path=PackedInt32Array(1783817814) index="0" unique_id=511793790]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" parent="Physics/Area2D" index="0" unique_id=301836236]
-position = Vector2(20, -13)
-shape = SubResource("CapsuleShape2D_x0up2")
+[node name="CollisionShape2D" parent="pivot/Physics/AttackBox" index="0" unique_id=301836236]
+position = Vector2(11.043808, -2.5026627)
+shape = SubResource("CapsuleShape2D_5iva6")
+disabled = true
 
-[node name="AnimationPlayer" parent="Non-Physics" parent_id_path=PackedInt32Array(971151981) index="0" unique_id=337419149]
+[node name="AnimationPlayer" parent="pivot/Non-Physics" parent_id_path=PackedInt32Array(971151981) index="0" unique_id=337419149]
 libraries/ = SubResource("AnimationLibrary_uiyh3")
 
-[node name="weapon" parent="Non-Physics" parent_id_path=PackedInt32Array(971151981) index="1" unique_id=971184176]
-position = Vector2(7, -15)
+[node name="weapon" parent="pivot/Non-Physics" parent_id_path=PackedInt32Array(971151981) index="1" unique_id=971184176]
+position = Vector2(8, -6.5)
 texture = ExtResource("2_uiyh3")
 
-[node name="pivot" parent="." index="2" unique_id=1222718773]
-position = Vector2(-0.043807983, -7.4973373)
+[node name="test_player_sprite" parent="pivot" index="2" unique_id=911232230]
+position = Vector2(0.043807983, -5.5026627)
+metadata/_edit_lock_ = true
