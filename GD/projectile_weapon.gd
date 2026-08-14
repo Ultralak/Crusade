@@ -2,8 +2,10 @@
 extends Node2D
 class_name ProjectileWeapon
 
-@onready var muzzle: Marker2D = $muzzle
+@onready var muzzle: Marker2D = $"non physics/weapon skin/muzzle"
+
 @onready var fire_rate_timer: Timer = $FireRateTimer
+@onready var non_physics: Node2D = $"non physics"
 
 @export var bullet := preload("res://Characters/goblin/PlayerBullet.tscn")
 @export var fire_rate : float
@@ -11,27 +13,28 @@ class_name ProjectileWeapon
 @export var bullet_velocity : float
 @export var weapon_bloom : float 
 @export var knockback_force : float
-
-
+@export var weapon_sprite : Sprite2D
 var gun_direction : Vector2
 var weapon_user : CharacterBody2D
 var bullet_setup : bool = false
 var can_shoot : bool  = true
 var mouse_direction : Vector2
 var weapon_pivot : Marker2D 
-var slot_index : int
+var slot_index : String
 
 # Checks if is in state so that weapon can work
 var in_state : bool
 
-func _physics_process(_delta: float) -> void:
-	rotate_gun()
+func _process(_delta: float) -> void:
+	if weapon_pivot :
+		rotate_gun()
 			
-func setup_gun_paladin(direction : Vector2, user : CharacterBody2D, pivot : Marker2D, slot : int)->void:
+func setup_gun_paladin(direction : Vector2, user : CharacterBody2D, pivot : Marker2D, slot : String)->void:
 	gun_direction = direction
 	weapon_user = user
 	slot_index = slot
 	weapon_pivot = pivot
+	global_position  = pivot.global_position
 	bullet_setup = true
 
 func setup_gun_enemy()->void:
@@ -52,7 +55,7 @@ func shoot()->void:
 	bulletInstance.knockback_dir = gun_direction
 	bulletInstance.knockback_force = knockback_force
 	
-	weapon_user.add_child(bulletInstance)
+	get_tree().current_scene.add_child(bulletInstance)
 	bulletInstance.is_shot = true
 	bullet_setup = false
 	
@@ -69,7 +72,11 @@ func _on_fire_rate_timer_timeout() -> void:
 
 func rotate_gun()->void:
 	if weapon_user is Character:
-		mouse_direction  = (get_global_mouse_position() - weapon_pivot.global_position).normalized()
+		mouse_direction  = weapon_user.mouse_direction
 		if weapon_user.can_turn:
-			weapon_pivot.rotation = mouse_direction.angle()
-			
+			non_physics.rotation = mouse_direction.angle()
+			if mouse_direction.x < 0:
+				weapon_sprite.flip_v = true
+			else:
+
+				weapon_sprite.flip_v = false

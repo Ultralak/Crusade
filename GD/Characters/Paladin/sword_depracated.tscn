@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://bsjkgfr1nem0l"]
+
+[ext_resource type="Script" uid="uid://dk2l3f4k3ypcw" path="res://Characters/Paladin/generic_sword.gd" id="1_bok1p"]
+[ext_resource type="Script" uid="uid://cl8mw7mjr5f32" path="res://Characters/Paladin/non_physics_generic_sword.gd" id="2_kc2ue"]
+[ext_resource type="Texture2D" uid="uid://dl8vsgnulxjfu" path="res://Art/heroes/knight/weapon_sword_1.png" id="3_0nynn"]
+[ext_resource type="Texture2D" uid="uid://c1h4dqettogue" path="res://Art/effects (new)/slash_effect_anim_spritesheet.png" id="4_1kyke"]
+[ext_resource type="Script" uid="uid://b2vrv5n1ghgl6" path="res://Characters/Paladin/hitbox.gd" id="5_g4c2l"]
+
+[sub_resource type="Animation" id="Animation_5slg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("non-physics/slash_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("non-physics/slash_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("physics/Hitbox/slash_hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("non-physics/Sword_Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, -11)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("non-physics/Sword_Sprite:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.7853982]
+}
+
+[sub_resource type="Animation" id="Animation_q6x5r"]
+resource_name = "new_attack"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("non-physics/slash_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("non-physics/slash_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994, 0.225, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("physics/Hitbox/slash_hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.1725, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("non-physics/Sword_Sprite:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.15, 0.175, 0.1875, 0.19999999, 0.21249999, 0.22499998, 0.23749998, 0.24999999, 0.3, 0.35, 0.375, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-6, -11), Vector2(-7, -7), Vector2(-3, -12), Vector2(7, -10), Vector2(11, -5), Vector2(12, 0), Vector2(11, 6), Vector2(7, 10), Vector2(2, 12), Vector2(-3, 11), Vector2(-3, 11), Vector2(12, 0), Vector2(8, -14), Vector2(-6, -11)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("non-physics/Sword_Sprite:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.15, 0.175, 0.1875, 0.19999999, 0.21249999, 0.22499998, 0.23749998, 0.24999999, 0.3, 0.35, 0.375, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.7853982, -1.3089969, 0.488692, 1.422443, 1.889319, 2.3561947, 2.8400877, 3.3239796, 3.8078723, 4.2917647, 4.2917647, 2.3561945, 0.7853982, -0.7853982]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w3rah"]
+_data = {
+&"RESET": SubResource("Animation_5slg2"),
+&"attack": SubResource("Animation_q6x5r")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epe0v"]
+radius = 8.0
+height = 26.0
+
+[node name="sword_depracated" type="Node2D" unique_id=330911273 node_paths=PackedStringArray("player", "physics", "non_physics", "weapon_pivot")]
+script = ExtResource("1_bok1p")
+player = NodePath("")
+physics = NodePath("physics")
+non_physics = NodePath("non-physics")
+damage_amount = 5.0
+weapon_pivot = NodePath("")
+
+[node name="non-physics" type="Node2D" parent="." unique_id=2118260445]
+script = ExtResource("2_kc2ue")
+
+[node name="sword_anim" type="AnimationPlayer" parent="non-physics" unique_id=1164020493]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_w3rah")
+
+[node name="Sword_Sprite" type="Sprite2D" parent="non-physics" unique_id=106938081]
+position = Vector2(-6, -11)
+rotation = -0.7853982
+texture = ExtResource("3_0nynn")
+flip_h = true
+
+[node name="slash_sprite" type="Sprite2D" parent="non-physics" unique_id=51288134]
+visible = false
+scale = Vector2(1.25, 1.1875)
+texture = ExtResource("4_1kyke")
+offset = Vector2(12, 0)
+hframes = 3
+
+[node name="physics" type="Node2D" parent="." unique_id=586249106]
+
+[node name="Hitbox" type="Area2D" parent="physics" unique_id=1439057483 node_paths=PackedStringArray("player", "slash_hitbox", "sword")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("5_g4c2l")
+knockback_force = 100.0
+player = NodePath("")
+slash_hitbox = NodePath("slash_hitbox")
+sword = NodePath("../..")
+
+[node name="slash_hitbox" type="CollisionShape2D" parent="physics/Hitbox" unique_id=1679620238]
+position = Vector2(10, -1)
+shape = SubResource("CapsuleShape2D_epe0v")
+disabled = true

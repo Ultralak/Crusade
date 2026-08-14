@@ -19,7 +19,7 @@ var weapon_user : CharacterBody2D
 var weapon_user_pivot : Marker2D
 var mouse_direction : Vector2
 var melee_setup : bool = false
-var slot_index : int 
+var slot_index : String 
 var in_state : bool = false
 
 func _process(_delta: float) -> void:
@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 	if in_state:
 		input_manager.InputManaging()
 
-func setup_weapon_paladin( direction : Vector2, user : CharacterBody2D, userpivot : Marker2D, slot)->void:
+func setup_weapon_paladin( direction : Vector2, user : CharacterBody2D, userpivot : Marker2D, slot : String)->void:
 	slash_direction = direction
 	weapon_user = user
 	slot_index = slot

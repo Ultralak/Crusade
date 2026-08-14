@@ -7,6 +7,9 @@ extends Character
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+
+
 @export var max_health : float = 10
 @export var velocity_comp : VelocityComponent
 @export var debug_label : Label
@@ -41,6 +44,7 @@ func _process(_delta: float) -> void:
 
 		elif mouse_direction.x < 0 and not animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = true
+
 
 
 	

@@ -38,8 +38,12 @@ func _process(_delta: float) -> void:
 				FSM.transition_to("slot_2")
 			elif Input.is_action_pressed("dash"):
 				FSM.transition_to("dash")
+			elif Input.is_action_just_released("slot_1"):
+				FSM.transition_to("idle")
 		"slot_2":
 			if Input.is_action_pressed("slot_2"):
 				FSM.transition_to("slot_2")
 			elif Input.is_action_pressed("dash"):
 				FSM.transition_to("dash")
+			elif Input.is_action_just_released("slot_2"):
+				FSM.transition_to("idle")
