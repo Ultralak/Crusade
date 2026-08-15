@@ -9,7 +9,7 @@ extends NodeState
 @export var damage_particles : CPUParticles2D
 
 
-var is_dead : bool = false
+
 @export var friction = 50
 var knk_direction : Vector2
 var knk_force : float
@@ -25,9 +25,7 @@ func enter():
 	
 	characterbody2d.velocity = knk_direction * knk_force
 	animation_player.play("hit")
-	if healthcomponent.health <= 0:
-		is_dead = true
-		node_finite_state_machine.transition_to("dead")
+	
 
 
 func on_process(_delta : float):
@@ -38,8 +36,7 @@ func on_physics_process(delta : float):
 	characterbody2d.move_and_slide()
 	
 func exit():
-	if is_dead:
-		Navigation_component.disable_navigation()
+	pass
 
 func set_knockback(direction : Vector2, force : float):
 	knk_direction = direction

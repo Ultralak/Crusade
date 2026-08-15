@@ -407,9 +407,10 @@ script = ExtResource("13_5jbbf")
 entity = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="dead" type="Node" parent="StateMachine" index="9" unique_id=1645953202 node_paths=PackedStringArray("enemy", "animation_player")]
+[node name="dead" type="Node" parent="StateMachine" index="9" unique_id=1645953202 node_paths=PackedStringArray("enemy", "Navigation_component", "animation_player")]
 script = ExtResource("14_0crro")
 enemy = NodePath("../..")
+Navigation_component = NodePath("../../Navigation_Component_enemy")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("healthcomp", "FSM", "enemy")]

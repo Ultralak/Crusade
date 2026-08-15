@@ -1,19 +1,17 @@
 [gd_scene format=3 uid="uid://bjms0bmh2sbw0"]
 
-[ext_resource type="PackedScene" uid="uid://duoetiog44jd8" path="res://projectile_weapon.tscn" id="1_gwpo4"]
+[ext_resource type="PackedScene" uid="uid://duoetiog44jd8" path="res://Characters/Game Classes/projectile_weapon.tscn" id="1_gwpo4"]
 [ext_resource type="Texture2D" uid="uid://dievinj5ptxmw" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0005.png" id="2_h8emm"]
 
 [node name="ProjectileWeapon" unique_id=859750544 instance=ExtResource("1_gwpo4")]
 fire_rate = 20.0
-damage_amount = 5.0
 bullet_velocity = 300.0
+damage_amount = 5.0
 knockback_force = 200.0
 
 [node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
-position = Vector2(9, 0)
+position = Vector2(9, -2)
 
 [node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
-position = Vector2(0, 1.1920929e-07)
 scale = Vector2(1, 0.875)
 texture = ExtResource("2_h8emm")
-offset = Vector2(0, 2)

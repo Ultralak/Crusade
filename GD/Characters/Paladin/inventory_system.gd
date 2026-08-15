@@ -6,7 +6,7 @@ var player_backpack : Dictionary[String,Node2D]
 var count : int = 1
 func _ready() -> void:
 	for child in get_children():
-		if child is ProjectileWeapon or child is MeleeWeapon:
+		if child is Weapon:
 			var Slot : String = "Slot %s" % [count]
 			player_backpack.set(Slot,child)
 			print("%s in %s" % [child.name,Slot])
@@ -22,7 +22,7 @@ func add_weapon_backpack_slot_available()->void:
 	# techically for when player picks up weapon. need concept of active weapon
 	# for now just add in available slot
 	for child in get_children():
-		if child is ProjectileWeapon or child is MeleeWeapon:
+		if child is Weapon:
 			for i in range(player_backpack.size()):
 				var Slot : String = "Slot %s" % [i + 1]
 				if player_backpack.get(Slot):

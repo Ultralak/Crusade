@@ -15,24 +15,30 @@ func _ready() -> void:
 		attackbox.area_entered.connect(deal_damage)
 
 func deal_damage(body : Area2D):
+	
+	
+	
 	if body.get_parent() is Character:
 		CameraManager.add_trauma(0.4)
 	if entities_hit.has(body):
 		return
 	entities_hit.append(body)
-	print("Area entered : %s" % body.name)
+	# print("Area entered : %s" % body.name)
 	
-	if entity.is_in_group("ENEMY"):
-		damage_amount = entity.damage_amount
-		knockback_dir = entity.knockback_dir
-		knockback_force = entity.knockback_force
-	elif entity is EnvironmentalHazard:
+	if entity is not EnvironmentalHazard:
+		manage_penetration()
+	
+	if entity is EnvironmentalHazard:
 		damage_amount = entity.damage_amount
 		knockback_force = entity.knockback_force
 		for node in body.get_parent().get_children():
 			if node is HealthComponent:
 				knockback_dir = node.get_knockback_force()
 				break
+	else :
+		damage_amount = entity.damage_amount
+		knockback_dir = entity.knockback_dir
+		knockback_force = entity.knockback_force
 				
 				
 	for node in body.get_parent().get_children():
@@ -40,4 +46,11 @@ func deal_damage(body : Area2D):
 			node.take_damage(damage_amount, knockback_dir, knockback_force)
 			entities_hit.clear()
 			return
+			
+			
+			
+func manage_penetration()->void:
+	if entity is ProjectileWeapon:
+		if entities_hit.size() == entity.penetration:
+			entity.queue_free()
 	

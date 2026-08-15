@@ -2,10 +2,11 @@ extends NodeState
 
 var death_explosion : PackedScene = preload("uid://3er4nc5bjvmo")
 @export var enemy : CharacterBody2D
+@export var Navigation_component : NavigationComponent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Navigation_component.disable_navigation()
 
 func enter():
 	enemy.visible = false

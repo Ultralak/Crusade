@@ -1,19 +1,20 @@
 @icon("uid://etwv8bj0u7l7")
-extends Node2D
+extends Weapon
 class_name ProjectileWeapon
 
-@onready var muzzle: Marker2D = $"non physics/weapon skin/muzzle"
+@onready var muzzle: Marker2D = $"non physics/muzzle"
 
 @onready var fire_rate_timer: Timer = $FireRateTimer
 @onready var non_physics: Node2D = $"non physics"
 
 @export var bullet := preload("res://Characters/goblin/PlayerBullet.tscn")
 @export var fire_rate : float
-@export var damage_amount : float
 @export var bullet_velocity : float
 @export var weapon_bloom : float 
-@export var knockback_force : float
+
 @export var weapon_sprite : Sprite2D
+@export var penetration : int = 1
+
 var gun_direction : Vector2
 var weapon_user : CharacterBody2D
 var bullet_setup : bool = false
@@ -36,13 +37,14 @@ func setup_gun_paladin(direction : Vector2, user : CharacterBody2D, pivot : Mark
 	weapon_pivot = pivot
 	global_position  = pivot.global_position
 	bullet_setup = true
+	critical_hit()
 
 func setup_gun_enemy()->void:
 	#for enemies
 	pass
 
 func shoot()->void:
-	if !bullet_setup:
+	if !bullet_setup or !can_shoot:
 		return
 	var bulletInstance := bullet.instantiate() as BasicProjectile
 	
@@ -54,6 +56,13 @@ func shoot()->void:
 	
 	bulletInstance.knockback_dir = gun_direction
 	bulletInstance.knockback_force = knockback_force
+	bulletInstance.damage_amount = damage_amount
+	bulletInstance.penetration = penetration
+	
+	print("Weapon : %s" % [damage_amount])
+	
+	bulletInstance.z_index = 20
+	bulletInstance.rotation = gun_direction.angle() + deg_to_rad(90)
 	
 	get_tree().current_scene.add_child(bulletInstance)
 	bulletInstance.is_shot = true
@@ -77,6 +86,9 @@ func rotate_gun()->void:
 			non_physics.rotation = mouse_direction.angle()
 			if mouse_direction.x < 0:
 				weapon_sprite.flip_v = true
+				if muzzle.position.y < 0:
+					muzzle.position.y *= -1
 			else:
-
+				if muzzle.position.y > 0:
+					muzzle.position.y *= -1
 				weapon_sprite.flip_v = false

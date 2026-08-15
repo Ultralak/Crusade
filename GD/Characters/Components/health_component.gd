@@ -25,13 +25,16 @@ func _process(_delta: float) -> void:
 
 	
 func take_damage(damage : float, direction : Vector2, force : float):
-	if damage_number_position:
+	if damage_number_position and health > 0:
 		DamageNumbers.display_number(damage,damage_number_position.global_position,false)
 	
 	if entity.is_in_group("PLAYER"):
 		print("Player health reduced by : %s" % damage)
 	#print("take_damage runs")
 	health -= damage
+	if health <= 0:
+		FSM.transition_to("dead")
+		return
 	hurt_state.set_knockback(direction, force)
 	FSM.transition_to("hurt")
 	health_decreased.emit(health)

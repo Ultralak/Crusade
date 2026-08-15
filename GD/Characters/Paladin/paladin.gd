@@ -7,6 +7,7 @@ extends Character
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapon_pivot: Marker2D = $weapon_pivot
 
 
 
@@ -22,7 +23,6 @@ extends Character
 @export var freeze_time := 0.3
 @export var debug_enabled : bool
 
-@onready var weapon_pivot: Marker2D = $weapon_pivot
 var knockback_direction : Vector2 
 var can_turn : bool = true
 var can_attack  :bool = true
@@ -41,10 +41,13 @@ func _process(_delta: float) -> void:
 		mouse_direction = (get_global_mouse_position() - global_position).normalized()
 		if mouse_direction.x > 0 and animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = false
-
+			if weapon_pivot.position.x < 0:
+				weapon_pivot.position.x *= -1
 		elif mouse_direction.x < 0 and not animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = true
-
+			weapon_pivot.scale.x = 1
+			if weapon_pivot.position.x > 0:
+				weapon_pivot.position.x *= -1
 
 
 	

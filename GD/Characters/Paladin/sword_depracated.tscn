@@ -144,13 +144,11 @@ _data = {
 radius = 8.0
 height = 26.0
 
-[node name="sword_depracated" type="Node2D" unique_id=330911273 node_paths=PackedStringArray("player", "physics", "non_physics", "weapon_pivot")]
+[node name="sword_depracated" type="Node2D" unique_id=330911273 node_paths=PackedStringArray("physics", "non_physics")]
 script = ExtResource("1_bok1p")
-player = NodePath("")
 physics = NodePath("physics")
 non_physics = NodePath("non-physics")
 damage_amount = 5.0
-weapon_pivot = NodePath("")
 
 [node name="non-physics" type="Node2D" parent="." unique_id=2118260445]
 script = ExtResource("2_kc2ue")
@@ -174,12 +172,11 @@ hframes = 3
 
 [node name="physics" type="Node2D" parent="." unique_id=586249106]
 
-[node name="Hitbox" type="Area2D" parent="physics" unique_id=1439057483 node_paths=PackedStringArray("player", "slash_hitbox", "sword")]
+[node name="Hitbox" type="Area2D" parent="physics" unique_id=1439057483 node_paths=PackedStringArray("slash_hitbox", "sword")]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("5_g4c2l")
 knockback_force = 100.0
-player = NodePath("")
 slash_hitbox = NodePath("slash_hitbox")
 sword = NodePath("../..")
 

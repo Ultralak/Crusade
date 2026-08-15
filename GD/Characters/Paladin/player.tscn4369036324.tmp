@@ -424,14 +424,14 @@ velocity_component = NodePath("../Velocity_Component_player")
 player = NodePath("..")
 
 [node name="weapon_pivot" type="Marker2D" parent="." unique_id=1705097112]
-position = Vector2(4, -7)
+position = Vector2(0, -8)
 
 [node name="player_entrance_y_sorted" type="Area2D" parent="." unique_id=136711370]
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_entrance_y_sorted" unique_id=1273656074]
-position = Vector2(0, -10)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_cxjdc")
 
 [node name="DashEffect" type="CPUParticles2D" parent="." unique_id=1839803369]
@@ -458,8 +458,7 @@ fire_rate = 5.0
 bullet_velocity = 1000.0
 
 [node name="MeleeWeapon" parent="Inventory" unique_id=949604806 instance=ExtResource("20_qrkjl")]
-visible = false
-position = Vector2(0, 8)
+position = Vector2(8, -2)
 damage_amount = 4.0
 critical_hit_chance = 3.0
 

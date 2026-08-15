@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duoetiog44jd8"]
 
-[ext_resource type="Script" uid="uid://5k3vdmb7on5k" path="res://projectile_weapon.gd" id="1_xvyu7"]
+[ext_resource type="Script" uid="uid://5k3vdmb7on5k" path="res://Characters/Game Classes/projectile_weapon.gd" id="1_xvyu7"]
 [ext_resource type="Script" uid="uid://2mn4ctohriyd" path="res://input_manager_projectiles.gd" id="2_biiek"]
 
 [node name="ProjectileWeapon" type="Node2D" unique_id=859750544 node_paths=PackedStringArray("weapon_sprite")]
@@ -11,9 +11,9 @@ weapon_sprite = NodePath("non physics/weapon skin")
 
 [node name="non physics" type="Node2D" parent="." unique_id=1062263897]
 
-[node name="weapon skin" type="Sprite2D" parent="non physics" unique_id=796010820]
+[node name="muzzle" type="Marker2D" parent="non physics" unique_id=940464424]
 
-[node name="muzzle" type="Marker2D" parent="non physics/weapon skin" unique_id=940464424]
+[node name="weapon skin" type="Sprite2D" parent="non physics" unique_id=796010820]
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1130506084]
 one_shot = true

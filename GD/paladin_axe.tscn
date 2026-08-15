@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctb2e758hgyyb"]
 
-[ext_resource type="PackedScene" uid="uid://bqc85b4ajog1p" path="res://MeleeWeapon.tscn" id="1_vguq3"]
+[ext_resource type="PackedScene" uid="uid://bqc85b4ajog1p" path="res://Characters/Game Classes/MeleeWeapon.tscn" id="1_vguq3"]
 [ext_resource type="Texture2D" uid="uid://d4hxolsrnglig" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0009.png" id="2_uiyh3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5iva6"]
@@ -92,6 +92,7 @@ _data = {
 }
 
 [node name="MeleeWeapon" unique_id=949604806 instance=ExtResource("1_vguq3")]
+knockback_force = 100.0
 
 [node name="pivot" parent="." index="0" unique_id=1222718773]
 position = Vector2(-0.043807983, -7.4973373)
@@ -101,7 +102,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="pivot/Physics/AttackBox" index="0" unique_id=301836236]
-position = Vector2(11.043808, -2.5026627)
+position = Vector2(10.043808, -0.50266266)
 shape = SubResource("CapsuleShape2D_5iva6")
 disabled = true
 
@@ -113,5 +114,5 @@ position = Vector2(8, -6.5)
 texture = ExtResource("2_uiyh3")
 
 [node name="test_player_sprite" parent="pivot" index="2" unique_id=911232230]
+visible = false
 position = Vector2(0.043807983, -5.5026627)
-metadata/_edit_lock_ = true

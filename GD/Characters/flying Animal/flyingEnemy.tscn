@@ -275,9 +275,10 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="hurt_timer" type="Timer" parent="StateMachine/hurt" unique_id=630165371]
 one_shot = true
 
-[node name="dead" type="Node" parent="StateMachine" unique_id=1601241287 node_paths=PackedStringArray("enemy", "animation_player")]
+[node name="dead" type="Node" parent="StateMachine" unique_id=1601241287 node_paths=PackedStringArray("enemy", "Navigation_comp", "animation_player")]
 script = ExtResource("7_ncjnf")
 enemy = NodePath("../..")
+Navigation_comp = NodePath("../../Navigation_Component_enemy")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="attack" type="Node" parent="StateMachine" unique_id=494542716 node_paths=PackedStringArray("Navigation_node", "enemy", "timer", "FSM", "Damage_Component", "Navigation_component", "Attackbox", "animation_player")]

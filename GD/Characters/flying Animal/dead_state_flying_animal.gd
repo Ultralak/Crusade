@@ -2,11 +2,11 @@ extends NodeState
 
 var death_explosion : PackedScene = preload("uid://3er4nc5bjvmo")
 @export var enemy : CharacterBody2D
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var Navigation_comp : NavigationComponent
+
 
 func enter():
+	Navigation_comp.disable_navigation()
 	enemy.emit_is_dead()
 	var timer = Timer.new()
 	timer.one_shot = true

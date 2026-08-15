@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c2dxnaou5uqe3"]
 
 [ext_resource type="Script" uid="uid://n6p73ekq4hdw" path="res://Characters/goblin/Basic Projectile.gd" id="1_4a1ic"]
+[ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="2_4a1ic"]
 
 [node name="Projectile" type="CharacterBody2D" unique_id=990992544]
 collision_layer = 0
@@ -17,3 +18,5 @@ position = Vector2(-0.1484375, -0.0859375)
 [node name="AttackBox" type="Area2D" parent="." unique_id=646875869]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=1925796586]
+
+[node name="DamageComponent" parent="." unique_id=87847977 instance=ExtResource("2_4a1ic")]

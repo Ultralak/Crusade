@@ -6,6 +6,10 @@ class_name BasicProjectile
 
 @export var disapear_time : float = 2
 @export var sprite2d : Sprite2D
+
+var penetration : int = 1
+
+
 var knockback_dir : Vector2
 var knockback_force : float
 var damage_amount : float

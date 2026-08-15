@@ -7,7 +7,9 @@ extends NodeState
 @export var Inventory : InventorySystem
 @export var slot_index : String = "Slot 1"
 @export var weapon_pivot : Marker2D
-var weapon : Node2D
+@export var FSM : NodeFiniteStateMachine
+
+var weapon : Weapon
 var weapon_direction : Vector2
 
 #frame by frame
@@ -31,24 +33,35 @@ func enter():
 	velocity_component.speed_modifier = 0.9
 	
 	weapon = Inventory.get_weapon(slot_index)
-	if weapon :
-		weapon.in_state = true
-	if weapon is MeleeWeapon:
-		characterbody2d.can_turn = false
-		melee_setup(weapon)
-	elif weapon is ProjectileWeapon:
-		projectile_setup(weapon)
 	weapon.show()
+	
+	for child in Inventory.player_backpack.values():
+		if child == weapon:
+			continue
+		child.visible = false
+
+	if !weapon:
+		return
+	else:	
+		weapon.in_state = true
+		if weapon is MeleeWeapon:
+			characterbody2d.can_turn = false
+			melee_setup(weapon)
+		elif weapon is ProjectileWeapon:
+			projectile_setup(weapon)
+		#weapon.show()
 
 	
 func exit():
-	if weapon:
+	if !weapon:
+		return
+	else:
 		weapon.in_state = false
-	weapon.visible = false
-	weapon = null
-	characterbody2d.can_turn = true
-	velocity_component.speed_modifier = 1.0
-	animation_player.stop()
+		#weapon.visible = false
+		weapon = null
+		characterbody2d.can_turn = true
+		velocity_component.speed_modifier = 1.0
+		animation_player.stop()
 	
 func melee_setup(paladin_weapon : MeleeWeapon)->void:
 	paladin_weapon.setup_weapon_paladin(weapon_direction,characterbody2d,weapon_pivot,slot_index)
