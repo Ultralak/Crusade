@@ -41,14 +41,19 @@ func _process(_delta: float) -> void:
 		mouse_direction = (get_global_mouse_position() - global_position).normalized()
 		if mouse_direction.x > 0 and animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = false
+
 			if weapon_pivot.position.x < 0:
 				weapon_pivot.position.x *= -1
+				
+			GlobalSignals.player_turned.emit()
 		elif mouse_direction.x < 0 and not animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = true
+			
 			weapon_pivot.scale.x = 1
 			if weapon_pivot.position.x > 0:
 				weapon_pivot.position.x *= -1
-
+				
+			GlobalSignals.player_turned.emit()
 
 	
 func _physics_process(_delta: float) -> void:

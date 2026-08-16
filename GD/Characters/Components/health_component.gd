@@ -24,9 +24,9 @@ func _process(_delta: float) -> void:
 		pseudo_knockback_dir = -entity.velocity.normalized()
 
 	
-func take_damage(damage : float, direction : Vector2, force : float):
+func take_damage(damage : float, direction : Vector2, force : float, is_critical : bool = false):
 	if damage_number_position and health > 0:
-		DamageNumbers.display_number(damage,damage_number_position.global_position,false)
+		DamageNumbers.display_number(damage,damage_number_position.global_position,is_critical)
 	
 	if entity.is_in_group("PLAYER"):
 		print("Player health reduced by : %s" % damage)

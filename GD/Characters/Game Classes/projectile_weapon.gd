@@ -9,8 +9,8 @@ class_name ProjectileWeapon
 
 @export var bullet := preload("res://Characters/goblin/PlayerBullet.tscn")
 @export var fire_rate : float
-@export var bullet_velocity : float
-@export var weapon_bloom : float 
+@export_range(0,1000,1,"or_greater") var bullet_velocity : float
+@export_range(0,180) var weapon_bloom : int = 0
 
 @export var weapon_sprite : Sprite2D
 @export var penetration : int = 1
@@ -50,14 +50,16 @@ func shoot()->void:
 	
 	bulletInstance.global_position = muzzle.global_position
 	
-	bulletInstance.damage_amount = damage_amount
-	bulletInstance.projectile_direction = gun_direction
-	bulletInstance.projectile_velocity = bullet_velocity
-	
 	bulletInstance.knockback_dir = gun_direction
 	bulletInstance.knockback_force = knockback_force
 	bulletInstance.damage_amount = damage_amount
 	bulletInstance.penetration = penetration
+	
+	handle_weapon_bloom()
+	bulletInstance.is_critical_damage = critical_hit_done
+	bulletInstance.damage_amount = damage_amount
+	bulletInstance.projectile_direction = gun_direction
+	bulletInstance.projectile_velocity = bullet_velocity
 	
 	print("Weapon : %s" % [damage_amount])
 	
@@ -66,8 +68,8 @@ func shoot()->void:
 	
 	get_tree().current_scene.add_child(bulletInstance)
 	bulletInstance.is_shot = true
-	bullet_setup = false
 	
+	bullet_setup = false
 	can_shoot = false
 	
 	var frequency : float = 1/fire_rate
@@ -92,3 +94,10 @@ func rotate_gun()->void:
 				if muzzle.position.y > 0:
 					muzzle.position.y *= -1
 				weapon_sprite.flip_v = false
+
+func handle_weapon_bloom()->void:
+	var mid : float = (weapon_bloom)/2.0
+	var weapon_cone : float = randf_range(-mid, mid)
+	gun_direction = gun_direction.rotated(deg_to_rad(weapon_cone))
+	
+	

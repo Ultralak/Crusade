@@ -12,21 +12,12 @@ extends NodeState
 var weapon : Weapon
 var weapon_direction : Vector2
 
-#frame by frame
+	
 func on_process(_delta : float):
 	weapon_direction  = characterbody2d.mouse_direction
 	velocity_component.get_input()
-	
-	
-	if velocity_component.move_direction.length() > 0 :  
-		animation_player.play("run")
-	else:
-		animation_player.play("idle")
-		
-	if weapon is MeleeWeapon:
-		melee_setup(weapon)
-	elif weapon is ProjectileWeapon:
-		projectile_setup(weapon)
+	animation_change_with_weapon()
+	setup(weapon)
 
 func enter():
 	weapon_direction  = characterbody2d.mouse_direction
@@ -44,13 +35,11 @@ func enter():
 		return
 	else:	
 		weapon.in_state = true
+		setup(weapon)
 		if weapon is MeleeWeapon:
 			characterbody2d.can_turn = false
-			melee_setup(weapon)
-		elif weapon is ProjectileWeapon:
-			projectile_setup(weapon)
-		#weapon.show()
-
+	if !GlobalSignals.player_turned.is_connected(setup):
+		GlobalSignals.player_turned.connect(setup.bind(weapon))
 	
 func exit():
 	if !weapon:
@@ -63,16 +52,26 @@ func exit():
 		velocity_component.speed_modifier = 1.0
 		animation_player.stop()
 	
+	
+	
 func melee_setup(paladin_weapon : MeleeWeapon)->void:
 	paladin_weapon.setup_weapon_paladin(weapon_direction,characterbody2d,weapon_pivot,slot_index)
 	
 func projectile_setup(paladin_weapon : ProjectileWeapon)->void:
 	paladin_weapon.setup_gun_paladin(weapon_direction,characterbody2d,weapon_pivot,slot_index)
 	
+func setup(weapon_thing : Weapon, message : String = '')->void:
+	if weapon_thing is MeleeWeapon:
+		melee_setup(weapon_thing)
+	elif weapon_thing is ProjectileWeapon:
+		projectile_setup(weapon_thing)
+	print(message)
 	
-	
-	
-	
+func animation_change_with_weapon()->void:
+	if velocity_component.move_direction.length() > 0 :  
+		animation_player.play("run")
+	else:
+		animation_player.play("idle")
 	
 	
 	

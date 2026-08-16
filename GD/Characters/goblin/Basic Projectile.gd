@@ -13,6 +13,7 @@ var penetration : int = 1
 var knockback_dir : Vector2
 var knockback_force : float
 var damage_amount : float
+var is_critical_damage : bool = false
 
 var is_shot : bool  = false
 var projectile_velocity : float

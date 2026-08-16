@@ -344,12 +344,13 @@ state_machine_controller = NodePath("../../State Machine Controller")
 velocity_component = NodePath("../../Velocity_Component_player")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="slot_1" type="Node" parent="StateMachine" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "velocity_component", "Inventory", "weapon_pivot", "animation_player")]
+[node name="slot_1" type="Node" parent="StateMachine" unique_id=561083044 node_paths=PackedStringArray("characterbody2d", "velocity_component", "Inventory", "weapon_pivot", "FSM", "animation_player")]
 script = ExtResource("7_5slg2")
 characterbody2d = NodePath("../..")
 velocity_component = NodePath("../../Velocity_Component_player")
 Inventory = NodePath("../../Inventory")
 weapon_pivot = NodePath("../../weapon_pivot")
+FSM = NodePath("..")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="hurt" type="Node" parent="StateMachine" unique_id=100788297 node_paths=PackedStringArray("player", "FSM", "healthComp", "velocityComp", "hurt_timer", "animation_player")]
@@ -455,7 +456,9 @@ script = ExtResource("25_5lc8f")
 visible = false
 position = Vector2(8, -2)
 fire_rate = 5.0
-bullet_velocity = 1000.0
+bullet_velocity = 400.0
+weapon_bloom = 20
+critical_hit_chance = 0.0
 
 [node name="MeleeWeapon" parent="Inventory" unique_id=949604806 instance=ExtResource("20_qrkjl")]
 visible = false

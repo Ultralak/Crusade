@@ -7,8 +7,9 @@ class_name DamageComponent
 var knockback_dir : Vector2
 var knockback_force : float
 var damage_amount : float
-
 var entities_hit : Array
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if attackbox:
@@ -43,14 +44,18 @@ func deal_damage(body : Area2D):
 				
 	for node in body.get_parent().get_children():
 		if node is HealthComponent:
-			node.take_damage(damage_amount, knockback_dir, knockback_force)
+			if entity is BasicProjectile:
+				node.take_damage(damage_amount, knockback_dir, knockback_force, entity.is_critical_damage)
+			else:
+				node.take_damage(damage_amount, knockback_dir, knockback_force)
 			entities_hit.clear()
 			return
-			
-			
+
 			
 func manage_penetration()->void:
 	if entity is ProjectileWeapon:
 		if entities_hit.size() == entity.penetration:
 			entity.queue_free()
+	
+
 	
