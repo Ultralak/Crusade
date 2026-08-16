@@ -495,7 +495,7 @@ pivot = NodePath("../pivot")
 position = Vector2(8, 0)
 fire_rate = 2
 bullet_velocity = 500.0
-damage_amount = 5.0
+damage_amount = 4.0
 critical_hit_chance = 0.0
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]

@@ -16,7 +16,7 @@ func _ready() -> void:
 		attackbox.area_entered.connect(deal_damage)
 
 func deal_damage(body : Area2D):
-	if body.get_parent() is Character:
+	if body.get_parent().is_in_group("PLAYER"):
 		CameraManager.add_trauma(0.4)
 	if entities_hit.has(body):
 		return
@@ -49,6 +49,8 @@ func deal_damage(body : Area2D):
 
 			
 func manage_penetration()->void:
+	if !entity:
+		return
 	if entity is BasicProjectile:
 		if entity.weapon_shot_out_off is ProjectileWeapon and entities_hit.size() == entity.penetration:
 			entity.call_deferred("queue_free")
