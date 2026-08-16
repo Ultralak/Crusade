@@ -34,6 +34,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = projectile_direction * projectile_velocity
 		move_and_slide()
 	# this is just for this special case
+
 	
 func layer_damage_enemy()->void:
 	attack_box.set_collision_mask_value(5,true)
@@ -41,3 +42,8 @@ func layer_damage_enemy()->void:
 func layer_damage_player()->void:
 	attack_box.set_collision_mask_value(4,true)
 	attack_box.set_collision_mask_value(5,false)
+
+
+func _on_attack_box_body_entered(body : Node2D) -> void:
+	if body is TileMapLayer:
+		call_deferred("queue_free")
