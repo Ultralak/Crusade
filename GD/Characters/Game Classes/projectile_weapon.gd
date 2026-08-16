@@ -7,13 +7,14 @@ class_name ProjectileWeapon
 @onready var fire_rate_timer: Timer = $FireRateTimer
 @onready var non_physics: Node2D = $"non physics"
 
-@export var bullet := preload("res://Characters/goblin/PlayerBullet.tscn")
-@export var fire_rate : float
-@export_range(0,1000,1,"or_greater") var bullet_velocity : float
+@export var bullet : PackedScene 
+@export_range(1,100,1,"hide_control","suffix:bullets/s")  var fire_rate : int
+@export_range(1,1000,1,"or_greater") var bullet_velocity : float
 @export_range(0,180) var weapon_bloom : int = 0
 
 @export var weapon_sprite : Sprite2D
 @export var penetration : int = 1
+
 
 var gun_direction : Vector2
 var weapon_user : CharacterBody2D
@@ -22,6 +23,7 @@ var can_shoot : bool  = true
 var mouse_direction : Vector2
 var weapon_pivot : Marker2D 
 var slot_index : String
+
 
 # Checks if is in state so that weapon can work
 var in_state : bool
@@ -39,9 +41,13 @@ func setup_gun_paladin(direction : Vector2, user : CharacterBody2D, pivot : Mark
 	bullet_setup = true
 	critical_hit()
 
-func setup_gun_enemy()->void:
-	#for enemies
-	pass
+func setup_gun_enemy(direction : Vector2, user : CharacterBody2D, pivot : Marker2D, slot : String = "Slot 1")->void:
+	gun_direction = direction
+	weapon_user = user
+	slot_index = slot
+	weapon_pivot = pivot
+	global_position  = pivot.global_position
+	bullet_setup = true
 
 func shoot()->void:
 	if !bullet_setup or !can_shoot:
@@ -49,6 +55,9 @@ func shoot()->void:
 	var bulletInstance := bullet.instantiate() as BasicProjectile
 	
 	bulletInstance.global_position = muzzle.global_position
+	
+	bulletInstance.z_index = 20
+	bulletInstance.rotation = gun_direction.angle() + deg_to_rad(90)
 	
 	bulletInstance.knockback_dir = gun_direction
 	bulletInstance.knockback_force = knockback_force
@@ -60,19 +69,22 @@ func shoot()->void:
 	bulletInstance.damage_amount = damage_amount
 	bulletInstance.projectile_direction = gun_direction
 	bulletInstance.projectile_velocity = bullet_velocity
+	bulletInstance.rotation = gun_direction.angle()
+	bulletInstance.weapon_shot_out_off = self
+	
+	if weapon_user.is_in_group("ENEMY"):
+		bulletInstance.layer_damage_player()
+	elif weapon_user.is_in_group("PLAYER"):
+		bulletInstance.layer_damage_enemy()
 	
 	print("Weapon : %s" % [damage_amount])
-	
-	bulletInstance.z_index = 20
-	bulletInstance.rotation = gun_direction.angle() + deg_to_rad(90)
-	
 	get_tree().current_scene.add_child(bulletInstance)
 	bulletInstance.is_shot = true
 	
 	bullet_setup = false
 	can_shoot = false
 	
-	var frequency : float = 1/fire_rate
+	var frequency : float = 1/(fire_rate * 1.0)
 	
 	fire_rate_timer.wait_time = frequency
 	fire_rate_timer.one_shot = true
@@ -82,19 +94,24 @@ func _on_fire_rate_timer_timeout() -> void:
 	can_shoot = true
 
 func rotate_gun()->void:
-	if weapon_user is Character:
+	if weapon_user.is_in_group("PLAYER"):
 		mouse_direction  = weapon_user.mouse_direction
 		if weapon_user.can_turn:
-			non_physics.rotation = mouse_direction.angle()
-			if mouse_direction.x < 0:
-				weapon_sprite.flip_v = true
-				if muzzle.position.y < 0:
-					muzzle.position.y *= -1
-			else:
-				if muzzle.position.y > 0:
-					muzzle.position.y *= -1
-				weapon_sprite.flip_v = false
-
+			flip_gun(mouse_direction)
+	elif weapon_user is Enemy:
+		flip_gun(gun_direction)
+		
+		
+func flip_gun(vector : Vector2)->void:
+	non_physics.rotation = vector.angle()
+	if vector.x < 0:
+		weapon_sprite.flip_v = true
+		muzzle.position.y = abs(muzzle.position.y)
+	else:
+		muzzle.position.y = -abs(muzzle.position.y)
+		weapon_sprite.flip_v = false
+	
+	
 func handle_weapon_bloom()->void:
 	var mid : float = (weapon_bloom)/2.0
 	var weapon_cone : float = randf_range(-mid, mid)

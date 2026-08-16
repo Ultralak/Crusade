@@ -42,11 +42,11 @@ func set_knockback(direction : Vector2, force : float):
 	knk_direction = direction
 	knk_force = force
 	is_setup = true
-	print("hurt state : is_setup = true")
+	#print("hurt state : is_setup = true")
 
 func _on_hurt_timer_timeout() -> void:
 	is_setup = false
-	print("hurt state : is_setup = false")
+	#print("hurt state : is_setup = false")
 	node_finite_state_machine.transition_to("idle")
 	
 	

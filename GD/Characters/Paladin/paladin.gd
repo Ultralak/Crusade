@@ -18,7 +18,7 @@ extends Character
 @export var dash_speed : float = 500
 @export var dashTime : float = 0.2
 
-
+@export var player_center : Node2D
 @export var freeze_slow := 0.07
 @export var freeze_time := 0.3
 @export var debug_enabled : bool
@@ -40,19 +40,16 @@ func _process(_delta: float) -> void:
 	if can_turn:
 		mouse_direction = (get_global_mouse_position() - global_position).normalized()
 		if mouse_direction.x > 0 and animated_sprite_2d.flip_h:
-			animated_sprite_2d.flip_h = false
-
-			if weapon_pivot.position.x < 0:
-				weapon_pivot.position.x *= -1
-				
-			GlobalSignals.player_turned.emit()
-		elif mouse_direction.x < 0 and not animated_sprite_2d.flip_h:
-			animated_sprite_2d.flip_h = true
 			
+			animated_sprite_2d.flip_h = false
+			weapon_pivot.position.x = abs(weapon_pivot.position.x)
+			GlobalSignals.player_turned.emit()
+			
+		elif mouse_direction.x < 0 and not animated_sprite_2d.flip_h:
+			
+			animated_sprite_2d.flip_h = true
 			weapon_pivot.scale.x = 1
-			if weapon_pivot.position.x > 0:
-				weapon_pivot.position.x *= -1
-				
+			weapon_pivot.position.x = -abs(weapon_pivot.position.x)
 			GlobalSignals.player_turned.emit()
 
 	

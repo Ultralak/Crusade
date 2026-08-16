@@ -2,14 +2,15 @@
 extends CharacterBody2D
 class_name BasicProjectile
 
-@onready var disappear: Timer = $disappear
+@export var disappear: Timer 
+@export var attack_box : Area2D 
 
 @export var disapear_time : float = 2
 @export var sprite2d : Sprite2D
 
 var penetration : int = 1
 
-
+var weapon_shot_out_off : Weapon
 var knockback_dir : Vector2
 var knockback_force : float
 var damage_amount : float
@@ -33,4 +34,10 @@ func _physics_process(_delta: float) -> void:
 		velocity = projectile_direction * projectile_velocity
 		move_and_slide()
 	# this is just for this special case
-	sprite2d.rotation = projectile_direction.angle_to_point(Vector2.ZERO) + deg_to_rad(45)
+	
+func layer_damage_enemy()->void:
+	attack_box.set_collision_mask_value(5,true)
+	attack_box.set_collision_mask_value(4,false) 
+func layer_damage_player()->void:
+	attack_box.set_collision_mask_value(4,true)
+	attack_box.set_collision_mask_value(5,false)

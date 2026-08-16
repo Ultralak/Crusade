@@ -1,10 +1,11 @@
 @icon("res://Art/enemies/goblin/goblin_idle_anim_f0.png")
 extends Enemy
 @export_category("Goblin variables")
+
 @export var projectile_speed : float = 500
 @export var knockback_force : float
 @export var sprite : AnimatedSprite2D
-
+@export var weapon_pivot : Marker2D
 
 var knockback_dir : Vector2
 var player : CharacterBody2D
@@ -17,7 +18,9 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if player:
-		if direction_to_player.x >= 0:
+		if direction_to_player.x > 0:
 			sprite.flip_h = false
+			weapon_pivot.position.x = abs(weapon_pivot.position.x)
 		if direction_to_player.x < 0:
 			sprite.flip_h = true
+			weapon_pivot.position.x = -abs(weapon_pivot.position.x)

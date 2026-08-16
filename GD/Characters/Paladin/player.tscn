@@ -16,9 +16,9 @@
 [ext_resource type="Script" uid="uid://62wlikeoq6ph" path="res://Characters/Paladin/dead_state_paladin.gd" id="12_qrkjl"]
 [ext_resource type="Script" uid="uid://dbpbtjxqhhbh4" path="res://Characters/Paladin/dash_state_paladin.gd" id="13_qrkjl"]
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
-[ext_resource type="PackedScene" uid="uid://ctb2e758hgyyb" path="res://paladin_axe.tscn" id="20_qrkjl"]
+[ext_resource type="PackedScene" uid="uid://c3krxwkblx4nb" path="res://Characters/Paladin weapons/Paladin_Sniper.tscn" id="20_epe0v"]
+[ext_resource type="PackedScene" uid="uid://ctb2e758hgyyb" path="res://Characters/Paladin weapons/paladin_axe.tscn" id="20_qrkjl"]
 [ext_resource type="Texture2D" uid="uid://8detilfebbxg" path="res://Art/heroes/knight/knight_run_anim_f1.png" id="23_rxvsy"]
-[ext_resource type="PackedScene" uid="uid://bjms0bmh2sbw0" path="res://paladin_ak47.tscn" id="24_kxfcp"]
 [ext_resource type="Script" uid="uid://c0k3hvbb6wp3i" path="res://Characters/Paladin/inventory_system.gd" id="25_5lc8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xys2l"]
@@ -287,9 +287,9 @@ radius = 4.0
 height = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjdc"]
-size = Vector2(32, 20)
+size = Vector2(32, 18.5)
 
-[node name="Player" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("velocity_comp", "debug_label") groups=["PLAYER"]]
+[node name="Player" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("velocity_comp", "debug_label", "player_center") groups=["PLAYER"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 3
@@ -298,6 +298,7 @@ script = ExtResource("2_65n15")
 velocity_comp = NodePath("Velocity_Component_player")
 debug_label = NodePath("Test")
 dash_speed = 300.0
+player_center = NodePath("Player Center")
 debug_enabled = true
 
 [node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state") instance=ExtResource("3_mevwr")]
@@ -432,7 +433,7 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_entrance_y_sorted" unique_id=1273656074]
-position = Vector2(0, -10)
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_cxjdc")
 
 [node name="DashEffect" type="CPUParticles2D" parent="." unique_id=1839803369]
@@ -452,18 +453,17 @@ color = Color(0.2592937, 0.2592937, 0.2592937, 0.45490196)
 position = Vector2(0, -8)
 script = ExtResource("25_5lc8f")
 
-[node name="ProjectileWeapon" parent="Inventory" unique_id=859750544 instance=ExtResource("24_kxfcp")]
-visible = false
-position = Vector2(8, -2)
-fire_rate = 5.0
-bullet_velocity = 400.0
-weapon_bloom = 20
-critical_hit_chance = 0.0
-
 [node name="MeleeWeapon" parent="Inventory" unique_id=949604806 instance=ExtResource("20_qrkjl")]
 visible = false
 position = Vector2(0, 8)
 damage_amount = 4.0
 critical_hit_chance = 3.0
+
+[node name="Sniper" parent="Inventory" unique_id=859750544 instance=ExtResource("20_epe0v")]
+visible = false
+bullet_velocity = 1000.0
+
+[node name="Player Center" type="Node2D" parent="." unique_id=74991080]
+position = Vector2(0, -8)
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]

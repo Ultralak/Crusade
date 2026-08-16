@@ -6,6 +6,7 @@ signal enemy_killed(body : CharacterBody2D)
 @export var debug_text_enabled : bool
 @export var debug_text : Label
 @export var movement_speed : float = 25
+@export var FSM : NodeFiniteStateMachine
 func _ready() -> void:
 	debug_text.visible = debug_text_enabled
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clm3d5eiagjp3"]
 
-[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/goblin/Basic_Projectile.tscn" id="1_dcj6o"]
+[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/Game Classes/Basic_Projectile.tscn" id="1_dcj6o"]
 [ext_resource type="Texture2D" uid="uid://b363gnowrj7ig" path="res://Old_Crusade_sidescroller/Enemies/Shooter/shot.png" id="2_2nvki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]

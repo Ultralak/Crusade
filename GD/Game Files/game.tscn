@@ -45,6 +45,7 @@ damage_bar_tween_duration = 2.0
 
 [node name="Rooms" type="Node2D" parent="." unique_id=2073198002]
 script = ExtResource("4_3nhi0")
+disable_generation = true
 
 [node name="Room0" parent="Rooms" unique_id=277495275 instance=ExtResource("5_w7bpn")]
 
