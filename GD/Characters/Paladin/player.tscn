@@ -449,9 +449,10 @@ spread = 0.0
 gravity = Vector2(0, 0)
 color = Color(0.2592937, 0.2592937, 0.2592937, 0.45490196)
 
-[node name="Inventory" type="Node2D" parent="." unique_id=1415035902]
+[node name="Inventory" type="Node2D" parent="." unique_id=1415035902 node_paths=PackedStringArray("FSM")]
 position = Vector2(0, -8)
 script = ExtResource("25_5lc8f")
+FSM = NodePath("../StateMachine")
 
 [node name="MeleeWeapon" parent="Inventory" unique_id=949604806 instance=ExtResource("20_qrkjl")]
 visible = false

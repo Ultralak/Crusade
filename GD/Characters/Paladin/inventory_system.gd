@@ -1,10 +1,15 @@
 extends Node2D
 class_name InventorySystem
 
+
+@export var FSM : NodeFiniteStateMachine
 var player_backpack : Dictionary[String,Node2D]
 
 var count : int = 1
+
+
 func _ready() -> void:
+	GlobalSignals.player_picked_up_weapon.connect(pick_up_weapon)
 	for child in get_children():
 		if child is Weapon:
 			var Slot : String = "Slot %s" % [count]
@@ -38,5 +43,11 @@ func remove_weapon_backpack(weapon : Node2D)->void:
 func get_weapon(index : String):
 	return player_backpack.get(index)
 
-
+func pick_up_weapon(weapon : Weapon)->void:
+	for child in get_children():
+		if child is Weapon:
+			if child.is_in_active_slot:
+				child.replace_by(weapon)
+				FSM.transition_to("idle")
+	
 	

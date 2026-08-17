@@ -36,4 +36,4 @@ func player_picked_up_weapon()->void:
 	if weapon.interactable:
 		if Input.is_action_just_pressed("interact"):
 			GlobalSignals.emit_signal("player_picked_up_weapon", weapon)
-			
+			weapon.weapon_picked_up()
