@@ -45,6 +45,5 @@ func layer_damage_player()->void:
 
 
 func _on_attack_box_body_entered(body : Node2D) -> void:
-	pass
-	#if body is TileMapLayer:
-		#call_deferred("queue_free")
+	if body is TileMapLayer:
+		call_deferred("queue_free")

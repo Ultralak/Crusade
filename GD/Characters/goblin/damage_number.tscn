@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://db6ukxt00kktj" path="res://Characters/goblin/damage_number_scene.gd" id="2_7yc0n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yc0n"]
-resource_local_to_scene = true
 font = ExtResource("1_fshnh")
 font_size = 6
 outline_size = 3

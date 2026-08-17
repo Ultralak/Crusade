@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dbpbtjxqhhbh4" path="res://Characters/Paladin/dash_state_paladin.gd" id="13_qrkjl"]
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
 [ext_resource type="PackedScene" uid="uid://c3krxwkblx4nb" path="res://Characters/Paladin weapons/Paladin_Sniper.tscn" id="20_epe0v"]
-[ext_resource type="PackedScene" uid="uid://bjms0bmh2sbw0" path="res://Characters/Paladin weapons/paladin_ak47.tscn" id="20_qrkjl"]
+[ext_resource type="PackedScene" uid="uid://ctb2e758hgyyb" path="res://Characters/Paladin weapons/paladin_axe.tscn" id="20_qrkjl"]
 [ext_resource type="Texture2D" uid="uid://8detilfebbxg" path="res://Art/heroes/knight/knight_run_anim_f1.png" id="23_rxvsy"]
 [ext_resource type="Script" uid="uid://c0k3hvbb6wp3i" path="res://Characters/Paladin/inventory_system.gd" id="25_5lc8f"]
 
@@ -453,15 +453,15 @@ color = Color(0.2592937, 0.2592937, 0.2592937, 0.45490196)
 position = Vector2(0, -8)
 script = ExtResource("25_5lc8f")
 
+[node name="MeleeWeapon" parent="Inventory" unique_id=949604806 instance=ExtResource("20_qrkjl")]
+visible = false
+position = Vector2(0, 8)
+damage_amount = 4.0
+critical_hit_chance = 3.0
+
 [node name="Sniper" parent="Inventory" unique_id=859750544 instance=ExtResource("20_epe0v")]
 visible = false
 bullet_velocity = 1000.0
-
-[node name="ProjectileWeapon" parent="Inventory" unique_id=655243822 instance=ExtResource("20_qrkjl")]
-visible = false
-fire_rate = 20
-damage_amount = 1.0
-critical_hit_chance = 50.0
 
 [node name="Player Center" type="Node2D" parent="." unique_id=74991080]
 position = Vector2(0, -8)
