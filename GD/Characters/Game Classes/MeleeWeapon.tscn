@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://celdumbjid1bv" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Players/Tiles/tile_0001.png" id="2_vbhy5"]
 [ext_resource type="Script" uid="uid://ca886erq1afjr" path="res://input_manager_melee.gd" id="3_4ye81"]
 [ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="4_df4p2"]
+[ext_resource type="PackedScene" uid="uid://c20r7s2o0toit" path="res://weapon_hover.tscn" id="5_vbhy5"]
 
 [node name="MeleeWeapon" type="Node2D" unique_id=949604806]
 script = ExtResource("1_gs47g")
@@ -12,9 +13,14 @@ script = ExtResource("1_gs47g")
 
 [node name="Physics" type="Node2D" parent="pivot" unique_id=1783817814]
 
+[node name="Detect" type="Area2D" parent="pivot/Physics" unique_id=103384770]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/Physics/Detect" unique_id=2093904033]
+
 [node name="AttackBox" type="Area2D" parent="pivot/Physics" unique_id=511793790]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/Physics/AttackBox" unique_id=301836236]
+debug_color = Color(0.5540352, 0.55727005, 0.22366378, 0.41960785)
 
 [node name="Non-Physics" type="Node2D" parent="pivot" unique_id=971151981]
 
@@ -34,6 +40,9 @@ script = ExtResource("3_4ye81")
 weapon = NodePath("../..")
 
 [node name="slashRateTimer" type="Timer" parent="pivot/InputManager" unique_id=337407772]
+
+[node name="WeaponHover" parent="pivot/InputManager" unique_id=1435363319 instance=ExtResource("5_vbhy5")]
+position = Vector2(1, 15)
 
 [node name="DamageComponent" parent="." unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox") instance=ExtResource("4_df4p2")]
 entity = NodePath("..")

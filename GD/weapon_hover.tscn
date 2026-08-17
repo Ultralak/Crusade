@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c20r7s2o0toit"]
+
+[ext_resource type="Texture2D" uid="uid://dlirk3vm1f8j6" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Interface/Tiles/tile_0077.png" id="1_c8opn"]
+
+[node name="WeaponHover" type="Node2D" unique_id=1435363319]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1413308268]
+position = Vector2(0, -6)
+texture = ExtResource("1_c8opn")

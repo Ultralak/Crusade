@@ -30,10 +30,12 @@ func enter():
 		if child == weapon:
 			continue
 		child.visible = false
+		child.is_in_active_slot = false
 
 	if !weapon:
 		return
 	else:	
+		weapon.is_in_active_slot = true
 		weapon.in_state = true
 		setup(weapon)
 		if weapon is MeleeWeapon:

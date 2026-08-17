@@ -77,7 +77,7 @@ func shoot()->void:
 	elif weapon_user.is_in_group("PLAYER"):
 		bulletInstance.layer_damage_enemy()
 	
-	print("Weapon : %s" % [damage_amount])
+	#print("Weapon : %s" % [damage_amount])
 	get_tree().current_scene.add_child(bulletInstance)
 	bulletInstance.is_shot = true
 	
