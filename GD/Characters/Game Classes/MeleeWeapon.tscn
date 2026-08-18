@@ -6,16 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="4_df4p2"]
 [ext_resource type="PackedScene" uid="uid://c20r7s2o0toit" path="res://weapon_hover.tscn" id="5_vbhy5"]
 
-[node name="MeleeWeapon" type="Node2D" unique_id=949604806]
+[node name="MeleeWeapon" type="Node2D" unique_id=949604806 node_paths=PackedStringArray("interact_icon", "interact_region")]
 script = ExtResource("1_gs47g")
+interact_icon = NodePath("pivot/InputManager/WeaponHover")
+interact_region = NodePath("Detect")
+
+[node name="Detect" type="Area2D" parent="." unique_id=103384770]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect" unique_id=2093904033]
 
 [node name="pivot" type="Marker2D" parent="." unique_id=1222718773]
 
 [node name="Physics" type="Node2D" parent="pivot" unique_id=1783817814]
-
-[node name="Detect" type="Area2D" parent="pivot/Physics" unique_id=103384770]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/Physics/Detect" unique_id=2093904033]
 
 [node name="AttackBox" type="Area2D" parent="pivot/Physics" unique_id=511793790]
 

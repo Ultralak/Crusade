@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 class_name Weapon
 
 @export_range(0,100,0.1,"hide_control","or_greater","suffix:Points") var damage_amount : float
@@ -10,9 +10,11 @@ class_name Weapon
 var NORMAL_DAMAGE_AMOUNT : float
 var critical_hit_done : bool = false
 var is_in_active_slot : bool = false
-var interactable : bool = false
+var player_can_pickup : bool = false
+var is_on_ground : bool = true
+var is_in_player_sight : bool = false
 func _ready() -> void:
-	
+	interact_icon.visible = false
 	NORMAL_DAMAGE_AMOUNT = damage_amount
 
 func critical_hit()->void:
@@ -23,19 +25,24 @@ func critical_hit()->void:
 		damage_amount *= critical_hit_damage_multiplier
 		critical_hit_done = true
 
-func reveal_interact_icon()->void:
-	interact_icon.show()
+func interaction_enable()->void:
+	# the player can now click to pick weapon and weapon on floor
+	if is_on_ground:
+		interact_icon.show()
+		player_can_pickup = true
 	
-func hide_reveal_icon()->void:
-	interact_icon.visible = false
+func interaction_disable()->void:
+	if is_on_ground:
+		interact_icon.visible = false
+		player_can_pickup = false
 
-func interact_setup()->void:
-	reveal_interact_icon()
-	interactable = true
+func disable_interact_area()->void:
+	interact_region.monitorable = false
+	interact_region.monitoring = false
 
-func interact_leave()->void:
-	hide_reveal_icon()
-	interactable = false
+func enable_interact_area()->void:
+	interact_region.monitorable = true
+	interact_region.monitoring = true
 
 func critical_return()->void:
 	if critical_hit_done:

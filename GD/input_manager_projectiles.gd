@@ -9,7 +9,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	player_picked_up_weapon()
 	if weapon_input():
 		weapon.shoot()
 
@@ -33,7 +32,4 @@ func enemy_attacking()->bool:
 	return false
 
 func player_picked_up_weapon()->void:
-	if weapon.interactable:
-		if Input.is_action_just_pressed("interact"):
-			GlobalSignals.emit_signal("player_picked_up_weapon", weapon)
-			weapon.weapon_picked_up()
+	pass

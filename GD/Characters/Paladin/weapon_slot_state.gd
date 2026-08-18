@@ -36,6 +36,7 @@ func enter():
 		return
 	else:	
 		weapon.is_in_active_slot = true
+		Inventory.active_weapon = weapon
 		weapon.in_state = true
 		setup(weapon)
 		if weapon is MeleeWeapon:

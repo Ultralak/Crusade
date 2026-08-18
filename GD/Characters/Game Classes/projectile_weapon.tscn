@@ -5,10 +5,11 @@
 [ext_resource type="Script" uid="uid://dc2n1jumvuguj" path="res://Characters/Game Classes/player_pickup.gd" id="3_wtsam"]
 [ext_resource type="PackedScene" uid="uid://c20r7s2o0toit" path="res://weapon_hover.tscn" id="4_1wmbi"]
 
-[node name="ProjectileWeapon" type="Node2D" unique_id=859750544 node_paths=PackedStringArray("weapon_sprite", "interact_icon")]
+[node name="ProjectileWeapon" type="Node2D" unique_id=859750544 node_paths=PackedStringArray("weapon_sprite", "interact_icon", "interact_region")]
 script = ExtResource("1_xvyu7")
 weapon_sprite = NodePath("non physics/weapon skin")
 interact_icon = NodePath("WeaponHover")
+interact_region = NodePath("detect")
 
 [node name="physics" type="Node2D" parent="." unique_id=1413375991]
 
@@ -25,16 +26,15 @@ one_shot = true
 script = ExtResource("2_biiek")
 weapon = NodePath("..")
 
-[node name="PlayerPickup" type="Node2D" parent="." unique_id=494952995 node_paths=PackedStringArray("raycast")]
+[node name="PlayerPickup" type="Node2D" parent="." unique_id=494952995]
 script = ExtResource("3_wtsam")
-raycast = NodePath("RayCast2D")
-
-[node name="RayCast2D" type="RayCast2D" parent="PlayerPickup" unique_id=11679577]
 
 [node name="WeaponHover" parent="." unique_id=1435363319 instance=ExtResource("4_1wmbi")]
 position = Vector2(0, -9)
 
 [node name="detect" type="Area2D" parent="." unique_id=1551012564]
+collision_layer = 64
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detect" unique_id=198854539]
 
