@@ -3,7 +3,7 @@ class_name InventorySystem
 
 
 @export var FSM : NodeFiniteStateMachine
-var player_backpack : Dictionary[String,Node2D]
+var player_backpack : Dictionary[String,ProjectileWeapon]
 var active_weapon : Weapon
 var count : int = 1
 
@@ -16,8 +16,6 @@ func _ready() -> void:
 			player_backpack.set(Slot,child)
 			print("%s in %s" % [child.name,Slot])
 			count += 1
-			child.disable_interact_area()
-			child.is_on_ground = false
 			if count == 3:
 				break
 			

@@ -24,18 +24,19 @@ func enter():
 	velocity_component.speed_modifier = 0.9
 	
 	weapon = Inventory.get_weapon(slot_index)
-	weapon.show()
+	if !weapon:
+		FSM.transition_to("idle")
+	else:
+		weapon.show()
 	
 	for child in Inventory.player_backpack.values():
 		if child == weapon:
 			continue
 		child.visible = false
-		child.is_in_active_slot = false
 
 	if !weapon:
 		return
 	else:	
-		weapon.is_in_active_slot = true
 		Inventory.active_weapon = weapon
 		weapon.in_state = true
 		setup(weapon)

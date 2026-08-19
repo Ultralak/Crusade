@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ltplyyje61cv"]
+
+[ext_resource type="PackedScene" uid="uid://7shqxoy8r2if" path="res://interactable.tscn" id="1_fo5re"]
+[ext_resource type="Script" uid="uid://bji2mc5up5mxu" path="res://weapon_interact.gd" id="2_xge05"]
+
+[node name="InteractableClass" unique_id=1361525483 instance=ExtResource("1_fo5re")]
+script = ExtResource("2_xge05")

@@ -33,8 +33,11 @@ func take_damage(damage : float, direction : Vector2, force : float, is_critical
 	#print("take_damage runs")
 	health -= damage
 	if health <= 0:
-		FSM.transition_to("dead")
-		return
+		if entity is not Enemy:
+			pass
+		else:
+			FSM.transition_to("dead")
+			return
 	hurt_state.set_knockback(direction, force)
 	FSM.transition_to("hurt")
 	health_decreased.emit(health)

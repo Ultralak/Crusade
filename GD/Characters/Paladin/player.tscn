@@ -16,8 +16,7 @@
 [ext_resource type="Script" uid="uid://62wlikeoq6ph" path="res://Characters/Paladin/dead_state_paladin.gd" id="12_qrkjl"]
 [ext_resource type="Script" uid="uid://dbpbtjxqhhbh4" path="res://Characters/Paladin/dash_state_paladin.gd" id="13_qrkjl"]
 [ext_resource type="Script" uid="uid://drooho763nqpr" path="res://Characters/Components/state_machine_controller_paladin.gd" id="16_iga2k"]
-[ext_resource type="PackedScene" uid="uid://c3krxwkblx4nb" path="res://Characters/Paladin weapons/Paladin_Sniper.tscn" id="20_epe0v"]
-[ext_resource type="PackedScene" uid="uid://ctb2e758hgyyb" path="res://Characters/Paladin weapons/paladin_axe.tscn" id="20_qrkjl"]
+[ext_resource type="PackedScene" uid="uid://bjms0bmh2sbw0" path="res://Characters/Paladin weapons/paladin_ak47.tscn" id="19_qrkjl"]
 [ext_resource type="Script" uid="uid://dajmqytx2xcg2" path="res://Characters/Paladin/object_interation.gd" id="21_epe0v"]
 [ext_resource type="Texture2D" uid="uid://8detilfebbxg" path="res://Art/heroes/knight/knight_run_anim_f1.png" id="23_rxvsy"]
 [ext_resource type="Script" uid="uid://c0k3hvbb6wp3i" path="res://Characters/Paladin/inventory_system.gd" id="25_5lc8f"]
@@ -458,15 +457,8 @@ position = Vector2(0, -8)
 script = ExtResource("25_5lc8f")
 FSM = NodePath("../StateMachine")
 
-[node name="MeleeWeapon" parent="Inventory" unique_id=949604806 instance=ExtResource("20_qrkjl")]
+[node name="Paladin_AK47" parent="Inventory" unique_id=859750544 instance=ExtResource("19_qrkjl")]
 visible = false
-position = Vector2(0, 8)
-damage_amount = 4.0
-critical_hit_chance = 3.0
-
-[node name="Sniper" parent="Inventory" unique_id=859750544 instance=ExtResource("20_epe0v")]
-visible = false
-bullet_velocity = 1000.0
 
 [node name="Player Center" type="Node2D" parent="." unique_id=74991080]
 position = Vector2(0, -8)
@@ -484,4 +476,5 @@ shape = SubResource("CircleShape2D_6pmnr")
 debug_color = Color(0.7298368, 0.4700004, 0.16690713, 0.41960785)
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
+[connection signal="area_entered" from="ObjectInteration" to="ObjectInteration" method="_on_area_entered"]
 [connection signal="area_exited" from="ObjectInteration" to="ObjectInteration" method="_on_area_exited"]

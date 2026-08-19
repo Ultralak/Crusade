@@ -1,57 +1,50 @@
 extends Area2D
 class_name ObjectInteraction
 
-var active_interact_weapon : Weapon
-var active_weapon : Weapon
+var interactable_objects : Array[Interactable]
+var active_interactable : Interactable
 @export var Inventory : InventorySystem
 @export var player : Character
 
-
-func _process(_delta: float) -> void:
-	set_closest_weapon()
-	if player_pickup_input():
-		set_active_weapon()
-		
-	for child in get_overlapping_areas():
-		child.get_parent().interaction_disable()
-		active_interact_weapon.is_in_player_sight = false
-	if active_interact_weapon:
-		active_interact_weapon.interaction_enable()
-		active_interact_weapon.is_in_player_sight = true
+func _ready() -> void:
+	pass
 	
+func _process(_delta: float) -> void:
+	pass
+		
 	
 func set_closest_weapon()->void:
-	var min_distance : float = 1000.0
-	active_interact_weapon = null
-	for child in get_overlapping_areas():
-		if child.get_parent() is Weapon:
-			var distance_to_player : float = child.get_parent().global_position.distance_to(player.global_position)
-			if distance_to_player <= min_distance:
-				min_distance = distance_to_player
-				active_interact_weapon = child.get_parent()
+	var min_distance : float = INF
+	active_interactable = null
+	for child in interactable_objects:
+		child.interaction_disable()
+		var distance_to_player : float = child.global_position.distance_to(player.global_position)
+		if distance_to_player <= min_distance:
+			min_distance = distance_to_player
+			active_interactable = child
+			
+	if active_interactable: 
+		active_interactable.interaction_enable()
 
-func _on_area_exited(area: Area2D) -> void:
-	if area.get_parent() is Weapon:
-		var weapon := area.get_parent()
-		weapon.interaction_disable()
-		weapon.is_in_player_sight = false
-		print("Weapon : %s is out range" % [weapon.name] )
 
-func player_pickup_input()->bool:
-	return Input.is_action_just_pressed("interact") and active_interact_weapon
-	
-func set_active_weapon()->void:
-	active_weapon = Inventory.active_weapon
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and active_interactable:
+		active_interactable.interact()
+		print("Interacted with %s in the world!" % [active_interactable.name])
+		get_viewport().set_input_as_handled()
 
-func drop_active_weapon()->void:
-	if !active_weapon:
-		return
-	active_weapon.reparent(get_tree().current_scene)
-	active_weapon.global_position = player.global_position
 	
-func pickup_new_weapon()->void:
-	if !active_interact_weapon or !active_weapon:
-		return
-	active_weapon = active_interact_weapon
+func _on_area_exited(area) -> void:
+	if area is Interactable and interactable_objects.has(area):
+		area.interaction_disable()
+		interactable_objects.erase(area)
+		set_closest_weapon()
 	
 	
+func _on_area_entered(area) -> void:
+	if area is Interactable and !interactable_objects.has(area):
+		interactable_objects.append(area)
+		set_closest_weapon()
+
+
+		

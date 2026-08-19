@@ -1,28 +1,15 @@
 [gd_scene format=3 uid="uid://c3krxwkblx4nb"]
 
 [ext_resource type="PackedScene" uid="uid://duoetiog44jd8" path="res://Characters/Game Classes/projectile_weapon.tscn" id="1_wrncn"]
-[ext_resource type="PackedScene" uid="uid://cxlklukg0l144" path="res://Characters/goblin/Goblin_Knife.tscn" id="2_r45lk"]
+[ext_resource type="Resource" uid="uid://cxopv0w31546q" path="res://Characters/weapon resources/sniper.tres" id="2_wrncn"]
 [ext_resource type="Texture2D" uid="uid://co68egp78f78l" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0003.png" id="3_01cyj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1wmbi"]
-
 [node name="Sniper" unique_id=859750544 instance=ExtResource("1_wrncn")]
-bullet = ExtResource("2_r45lk")
-fire_rate = 2
-bullet_velocity = 200.0
-weapon_bloom = 1
-damage_amount = 10.0
-critical_hit_chance = 25.0
-knockback_force = 200.0
+weapon_data = ExtResource("2_wrncn")
+weapon_data = ExtResource("2_wrncn")
 
 [node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
 position = Vector2(10, 0)
 
 [node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
 texture = ExtResource("3_01cyj")
-
-[node name="WeaponHover" parent="." index="5" unique_id=1435363319]
-position = Vector2(1, 19)
-
-[node name="CollisionShape2D" parent="detect" parent_id_path=PackedInt32Array(1551012564) index="0" unique_id=198854539]
-shape = SubResource("CircleShape2D_1wmbi")
