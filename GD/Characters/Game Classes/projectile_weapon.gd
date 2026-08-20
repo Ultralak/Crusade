@@ -14,7 +14,7 @@ var bullet_setup : bool = false
 var can_shoot : bool  = true
 var mouse_direction : Vector2
 var weapon_pivot : Marker2D 
-var slot_index : String
+
 var recoil_tween: Tween
 
 func _ready() -> void:

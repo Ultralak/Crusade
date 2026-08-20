@@ -14,9 +14,9 @@ func _process(_delta: float) -> void:
 
 func is_default_attacking() -> bool:
 	if weapon.slot_index == "Slot 1": 
-		return Input.is_action_pressed("slot_1")
+		return Input.is_action_pressed("Slot 1")
 	if weapon.slot_index == "Slot 2":
-		return Input.is_action_pressed("slot_2")
+		return Input.is_action_pressed("Slot 2")
 	return false
 	
 

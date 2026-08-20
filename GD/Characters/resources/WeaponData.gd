@@ -6,6 +6,7 @@ class_name WeaponData
 @export_multiline var description: String = ""
 @export var weapon_sprite: Texture2D
 @export var ground_sprite: Texture2D
+@export_file("*.tscn") var weapon_scene_path: String
 
 @export_group("Combat Stats")
 @export var penetration: int = 1

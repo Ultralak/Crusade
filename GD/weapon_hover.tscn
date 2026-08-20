@@ -1,8 +1,23 @@
 [gd_scene format=3 uid="uid://c20r7s2o0toit"]
 
 [ext_resource type="Texture2D" uid="uid://dlirk3vm1f8j6" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Interface/Tiles/tile_0077.png" id="1_c8opn"]
+[ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="1_s5hdv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxjdc"]
+font = ExtResource("1_s5hdv")
+font_size = 4
 
 [node name="WeaponHover" type="Node2D" unique_id=1435363319]
+
+[node name="Label" type="Label" parent="." unique_id=2031621923]
+offset_left = -14.0
+offset_top = 1.0
+offset_right = 14.0
+offset_bottom = 5.0
+text = "press R"
+label_settings = SubResource("LabelSettings_cxjdc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1413308268]
 position = Vector2(0, -6)

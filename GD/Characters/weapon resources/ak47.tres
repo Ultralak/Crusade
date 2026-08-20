@@ -10,6 +10,7 @@ name = "Ak47"
 description = "Fairly Boring Assault Rifle with medium to good stats"
 weapon_sprite = ExtResource("2_edngc")
 ground_sprite = ExtResource("2_edngc")
+weapon_scene_path = "uid://bjms0bmh2sbw0"
 bullet_scene = ExtResource("1_2u8ax")
 energy_cost = 3
 recoil_duration = 0.1

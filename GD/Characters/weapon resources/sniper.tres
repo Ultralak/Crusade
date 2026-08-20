@@ -10,6 +10,7 @@ name = "Sniper Rifle"
 description = "Fast and swift weapon of destruction"
 weapon_sprite = ExtResource("2_x4vl5")
 ground_sprite = ExtResource("2_x4vl5")
+weapon_scene_path = "uid://c3krxwkblx4nb"
 penetration = 2
 knockback_force = 200.0
 bullet_scene = ExtResource("1_peqeu")

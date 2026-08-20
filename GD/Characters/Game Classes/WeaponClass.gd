@@ -6,6 +6,8 @@ class_name Weapon
 var NORMAL_DAMAGE_AMOUNT : float
 var critical_hit_done : bool = false
 @export var weapon_data : WeaponData
+@export var interactable_zone : Interactable
+var slot_index : String
 func _ready() -> void:
 	NORMAL_DAMAGE_AMOUNT = weapon_data.damage_amount
 

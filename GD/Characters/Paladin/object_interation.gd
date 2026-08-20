@@ -5,17 +5,19 @@ var interactable_objects : Array[Interactable]
 var active_interactable : Interactable
 @export var Inventory : InventorySystem
 @export var player : Character
-
+var delta_timer : float = 0
 func _ready() -> void:
 	pass
 	
 func _process(_delta: float) -> void:
-	pass
+	update_closest_interactabe_object()
+	
 		
 	
-func set_closest_weapon()->void:
+func update_closest_interactabe_object()->void:
 	var min_distance : float = INF
 	active_interactable = null
+	
 	for child in interactable_objects:
 		child.interaction_disable()
 		var distance_to_player : float = child.global_position.distance_to(player.global_position)
@@ -34,17 +36,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 	
-func _on_area_exited(area) -> void:
+func _on_area_exited(area : Area2D) -> void:
 	if area is Interactable and interactable_objects.has(area):
 		area.interaction_disable()
 		interactable_objects.erase(area)
-		set_closest_weapon()
+		update_closest_interactabe_object()
 	
-	
-func _on_area_entered(area) -> void:
+func _on_area_entered(area : Area2D) -> void:
 	if area is Interactable and !interactable_objects.has(area):
 		interactable_objects.append(area)
-		set_closest_weapon()
+		update_closest_interactabe_object()
 
 
 		

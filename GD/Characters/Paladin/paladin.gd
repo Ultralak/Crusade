@@ -1,4 +1,5 @@
 extends Character
+class_name Paladin
 #damage and health script
 
 
@@ -10,7 +11,7 @@ extends Character
 @onready var weapon_pivot: Marker2D = $weapon_pivot
 
 
-
+@export var Inventory : InventorySystem
 @export var max_health : float = 10
 @export var velocity_comp : VelocityComponent
 @export var debug_label : Label

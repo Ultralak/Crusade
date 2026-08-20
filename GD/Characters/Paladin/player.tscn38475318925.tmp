@@ -454,11 +454,10 @@ spread = 0.0
 gravity = Vector2(0, 0)
 color = Color(0.2592937, 0.2592937, 0.2592937, 0.45490196)
 
-[node name="Inventory" type="Node2D" parent="." unique_id=1415035902 node_paths=PackedStringArray("FSM", "player")]
+[node name="Inventory" type="Node2D" parent="." unique_id=1415035902 node_paths=PackedStringArray("FSM")]
 position = Vector2(0, -8)
 script = ExtResource("25_5lc8f")
 FSM = NodePath("../StateMachine")
-player = NodePath("..")
 
 [node name="Paladin_AK47" parent="Inventory" unique_id=859750544 instance=ExtResource("19_qrkjl")]
 visible = false

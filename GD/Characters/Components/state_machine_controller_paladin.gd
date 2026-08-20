@@ -20,30 +20,30 @@ func _process(_delta: float) -> void:
 				FSM.transition_to("run")
 			elif Input.is_action_just_pressed("dash"):
 				FSM.transition_to("dash")
-			elif Input.is_action_pressed("slot_1"):
-				FSM.transition_to("slot_1")
-			elif Input.is_action_pressed("slot_2"):
-				FSM.transition_to("slot_2")
+			elif Input.is_action_pressed("Slot 1"):
+				FSM.transition_to("Slot 1")
+			elif Input.is_action_pressed("Slot 2"):
+				FSM.transition_to("Slot 2")
 		"run":
 			if velocity_component.move_velocity.length() < 3 : 
 				FSM.transition_to("idle")
 			elif Input.is_action_just_pressed("dash"):
 				FSM.transition_to("dash")
-			elif Input.is_action_pressed("slot_1"):
-				FSM.transition_to("slot_1")
-			elif Input.is_action_pressed("slot_2"):
-				FSM.transition_to("slot_2")
-		"slot_1":
-			if Input.is_action_pressed("slot_2"):
-				FSM.transition_to("slot_2")
+			elif Input.is_action_pressed("Slot 1"):
+				FSM.transition_to("Slot 1")
+			elif Input.is_action_pressed("Slot 2"):
+				FSM.transition_to("Slot 2")
+		"Slot 1":
+			if Input.is_action_pressed("Slot 2"):
+				FSM.transition_to("Slot 2")
 			elif Input.is_action_pressed("dash"):
 				FSM.transition_to("dash")
-			elif Input.is_action_just_released("slot_1"):
+			elif Input.is_action_just_released("Slot 1"):
 				FSM.transition_to("idle")
-		"slot_2":
-			if Input.is_action_pressed("slot_2"):
-				FSM.transition_to("slot_2")
+		"Slot 2":
+			if Input.is_action_pressed("Slot 2"):
+				FSM.transition_to("Slot 2")
 			elif Input.is_action_pressed("dash"):
 				FSM.transition_to("dash")
-			elif Input.is_action_just_released("slot_2"):
+			elif Input.is_action_just_released("Slot 2"):
 				FSM.transition_to("idle")

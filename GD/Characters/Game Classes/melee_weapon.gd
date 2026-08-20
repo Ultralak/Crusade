@@ -18,7 +18,6 @@ var slash_direction : Vector2
 var weapon_user : CharacterBody2D
 var mouse_direction : Vector2
 var melee_setup : bool = false
-var slot_index : String 
 var knockback_dir : Vector2 
 var in_state : bool = false
 

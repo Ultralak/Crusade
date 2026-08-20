@@ -6,7 +6,6 @@
 
 [node name="Sniper" unique_id=859750544 instance=ExtResource("1_wrncn")]
 weapon_data = ExtResource("2_wrncn")
-weapon_data = ExtResource("2_wrncn")
 
 [node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
 position = Vector2(10, 0)
