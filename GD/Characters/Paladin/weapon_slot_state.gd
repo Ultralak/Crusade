@@ -30,9 +30,10 @@ func enter():
 		weapon.show()
 	
 	for child in Inventory.player_backpack.values():
-		if child == weapon:
-			continue
-		child.visible = false
+		if child:
+			if child == weapon:
+				continue
+			child.visible = false
 
 	if !weapon:
 		return

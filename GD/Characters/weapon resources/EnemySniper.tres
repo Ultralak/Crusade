@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://mnqxsvg5qxy3"]
+
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_fqpj6"]
+[ext_resource type="PackedScene" uid="uid://cxlklukg0l144" path="res://Characters/goblin/sniper_projectile.tscn" id="1_g4y65"]
+[ext_resource type="Texture2D" uid="uid://etwv8bj0u7l7" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0013.png" id="2_gwmcn"]
+
+[resource]
+script = ExtResource("1_fqpj6")
+name = "Enemy Sniper"
+description = "- Fast moving projectiles
+- enemy weapon"
+weapon_sprite = ExtResource("2_gwmcn")
+ground_sprite = ExtResource("2_gwmcn")
+damage_amount = 3.0
+critical_hit_chance = 0.0
+critical_hit_damage_multiplier = 0.0
+bullet_scene = ExtResource("1_g4y65")
+weapon_bloom = 5
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

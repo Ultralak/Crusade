@@ -7,9 +7,14 @@ var NORMAL_DAMAGE_AMOUNT : float
 var critical_hit_done : bool = false
 @export var weapon_data : WeaponData
 @export var interactable_zone : Interactable
+var is_normal_damage_setup : bool = false
 var slot_index : String
-func _ready() -> void:
-	NORMAL_DAMAGE_AMOUNT = weapon_data.damage_amount
+func setup_normal_damage()->void:
+	if !is_normal_damage_setup:
+		NORMAL_DAMAGE_AMOUNT = weapon_data.damage_amount
+		print("from shoot function damage : %s" % NORMAL_DAMAGE_AMOUNT)
+		is_normal_damage_setup = true
+
 
 func critical_hit()->void:
 	critical_return()

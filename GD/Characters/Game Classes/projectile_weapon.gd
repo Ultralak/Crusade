@@ -44,7 +44,8 @@ func setup_gun_enemy(direction : Vector2, user : CharacterBody2D, pivot : Marker
 	bullet_setup = true
 
 func shoot()->void:
-	if !bullet_setup or !can_shoot:
+	setup_normal_damage()
+	if !bullet_setup or !can_shoot or !is_normal_damage_setup:
 		return
 	var bulletInstance := weapon_data.bullet_scene.instantiate() as BasicProjectile
 	
@@ -54,6 +55,7 @@ func shoot()->void:
 	
 	bulletInstance.knockback_dir = gun_direction
 	bulletInstance.knockback_force = weapon_data.knockback_force
+	
 	bulletInstance.damage_amount = weapon_data.damage_amount
 	bulletInstance.penetration = weapon_data.penetration
 	bulletInstance.projectile_direction = gun_direction

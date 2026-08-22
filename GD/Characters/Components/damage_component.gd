@@ -16,12 +16,15 @@ func _ready() -> void:
 		attackbox.area_entered.connect(deal_damage)
 
 func deal_damage(body : Area2D):
-	if body.get_parent() is Character:
+	
+	print("damage amount : %s" % [entity.damage_amount])
+	
+	if body.get_parent() is Paladin:
 		CameraManager.add_trauma(0.4)
 	if entities_hit.has(body):
 		return
 	entities_hit.append(body)
-	# print("Area entered : %s" % body.name)
+	
 	
 	
 	if entity is EnvironmentalHazard:
@@ -36,7 +39,7 @@ func deal_damage(body : Area2D):
 		knockback_dir = entity.knockback_dir
 		knockback_force = entity.knockback_force
 				
-				
+	print("Area entered : %s and damage_dealt : %s" % [body.get_parent().name,damage_amount]) 
 	for node in body.get_parent().get_children():
 		if node is HealthComponent:
 			if entity is BasicProjectile:

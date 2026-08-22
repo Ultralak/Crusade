@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://2upbms8cmua6"]
 
 [ext_resource type="PackedScene" uid="uid://duoetiog44jd8" path="res://Characters/Game Classes/projectile_weapon.tscn" id="1_j2tw1"]
-[ext_resource type="PackedScene" uid="uid://cxlklukg0l144" path="res://Characters/goblin/Goblin_Knife.tscn" id="2_854nv"]
+[ext_resource type="Resource" uid="uid://mnqxsvg5qxy3" path="res://Characters/weapon resources/EnemySniper.tres" id="2_854nv"]
 [ext_resource type="Texture2D" uid="uid://etwv8bj0u7l7" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0013.png" id="2_onxnk"]
 
 [node name="EnemySniper" unique_id=859750544 instance=ExtResource("1_j2tw1")]
-bullet = ExtResource("2_854nv")
+weapon_data = ExtResource("2_854nv")
 
 [node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
 position = Vector2(9, 0)

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cxlklukg0l144"]
 
-[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/Game Classes/Basic_Projectile.tscn" id="1_h7wh4"]
-[ext_resource type="Script" uid="uid://i8ccjop706bf" path="res://Characters/goblin/goblin_knife.gd" id="2_058u6"]
-[ext_resource type="Texture2D" uid="uid://emuwg2ar0r2q" path="res://Art/enemies/goblin/goblin_knife.png" id="3_qwlt8"]
-[ext_resource type="Script" uid="uid://cekd56th51s45" path="res://Characters/goblin/bullet_trail.gd" id="4_burgw"]
+[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/Game Classes/Basic_Projectile.tscn" id="1_p7ctm"]
+[ext_resource type="Script" uid="uid://i8ccjop706bf" path="res://Characters/goblin/goblin_knife.gd" id="2_1uxtj"]
+[ext_resource type="Texture2D" uid="uid://bwp2rqybxtisg" path="res://Art/24StaticGenericProjectiles Spreadsheet.png" id="3_0hvax"]
+[ext_resource type="Script" uid="uid://cekd56th51s45" path="res://Characters/goblin/bullet_trail.gd" id="4_xvfbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwlt8"]
 size = Vector2(12, 4)
@@ -17,25 +17,29 @@ _data = [Vector2(0, 0.22222221), 0.0, 0.0, 0, 0, Vector2(0.99693245, 0.8253968),
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_7ri5p"]
-offsets = PackedFloat32Array(0.25694445, 0.5555556, 0.8680556)
-colors = PackedColorArray(0.70980394, 0.30980393, 0.6392157, 0.25882354, 0.7100172, 0.30876026, 0.63868684, 0.6912751, 0.5805103, 5.121112e-05, 0.47732365, 1)
+offsets = PackedFloat32Array(0.17525773, 0.48969072, 0.8814433)
+colors = PackedColorArray(0.70980394, 0.30980393, 0.6392157, 0.25882354, 0.09803922, 0.35686275, 0.5137255, 1, 0.22352941, 0.78431374, 0.79607844, 1)
 
-[node name="Goblin_Knife" unique_id=990992544 groups=["ENEMY"] instance=ExtResource("1_h7wh4")]
+[node name="sniper_projectile" unique_id=990992544 groups=["ENEMY"] instance=ExtResource("1_p7ctm")]
 collision_mask = 0
-script = ExtResource("2_058u6")
+script = ExtResource("2_1uxtj")
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
 visible = false
 shape = SubResource("RectangleShape2D_qwlt8")
 
 [node name="Sprite2D" parent="." index="1" unique_id=209185298]
-rotation = 0.9215338
-texture = ExtResource("3_qwlt8")
+rotation = 1.5707964
+texture = ExtResource("3_0hvax")
+hframes = 5
+vframes = 5
+frame = 11
 
 [node name="AttackBox" parent="." index="3" unique_id=646875869]
 collision_mask = 9
 
 [node name="CollisionShape2D" parent="AttackBox" index="0" unique_id=1925796586]
+z_index = -1
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_burgw")
 debug_color = Color(0.9782464, 0, 0.40147218, 0.41960785)
@@ -45,7 +49,7 @@ entity = NodePath("..")
 attackbox = NodePath("../AttackBox")
 
 [node name="BulletTrail" type="Node2D" parent="." index="5" unique_id=2072023039 node_paths=PackedStringArray("entity", "line")]
-script = ExtResource("4_burgw")
+script = ExtResource("4_xvfbe")
 entity = NodePath("..")
 line = NodePath("Line2D")
 

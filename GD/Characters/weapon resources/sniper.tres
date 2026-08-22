@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://cxopv0w31546q"]
 
-[ext_resource type="PackedScene" uid="uid://cxlklukg0l144" path="res://Characters/goblin/Goblin_Knife.tscn" id="1_peqeu"]
+[ext_resource type="PackedScene" uid="uid://cxlklukg0l144" path="res://Characters/goblin/sniper_projectile.tscn" id="1_peqeu"]
 [ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_t8w8v"]
 [ext_resource type="Texture2D" uid="uid://co68egp78f78l" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0003.png" id="2_x4vl5"]
 
