@@ -54,8 +54,8 @@ disable_generation = true
 [node name="Sniper" parent="Rooms" unique_id=1880439067 instance=ExtResource("8_5g5f8")]
 position = Vector2(116, 256)
 
-[node name="ak47" parent="Rooms" unique_id=859750544 instance=ExtResource("7_5uutt")]
-position = Vector2(81.46211, 256.55765)
+[node name="Paladin_AK47" parent="Rooms" unique_id=859750544 instance=ExtResource("7_5uutt")]
+position = Vector2(78.97844, 255.35977)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1818127101]
 environment = SubResource("Environment_cxjdc")

@@ -39,19 +39,20 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	knockback_direction = (get_global_mouse_position() - global_position).normalized()
 	if can_turn:
+		GlobalSignals.player_turned.emit()
 		mouse_direction = (get_global_mouse_position() - global_position).normalized()
 		if mouse_direction.x > 0 and animated_sprite_2d.flip_h:
 			
 			animated_sprite_2d.flip_h = false
 			weapon_pivot.position.x = abs(weapon_pivot.position.x)
-			GlobalSignals.player_turned.emit()
+			
 			
 		elif mouse_direction.x < 0 and not animated_sprite_2d.flip_h:
 			
 			animated_sprite_2d.flip_h = true
 			weapon_pivot.scale.x = 1
 			weapon_pivot.position.x = -abs(weapon_pivot.position.x)
-			GlobalSignals.player_turned.emit()
+			
 
 	
 func _physics_process(_delta: float) -> void:

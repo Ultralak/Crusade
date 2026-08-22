@@ -17,7 +17,7 @@ func on_process(_delta : float):
 	weapon_direction  = characterbody2d.mouse_direction
 	velocity_component.get_input()
 	animation_change_with_weapon()
-	setup(weapon)
+	setup()
 
 func enter():
 	weapon_direction  = characterbody2d.mouse_direction
@@ -37,13 +37,13 @@ func enter():
 	if !weapon:
 		return
 	else:	
-		Inventory.active_weapon = weapon
+		Inventory.active_weapon_slot = weapon.slot_index
 		weapon.in_state = true
-		setup(weapon)
+		setup()
 		if weapon is MeleeWeapon:
 			characterbody2d.can_turn = false
-	if !GlobalSignals.player_turned.is_connected(setup):
-		GlobalSignals.player_turned.connect(setup.bind(weapon))
+		if !GlobalSignals.player_turned.is_connected(setup):
+			GlobalSignals.player_turned.connect(setup)
 	
 func exit():
 	if !weapon:
@@ -55,6 +55,7 @@ func exit():
 		characterbody2d.can_turn = true
 		velocity_component.speed_modifier = 1.0
 		animation_player.stop()
+
 	
 	
 	
@@ -64,12 +65,15 @@ func melee_setup(paladin_weapon : MeleeWeapon)->void:
 func projectile_setup(paladin_weapon : ProjectileWeapon)->void:
 	paladin_weapon.setup_gun_paladin(weapon_direction,characterbody2d,weapon_pivot,slot_index)
 	
-func setup(weapon_thing : Weapon, message : String = '')->void:
-	if weapon_thing is MeleeWeapon:
-		melee_setup(weapon_thing)
-	elif weapon_thing is ProjectileWeapon:
-		projectile_setup(weapon_thing)
-	print(message)
+func setup(message : String = '')->void:
+	if Inventory.player_backpack.get(slot_index):
+		var weapon_thing : Weapon = Inventory.player_backpack.get(slot_index)
+		if weapon_thing is MeleeWeapon:
+			melee_setup(weapon_thing)
+		elif weapon_thing is ProjectileWeapon:
+			projectile_setup(weapon_thing)
+		if message != '':
+			print(message)
 	
 func animation_change_with_weapon()->void:
 	if velocity_component.move_direction.length() > 0 :  
