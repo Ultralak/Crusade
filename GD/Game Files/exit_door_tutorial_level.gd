@@ -1,4 +1,6 @@
 extends StaticBody2D
+class_name Door
+
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_y_sort: Area2D = $player_y_sort
