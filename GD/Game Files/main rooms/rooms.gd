@@ -27,9 +27,9 @@ func _ready() -> void:
 	num_enemies  = enemy_positions.get_child_count()
 
 func _open_doors()->void:
-	for node in doors.get_children():
-		if node is StaticBody2D:
-			node.open()
+	#for node in doors.get_children():
+		#if node is StaticBody2D:
+			#node.open()
 	if entrance_closed:
 		
 		var coords = ground.local_to_map(ground.to_local(left.global_position))
@@ -48,9 +48,9 @@ func _close_entrance()->void:
 	coords = ground.local_to_map(ground.to_local(right.global_position))
 	wall.set_cell(coords,0,Vector2i(8,6))
 	
-	for node in doors.get_children():
-		if node is StaticBody2D:
-			node.close()
+	#for node in doors.get_children():
+		#if node is StaticBody2D:
+			#node.close()
  
 
 #func _close_entrance_DEPRACATED()->void:
@@ -78,7 +78,7 @@ func on_enemy_killed(_enemy : CharacterBody2D)->void:
 	num_enemies -= 1
 	if num_enemies == 0:
 		_open_doors()
-		
+		 
 	
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D :

@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ygdq6k8q7ocr" path="res://Art/full tilemap.png" id="1_ajl2i"]
 [ext_resource type="Script" uid="uid://cwiw076c8mbr4" path="res://Game Files/main rooms/rooms.gd" id="1_dk3gb"]
-[ext_resource type="PackedScene" uid="uid://bi0o148hknwv7" path="res://Game Files/exit_door_tutorial_level.tscn" id="2_u2rqj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cxjdc"]
 resource_local_to_scene = true
@@ -242,8 +241,6 @@ tile_set = SubResource("TileSet_qa2gp")
 tile_set = SubResource("TileSet_6oopx")
 
 [node name="Doors" type="Node2D" parent="." unique_id=789333698]
-
-[node name="Door" parent="Doors" unique_id=91666086 instance=ExtResource("2_u2rqj")]
 
 [node name="Entrance" type="Node2D" parent="." unique_id=985537253]
 

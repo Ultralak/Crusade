@@ -32,8 +32,8 @@ GlobalSignals="*uid://bgrj3k176wapx"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=270
+window/size/viewport_width=320
+window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/subwindows/embed_subwindows=false
@@ -48,7 +48,7 @@ movie_writer/fps=30
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
+enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
 
 [global_group]
 
