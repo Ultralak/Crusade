@@ -19,7 +19,7 @@ func decide_doors():
 	for i in exit.get_children():
 		if i is DoorMarker:
 			if i.direction == DoorMarker.Direction.Up or i.direction == DoorMarker.Direction.Down :
-				first_side = i.global_position + Vector2.LEFT * TILESIZE/2
+				first_side = i.global_position + Vector2.LEFT * TILESIZE
 				second_side = i.global_position + Vector2.RIGHT * TILESIZE/2
 				if !i.activated:
 					show_wall_V(first_side,second_side)
