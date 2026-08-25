@@ -21,7 +21,6 @@ var entrance_closed : bool = true
 @onready var right: Marker2D = $Entrance/right
 @onready var roof_top: TileMapLayer = $"NavigationRegion2D/roof top"
 @onready var center: Marker2D = $Entrance/center
-@onready var door: StaticBody2D = $Doors/Door
 
 func _ready() -> void:
 	num_enemies  = enemy_positions.get_child_count()

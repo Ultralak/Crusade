@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dpl2rt3j5lehs" path="res://door_way_connect.gd" id="1_g127i"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_afpxd"]
+radius = 32.0
+
 [node name="DoorWayConnect" type="Marker2D" unique_id=1065442646]
-position = Vector2(261, 118)
 gizmo_extents = 100.0
 script = ExtResource("1_g127i")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1889170221]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1210077574]
+shape = SubResource("CircleShape2D_afpxd")

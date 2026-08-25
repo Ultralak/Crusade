@@ -1,8 +1,9 @@
-[gd_scene format=4 uid="uid://it1vvm832jfb"]
+[gd_scene format=3 uid="uid://it1vvm832jfb"]
 
 [ext_resource type="Texture2D" uid="uid://crs2qstiau0iw" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="1_dieqr"]
 [ext_resource type="Script" uid="uid://cpfu77g3m0vv3" path="res://Characters/Game Classes/base_dungeon_class.gd" id="1_r8iqv"]
 [ext_resource type="PackedScene" uid="uid://c125colwap2ae" path="res://DoorMarker.tscn" id="2_r8iqv"]
+[ext_resource type="Script" uid="uid://dvwnd5af4wmqg" path="res://Characters/Game Classes/wall_tilemap_layer.gd" id="3_pjbpj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjbpj"]
 texture = ExtResource("1_dieqr")
@@ -528,16 +529,18 @@ sources/1 = SubResource("TileSetAtlasSource_pjbpj")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6pmnr"]
 resource_local_to_scene = true
-vertices = PackedVector2Array(310, 174, 10, 174, 10, 10, 310, 10)
+vertices = PackedVector2Array(470, 262, 10, 262, 10, 10, 470, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 320, 0, 320, 184, 0, 184)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
 source_geometry_group_name = &"NAVIGATION"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
+size = Vector2(480, 272)
 
 [node name="BaseDungeon" type="Node2D" unique_id=1787448676]
 script = ExtResource("1_r8iqv")
 
 [node name="ground" type="TileMapLayer" parent="." unique_id=1650485613]
-tile_map_data = PackedByteArray("AAD5/wEAAQAGAAYAAAD5/wIAAQAGAAYAAAD5/wMAAQAGAAYAAAD5/wQAAQAGAAYAAAD5/wUAAQAGAAYAAAD5/wYAAQAGAAYAAAD5/wcAAQAGAAYAAAD5/wgAAQAGAAYAAAD6/wEAAQAGAAYAAAD6/wIAAQAGAAYAAAD6/wMAAQAGAAYAAAD6/wQAAQAGAAYAAAD6/wUAAQAGAAYAAAD6/wYAAQAGAAYAAAD6/wcAAQAGAAYAAAD6/wgAAQAGAAYAAAD7/wEAAQAGAAYAAAD7/wIAAQAGAAYAAAD7/wMAAQAGAAYAAAD7/wQAAQAGAAYAAAD7/wUAAQAGAAYAAAD7/wYAAQAGAAYAAAD7/wcAAQAGAAYAAAD7/wgAAQAGAAYAAAA=")
 tile_set = SubResource("TileSet_6pmnr")
 
 [node name="ground_objects" type="TileMapLayer" parent="." unique_id=1376421879]
@@ -545,6 +548,11 @@ tile_set = SubResource("TileSet_6pmnr")
 
 [node name="wall" type="TileMapLayer" parent="." unique_id=1025983753]
 tile_set = SubResource("TileSet_6pmnr")
+script = ExtResource("3_pjbpj")
+side_wall = Vector2i(15, 6)
+bottom_wall = Vector2i(16, 7)
+bottom_wall_left_open = Vector2i(1, 11)
+bottom_wall_right_open = Vector2i(2, 11)
 
 [node name="wall_objects" type="TileMapLayer" parent="." unique_id=840028683]
 tile_set = SubResource("TileSet_6pmnr")
@@ -552,25 +560,32 @@ tile_set = SubResource("TileSet_6pmnr")
 [node name="Enemy Spawn" type="Node2D" parent="." unique_id=107172939]
 
 [node name="exit" type="Node2D" parent="." unique_id=1579311928]
-metadata/_edit_lock_ = true
 
 [node name="up" parent="exit" unique_id=1065442646 instance=ExtResource("2_r8iqv")]
-position = Vector2(160, 0)
+position = Vector2(240, 0)
 
 [node name="left" parent="exit" unique_id=1661670950 instance=ExtResource("2_r8iqv")]
-position = Vector2(0, 88)
+position = Vector2(0, 136)
+activated = false
 direction = 3
 
 [node name="right" parent="exit" unique_id=743812689 instance=ExtResource("2_r8iqv")]
-position = Vector2(320, 88)
-direction = 2
+position = Vector2(472, 136)
+activated = false
+direction = 1
 
 [node name="down" parent="exit" unique_id=1889224654 instance=ExtResource("2_r8iqv")]
-position = Vector2(160, 176)
+position = Vector2(240, 264)
 direction = 2
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=378223689]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_6pmnr")
 
 [node name="Spawn Points" type="Node2D" parent="." unique_id=64963512]
+
+[node name="PlayerDetect" type="Area2D" parent="." unique_id=2066230081]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect" unique_id=745459189]
+position = Vector2(240, 136)
+shape = SubResource("RectangleShape2D_6pmnr")
+debug_color = Color(0.6167132, 0.5364011, 0, 0.41960785)
