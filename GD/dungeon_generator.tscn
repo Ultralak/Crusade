@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bhicndqmq8i05"]
+
+[ext_resource type="Script" uid="uid://yms8qkwa3gjm" path="res://dungeon_generator.gd" id="1_667dc"]
+[ext_resource type="Script" uid="uid://bq4uf0k1shulg" path="res://player_camera.gd" id="2_noacq"]
+[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="3_2ij2s"]
+
+[node name="Main" type="Node2D" unique_id=973644688]
+
+[node name="Dungeon Generator" type="Node2D" parent="." unique_id=456120006]
+script = ExtResource("1_667dc")
+
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=116882109 node_paths=PackedStringArray("player")]
+script = ExtResource("2_noacq")
+player = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=246556358 instance=ExtResource("3_2ij2s")]
+position = Vector2(249, 131)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=636500648]
+
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=18301045]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 476.0
+offset_bottom = 270.0

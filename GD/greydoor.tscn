@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://dcrmpmupvas4p"]
+
+[ext_resource type="Script" uid="uid://danvqkeh4lh8v" path="res://greydoor.gd" id="1_1tsys"]
+[ext_resource type="Texture2D" uid="uid://7rcovmmu8nde" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0145.png" id="1_y1bkq"]
+[ext_resource type="Texture2D" uid="uid://dfeq6q8dl5d6r" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0163.png" id="2_1tsys"]
+[ext_resource type="Texture2D" uid="uid://mg1h7n0sn3q6" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0181.png" id="3_6ldac"]
+[ext_resource type="Texture2D" uid="uid://caeoo3wu5h2sy" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0199.png" id="4_a3ni6"]
+[ext_resource type="Texture2D" uid="uid://bh6ma3w64uff1" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0146.png" id="5_mnfj8"]
+[ext_resource type="Texture2D" uid="uid://b7jkuipodh3c1" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0164.png" id="6_em8mb"]
+[ext_resource type="Texture2D" uid="uid://bkow1m4yxgyx7" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0182.png" id="7_w4hi8"]
+[ext_resource type="Texture2D" uid="uid://bwwr7j6wemf3k" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0200.png" id="8_xgdxl"]
+
+[sub_resource type="Animation" id="Animation_y1bkq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("right:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1tsys"]
+resource_name = "open"
+length = 0.4000100059606135
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("right:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ldac"]
+_data = {
+&"RESET": SubResource("Animation_y1bkq"),
+&"open": SubResource("Animation_1tsys")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qa2gp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y1bkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1tsys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6ldac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a3ni6")
+}],
+"loop": 2,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mnfj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_em8mb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w4hi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xgdxl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pukvj"]
+size = Vector2(32, 16)
+
+[node name="greydoor" type="StaticBody2D" unique_id=1496465496 node_paths=PackedStringArray("animation_player")]
+collision_mask = 6
+script = ExtResource("1_1tsys")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1452920252]
+libraries/ = SubResource("AnimationLibrary_6ldac")
+
+[node name="left" type="AnimatedSprite2D" parent="." unique_id=1639781007]
+position = Vector2(-8, -8)
+sprite_frames = SubResource("SpriteFrames_qa2gp")
+
+[node name="right" type="AnimatedSprite2D" parent="." unique_id=725273498]
+position = Vector2(8, -8)
+sprite_frames = SubResource("SpriteFrames_6pmnr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=443211858]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_pukvj")
