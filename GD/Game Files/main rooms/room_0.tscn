@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ut1jsfwgdut5" path="res://Game Files/main rooms/rooms.tscn" id="1_ehi0w"]
 [ext_resource type="Texture2D" uid="uid://ygdq6k8q7ocr" path="res://Art/full tilemap.png" id="2_co8ak"]
-[ext_resource type="PackedScene" uid="uid://dumrroosi82tl" path="res://Spikes.tscn" id="3_t2520"]
+[ext_resource type="PackedScene" uid="uid://dumrroosi82tl" path="res://Scenes ( not important classes )/Spikes.tscn" id="3_t2520"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_t2520"]
 resource_local_to_scene = true

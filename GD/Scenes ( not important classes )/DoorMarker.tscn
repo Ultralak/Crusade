@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c125colwap2ae"]
 
-[ext_resource type="Script" uid="uid://dpl2rt3j5lehs" path="res://door_way_connect.gd" id="1_g127i"]
+[ext_resource type="Script" uid="uid://dpl2rt3j5lehs" path="res://Scenes ( not important classes )/door_way_connect.gd" id="1_g127i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_afpxd"]
 radius = 32.0

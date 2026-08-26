@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d06gsjiv3bwuq" path="res://Characters/Game Classes/melee_weapon.gd" id="1_gs47g"]
 [ext_resource type="Texture2D" uid="uid://celdumbjid1bv" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Players/Tiles/tile_0001.png" id="2_vbhy5"]
-[ext_resource type="Script" uid="uid://ca886erq1afjr" path="res://input_manager_melee.gd" id="3_4ye81"]
+[ext_resource type="Script" uid="uid://ca886erq1afjr" path="res://Scenes ( not important classes )/input_manager_melee.gd" id="3_4ye81"]
 [ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="4_df4p2"]
 
 [node name="MeleeWeapon" type="Node2D" unique_id=949604806]

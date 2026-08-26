@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7shqxoy8r2if"]
 
-[ext_resource type="Script" uid="uid://dtxnbymy3lmft" path="res://interactable.gd" id="1_wh154"]
-[ext_resource type="PackedScene" uid="uid://c20r7s2o0toit" path="res://weapon_hover.tscn" id="2_jcy0q"]
+[ext_resource type="Script" uid="uid://dtxnbymy3lmft" path="res://Scenes ( not important classes )/interactable.gd" id="1_wh154"]
+[ext_resource type="PackedScene" uid="uid://c20r7s2o0toit" path="res://Scenes ( not important classes )/weapon_hover.tscn" id="2_jcy0q"]
 
 [node name="InteractableClass" type="Area2D" unique_id=1361525483]
 collision_layer = 0

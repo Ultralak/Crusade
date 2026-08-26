@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://c02w8dvo7rdmd"]
 
 [ext_resource type="PackedScene" uid="uid://ut1jsfwgdut5" path="res://Game Files/main rooms/rooms.tscn" id="1_85han"]
-[ext_resource type="PackedScene" uid="uid://dumrroosi82tl" path="res://Spikes.tscn" id="2_dbdhv"]
+[ext_resource type="PackedScene" uid="uid://dumrroosi82tl" path="res://Scenes ( not important classes )/Spikes.tscn" id="2_dbdhv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_32pwl"]
 resource_local_to_scene = true

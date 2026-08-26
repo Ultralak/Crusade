@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://crs2qstiau0iw" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="1_dieqr"]
 [ext_resource type="Script" uid="uid://cpfu77g3m0vv3" path="res://Characters/Game Classes/base_dungeon_class.gd" id="1_r8iqv"]
-[ext_resource type="PackedScene" uid="uid://c125colwap2ae" path="res://DoorMarker.tscn" id="2_r8iqv"]
+[ext_resource type="PackedScene" uid="uid://c125colwap2ae" path="res://Scenes ( not important classes )/DoorMarker.tscn" id="2_r8iqv"]
 [ext_resource type="Script" uid="uid://dvwnd5af4wmqg" path="res://Characters/Game Classes/wall_tilemap_layer.gd" id="3_pjbpj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjbpj"]
