@@ -1,5 +1,5 @@
 extends BaseDungeon
-class_name DungeonTwo
+class_name DungeonThree
 
 func _ready() -> void:
 	pass

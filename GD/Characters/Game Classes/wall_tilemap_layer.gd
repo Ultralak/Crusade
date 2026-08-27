@@ -9,8 +9,6 @@ const ATLAS_ID = 1
 
 @export var side_wall : Vector2i
 @export var bottom_wall : Vector2i
-@export var bottom_wall_left_open : Vector2i
-@export var bottom_wall_right_open : Vector2i
 var delete : Vector2i = Vector2i(-1,-1)
 
 

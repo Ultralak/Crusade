@@ -4,7 +4,9 @@ class_name BaseDungeon
 @export var Enemies : Array[PackedScene]
 ## locked mean entering can lock players in . free_way indicates the pathways are always open
 enum DUNGEONTYPE{locked, free_way}
+enum DUNGEONEVENT{combat,treasure,boss,shop,treasure_combat}
 @export var floor_type : DUNGEONTYPE
+@export var event_type : DUNGEONEVENT
 @onready var ground: TileMapLayer = $ground
 @onready var ground_objects: TileMapLayer = $ground_objects
 @onready var wall: TileMapLayer = $wall
