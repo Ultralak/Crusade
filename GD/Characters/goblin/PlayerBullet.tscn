@@ -48,9 +48,8 @@ _data = {
 &"idle": SubResource("Animation_2nvki")
 }
 
-[node name="PlayerBullet" unique_id=990992544 node_paths=PackedStringArray("sprite2d") instance=ExtResource("1_dcj6o")]
+[node name="PlayerBullet" unique_id=990992544 instance=ExtResource("1_dcj6o")]
 collision_mask = 16
-sprite2d = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
 position = Vector2(0, 0)
@@ -61,8 +60,7 @@ texture = ExtResource("2_2nvki")
 hframes = 2
 
 [node name="AttackBox" parent="." index="3" unique_id=646875869]
-collision_layer = 0
-collision_mask = 16
+collision_mask = 17
 
 [node name="CollisionShape2D" parent="AttackBox" index="0" unique_id=1925796586]
 shape = SubResource("CircleShape2D_d1wpy")

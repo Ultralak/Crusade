@@ -19,7 +19,7 @@ position = Vector2(-0.1484375, -0.0859375)
 [node name="disappear" type="Timer" parent="." unique_id=27475741]
 
 [node name="AttackBox" type="Area2D" parent="." unique_id=646875869]
-collision_layer = 0
+collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" unique_id=1925796586]

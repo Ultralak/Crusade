@@ -310,7 +310,7 @@ texture = ExtResource("1_dieqr")
 13:6/0 = 0
 14:6/0 = 0
 15:6/0 = 0
-15:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
 16:6/0 = 0
 17:6/0 = 0
 17:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.3166094, -8, 3.956892, -8, 4.136751, 8, -4.3166094, 8)
@@ -547,7 +547,7 @@ texture = ExtResource("1_dieqr")
 
 [sub_resource type="TileSet" id="TileSet_6pmnr"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 6
+physics_layer_0/collision_mask = 134
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "Purple Grass"
 terrain_set_0/terrain_0/color = Color(0, 0.41588777, 0.5990955, 1)
