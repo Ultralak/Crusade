@@ -26,7 +26,7 @@ func setup_room_walls() -> void:
 	for i in exit.get_children():
 		if i is DoorMarker:
 			var is_horizontal : bool = (i.direction == DoorMarker.Direction.Right or i.direction == DoorMarker.Direction.Left)
-			
+			var is_vertical : bool = (i.direction == DoorMarker.Direction.Up or i.direction == DoorMarker.Direction.Down)
 			if is_horizontal:
 				first_side = i.global_position + Vector2.UP * TILESIZE / 2
 				second_side = i.global_position + Vector2.DOWN * TILESIZE / 2
@@ -35,27 +35,24 @@ func setup_room_walls() -> void:
 					show_open_door_H(first_side, second_side)
 				else:
 					show_wall_H(first_side, second_side)
-			else:
+			elif is_vertical:
 				first_side = i.global_position + Vector2.LEFT * TILESIZE / 2
 				second_side = i.global_position + Vector2.RIGHT * TILESIZE / 2
+
 				if !i.activated:
 					show_vertical_wall(first_side,second_side)
 					delete_door(i)
-					
-				
+
+
 func delete_door(k : DoorMarker)->void:
-	if k.direction == DoorMarker.Direction.Up:
-		for i in doors.get_children():
-			if i is Door:
-				if i.door_position == Door.DOORPOSITION.up:
-					doors.remove_child(i)
-					i.queue_free()
-	if k.direction == DoorMarker.Direction.Down:
-		for i in doors.get_children():
-			if i is Door:
-				if i.door_position == Door.DOORPOSITION.down:
-					i.queue_free()
+	var target_enum = Door.DOORPOSITION.up if k.direction == DoorMarker.Direction.Up else Door.DOORPOSITION.down
 	
+	for i in doors.get_children():
+		if i is Door and i.door_position == target_enum:
+			doors.remove_child(i)
+			i.queue_free()
+
+
 func open_sides() -> void:
 	for i in exit.get_children():
 		if i is DoorMarker:
@@ -65,6 +62,7 @@ func open_sides() -> void:
 					second_side = i.global_position + Vector2.DOWN * TILESIZE / 2
 					show_open_door_H(first_side, second_side)
 
+
 func close_sides() -> void:
 	for i in exit.get_children():
 		if i is DoorMarker:
@@ -73,23 +71,23 @@ func close_sides() -> void:
 					first_side = i.global_position + Vector2.UP * TILESIZE / 2
 					second_side = i.global_position + Vector2.DOWN * TILESIZE / 2
 					show_wall_H(first_side, second_side)
-	
-## remove tiles at left and right markers . I don't have a gate in my tileset for left and right so this the best i can do
+
+
 func show_open_door_H(L : Vector2, R : Vector2):
-	change_tile_at_position(self,L,bottom_wall)
-	change_tile_at_position(self,R,bottom_wall)
+	change_tile_at_position(self,L,delete)
+	change_tile_at_position(self,R,delete)
 
 func show_vertical_wall(L : Vector2, R : Vector2)->void:
-	change_tile_at_position(self,L,side_wall)
-	change_tile_at_position(self,R,side_wall)
+	change_tile_at_position(self,L,bottom_wall)
+	change_tile_at_position(self,L + Vector2.LEFT * TILESIZE,bottom_wall)
+	change_tile_at_position(self,R,bottom_wall)
+	change_tile_at_position(self,R + Vector2.RIGHT * TILESIZE,bottom_wall)
 
 func change_tile_at_position(layer : TileMapLayer, tile_position : Vector2, atlasTextureCoords : Vector2i) -> void:
 	var local_pos = layer.to_local(tile_position)
 	var coordinates = layer.local_to_map(local_pos)
 	layer.set_cell(coordinates,ATLAS_ID,atlasTextureCoords)
-	
-## show wall for left and right sides . 
-## Basically just showing normal wall
+
 func show_wall_H(L : Vector2, R : Vector2):
 	change_tile_at_position(self,L,side_wall)
 	change_tile_at_position(self,R,side_wall)
@@ -102,5 +100,4 @@ func open_doors()->void:
 func close_doors():
 	for i in doors.get_children():
 		if i is Door:
-			i.close() 
-			
+			i.close()

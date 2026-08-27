@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://crs2qstiau0iw" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="1_dieqr"]
 [ext_resource type="Script" uid="uid://cpfu77g3m0vv3" path="res://Characters/Game Classes/base_dungeon_class.gd" id="1_r8iqv"]
 [ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/goblin.tscn" id="2_fp6rr"]
-[ext_resource type="PackedScene" uid="uid://c125colwap2ae" path="res://Scenes ( not important classes )/DoorMarker.tscn" id="2_r8iqv"]
+[ext_resource type="PackedScene" uid="uid://c125colwap2ae" path="res://Game Components/Scenes/DoorMarker.tscn" id="2_r8iqv"]
 [ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="3_avnd0"]
 [ext_resource type="Script" uid="uid://dvwnd5af4wmqg" path="res://Characters/Game Classes/wall_tilemap_layer.gd" id="3_pjbpj"]
 
@@ -537,7 +537,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272,
 source_geometry_group_name = &"NAVIGATION"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
-size = Vector2(480, 272)
+size = Vector2(448, 240)
 
 [node name="BaseDungeon" type="Node2D" unique_id=1787448676]
 script = ExtResource("1_r8iqv")
@@ -563,18 +563,18 @@ tile_set = SubResource("TileSet_6pmnr")
 [node name="exit" type="Node2D" parent="." unique_id=1579311928]
 
 [node name="up" parent="exit" unique_id=1065442646 instance=ExtResource("2_r8iqv")]
-position = Vector2(240, 0)
+position = Vector2(240, 2)
 
 [node name="left" parent="exit" unique_id=1661670950 instance=ExtResource("2_r8iqv")]
-position = Vector2(0, 136)
+position = Vector2(8, 128)
 direction = 3
 
 [node name="right" parent="exit" unique_id=743812689 instance=ExtResource("2_r8iqv")]
-position = Vector2(472, 136)
+position = Vector2(472, 128)
 direction = 1
 
 [node name="down" parent="exit" unique_id=1889224654 instance=ExtResource("2_r8iqv")]
-position = Vector2(240, 264)
+position = Vector2(240, 261)
 direction = 2
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=378223689]
@@ -583,7 +583,6 @@ navigation_polygon = SubResource("NavigationPolygon_6pmnr")
 [node name="Spawn Points" type="Node2D" parent="." unique_id=64963512]
 
 [node name="PlayerDetect" type="Area2D" parent="." unique_id=2066230081]
-collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect" unique_id=745459189]
@@ -593,4 +592,4 @@ debug_color = Color(0.6167132, 0.5364011, 0, 0.41960785)
 
 [node name="Doors" type="Node2D" parent="." unique_id=1678814541]
 
-[connection signal="area_entered" from="PlayerDetect" to="." method="_on_player_detect_area_entered"]
+[connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]

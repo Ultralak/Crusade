@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bdrufug2gvxv7"]
+
+[ext_resource type="PackedScene" uid="uid://it1vvm832jfb" path="res://Characters/Game Classes/BaseDungeonClass.tscn" id="1_pg3tx"]
+[ext_resource type="Script" uid="uid://bpbnybvb5no23" path="res://Characters/Game Classes/dungeon_level_2.gd" id="2_10nof"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_10nof"]
+resource_local_to_scene = true
+vertices = PackedVector2Array(470, 262, 10, 262, 10, 10, 470, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
+source_geometry_group_name = &"NAVIGATION"
+
+[node name="BaseDungeon" unique_id=1787448676 instance=ExtResource("1_pg3tx")]
+script = ExtResource("2_10nof")
+Enemies = Array[PackedScene]([])
+
+[node name="NavigationRegion2D" parent="." index="5" unique_id=378223689]
+navigation_polygon = SubResource("NavigationPolygon_10nof")

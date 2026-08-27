@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ltplyyje61cv"]
 
-[ext_resource type="PackedScene" uid="uid://7shqxoy8r2if" path="res://Scenes ( not important classes )/interactable.tscn" id="1_fo5re"]
-[ext_resource type="Script" uid="uid://bji2mc5up5mxu" path="res://Scenes ( not important classes )/weapon_interact.gd" id="2_xge05"]
+[ext_resource type="PackedScene" uid="uid://7shqxoy8r2if" path="res://Game Components/Scenes/interactable.tscn" id="1_fo5re"]
+[ext_resource type="Script" uid="uid://bji2mc5up5mxu" path="res://Game Components/scripts/weapon_interact.gd" id="2_xge05"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epe0v"]
 

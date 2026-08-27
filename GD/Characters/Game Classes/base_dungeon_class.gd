@@ -2,30 +2,25 @@ extends Node2D
 class_name BaseDungeon
 
 @export var Enemies : Array[PackedScene]
-
+## locked mean entering can lock players in . free_way indicates the pathways are always open
+enum DUNGEONTYPE{locked, free_way}
+@export var floor_type : DUNGEONTYPE
 @onready var ground: TileMapLayer = $ground
 @onready var ground_objects: TileMapLayer = $ground_objects
 @onready var wall: TileMapLayer = $wall
-@onready var enemy_spawn: Node2D = $"Enemy Spawn"
 @onready var player_detect: Area2D = $PlayerDetect
+@onready var spawn_points: Node2D = $"Spawn Points"
 
 var active_enemies: int = 0
 func _ready() -> void:
-	wall.open()
+	pass
 	
-
-func _on_player_detect_area_entered(area: Area2D) -> void:
-	wall.close()
-	player_detect.call_deferred("queue_free")
-	spawn_enemies()
-
-
 func spawn_enemies() -> void:
 	if Enemies.is_empty():
 		wall.open()
 		return
 		
-	var spawn_markers = enemy_spawn.get_children()
+	var spawn_markers = spawn_points.get_children()
 	if spawn_markers.is_empty():
 		wall.open()
 		return
@@ -65,3 +60,15 @@ func apply_door_states(has_top: bool, has_bottom: bool, has_left: bool, has_righ
 		right_marker.activated = has_right
 
 	wall.setup_room_walls()
+
+
+func _on_player_detect_body_entered(_body: Node2D) -> void:
+	player_detect.call_deferred("queue_free")
+	if floor_type == DUNGEONTYPE.locked:
+		wall.close()
+		await get_tree().create_timer(0.5).timeout
+		spawn_enemies()
+		
+		
+	else:
+		pass

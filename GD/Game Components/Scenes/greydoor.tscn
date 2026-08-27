@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcrmpmupvas4p"]
 
-[ext_resource type="Script" uid="uid://danvqkeh4lh8v" path="res://greydoor.gd" id="1_1tsys"]
+[ext_resource type="Script" uid="uid://danvqkeh4lh8v" path="res://Game Components/scripts/greydoor.gd" id="1_1tsys"]
 [ext_resource type="Texture2D" uid="uid://7rcovmmu8nde" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0145.png" id="1_y1bkq"]
 [ext_resource type="Texture2D" uid="uid://dfeq6q8dl5d6r" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0163.png" id="2_1tsys"]
 [ext_resource type="Texture2D" uid="uid://mg1h7n0sn3q6" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0181.png" id="3_6ldac"]

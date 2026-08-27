@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://duoetiog44jd8"]
 
 [ext_resource type="Script" uid="uid://5k3vdmb7on5k" path="res://Characters/Game Classes/projectile_weapon.gd" id="1_xvyu7"]
-[ext_resource type="Script" uid="uid://2mn4ctohriyd" path="res://Scenes ( not important classes )/input_manager_projectiles.gd" id="2_biiek"]
-[ext_resource type="PackedScene" uid="uid://ltplyyje61cv" path="res://Scenes ( not important classes )/WeaponInteractable.tscn" id="4_1wmbi"]
+[ext_resource type="Script" uid="uid://2mn4ctohriyd" path="res://Game Components/scripts/input_manager_projectiles.gd" id="2_biiek"]
+[ext_resource type="PackedScene" uid="uid://ltplyyje61cv" path="res://Game Components/Scenes/WeaponInteractable.tscn" id="4_1wmbi"]
 
 [node name="ProjectileWeapon" type="Node2D" unique_id=859750544 node_paths=PackedStringArray("interactable_zone")]
 script = ExtResource("1_xvyu7")

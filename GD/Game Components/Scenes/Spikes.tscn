@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dumrroosi82tl"]
 
 [ext_resource type="Texture2D" uid="uid://dfqthchl873n4" path="res://Art/tiles/floor/spikes_spritesheet.png" id="1_3gfof"]
-[ext_resource type="Script" uid="uid://bi1wobwxqtjvw" path="res://Scenes ( not important classes )/moving_spike.gd" id="1_8uvme"]
+[ext_resource type="Script" uid="uid://bi1wobwxqtjvw" path="res://Game Components/scripts/moving_spike.gd" id="1_8uvme"]
 [ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="3_n70j0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwck6"]

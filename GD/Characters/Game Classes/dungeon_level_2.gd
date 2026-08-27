@@ -1,0 +1,2 @@
+extends BaseDungeon
+class_name DungeonTwo
