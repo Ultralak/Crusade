@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b4wjdqnjt14fv"]
+
+[ext_resource type="PackedScene" uid="uid://iskp6mcfd2ks" path="res://Characters/Components/damage_component.tscn" id="1_6xt20"]
+
+[node name="Destructible objects" type="Node2D" unique_id=1812261946]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1179897728]
+
+[node name="DamageComponent" parent="." unique_id=87847977 instance=ExtResource("1_6xt20")]

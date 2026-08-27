@@ -7,6 +7,7 @@ enum DUNGEONTYPE {
 	free_way, ## the pathways are always open
 }
 enum DUNGEONEVENT {
+	spawn,
 	combat,
 	treasure,
 	boss,
@@ -28,7 +29,7 @@ var active_enemies: int = 0
 
 
 func _ready() -> void:
-	pass
+	setup()
 
 
 func spawn_enemies() -> void:
@@ -70,6 +71,10 @@ func apply_door_states(has_top: bool, has_bottom: bool, has_left: bool, has_righ
 		right_marker.activated = has_right
 
 	wall.setup_room_walls()
+
+
+func setup():
+	pass
 
 
 func _on_enemy_tree_exited() -> void:

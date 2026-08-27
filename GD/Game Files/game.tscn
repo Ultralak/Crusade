@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bprb15pjpdnib" path="res://Game Files/main rooms/room_0.tscn" id="5_w7bpn"]
 [ext_resource type="PackedScene" uid="uid://bjms0bmh2sbw0" path="res://Characters/Paladin weapons/paladin_ak47.tscn" id="7_5uutt"]
 [ext_resource type="PackedScene" uid="uid://c3krxwkblx4nb" path="res://Characters/Paladin weapons/Paladin_Sniper.tscn" id="8_5g5f8"]
+[ext_resource type="PackedScene" uid="uid://ck77ffvlp8n3k" path="res://Game Components/Scenes/Box_1.tscn" id="9_y0mmi"]
 
 [sub_resource type="Environment" id="Environment_cxjdc"]
 background_mode = 1
@@ -59,3 +60,6 @@ position = Vector2(78.97844, 255.35977)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1818127101]
 environment = SubResource("Environment_cxjdc")
+
+[node name="Box" parent="." unique_id=1185611550 instance=ExtResource("9_y0mmi")]
+position = Vector2(167, 258)

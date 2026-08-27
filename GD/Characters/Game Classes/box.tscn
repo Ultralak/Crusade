@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cgwjltaq0qvlb"]
+
+[ext_resource type="Script" uid="uid://8ixwhtjbc1ya" path="res://Characters/Game Classes/Destroyables.gd" id="1_61g0v"]
+
+[node name="Box" type="Node2D" unique_id=1185611550]
+script = ExtResource("1_61g0v")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=437174867]
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=355400070]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=273383467]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

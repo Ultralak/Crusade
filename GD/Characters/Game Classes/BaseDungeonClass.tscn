@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="3_avnd0"]
 [ext_resource type="Script" uid="uid://dvwnd5af4wmqg" path="res://Characters/Game Classes/wall_tilemap_layer.gd" id="3_pjbpj"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6pmnr"]
+resource_local_to_scene = true
+vertices = PackedVector2Array(470, 262, 10, 262, 10, 10, 470, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
+source_geometry_group_name = &"NAVIGATION"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjbpj"]
 texture = ExtResource("1_dieqr")
 0:0/0 = 0
@@ -507,6 +514,7 @@ texture = ExtResource("1_dieqr")
 11:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:11/0 = 0
 13:11/0 = 0
+13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:11/0 = 0
 15:11/0 = 0
 15:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 8, 8, 8, 8, -8, -4, -8)
@@ -565,13 +573,6 @@ terrain_set_0/terrain_6/name = "dirt"
 terrain_set_0/terrain_6/color = Color(0.25, 0.5, 0.40625, 1)
 sources/1 = SubResource("TileSetAtlasSource_pjbpj")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_6pmnr"]
-resource_local_to_scene = true
-vertices = PackedVector2Array(470, 262, 10, 262, 10, 10, 470, 10)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
-source_geometry_group_name = &"NAVIGATION"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
 size = Vector2(448, 240)
 
@@ -579,51 +580,52 @@ size = Vector2(448, 240)
 script = ExtResource("1_r8iqv")
 Enemies = Array[PackedScene]([ExtResource("2_fp6rr"), ExtResource("3_avnd0")])
 
-[node name="ground" type="TileMapLayer" parent="." unique_id=1650485613]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=378223689]
+navigation_polygon = SubResource("NavigationPolygon_6pmnr")
+
+[node name="ground" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1650485613]
 tile_set = SubResource("TileSet_6pmnr")
 
-[node name="ground_objects" type="TileMapLayer" parent="." unique_id=1376421879]
-tile_set = SubResource("TileSet_6pmnr")
-
-[node name="wall" type="TileMapLayer" parent="." unique_id=1025983753]
+[node name="wall" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1025983753]
 tile_set = SubResource("TileSet_6pmnr")
 script = ExtResource("3_pjbpj")
 side_wall = Vector2i(15, 6)
 bottom_wall = Vector2i(16, 7)
 
-[node name="wall_objects" type="TileMapLayer" parent="." unique_id=840028683]
+[node name="ground_objects" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1376421879]
 tile_set = SubResource("TileSet_6pmnr")
 
-[node name="exit" type="Node2D" parent="." unique_id=1579311928]
+[node name="ground objects 2" type="TileMapLayer" parent="NavigationRegion2D" unique_id=840028683]
+tile_set = SubResource("TileSet_6pmnr")
 
-[node name="up" parent="exit" unique_id=1065442646 instance=ExtResource("2_r8iqv")]
+[node name="exit" type="Node2D" parent="NavigationRegion2D" unique_id=1579311928]
+
+[node name="up" parent="NavigationRegion2D/exit" unique_id=1065442646 instance=ExtResource("2_r8iqv")]
 position = Vector2(240, 2)
 
-[node name="left" parent="exit" unique_id=1661670950 instance=ExtResource("2_r8iqv")]
+[node name="left" parent="NavigationRegion2D/exit" unique_id=1661670950 instance=ExtResource("2_r8iqv")]
 position = Vector2(8, 128)
 direction = 3
 
-[node name="right" parent="exit" unique_id=743812689 instance=ExtResource("2_r8iqv")]
+[node name="right" parent="NavigationRegion2D/exit" unique_id=743812689 instance=ExtResource("2_r8iqv")]
 position = Vector2(472, 128)
 direction = 1
 
-[node name="down" parent="exit" unique_id=1889224654 instance=ExtResource("2_r8iqv")]
+[node name="down" parent="NavigationRegion2D/exit" unique_id=1889224654 instance=ExtResource("2_r8iqv")]
 position = Vector2(240, 261)
 direction = 2
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=378223689]
-navigation_polygon = SubResource("NavigationPolygon_6pmnr")
+[node name="Spawn Points" type="Node2D" parent="NavigationRegion2D" unique_id=64963512]
 
-[node name="Spawn Points" type="Node2D" parent="." unique_id=64963512]
-
-[node name="PlayerDetect" type="Area2D" parent="." unique_id=2066230081]
+[node name="PlayerDetect" type="Area2D" parent="NavigationRegion2D" unique_id=2066230081]
+visible = false
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect" unique_id=745459189]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/PlayerDetect" unique_id=745459189]
 position = Vector2(240, 136)
 shape = SubResource("RectangleShape2D_6pmnr")
 debug_color = Color(0.6167132, 0.5364011, 0, 0.41960785)
 
-[node name="Doors" type="Node2D" parent="." unique_id=1678814541]
+[node name="Doors" type="Node2D" parent="NavigationRegion2D" unique_id=1678814541]
 
-[connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_entered" from="NavigationRegion2D/PlayerDetect" to="." method="_on_player_detect_body_entered"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bo00bcqvxo2mh"]
+
+[ext_resource type="Script" uid="uid://b6odyxdy6jix4" path="res://Characters/Game Classes/spawn_logic.gd" id="1_p7wsw"]
+
+[node name="SpawnLogic" type="Node2D" unique_id=210688217]
+script = ExtResource("1_p7wsw")
+
+[node name="player_spawn_position" type="Marker2D" parent="." unique_id=2048543884]
+position = Vector2(240, 144)
