@@ -1,26 +1,27 @@
 [gd_scene format=3 uid="uid://bhicndqmq8i05"]
 
 [ext_resource type="Script" uid="uid://yms8qkwa3gjm" path="res://Game Components/scripts/dungeon_generator.gd" id="1_ki7nh"]
-[ext_resource type="PackedScene" uid="uid://bupokqxhcxq2g" path="res://Characters/Game Classes/Level 1/Dungeon_level_1.tscn" id="2_e0t25"]
 [ext_resource type="Script" uid="uid://bq4uf0k1shulg" path="res://Game Components/scripts/player_camera.gd" id="2_kkief"]
+[ext_resource type="PackedScene" uid="uid://0fjk7cy6dtws" path="res://Characters/Game Classes/Level 1/spawn_level_1(0).tscn" id="3_e0t25"]
 [ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="3_mo7kc"]
-[ext_resource type="PackedScene" uid="uid://bdrufug2gvxv7" path="res://Characters/Game Classes/Level 2/Dungeon_level_2.tscn" id="3_n3d17"]
 [ext_resource type="PackedScene" uid="uid://cbcdvnmwxcpkn" path="res://Game Files/Player_health_bar.tscn" id="4_e0t25"]
-[ext_resource type="PackedScene" uid="uid://cey1d8kd7vsx4" path="res://Characters/Game Classes/Level 3/Dungeon_level_3.tscn" id="4_hmtut"]
+[ext_resource type="PackedScene" uid="uid://cxpx2iaoa753a" path="res://Characters/Game Classes/Level 1/combat_level_1(0).tscn" id="4_n3d17"]
 
 [node name="Main" type="Node2D" unique_id=973644688]
 
+[node name="Player" parent="." unique_id=246556358 instance=ExtResource("3_mo7kc")]
+z_index = 1
+position = Vector2(249, 131)
+
 [node name="Dungeon Generator" type="Node2D" parent="." unique_id=456120006]
 script = ExtResource("1_ki7nh")
-room_scenes = Array[PackedScene]([ExtResource("2_e0t25"), ExtResource("3_n3d17"), ExtResource("4_hmtut")])
-max_rooms = 4
+spawn_room_scene = ExtResource("3_e0t25")
+combat_room_scenes = Array[PackedScene]([ExtResource("4_n3d17")])
+max_rooms = 3
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=116882109 node_paths=PackedStringArray("player")]
 script = ExtResource("2_kkief")
 player = NodePath("../Player")
-
-[node name="Player" parent="." unique_id=246556358 instance=ExtResource("3_mo7kc")]
-position = Vector2(249, 131)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=636500648]
 

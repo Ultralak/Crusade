@@ -10,7 +10,7 @@ const ATLAS_ID = 1
 @export var side_wall : Vector2i
 @export var bottom_wall : Vector2i
 var delete : Vector2i = Vector2i(-1,-1)
-
+var walls_setup : bool = false
 
 func open()->void:
 	open_doors()
@@ -21,6 +21,7 @@ func close()->void:
 	close_sides()
 
 func setup_room_walls() -> void:
+	walls_setup = true
 	for i in exit.get_children():
 		if i is DoorMarker:
 			var is_horizontal : bool = (i.direction == DoorMarker.Direction.Right or i.direction == DoorMarker.Direction.Left)

@@ -287,9 +287,6 @@ animations = [{
 radius = 4.0
 height = 12.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjdc"]
-size = Vector2(32, 18.5)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pmnr"]
 radius = 27.018513
 
@@ -433,14 +430,6 @@ player = NodePath("..")
 
 [node name="weapon_pivot" type="Marker2D" parent="." unique_id=1705097112]
 position = Vector2(4, -7)
-
-[node name="player_entrance_y_sorted" type="Area2D" parent="." unique_id=136711370]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_entrance_y_sorted" unique_id=1273656074]
-position = Vector2(0, -9)
-shape = SubResource("RectangleShape2D_cxjdc")
 
 [node name="DashEffect" type="CPUParticles2D" parent="." unique_id=1839803369]
 z_index = 12

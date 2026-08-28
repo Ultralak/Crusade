@@ -1,16 +1,17 @@
 extends Node2D
 
-var player: Paladin
-
-@onready var player_spawn_position: Marker2D = $player_spawn_position
-
-
+@export var player_spawn_position: Marker2D
 func _ready() -> void:
-	if !player:
-		player = PlayerManager.player
-		#var player_instance : CharacterBody2D = PLAYER.instantiate() as CharacterBody2D
+	if not player_spawn_position:
+		return
 
-		# TODO : Check to make sure player is added to scene correctly
+	if PlayerManager.get_player():
+		PlayerManager.set_player_position(player_spawn_position.global_position)
+	else:
+		PlayerManager.player_registered.connect(_on_player_registered, CONNECT_ONE_SHOT)
+		PlayerManager.spawn_player_at(player_spawn_position.global_position, get_parent())
 
-		#get_parent().call_deferred("add_child",player_instance)
-	player.global_position = player_spawn_position.get_child(0).global_position
+
+func _on_player_registered(_player_node: CharacterBody2D) -> void:
+	if player_spawn_position:
+		PlayerManager.set_player_position(player_spawn_position.global_position)

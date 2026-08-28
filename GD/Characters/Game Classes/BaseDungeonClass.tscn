@@ -2,9 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://crs2qstiau0iw" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="1_dieqr"]
 [ext_resource type="Script" uid="uid://cpfu77g3m0vv3" path="res://Characters/Game Classes/base_dungeon_class.gd" id="1_r8iqv"]
-[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/goblin.tscn" id="2_fp6rr"]
+[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="2_n77l0"]
 [ext_resource type="PackedScene" uid="uid://c125colwap2ae" path="res://Game Components/Scenes/DoorMarker.tscn" id="2_r8iqv"]
-[ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="3_avnd0"]
 [ext_resource type="Script" uid="uid://dvwnd5af4wmqg" path="res://Characters/Game Classes/wall_tilemap_layer.gd" id="3_pjbpj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6pmnr"]
@@ -123,7 +122,6 @@ texture = ExtResource("1_dieqr")
 2:2/0/terrain_set = 0
 2:2/0/terrains_peering_bit/top_left_corner = 0
 3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:2/0 = 0
 5:2/0 = 0
 5:2/0/terrain_set = 0
@@ -170,7 +168,6 @@ texture = ExtResource("1_dieqr")
 8:3/0 = 0
 8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:3/0 = 0
-9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:3/0 = 0
 11:3/0 = 0
 12:3/0 = 0
@@ -194,7 +191,6 @@ texture = ExtResource("1_dieqr")
 8:4/0 = 0
 8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:4/0 = 0
-9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:4/0 = 0
 10:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:4/0 = 0
@@ -430,7 +426,9 @@ texture = ExtResource("1_dieqr")
 7:9/0 = 0
 7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4)
 8:9/0 = 0
+8:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:9/0 = 0
+9:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:9/0 = 0
 10:9/0/terrain_set = 0
 10:9/0/terrain = 6
@@ -516,6 +514,7 @@ texture = ExtResource("1_dieqr")
 13:11/0 = 0
 13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:11/0 = 0
+14:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:11/0 = 0
 15:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 8, 8, 8, 8, -8, -4, -8)
 16:11/0 = 0
@@ -545,7 +544,9 @@ texture = ExtResource("1_dieqr")
 11:12/0 = 0
 12:12/0 = 0
 13:12/0 = 0
+13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:12/0 = 0
+14:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:12/0 = 0
 15:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 16:12/0 = 0
@@ -578,10 +579,12 @@ size = Vector2(448, 240)
 
 [node name="BaseDungeon" type="Node2D" unique_id=1787448676]
 script = ExtResource("1_r8iqv")
-Enemies = Array[PackedScene]([ExtResource("2_fp6rr"), ExtResource("3_avnd0")])
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=378223689]
 navigation_polygon = SubResource("NavigationPolygon_6pmnr")
+
+[node name="Player" parent="NavigationRegion2D" unique_id=246556358 instance=ExtResource("2_n77l0")]
+position = Vector2(184, 120)
 
 [node name="ground" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1650485613]
 tile_set = SubResource("TileSet_6pmnr")
@@ -615,8 +618,6 @@ direction = 1
 position = Vector2(240, 261)
 direction = 2
 
-[node name="Spawn Points" type="Node2D" parent="NavigationRegion2D" unique_id=64963512]
-
 [node name="PlayerDetect" type="Area2D" parent="NavigationRegion2D" unique_id=2066230081]
 visible = false
 collision_mask = 2
@@ -627,5 +628,7 @@ shape = SubResource("RectangleShape2D_6pmnr")
 debug_color = Color(0.6167132, 0.5364011, 0, 0.41960785)
 
 [node name="Doors" type="Node2D" parent="NavigationRegion2D" unique_id=1678814541]
+
+[node name="Hazards" type="Node2D" parent="NavigationRegion2D" unique_id=335313459]
 
 [connection signal="body_entered" from="NavigationRegion2D/PlayerDetect" to="." method="_on_player_detect_body_entered"]
