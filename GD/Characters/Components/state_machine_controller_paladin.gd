@@ -4,7 +4,7 @@ extends Node
 @export var FSM : NodeFiniteStateMachine
 @export var velocity_component : Node2D
 var current_state : String
-@export var player : CharacterBody2D
+@export var player : Paladin
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_state = FSM.current_node_state_name

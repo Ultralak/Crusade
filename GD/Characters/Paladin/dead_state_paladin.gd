@@ -19,4 +19,4 @@ func enter():
 
 func on_timer_timeout() -> void:
 	player.queue_free()
-	get_tree().reload_current_scene()
+	get_tree().paused = true

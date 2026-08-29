@@ -16,7 +16,7 @@ var position_overide : Vector2
 var is_active  :bool = true
 var new_velocity : Vector2
 var target_direction : Vector2
-var target : Node2D = null
+var target : Paladin = null
 
 func _ready() -> void:
 	
@@ -37,7 +37,7 @@ func recalculate_path() -> void:
 			#navigation_agent_2d.target_position = position_overide
 			navigation_agent_2d.target_position = NavigationServer2D.map_get_closest_point(navigation_agent_2d.get_navigation_map(), position_overide)
 		else:
-			navigation_agent_2d.target_position = target.global_position
+			navigation_agent_2d.target_position = target.player_center.global_position
 
 	if hurt_state.has_method("is_setup") and hurt_state.is_setup : 
 		return

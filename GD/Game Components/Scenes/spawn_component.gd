@@ -5,9 +5,10 @@ signal wave_started(wave_index: int)
 signal wave_cleared(wave_index: int)
 signal all_waves_cleared
 
-
 @export var dungeon : BaseDungeon
 @export var enemy_scenes: Array[PackedScene] = []
+@export var spawn_explosion_scene: PackedScene
+@export var explosion_duration: float = 0.5
 @export var max_waves: int = 3
 
 var current_wave_index: int = 0
@@ -51,16 +52,44 @@ func spawn_current_wave() -> void:
 
 	for marker in markers:
 		if marker is Marker2D:
-			var enemy_scene = enemy_scenes.pick_random()
-			if enemy_scene:
-				var enemy_instance = enemy_scene.instantiate() as Node2D
-				enemy_instance.global_position = marker.global_position
-				enemy_instance.tree_exited.connect(_on_enemy_tree_exited)
-				active_enemies += 1
-				get_parent().add_child.call_deferred(enemy_instance)
+			active_enemies += 1
+			_spawn_enemy_with_telegraph(marker)
 
 	if active_enemies == 0:
 		advance_wave()
+
+
+func _spawn_enemy_with_telegraph(marker: Marker2D) -> void:
+	if not is_inside_tree():
+		return
+
+	var target_position = marker.global_position
+
+	if spawn_explosion_scene:
+		var explosion_instance = spawn_explosion_scene.instantiate() as Node2D
+		get_parent().add_child(explosion_instance)
+		explosion_instance.global_position = target_position
+
+	var tree = get_tree()
+	if not tree:
+		return
+
+	await tree.create_timer(explosion_duration).timeout
+
+	if not is_inside_tree() or not is_instance_valid(marker):
+		active_enemies -= 1
+		if active_enemies <= 0:
+			wave_cleared.emit(current_wave_index)
+			advance_wave()
+		return
+
+	var enemy_scene = enemy_scenes.pick_random()
+	if enemy_scene:
+		var enemy_instance = enemy_scene.instantiate() as Node2D
+		enemy_instance.z_index = 1
+		enemy_instance.tree_exited.connect(_on_enemy_tree_exited)
+		get_parent().add_child(enemy_instance)
+		enemy_instance.global_position = target_position
 
 
 func _on_enemy_tree_exited() -> void:

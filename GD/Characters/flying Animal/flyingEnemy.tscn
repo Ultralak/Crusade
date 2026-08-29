@@ -187,7 +187,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="FlyingEnemy" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("debug_text") groups=["ENEMY"]]
+[node name="FlyingEnemy" type="CharacterBody2D" unique_id=246556358 node_paths=PackedStringArray("debug_text", "FSM") groups=["ENEMY"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_llo60")
@@ -195,6 +195,7 @@ detection_radius = 100.0
 knockback_force = 300.0
 damage_amount = 3.0
 debug_text = NodePath("Test")
+FSM = NodePath("StateMachine")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=2053792831]
 top_level = true
@@ -344,7 +345,7 @@ health_comp = NodePath("../Health_Component")
 enemy = NodePath("..")
 FSM = NodePath("../StateMachine")
 
-[node name="State_Machine_Controller" type="Node" parent="." unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "enemy", "Navigationagent2d", "Navigation_component", "animation_player", "health_component", "timer")]
+[node name="State_Machine_Controller" type="Node" parent="." unique_id=1778883141 node_paths=PackedStringArray("node_finite_state_machine", "enemy", "Navigationagent2d", "Navigation_component", "animation_player", "health_component", "timer", "line_2d")]
 script = ExtResource("6_llo60")
 node_finite_state_machine = NodePath("../StateMachine")
 enemy = NodePath("..")
@@ -353,8 +354,10 @@ Navigation_component = NodePath("../Navigation_Component_enemy")
 animation_player = NodePath("../AnimationPlayer")
 health_component = NodePath("../Health_Component")
 timer = NodePath("potential_to_attack_timer")
+line_2d = NodePath("../Debug")
 player_still_velocity = 30.0
-show_debug_code = true
+player_acceptable_distance = 60.0
+line_of_sight_mask = 3
 
 [node name="potential_to_attack_timer" type="Timer" parent="State_Machine_Controller" unique_id=158591092]
 
@@ -363,12 +366,15 @@ navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
 avoidance_radius = 10.0
+debug = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" unique_id=542563494]
 target_desired_distance = 20.0
 navigation_layers = 2
+simplify_path = true
+simplify_epsilon = 0.1
 avoidance_enabled = true
-radius = 69.09
+neighbor_distance = 100.0
 max_speed = 1000.0
 
 [node name="Health_Component" parent="." unique_id=494789378 node_paths=PackedStringArray("FSM", "Hitbox_area", "entity", "hurt_state", "damage_number_position") instance=ExtResource("15_4flht")]
@@ -388,6 +394,9 @@ attackbox = NodePath("../AttackBox")
 
 [node name="DamageNumber" type="Node2D" parent="." unique_id=778405599]
 position = Vector2(0, -8)
+
+[node name="Debug" type="Line2D" parent="." unique_id=1762734913]
+width = 1.0
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="StateMachine/attack/attack_timer" to="StateMachine/attack" method="_on_attack_timer_timeout"]

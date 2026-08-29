@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://crs2qstiau0iw" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="1_dieqr"]
 [ext_resource type="Script" uid="uid://cpfu77g3m0vv3" path="res://Characters/Game Classes/base_dungeon_class.gd" id="1_r8iqv"]
-[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="2_n77l0"]
 [ext_resource type="PackedScene" uid="uid://c125colwap2ae" path="res://Game Components/Scenes/DoorMarker.tscn" id="2_r8iqv"]
 [ext_resource type="Script" uid="uid://dvwnd5af4wmqg" path="res://Characters/Game Classes/wall_tilemap_layer.gd" id="3_pjbpj"]
 
@@ -582,9 +581,7 @@ script = ExtResource("1_r8iqv")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=378223689]
 navigation_polygon = SubResource("NavigationPolygon_6pmnr")
-
-[node name="Player" parent="NavigationRegion2D" unique_id=246556358 instance=ExtResource("2_n77l0")]
-position = Vector2(184, 120)
+navigation_layers = 2
 
 [node name="ground" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1650485613]
 tile_set = SubResource("TileSet_6pmnr")
@@ -628,6 +625,7 @@ shape = SubResource("RectangleShape2D_6pmnr")
 debug_color = Color(0.6167132, 0.5364011, 0, 0.41960785)
 
 [node name="Doors" type="Node2D" parent="NavigationRegion2D" unique_id=1678814541]
+z_index = 1
 
 [node name="Hazards" type="Node2D" parent="NavigationRegion2D" unique_id=335313459]
 

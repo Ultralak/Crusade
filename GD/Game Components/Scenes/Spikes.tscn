@@ -195,3 +195,8 @@ autoplay = &"idle"
 [node name="DamageComponent" parent="." unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox") instance=ExtResource("3_n70j0")]
 entity = NodePath("..")
 attackbox = NodePath("../hitbox")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=387957768]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

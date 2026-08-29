@@ -21,7 +21,6 @@ enum DUNGEONEVENT {
 @onready var wall: TileMapLayer = $NavigationRegion2D/wall
 @onready var ground_objects: TileMapLayer = $NavigationRegion2D/ground_objects
 @onready var ground_objects_2: TileMapLayer = $"NavigationRegion2D/ground objects 2"
-@onready var spawn_points: Node2D = $"NavigationRegion2D/Spawn Points"
 @onready var player_detect: Area2D = $NavigationRegion2D/PlayerDetect
 
 @export var spawn_component: SpawnComponent 
