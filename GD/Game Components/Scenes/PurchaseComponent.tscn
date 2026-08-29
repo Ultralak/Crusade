@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cha73iub8bjq"]
+
+[ext_resource type="Script" uid="uid://c7ba6oew8rx3h" path="res://Game Components/Scenes/purchase_component.gd" id="1_fa7sm"]
+
+[node name="PurchaseComponent" type="Node2D" unique_id=1383381355]
+script = ExtResource("1_fa7sm")

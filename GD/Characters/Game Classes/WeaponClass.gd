@@ -7,6 +7,7 @@ var NORMAL_DAMAGE_AMOUNT : float
 var critical_hit_done : bool = false
 @export var weapon_data : WeaponData
 @export var interactable_zone : Interactable
+@export var purchase_component : PurchaseComponent
 var is_normal_damage_setup : bool = false
 var slot_index : String
 func setup_normal_damage()->void:

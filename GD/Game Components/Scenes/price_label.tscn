@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dvc0ek5fg7bsb"]
+
+[ext_resource type="FontFile" uid="uid://cn6sglhpgvlhv" path="res://Art/BoldPixels.ttf" id="1_eb1tt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wtsam"]
+font = ExtResource("1_eb1tt")
+outline_size = 2
+outline_color = Color(0.64705884, 0.29411766, 0.5882353, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Price Label" type="Label" unique_id=1378731329]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -14.0
+offset_top = -24.0
+offset_right = 14.0
+offset_bottom = -10.0
+grow_horizontal = 2
+text = "100"
+label_settings = SubResource("LabelSettings_wtsam")
+horizontal_alignment = 1
+vertical_alignment = 1

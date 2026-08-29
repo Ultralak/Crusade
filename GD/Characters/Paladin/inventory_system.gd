@@ -67,6 +67,7 @@ func drop_active_weapon():
 	dropped_weapon.interactable_zone.interaction_disable()
 	dropped_weapon.interactable_zone.enable_interact_area()
 	dropped_weapon.global_position = player.global_position
+	dropped_weapon.purchase_component.delete()
 
 	
 func empty_slots()->bool:

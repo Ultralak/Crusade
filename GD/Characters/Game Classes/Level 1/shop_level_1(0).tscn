@@ -1,0 +1,16 @@
+[gd_scene format=4 uid="uid://bw450uo0647jj"]
+
+[ext_resource type="PackedScene" uid="uid://bupokqxhcxq2g" path="res://Characters/Game Classes/Level 1/Dungeon_level_1.tscn" id="1_p1cg5"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4yqfw"]
+resource_local_to_scene = true
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
+source_geometry_group_name = &"NAVIGATION"
+
+[node name="Shop_level_1(0)" unique_id=1787448676 instance=ExtResource("1_p1cg5")]
+
+[node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
+navigation_polygon = SubResource("NavigationPolygon_4yqfw")
+
+[node name="ground_objects" parent="NavigationRegion2D" index="2" unique_id=1376421879]
+tile_map_data = PackedByteArray("AAAUAAcAAAARAAIAAAAUAAYAAAARAAEAAAAUAAUAAAARAAAAAAATAAcAAAAQAAIAAAATAAYAAAAQAAEAAAATAAUAAAAQAAAAAAASAAcAAAAQAAIAAAASAAYAAAAQAAEAAAASAAUAAAAQAAAAAAARAAcAAAAQAAIAAAARAAYAAAAQAAEAAAARAAUAAAAQAAAAAAAQAAcAAAAQAAIAAAAQAAYAAAAQAAEAAAAQAAUAAAAQAAAAAAAPAAcAAAAQAAIAAAAPAAYAAAAQAAEAAAAPAAUAAAAQAAAAAAAOAAcAAAAQAAIAAAAOAAYAAAAQAAEAAAAOAAUAAAAQAAAAAAANAAcAAAAQAAIAAAANAAYAAAAQAAEAAAANAAUAAAAQAAAAAAAMAAcAAAAQAAIAAAAMAAYAAAAQAAEAAAAMAAUAAAAQAAAAAAALAAcAAAAQAAIAAAALAAYAAAAQAAEAAAALAAUAAAAQAAAAAAAKAAcAAAAQAAIAAAAKAAYAAAAQAAEAAAAKAAUAAAAQAAAAAAAJAAcAAAAPAAIAAAAJAAYAAAAPAAEAAAAJAAUAAAAPAAAAAAA=")

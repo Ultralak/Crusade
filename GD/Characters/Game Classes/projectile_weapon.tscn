@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://5k3vdmb7on5k" path="res://Characters/Game Classes/projectile_weapon.gd" id="1_xvyu7"]
 [ext_resource type="Script" uid="uid://2mn4ctohriyd" path="res://Game Components/scripts/input_manager_projectiles.gd" id="2_biiek"]
 [ext_resource type="PackedScene" uid="uid://ltplyyje61cv" path="res://Game Components/Scenes/WeaponInteractable.tscn" id="4_1wmbi"]
+[ext_resource type="PackedScene" uid="uid://dvc0ek5fg7bsb" path="res://Game Components/Scenes/price_label.tscn" id="4_mmv4n"]
+[ext_resource type="PackedScene" uid="uid://cha73iub8bjq" path="res://Game Components/Scenes/PurchaseComponent.tscn" id="5_mmv4n"]
+[ext_resource type="PackedScene" uid="uid://d0t20x1vkt3ev" path="res://Game Components/Scenes/item_pickup_component.tscn" id="6_asmyq"]
 
-[node name="ProjectileWeapon" type="Node2D" unique_id=859750544 node_paths=PackedStringArray("interactable_zone")]
+[node name="ProjectileWeapon" type="Node2D" unique_id=859750544 node_paths=PackedStringArray("interactable_zone", "purchase_component")]
 script = ExtResource("1_xvyu7")
 interactable_zone = NodePath("WeaponInteractable")
+purchase_component = NodePath("PurchaseComponent")
 
 [node name="physics" type="Node2D" parent="." unique_id=1413375991]
 
@@ -23,7 +27,20 @@ one_shot = true
 script = ExtResource("2_biiek")
 weapon = NodePath("..")
 
-[node name="WeaponInteractable" parent="." unique_id=1361525483 node_paths=PackedStringArray("weapon") instance=ExtResource("4_1wmbi")]
+[node name="WeaponInteractable" parent="." unique_id=1361525483 node_paths=PackedStringArray("weapon", "price_label") instance=ExtResource("4_1wmbi")]
 weapon = NodePath("..")
+price_label = NodePath("../Price Label")
+
+[node name="Price Label" parent="." unique_id=1378731329 instance=ExtResource("4_mmv4n")]
+visible = false
+
+[node name="PurchaseComponent" parent="." unique_id=1383381355 node_paths=PackedStringArray("interactable", "price_label") instance=ExtResource("5_mmv4n")]
+interactable = NodePath("../WeaponInteractable")
+price_label = NodePath("../Price Label")
+
+[node name="ItemPickupComponent" parent="." unique_id=3673617 node_paths=PackedStringArray("interactable", "weapon", "purchase") instance=ExtResource("6_asmyq")]
+interactable = NodePath("../WeaponInteractable")
+weapon = NodePath("..")
+purchase = NodePath("../PurchaseComponent")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

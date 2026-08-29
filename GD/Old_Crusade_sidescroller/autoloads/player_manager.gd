@@ -2,10 +2,12 @@ extends Node2D
 
 signal player_registered(player_node: CharacterBody2D)
 signal player_spawned(position: Vector2)
+signal coins_updated(new_amount: int)
 
 @export var player_scene: PackedScene
 
 var player: CharacterBody2D = null
+var coins: int = 20
 
 
 func register_player(player_node: CharacterBody2D) -> void:
@@ -22,7 +24,7 @@ func get_player() -> CharacterBody2D:
 func set_player_position(target_position: Vector2) -> void:
 	if is_instance_valid(player):
 		player.global_position = target_position
-		player.z_index  = 2
+		player.z_index = 2
 		player_spawned.emit(target_position)
 
 
@@ -32,5 +34,24 @@ func spawn_player_at(target_position: Vector2, parent_node: Node) -> void:
 			var new_player = player_scene.instantiate() as CharacterBody2D
 			parent_node.add_child.call_deferred(new_player)
 			register_player(new_player)
-	
+
 	set_player_position(target_position)
+
+
+func add_coins(amount: int) -> void:
+	coins += amount
+	coins_updated.emit(coins)
+
+
+func has_enough_coins(amount: int) -> bool:
+	return coins >= amount
+
+
+func spend_coins(amount: int) -> bool:
+	if has_enough_coins(amount):
+		coins -= amount
+		coins_updated.emit(coins)
+		return true
+	else:
+		print("Not enough cash")
+		return false

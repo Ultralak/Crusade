@@ -13,3 +13,9 @@ position = Vector2(9, -2)
 [node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
 scale = Vector2(1, 0.875)
 texture = ExtResource("2_h8emm")
+
+[node name="Price Label" parent="." index="5" unique_id=1378731329]
+size_flags_horizontal = 3
+
+[node name="PurchaseComponent" parent="." index="6" unique_id=1383381355 node_paths=PackedStringArray("item_pickup_component")]
+item_pickup_component = NodePath("../ItemPickupComponent")
