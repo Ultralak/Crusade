@@ -14,7 +14,6 @@ var bullet_setup : bool = false
 var can_shoot : bool  = true
 var mouse_direction : Vector2
 var weapon_pivot : Marker2D 
-
 var recoil_tween: Tween
 
 func _ready() -> void:
@@ -33,7 +32,8 @@ func setup_gun_paladin(direction : Vector2, user : CharacterBody2D, pivot : Mark
 	weapon_pivot = pivot
 	global_position  = pivot.global_position
 	bullet_setup = true
-	critical_hit()
+	
+	
 
 func setup_gun_enemy(direction : Vector2, user : CharacterBody2D, pivot : Marker2D, slot : String = "Slot 1")->void:
 	gun_direction = direction
@@ -52,11 +52,10 @@ func shoot()->void:
 	bulletInstance.global_position = muzzle.global_position
 	
 	bulletInstance.z_index = 20
-	
+	critical_hit()
 	bulletInstance.knockback_dir = gun_direction
 	bulletInstance.knockback_force = weapon_data.knockback_force
-	
-	bulletInstance.damage_amount = weapon_data.damage_amount
+	bulletInstance.damage_amount = damage
 	bulletInstance.penetration = weapon_data.penetration
 	bulletInstance.projectile_direction = gun_direction
 	

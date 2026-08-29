@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvc0ek5fg7bsb" path="res://Game Components/Scenes/price_label.tscn" id="4_mmv4n"]
 [ext_resource type="PackedScene" uid="uid://cha73iub8bjq" path="res://Game Components/Scenes/PurchaseComponent.tscn" id="5_mmv4n"]
 [ext_resource type="PackedScene" uid="uid://d0t20x1vkt3ev" path="res://Game Components/Scenes/item_pickup_component.tscn" id="6_asmyq"]
+[ext_resource type="PackedScene" uid="uid://dhby2b3eq0ftw" path="res://Characters/Components/reference_validator.tscn" id="7_u1odl"]
 
 [node name="ProjectileWeapon" type="Node2D" unique_id=859750544 node_paths=PackedStringArray("interactable_zone", "purchase_component")]
 script = ExtResource("1_xvyu7")
@@ -32,7 +33,6 @@ weapon = NodePath("..")
 price_label = NodePath("../Price Label")
 
 [node name="Price Label" parent="." unique_id=1378731329 instance=ExtResource("4_mmv4n")]
-visible = false
 
 [node name="PurchaseComponent" parent="." unique_id=1383381355 node_paths=PackedStringArray("interactable", "price_label") instance=ExtResource("5_mmv4n")]
 interactable = NodePath("../WeaponInteractable")
@@ -42,5 +42,8 @@ price_label = NodePath("../Price Label")
 interactable = NodePath("../WeaponInteractable")
 weapon = NodePath("..")
 purchase = NodePath("../PurchaseComponent")
+
+[node name="ReferenceValidator" parent="." unique_id=950916380 node_paths=PackedStringArray("target_node_parent") instance=ExtResource("7_u1odl")]
+target_node_parent = NodePath("..")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

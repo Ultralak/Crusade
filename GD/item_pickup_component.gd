@@ -12,8 +12,9 @@ func _ready() -> void:
 	
 	if interactable and not purchase:
 		interactable.interacted.connect(_on_interacted)
-	else:
+	elif interactable and purchase:
 		purchase.purchase_succeeded.connect(_on_interacted)
+		purchase.purchase_done.connect(change_signal_input)
 
 
 func _on_interacted() -> void:
@@ -21,6 +22,9 @@ func _on_interacted() -> void:
 	if player:
 		grant_item(player)
 
+func change_signal_input()->void:
+	interactable.interacted.connect(_on_interacted)
+	print("input changed")
 
 func grant_item(player: CharacterBody2D) -> bool:
 	if not weapon or not player.get("Inventory"):

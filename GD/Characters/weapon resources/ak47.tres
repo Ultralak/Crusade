@@ -12,6 +12,7 @@ weapon_sprite = ExtResource("2_edngc")
 ground_sprite = ExtResource("2_edngc")
 weapon_scene_path = "uid://bjms0bmh2sbw0"
 damage_amount = 3.0
+critical_hit_chance = 100.0
 bullet_scene = ExtResource("1_2u8ax")
 fire_rate = 20
 energy_cost = 3

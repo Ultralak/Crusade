@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://dnbutnkcbsrs8"]
+
+[ext_resource type="PackedScene" uid="uid://cd6keav15i84h" path="res://Characters/Paladin weapons/quick_smg.tscn" id="1_1gr68"]
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_8vyww"]
+[ext_resource type="Resource" uid="uid://cecj4xb8s3yjv" path="res://Characters/weapon resources/mac10.tres" id="2_5mqgp"]
+
+[resource]
+script = ExtResource("1_8vyww")
+item_data = ExtResource("2_5mqgp")
+item_scene = ExtResource("1_1gr68")
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://opcofwq6bqw4"]
+
+[ext_resource type="Script" uid="uid://dpvdpj1e8iopx" path="res://Game Components/Scenes/shop_component.gd" id="1_knjx0"]
+[ext_resource type="Resource" uid="uid://fk5mm0bauc24" path="res://Characters/resources/loot item resources/Shop_level_1.tres" id="2_m8wv7"]
+
+[node name="ShopComponent" type="Node2D" unique_id=1198712415]
+script = ExtResource("1_knjx0")
+loot_table = ExtResource("2_m8wv7")

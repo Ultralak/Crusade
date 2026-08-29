@@ -3,6 +3,7 @@ extends Node2D
 
 signal purchase_succeeded
 signal purchase_failed
+signal purchase_done
 
 @export var price: int = 10
 @export var interactable: Interactable
@@ -26,6 +27,7 @@ func _on_interacted() -> void:
 		_play_deny_feedback()
 
 func delete()->void:
+	purchase_done.emit()
 	if !price_label.is_queued_for_deletion():
 		price_label.queue_free()
 	queue_free()

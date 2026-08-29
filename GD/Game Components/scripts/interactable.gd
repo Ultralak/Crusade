@@ -21,11 +21,8 @@ func enable_interact_area()->void:
 ## This shows interact icon scene
 func interaction_enable()->void:
 		interact_icon.show()
-		if price_label:
-			price_label.visible = true
+
 		
 ## This hides interact icon scene
 func interaction_disable()->void:
 		interact_icon.visible = false
-		if price_label:
-			price_label.visible = false

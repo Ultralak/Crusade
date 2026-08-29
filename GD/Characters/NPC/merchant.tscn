@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dnd0pm2dlxcbq"]
+
+[ext_resource type="Script" uid="uid://b1d2cl1aww4f3" path="res://Characters/NPC/merchant.gd" id="1_rna0g"]
+[ext_resource type="Texture2D" uid="uid://dkvnjwbretqnu" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Players/Tiles/tile_0004.png" id="2_rna0g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlmju"]
+
+[node name="Merchant" type="CharacterBody2D" unique_id=945334616]
+script = ExtResource("1_rna0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=734693660]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_jlmju")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=280071804]
+position = Vector2(0, -12)
+texture = ExtResource("2_rna0g")

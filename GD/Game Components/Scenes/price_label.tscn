@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dvc0ek5fg7bsb"]
 
-[ext_resource type="FontFile" uid="uid://cn6sglhpgvlhv" path="res://Art/BoldPixels.ttf" id="1_eb1tt"]
+[ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="1_eb1tt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wtsam"]
 font = ExtResource("1_eb1tt")
+font_size = 8
 outline_size = 2
 outline_color = Color(0.64705884, 0.29411766, 0.5882353, 1)
 shadow_color = Color(0, 0, 0, 1)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://drbgpur7bwnkl"]
+
+[ext_resource type="PackedScene" uid="uid://bjms0bmh2sbw0" path="res://Characters/Paladin weapons/paladin_ak47.tscn" id="1_2ph5w"]
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_7ev1u"]
+[ext_resource type="Resource" uid="uid://i8hgwus7ljvg" path="res://Characters/weapon resources/ak47.tres" id="2_2ph5w"]
+
+[resource]
+script = ExtResource("1_7ev1u")
+item_data = ExtResource("2_2ph5w")
+item_scene = ExtResource("1_2ph5w")
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"

@@ -22,6 +22,7 @@ func _ready() -> void:
 			child.interactable_zone.interaction_disable()
 			child.interactable_zone.disable_interact_area()
 			child.slot_index = Slot
+			child.purchase_component.delete()
 			count += 1
 			if count == 3:
 				break
@@ -48,6 +49,7 @@ func add_weapon_to_slot(weapon_data : WeaponData, Slot : String)->void:
 	new_weapon.interactable_zone.interaction_disable()
 	new_weapon.interactable_zone.disable_interact_area()
 	new_weapon.slot_index = Slot
+	new_weapon.purchase_component.delete()
 	active_weapon_slot = Slot
 	new_weapon.visible = false
 	

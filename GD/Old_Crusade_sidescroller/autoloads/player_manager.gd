@@ -51,6 +51,7 @@ func spend_coins(amount: int) -> bool:
 	if has_enough_coins(amount):
 		coins -= amount
 		coins_updated.emit(coins)
+		print("player now has %s coins" % [coins])
 		return true
 	else:
 		print("Not enough cash")

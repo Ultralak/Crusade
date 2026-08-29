@@ -33,7 +33,6 @@ func setup_weapon_paladin( direction : Vector2, user : CharacterBody2D, userpivo
 	slot_index = slot
 	pivot.global_position = userpivot.global_position
 	melee_setup = true
-	critical_hit()
 
 func rotate_and_flip_weapon()->void:
 	if weapon_user is Character:
