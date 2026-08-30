@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bt4utd3tt6q5"]
 
 [ext_resource type="Script" uid="uid://b37sssuxwsb8l" path="res://Game Components/Scenes/spawn_component.gd" id="1_isw4a"]
+[ext_resource type="PackedScene" uid="uid://3er4nc5bjvmo" path="res://Game Files/character_explosion.tscn" id="2_pp18m"]
 
 [node name="spawn component" type="Node2D" unique_id=1800711375]
 script = ExtResource("1_isw4a")
+spawn_explosion_scene = ExtResource("2_pp18m")

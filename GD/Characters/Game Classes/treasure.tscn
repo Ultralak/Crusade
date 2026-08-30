@@ -16,13 +16,10 @@ interactable = NodePath("treasure_interactable")
 sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=596987754]
-position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_cxjdc")
 debug_color = Color(0.91241175, 9.780168e-05, 0.7250583, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=148166183]
-position = Vector2(-0.104789734, -12.142298)
 
 [node name="treasure_interactable" parent="." unique_id=1361525483 node_paths=PackedStringArray("treasure") instance=ExtResource("3_bhpn6")]
-position = Vector2(0, -10)
 treasure = NodePath("..")

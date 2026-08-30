@@ -3,5 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://cgwjltaq0qvlb" path="res://Characters/Game Classes/box.tscn" id="1_24m0p"]
 [ext_resource type="Texture2D" uid="uid://ctwuo0g51tm1f" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0224.png" id="3_qf6m6"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ocos"]
+
 [node name="Box_2" unique_id=1185611550 instance=ExtResource("1_24m0p")]
 sprite_textures = Array[Texture2D]([ExtResource("3_qf6m6")])
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(437174867) index="0" unique_id=355400070]
+shape = SubResource("RectangleShape2D_1ocos")
+
+[node name="NavigationObstacle2D" parent="." index="2" unique_id=1927262121]
+vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+affect_navigation_mesh = true

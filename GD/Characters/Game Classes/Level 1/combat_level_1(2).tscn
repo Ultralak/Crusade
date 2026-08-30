@@ -1,0 +1,367 @@
+[gd_scene format=4 uid="uid://da1njycpebisy"]
+
+[ext_resource type="PackedScene" uid="uid://bupokqxhcxq2g" path="res://Characters/Game Classes/Level 1/Dungeon_level_1.tscn" id="1_l045j"]
+[ext_resource type="PackedScene" uid="uid://bt4utd3tt6q5" path="res://Game Components/Scenes/spawn_component.tscn" id="2_puu8v"]
+[ext_resource type="PackedScene" uid="uid://h5mybqympw6s" path="res://Game Components/Scenes/box_2.tscn" id="3_ftv4c"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ftv4c"]
+resource_local_to_scene = true
+vertices = PackedVector2Array(470, 262, 10, 262, 10, 10, 470, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
+source_geometry_group_name = &"NAVIGATION"
+
+[node name="combat" unique_id=1787448676 node_paths=PackedStringArray("spawn_component") instance=ExtResource("1_l045j")]
+floor_event = 1
+spawn_component = NodePath("NavigationRegion2D/spawn component")
+
+[node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
+navigation_polygon = SubResource("NavigationPolygon_ftv4c")
+
+[node name="spawn component" parent="NavigationRegion2D" index="0" unique_id=1800711375 node_paths=PackedStringArray("dungeon") instance=ExtResource("2_puu8v")]
+dungeon = NodePath("../..")
+
+[node name="wave 1" type="Node2D" parent="NavigationRegion2D/spawn component" index="0" unique_id=1774760116]
+
+[node name="Marker2D" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="0" unique_id=189619953]
+position = Vector2(87.497246, 118.22341)
+
+[node name="Marker2D2" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="1" unique_id=504652446]
+position = Vector2(404.6289, 116.170784)
+
+[node name="Marker2D3" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="2" unique_id=1536072193]
+position = Vector2(120.852516, 203.40764)
+
+[node name="Marker2D4" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="3" unique_id=1828994978]
+position = Vector2(85.44461, 148.49974)
+
+[node name="Marker2D5" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="4" unique_id=813767390]
+position = Vector2(403.08945, 144.90762)
+
+[node name="Marker2D6" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="5" unique_id=502918048]
+position = Vector2(320, 204)
+
+[node name="ground_objects" parent="NavigationRegion2D" index="3" unique_id=1376421879]
+tile_map_data = PackedByteArray("AAAFAA8AAQAEAAwAAAAGAA8AAQAEAAwAAAAHAA8AAQAEAAwAAAAIAA8AAQAEAAwAAAAJAA8AAQAEAAwAAAAKAA8AAQAEAAwAAAALAA8AAQAEAAwAAAAMAA8AAQAEAAwAAAANAA8AAQAEAAwAAAAQAA8AAQAEAAwAAAARAA8AAQAEAAwAAAASAA8AAQAEAAwAAAATAA8AAQAEAAwAAAAUAA8AAQAEAAwAAAAVAA8AAQAEAAwAAAAWAA8AAQAEAAwAAAAXAA8AAQAEAAwAAAAYAA8AAQAEAAwAAAAcAAYAAQAEAAwAAAAcAAUAAQAEAAwAAAAcAAkAAQAEAAwAAAAcAAoAAQAEAAwAAAAFAAEAAQAEAAwAAAAGAAEAAQAEAAwAAAAHAAEAAQAEAAwAAAAIAAEAAQAEAAwAAAAJAAEAAQAEAAwAAAAKAAEAAQAEAAwAAAALAAEAAQAEAAwAAAAMAAEAAQAEAAwAAAANAAEAAQAEAAwAAAARAAEAAQAEAAwAAAASAAEAAQAEAAwAAAATAAEAAQAEAAwAAAAUAAEAAQAEAAwAAAAVAAEAAQAEAAwAAAAWAAEAAQAEAAwAAAAXAAEAAQAEAAwAAAABAAUAAQAEAAwAAAABAAYAAQAEAAwAAAABAAkAAQAEAAwAAAABAAoAAQAEAAwAAAABAAsAAQAEAAwAAAAcAAsAAQAEAAwAAAAQAAEAAQAEAAwAAAA=")
+
+[node name="destructible" type="Node2D" parent="NavigationRegion2D" index="9" unique_id=1679187976]
+
+[node name="Box_37" parent="NavigationRegion2D/destructible" index="0" unique_id=1185611550 instance=ExtResource("3_ftv4c")]
+position = Vector2(232, 88)
+metadata/_scene_painted = true
+
+[node name="Box_38" parent="NavigationRegion2D/destructible" index="1" unique_id=2061796171 instance=ExtResource("3_ftv4c")]
+position = Vector2(248, 88)
+metadata/_scene_painted = true
+
+[node name="Box_39" parent="NavigationRegion2D/destructible" index="2" unique_id=2077097532 instance=ExtResource("3_ftv4c")]
+position = Vector2(264, 88)
+metadata/_scene_painted = true
+
+[node name="Box_40" parent="NavigationRegion2D/destructible" index="3" unique_id=1278753341 instance=ExtResource("3_ftv4c")]
+position = Vector2(264, 104)
+metadata/_scene_painted = true
+
+[node name="Box_41" parent="NavigationRegion2D/destructible" index="4" unique_id=390456702 instance=ExtResource("3_ftv4c")]
+position = Vector2(264, 120)
+metadata/_scene_painted = true
+
+[node name="Box_42" parent="NavigationRegion2D/destructible" index="5" unique_id=1214795158 instance=ExtResource("3_ftv4c")]
+position = Vector2(264, 136)
+metadata/_scene_painted = true
+
+[node name="Box_43" parent="NavigationRegion2D/destructible" index="6" unique_id=968791181 instance=ExtResource("3_ftv4c")]
+position = Vector2(248, 136)
+metadata/_scene_painted = true
+
+[node name="Box_44" parent="NavigationRegion2D/destructible" index="7" unique_id=2067312709 instance=ExtResource("3_ftv4c")]
+position = Vector2(232, 136)
+metadata/_scene_painted = true
+
+[node name="Box_45" parent="NavigationRegion2D/destructible" index="8" unique_id=1349092803 instance=ExtResource("3_ftv4c")]
+position = Vector2(216, 136)
+metadata/_scene_painted = true
+
+[node name="Box_46" parent="NavigationRegion2D/destructible" index="9" unique_id=1618790805 instance=ExtResource("3_ftv4c")]
+position = Vector2(200, 136)
+metadata/_scene_painted = true
+
+[node name="Box_47" parent="NavigationRegion2D/destructible" index="10" unique_id=867890985 instance=ExtResource("3_ftv4c")]
+position = Vector2(200, 120)
+metadata/_scene_painted = true
+
+[node name="Box_48" parent="NavigationRegion2D/destructible" index="11" unique_id=1215092976 instance=ExtResource("3_ftv4c")]
+position = Vector2(200, 104)
+metadata/_scene_painted = true
+
+[node name="Box_49" parent="NavigationRegion2D/destructible" index="12" unique_id=1405214180 instance=ExtResource("3_ftv4c")]
+position = Vector2(200, 88)
+metadata/_scene_painted = true
+
+[node name="Box_50" parent="NavigationRegion2D/destructible" index="13" unique_id=1409468200 instance=ExtResource("3_ftv4c")]
+position = Vector2(216, 88)
+metadata/_scene_painted = true
+
+[node name="Box_51" parent="NavigationRegion2D/destructible" index="14" unique_id=512456212 instance=ExtResource("3_ftv4c")]
+position = Vector2(456, 216)
+metadata/_scene_painted = true
+
+[node name="Box_52" parent="NavigationRegion2D/destructible" index="15" unique_id=383283480 instance=ExtResource("3_ftv4c")]
+position = Vector2(440, 216)
+metadata/_scene_painted = true
+
+[node name="Box_53" parent="NavigationRegion2D/destructible" index="16" unique_id=1534501751 instance=ExtResource("3_ftv4c")]
+position = Vector2(440, 232)
+metadata/_scene_painted = true
+
+[node name="Box_54" parent="NavigationRegion2D/destructible" index="17" unique_id=549312865 instance=ExtResource("3_ftv4c")]
+position = Vector2(424, 232)
+metadata/_scene_painted = true
+
+[node name="Box_55" parent="NavigationRegion2D/destructible" index="18" unique_id=1379321003 instance=ExtResource("3_ftv4c")]
+position = Vector2(440, 248)
+metadata/_scene_painted = true
+
+[node name="Box_56" parent="NavigationRegion2D/destructible" index="19" unique_id=444299925 instance=ExtResource("3_ftv4c")]
+position = Vector2(456, 232)
+metadata/_scene_painted = true
+
+[node name="Box_57" parent="NavigationRegion2D/destructible" index="20" unique_id=2101542811 instance=ExtResource("3_ftv4c")]
+position = Vector2(456, 248)
+metadata/_scene_painted = true
+
+[node name="Box_58" parent="NavigationRegion2D/destructible" index="21" unique_id=1656884332 instance=ExtResource("3_ftv4c")]
+position = Vector2(424, 248)
+metadata/_scene_painted = true
+
+[node name="Box_59" parent="NavigationRegion2D/destructible" index="22" unique_id=1503425681 instance=ExtResource("3_ftv4c")]
+position = Vector2(408, 248)
+metadata/_scene_painted = true
+
+[node name="Box_60" parent="NavigationRegion2D/destructible" index="23" unique_id=1332737704 instance=ExtResource("3_ftv4c")]
+position = Vector2(456, 200)
+metadata/_scene_painted = true
+
+[node name="Box_61" parent="NavigationRegion2D/destructible" index="24" unique_id=25086255 instance=ExtResource("3_ftv4c")]
+position = Vector2(408, 24)
+metadata/_scene_painted = true
+
+[node name="Box_62" parent="NavigationRegion2D/destructible" index="25" unique_id=618581332 instance=ExtResource("3_ftv4c")]
+position = Vector2(424, 24)
+metadata/_scene_painted = true
+
+[node name="Box_63" parent="NavigationRegion2D/destructible" index="26" unique_id=300608017 instance=ExtResource("3_ftv4c")]
+position = Vector2(440, 24)
+metadata/_scene_painted = true
+
+[node name="Box_64" parent="NavigationRegion2D/destructible" index="27" unique_id=1130805113 instance=ExtResource("3_ftv4c")]
+position = Vector2(456, 24)
+metadata/_scene_painted = true
+
+[node name="Box_65" parent="NavigationRegion2D/destructible" index="28" unique_id=766692133 instance=ExtResource("3_ftv4c")]
+position = Vector2(424, 40)
+metadata/_scene_painted = true
+
+[node name="Box_66" parent="NavigationRegion2D/destructible" index="29" unique_id=211145361 instance=ExtResource("3_ftv4c")]
+position = Vector2(440, 40)
+metadata/_scene_painted = true
+
+[node name="Box_67" parent="NavigationRegion2D/destructible" index="30" unique_id=1889478679 instance=ExtResource("3_ftv4c")]
+position = Vector2(456, 40)
+metadata/_scene_painted = true
+
+[node name="Box_68" parent="NavigationRegion2D/destructible" index="31" unique_id=1528571179 instance=ExtResource("3_ftv4c")]
+position = Vector2(440, 56)
+metadata/_scene_painted = true
+
+[node name="Box_69" parent="NavigationRegion2D/destructible" index="32" unique_id=1692453667 instance=ExtResource("3_ftv4c")]
+position = Vector2(456, 56)
+metadata/_scene_painted = true
+
+[node name="Box_70" parent="NavigationRegion2D/destructible" index="33" unique_id=1659762183 instance=ExtResource("3_ftv4c")]
+position = Vector2(456, 72)
+metadata/_scene_painted = true
+
+[node name="Box_71" parent="NavigationRegion2D/destructible" index="34" unique_id=908339308 instance=ExtResource("3_ftv4c")]
+position = Vector2(24, 24)
+metadata/_scene_painted = true
+
+[node name="Box_72" parent="NavigationRegion2D/destructible" index="35" unique_id=1230646327 instance=ExtResource("3_ftv4c")]
+position = Vector2(40, 24)
+metadata/_scene_painted = true
+
+[node name="Box_73" parent="NavigationRegion2D/destructible" index="36" unique_id=2106943965 instance=ExtResource("3_ftv4c")]
+position = Vector2(56, 24)
+metadata/_scene_painted = true
+
+[node name="Box_74" parent="NavigationRegion2D/destructible" index="37" unique_id=1337803559 instance=ExtResource("3_ftv4c")]
+position = Vector2(72, 24)
+metadata/_scene_painted = true
+
+[node name="Box_75" parent="NavigationRegion2D/destructible" index="38" unique_id=1383702578 instance=ExtResource("3_ftv4c")]
+position = Vector2(24, 40)
+metadata/_scene_painted = true
+
+[node name="Box_76" parent="NavigationRegion2D/destructible" index="39" unique_id=1854574231 instance=ExtResource("3_ftv4c")]
+position = Vector2(40, 40)
+metadata/_scene_painted = true
+
+[node name="Box_77" parent="NavigationRegion2D/destructible" index="40" unique_id=1988964698 instance=ExtResource("3_ftv4c")]
+position = Vector2(56, 40)
+metadata/_scene_painted = true
+
+[node name="Box_78" parent="NavigationRegion2D/destructible" index="41" unique_id=1752112025 instance=ExtResource("3_ftv4c")]
+position = Vector2(24, 56)
+metadata/_scene_painted = true
+
+[node name="Box_79" parent="NavigationRegion2D/destructible" index="42" unique_id=729435959 instance=ExtResource("3_ftv4c")]
+position = Vector2(40, 56)
+metadata/_scene_painted = true
+
+[node name="Box_80" parent="NavigationRegion2D/destructible" index="43" unique_id=1233717525 instance=ExtResource("3_ftv4c")]
+position = Vector2(24, 72)
+metadata/_scene_painted = true
+
+[node name="Box_81" parent="NavigationRegion2D/destructible" index="44" unique_id=688352889 instance=ExtResource("3_ftv4c")]
+position = Vector2(24, 248)
+metadata/_scene_painted = true
+
+[node name="Box_82" parent="NavigationRegion2D/destructible" index="45" unique_id=1806407945 instance=ExtResource("3_ftv4c")]
+position = Vector2(40, 248)
+metadata/_scene_painted = true
+
+[node name="Box_83" parent="NavigationRegion2D/destructible" index="46" unique_id=1457709660 instance=ExtResource("3_ftv4c")]
+position = Vector2(56, 248)
+metadata/_scene_painted = true
+
+[node name="Box_84" parent="NavigationRegion2D/destructible" index="47" unique_id=1471388892 instance=ExtResource("3_ftv4c")]
+position = Vector2(72, 248)
+metadata/_scene_painted = true
+
+[node name="Box_85" parent="NavigationRegion2D/destructible" index="48" unique_id=113992357 instance=ExtResource("3_ftv4c")]
+position = Vector2(24, 232)
+metadata/_scene_painted = true
+
+[node name="Box_86" parent="NavigationRegion2D/destructible" index="49" unique_id=2115901956 instance=ExtResource("3_ftv4c")]
+position = Vector2(40, 232)
+metadata/_scene_painted = true
+
+[node name="Box_87" parent="NavigationRegion2D/destructible" index="50" unique_id=1261358275 instance=ExtResource("3_ftv4c")]
+position = Vector2(56, 232)
+metadata/_scene_painted = true
+
+[node name="Box_88" parent="NavigationRegion2D/destructible" index="51" unique_id=1361766121 instance=ExtResource("3_ftv4c")]
+position = Vector2(24, 216)
+metadata/_scene_painted = true
+
+[node name="Box_89" parent="NavigationRegion2D/destructible" index="52" unique_id=1273372531 instance=ExtResource("3_ftv4c")]
+position = Vector2(40, 216)
+metadata/_scene_painted = true
+
+[node name="Box_90" parent="NavigationRegion2D/destructible" index="53" unique_id=1318887620 instance=ExtResource("3_ftv4c")]
+position = Vector2(24, 200)
+metadata/_scene_painted = true
+
+[node name="Box_91" parent="NavigationRegion2D/destructible" index="54" unique_id=1706387578 instance=ExtResource("3_ftv4c")]
+position = Vector2(248, 120)
+metadata/_scene_painted = true
+
+[node name="Box_92" parent="NavigationRegion2D/destructible" index="55" unique_id=1758111555 instance=ExtResource("3_ftv4c")]
+position = Vector2(248, 104)
+metadata/_scene_painted = true
+
+[node name="Box_93" parent="NavigationRegion2D/destructible" index="56" unique_id=709299903 instance=ExtResource("3_ftv4c")]
+position = Vector2(232, 104)
+metadata/_scene_painted = true
+
+[node name="Box_94" parent="NavigationRegion2D/destructible" index="57" unique_id=1046874409 instance=ExtResource("3_ftv4c")]
+position = Vector2(216, 104)
+metadata/_scene_painted = true
+
+[node name="Box_95" parent="NavigationRegion2D/destructible" index="58" unique_id=1040502804 instance=ExtResource("3_ftv4c")]
+position = Vector2(216, 120)
+metadata/_scene_painted = true
+
+[node name="Box_96" parent="NavigationRegion2D/destructible" index="59" unique_id=1600544840 instance=ExtResource("3_ftv4c")]
+position = Vector2(232, 120)
+metadata/_scene_painted = true
+
+[node name="Box_97" parent="NavigationRegion2D/destructible" index="60" unique_id=1919278575 instance=ExtResource("3_ftv4c")]
+position = Vector2(200, 152)
+metadata/_scene_painted = true
+
+[node name="Box_98" parent="NavigationRegion2D/destructible" index="61" unique_id=64083960 instance=ExtResource("3_ftv4c")]
+position = Vector2(216, 152)
+metadata/_scene_painted = true
+
+[node name="Box_99" parent="NavigationRegion2D/destructible" index="62" unique_id=101738130 instance=ExtResource("3_ftv4c")]
+position = Vector2(232, 152)
+metadata/_scene_painted = true
+
+[node name="Box_100" parent="NavigationRegion2D/destructible" index="63" unique_id=24380979 instance=ExtResource("3_ftv4c")]
+position = Vector2(248, 152)
+metadata/_scene_painted = true
+
+[node name="Box_101" parent="NavigationRegion2D/destructible" index="64" unique_id=187377749 instance=ExtResource("3_ftv4c")]
+position = Vector2(264, 152)
+metadata/_scene_painted = true
+
+[node name="Box_102" parent="NavigationRegion2D/destructible" index="65" unique_id=50030481 instance=ExtResource("3_ftv4c")]
+position = Vector2(280, 152)
+metadata/_scene_painted = true
+
+[node name="Box_103" parent="NavigationRegion2D/destructible" index="66" unique_id=850753959 instance=ExtResource("3_ftv4c")]
+position = Vector2(280, 136)
+metadata/_scene_painted = true
+
+[node name="Box_104" parent="NavigationRegion2D/destructible" index="67" unique_id=718254564 instance=ExtResource("3_ftv4c")]
+position = Vector2(280, 120)
+metadata/_scene_painted = true
+
+[node name="Box_105" parent="NavigationRegion2D/destructible" index="68" unique_id=51031054 instance=ExtResource("3_ftv4c")]
+position = Vector2(280, 104)
+metadata/_scene_painted = true
+
+[node name="Box_106" parent="NavigationRegion2D/destructible" index="69" unique_id=995561975 instance=ExtResource("3_ftv4c")]
+position = Vector2(280, 88)
+metadata/_scene_painted = true
+
+[node name="Box_107" parent="NavigationRegion2D/destructible" index="70" unique_id=837906624 instance=ExtResource("3_ftv4c")]
+position = Vector2(296, 104)
+metadata/_scene_painted = true
+
+[node name="Box_108" parent="NavigationRegion2D/destructible" index="71" unique_id=1990042842 instance=ExtResource("3_ftv4c")]
+position = Vector2(296, 136)
+metadata/_scene_painted = true
+
+[node name="Box_109" parent="NavigationRegion2D/destructible" index="72" unique_id=680786342 instance=ExtResource("3_ftv4c")]
+position = Vector2(296, 120)
+metadata/_scene_painted = true
+
+[node name="Box_110" parent="NavigationRegion2D/destructible" index="73" unique_id=277722199 instance=ExtResource("3_ftv4c")]
+position = Vector2(184, 104)
+metadata/_scene_painted = true
+
+[node name="Box_111" parent="NavigationRegion2D/destructible" index="74" unique_id=820357366 instance=ExtResource("3_ftv4c")]
+position = Vector2(184, 120)
+metadata/_scene_painted = true
+
+[node name="Box_112" parent="NavigationRegion2D/destructible" index="75" unique_id=1999380922 instance=ExtResource("3_ftv4c")]
+position = Vector2(184, 136)
+metadata/_scene_painted = true
+
+[node name="Box_113" parent="NavigationRegion2D/destructible" index="76" unique_id=150104455 instance=ExtResource("3_ftv4c")]
+position = Vector2(232, 72)
+metadata/_scene_painted = true
+
+[node name="Box_114" parent="NavigationRegion2D/destructible" index="77" unique_id=522934544 instance=ExtResource("3_ftv4c")]
+position = Vector2(248, 72)
+metadata/_scene_painted = true
+
+[node name="Box_115" parent="NavigationRegion2D/destructible" index="78" unique_id=1490159302 instance=ExtResource("3_ftv4c")]
+position = Vector2(232, 168)
+metadata/_scene_painted = true
+
+[node name="Box_116" parent="NavigationRegion2D/destructible" index="79" unique_id=2037470620 instance=ExtResource("3_ftv4c")]
+position = Vector2(248, 168)
+metadata/_scene_painted = true

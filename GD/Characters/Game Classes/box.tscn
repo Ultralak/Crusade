@@ -12,4 +12,8 @@ collision_mask = 128
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=273383467]
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1927262121]
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

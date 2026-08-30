@@ -195,6 +195,7 @@ detection_radius = 100.0
 knockback_force = 300.0
 damage_amount = 3.0
 debug_text = NodePath("Test")
+movement_speed = 40.0
 FSM = NodePath("StateMachine")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=2053792831]
@@ -366,7 +367,6 @@ navigation_agent_2d = NodePath("NavigationAgent2D")
 hurt_state = NodePath("../StateMachine/hurt")
 enemy = NodePath("..")
 avoidance_radius = 10.0
-debug = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" unique_id=542563494]
 target_desired_distance = 20.0

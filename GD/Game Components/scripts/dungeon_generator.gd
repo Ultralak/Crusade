@@ -2,7 +2,10 @@ extends Node2D
 class_name DungeonGenerator
 
 @export var spawn_room_scene: PackedScene
+@export var shop_room_scene: PackedScene
+@export var treasure_room_scene: PackedScene
 @export var combat_room_scenes: Array[PackedScene] = []
+
 @export var max_rooms: int = 10
 @export var room_width: int = 480
 @export var room_height: int = 270
@@ -28,11 +31,31 @@ func generate_dungeon() -> void:
 	while dungeon_layout.size() < max_rooms:
 		var move_direction: Vector2i = cardinal_directions.pick_random()
 		current_pos += move_direction
-		
 		if not dungeon_layout.has(current_pos):
 			dungeon_layout[current_pos] = BaseDungeon.DUNGEONEVENT.combat
 
+	_assign_room_events()
 	spawn_rooms()
+
+
+func _assign_room_events() -> void:
+	var available_positions: Array[Vector2i] = []
+	for grid_pos in dungeon_layout.keys():
+		if grid_pos != Vector2i.ZERO:
+			available_positions.append(grid_pos)
+	
+	available_positions.shuffle()
+	
+	if not available_positions.is_empty():
+		var shop_pos = available_positions.pop_back()
+		dungeon_layout[shop_pos] = BaseDungeon.DUNGEONEVENT.shop
+	
+	var treasure_room_count: int = max_rooms / 4
+	for i in range(treasure_room_count):
+		if available_positions.is_empty():
+			break
+		var treasure_pos = available_positions.pop_back()
+		dungeon_layout[treasure_pos] = BaseDungeon.DUNGEONEVENT.treasure
 
 
 func spawn_rooms() -> void:
@@ -41,12 +64,10 @@ func spawn_rooms() -> void:
 
 	for grid_pos in dungeon_layout.keys():
 		var event_type: BaseDungeon.DUNGEONEVENT = dungeon_layout[grid_pos]
-		var selected_scene: PackedScene
-		
-		if event_type == BaseDungeon.DUNGEONEVENT.spawn:
-			selected_scene = spawn_room_scene
-		else:
-			selected_scene = combat_room_scenes.pick_random()
+		var selected_scene: PackedScene = _get_scene_for_event(event_type)
+
+		if not selected_scene:
+			continue
 
 		var room_instance = selected_scene.instantiate() as Node2D
 		
@@ -56,6 +77,21 @@ func spawn_rooms() -> void:
 		
 		add_child(room_instance)
 		configure_doors(room_instance, grid_pos)
+
+		if room_instance.has_method("initialize_room"):
+			room_instance.initialize_room()
+
+
+func _get_scene_for_event(event_type: BaseDungeon.DUNGEONEVENT) -> PackedScene:
+	match event_type:
+		BaseDungeon.DUNGEONEVENT.spawn:
+			return spawn_room_scene
+		BaseDungeon.DUNGEONEVENT.shop:
+			return shop_room_scene if shop_room_scene else combat_room_scenes.pick_random()
+		BaseDungeon.DUNGEONEVENT.treasure:
+			return treasure_room_scene if treasure_room_scene else combat_room_scenes.pick_random()
+		_:
+			return combat_room_scenes.pick_random()
 
 
 func configure_doors(room_node: Node2D, grid_pos: Vector2i) -> void:

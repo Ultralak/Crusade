@@ -58,10 +58,11 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-func debug_mode()->void:
+func debug_mode() -> void:
 	velocity_comp.Max_speed = 400
-	set_collision_layer_value(2,false)
-	set_collision_mask_value(1,false)
+	set_collision_layer_value(2, false)
+	set_collision_mask_value(1, false)
+	
 
 func hit_stop() ->void:
 	Engine.time_scale = freeze_slow

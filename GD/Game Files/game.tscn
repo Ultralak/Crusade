@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c3krxwkblx4nb" path="res://Characters/Paladin weapons/Paladin_Sniper.tscn" id="8_5g5f8"]
 [ext_resource type="PackedScene" uid="uid://onlllchmukjq" path="res://Characters/Game Classes/BrownChestCommon.tscn" id="8_7q8ir"]
 [ext_resource type="PackedScene" uid="uid://ck77ffvlp8n3k" path="res://Game Components/Scenes/Box_1.tscn" id="9_y0mmi"]
+[ext_resource type="PackedScene" uid="uid://h5mybqympw6s" path="res://Game Components/Scenes/box_2.tscn" id="11_xah7n"]
 
 [sub_resource type="Environment" id="Environment_cxjdc"]
 background_mode = 1
@@ -67,3 +68,6 @@ environment = SubResource("Environment_cxjdc")
 
 [node name="Box" parent="." unique_id=1185611550 instance=ExtResource("9_y0mmi")]
 position = Vector2(167, 258)
+
+[node name="Box_2" parent="." unique_id=813593742 instance=ExtResource("11_xah7n")]
+position = Vector2(174, 284)

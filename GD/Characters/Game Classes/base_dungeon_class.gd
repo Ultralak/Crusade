@@ -7,7 +7,7 @@ enum DUNGEONTYPE {
 }
 
 enum DUNGEONEVENT {
-	spawn,
+	spawn, 
 	combat,
 	treasure,
 	boss,
@@ -66,6 +66,11 @@ func _on_player_detect_body_entered(_body: Node2D) -> void:
 	if spawn_component:
 		spawn_component.start_spawning()
 
+func initialize_room() -> void:
+	var spawners = find_children("*", "ChestSpawnerComponent", true, false)
+	for spawner in spawners:
+		if spawner.has_method("spawn_chest"):
+			spawner.spawn_chest()
 
 func _on_all_waves_cleared() -> void:
 	wall.open()

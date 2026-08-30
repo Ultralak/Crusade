@@ -1,10 +1,10 @@
-extends Node2D
+extends Node
 
 signal player_registered(player_node: CharacterBody2D)
 signal player_spawned(position: Vector2)
 signal coins_updated(new_amount: int)
 
-@export var player_scene: PackedScene
+@export var player_scene: PackedScene = preload("res://Characters/Paladin/player.tscn")
 
 var player: CharacterBody2D = null
 var coins: int = 20
