@@ -16,8 +16,8 @@ floor_event = 2
 [node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
 navigation_polygon = SubResource("NavigationPolygon_8snr5")
 
-[node name="ChestSpawner" parent="NavigationRegion2D" index="0" unique_id=395230264 node_paths=PackedStringArray("spawn_marker", "detect") instance=ExtResource("2_8snr5")]
-spawn_marker = NodePath("Marker2D")
+[node name="ChestSpawner" parent="NavigationRegion2D" index="0" unique_id=395230264 node_paths=PackedStringArray("spawn_markers", "detect") instance=ExtResource("2_8snr5")]
+spawn_markers = [NodePath("Marker2D")]
 detect = NodePath("../PlayerDetect")
 
 [node name="Marker2D" type="Marker2D" parent="NavigationRegion2D/ChestSpawner" index="0" unique_id=132042290]

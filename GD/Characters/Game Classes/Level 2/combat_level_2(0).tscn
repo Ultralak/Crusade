@@ -1,0 +1,339 @@
+[gd_scene format=4 uid="uid://bsp50mm3gvssy"]
+
+[ext_resource type="PackedScene" uid="uid://bdrufug2gvxv7" path="res://Characters/Game Classes/Level 2/Dungeon_level_2.tscn" id="1_1q6xy"]
+[ext_resource type="PackedScene" uid="uid://bt4utd3tt6q5" path="res://Game Components/Scenes/spawn_component.tscn" id="2_rak8q"]
+[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/goblin.tscn" id="3_4hc56"]
+[ext_resource type="PackedScene" uid="uid://dg3log4jn1tj8" path="res://Game Components/Scenes/box_3.tscn" id="3_601jd"]
+[ext_resource type="PackedScene" uid="uid://dumrroosi82tl" path="res://Game Components/Scenes/Spikes.tscn" id="3_imres"]
+[ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="4_13e54"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rak8q"]
+resource_local_to_scene = true
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
+source_geometry_group_name = &"NAVIGATION"
+
+[node name="combat_level_2(0)" unique_id=1787448676 node_paths=PackedStringArray("spawn_component") instance=ExtResource("1_1q6xy")]
+floor_event = 1
+spawn_component = NodePath("NavigationRegion2D/spawn component")
+
+[node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
+navigation_polygon = SubResource("NavigationPolygon_rak8q")
+
+[node name="spawn component" parent="NavigationRegion2D" index="0" unique_id=1800711375 node_paths=PackedStringArray("dungeon") instance=ExtResource("2_rak8q")]
+dungeon = NodePath("../..")
+enemy_scenes = Array[PackedScene]([ExtResource("3_4hc56"), ExtResource("4_13e54")])
+max_waves = 2
+
+[node name="Wave 1" type="Node2D" parent="NavigationRegion2D/spawn component" index="0" unique_id=462785102]
+
+[node name="Marker2D" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 1" index="0" unique_id=52919597]
+position = Vector2(80, 48)
+
+[node name="Marker2D2" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 1" index="1" unique_id=1912768284]
+position = Vector2(48, 80)
+
+[node name="Marker2D3" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 1" index="2" unique_id=56727911]
+position = Vector2(400, 208)
+
+[node name="Marker2D4" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 1" index="3" unique_id=500023111]
+position = Vector2(416, 144)
+
+[node name="Marker2D5" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 1" index="4" unique_id=957222654]
+position = Vector2(384, 48)
+
+[node name="Wave 2" type="Node2D" parent="NavigationRegion2D/spawn component" index="1" unique_id=1464521633]
+
+[node name="Marker2D" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 2" index="0" unique_id=1975854011]
+position = Vector2(208, 80)
+
+[node name="Marker2D2" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 2" index="1" unique_id=550121096]
+position = Vector2(208, 112)
+
+[node name="Marker2D3" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 2" index="2" unique_id=826002124]
+position = Vector2(288, 112)
+
+[node name="Marker2D4" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 2" index="3" unique_id=704657963]
+position = Vector2(288, 160)
+
+[node name="Marker2D5" type="Marker2D" parent="NavigationRegion2D/spawn component/Wave 2" index="4" unique_id=1049471098]
+position = Vector2(208, 160)
+
+[node name="ground" parent="NavigationRegion2D" index="1" unique_id=1650485613]
+tile_map_data = PackedByteArray("AAAdABAAAQAHAAIAAAAdAA8AAQAHAAEAAAAdAA4AAQAHAAEAAAAdAA0AAQAHAAEAAAAdAAwAAQAHAAEAAAAdAAsAAQAHAAEAAAAdAAoAAQAHAAEAAAAdAAkAAQAHAAEAAAAdAAgAAQAHAAEAAAAdAAcAAQAHAAEAAAAdAAYAAQAHAAEAAAAdAAUAAQAHAAEAAAAdAAQAAQAHAAEAAAAdAAMAAQAHAAEAAAAdAAIAAQAHAAEAAAAdAAEAAQAHAAEAAAAdAAAAAQAHAAAAAAAcABAAAQAGAAIAAAAcAA8AAQAGAAEAAAAcAA4AAQAGAAEAAAAcAA0AAQAGAAEAAAAcAAwAAQAGAAEAAAAcAAsAAQAGAAEAAAAcAAoAAQAGAAEAAAAcAAkAAQAGAAEAAAAcAAgAAQAGAAEAAAAcAAcAAQAGAAEAAAAcAAYAAQAGAAEAAAAcAAUAAQAGAAEAAAAcAAQAAQAGAAEAAAAcAAMAAQAGAAEAAAAcAAIAAQAGAAEAAAAcAAEAAQAGAAEAAAAcAAAAAQAGAAAAAAAbABAAAQAGAAIAAAAbAA8AAQAGAAEAAAAbAA4AAQAGAAEAAAAbAA0AAQAGAAEAAAAbAAwAAQAGAAEAAAAbAAsAAQAGAAEAAAAbAAoAAQAGAAEAAAAbAAkAAQAGAAEAAAAbAAgAAQAGAAEAAAAbAAcAAQAGAAEAAAAbAAYAAQAGAAEAAAAbAAUAAQAGAAEAAAAbAAQAAQAGAAEAAAAbAAMAAQAGAAEAAAAbAAIAAQAGAAEAAAAbAAEAAQAGAAEAAAAbAAAAAQAGAAAAAAAaABAAAQAGAAIAAAAaAA8AAQAGAAEAAAAaAA4AAQAGAAEAAAAaAA0AAQAGAAEAAAAaAAwAAQAGAAEAAAAaAAsAAQAGAAEAAAAaAAoAAQAGAAEAAAAaAAkAAQAGAAEAAAAaAAgAAQAGAAEAAAAaAAcAAQAGAAEAAAAaAAYAAQAGAAEAAAAaAAUAAQAGAAEAAAAaAAQAAQAGAAEAAAAaAAMAAQAGAAEAAAAaAAIAAQAGAAEAAAAaAAEAAQAGAAEAAAAaAAAAAQAGAAAAAAAZABAAAQAGAAIAAAAZAA8AAQAGAAEAAAAZAA4AAQAGAAEAAAAZAA0AAQAGAAEAAAAZAAwAAQAGAAEAAAAZAAsAAQAGAAEAAAAZAAoAAQAGAAEAAAAZAAkAAQAGAAEAAAAZAAgAAQAGAAEAAAAZAAcAAQAGAAEAAAAZAAYAAQAGAAEAAAAZAAUAAQAGAAEAAAAZAAQAAQAGAAEAAAAZAAMAAQAGAAEAAAAZAAIAAQAGAAEAAAAZAAEAAQAGAAEAAAAZAAAAAQAGAAAAAAAYABAAAQAGAAIAAAAYAA8AAQAGAAEAAAAYAA4AAQAGAAEAAAAYAA0AAQAGAAEAAAAYAAwAAQAGAAEAAAAYAAsAAQAGAAEAAAAYAAoAAQAGAAEAAAAYAAkAAQAGAAEAAAAYAAgAAQAGAAEAAAAYAAcAAQAGAAEAAAAYAAYAAQAGAAEAAAAYAAUAAQAGAAEAAAAYAAQAAQAGAAEAAAAYAAMAAQAGAAEAAAAYAAIAAQAGAAEAAAAYAAEAAQAGAAEAAAAYAAAAAQAGAAAAAAAXABAAAQAGAAIAAAAXAA8AAQAGAAEAAAAXAA4AAQAGAAEAAAAXAA0AAQAGAAEAAAAXAAwAAQAGAAEAAAAXAAsAAQAGAAEAAAAXAAoAAQAGAAEAAAAXAAkAAQAGAAEAAAAXAAgAAQAGAAEAAAAXAAcAAQAGAAEAAAAXAAYAAQAGAAEAAAAXAAUAAQAGAAEAAAAXAAQAAQAGAAEAAAAXAAMAAQAGAAEAAAAXAAIAAQAGAAEAAAAXAAEAAQAGAAEAAAAXAAAAAQAGAAAAAAAWABAAAQAGAAIAAAAWAA8AAQAGAAEAAAAWAA4AAQAGAAEAAAAWAA0AAQAGAAEAAAAWAAwAAQAGAAEAAAAWAAsAAQAGAAEAAAAWAAoAAQAGAAEAAAAWAAkAAQAGAAEAAAAWAAgAAQAGAAEAAAAWAAcAAQAGAAEAAAAWAAYAAQAGAAEAAAAWAAUAAQAGAAEAAAAWAAQAAQAGAAEAAAAWAAMAAQAGAAEAAAAWAAIAAQAGAAEAAAAWAAEAAQAGAAEAAAAWAAAAAQAGAAAAAAAVABAAAQAGAAIAAAAVAA8AAQAGAAEAAAAVAA4AAQAGAAEAAAAVAA0AAQAGAAEAAAAVAAwAAQAGAAEAAAAVAAsAAQAGAAEAAAAVAAoAAQAGAAEAAAAVAAkAAQAGAAEAAAAVAAgAAQAGAAEAAAAVAAcAAQAGAAEAAAAVAAYAAQAGAAEAAAAVAAUAAQAGAAEAAAAVAAQAAQAGAAEAAAAVAAMAAQAGAAEAAAAVAAIAAQAGAAEAAAAVAAEAAQAGAAEAAAAVAAAAAQAGAAAAAAAUABAAAQAGAAIAAAAUAA8AAQAGAAEAAAAUAA4AAQAGAAEAAAAUAA0AAQAGAAEAAAAUAAwAAQAGAAEAAAAUAAsAAQAGAAEAAAAUAAoAAQAGAAEAAAAUAAkAAQAGAAEAAAAUAAgAAQAGAAEAAAAUAAcAAQAGAAEAAAAUAAYAAQAGAAEAAAAUAAUAAQAGAAEAAAAUAAQAAQAGAAEAAAAUAAMAAQAGAAEAAAAUAAIAAQAGAAEAAAAUAAEAAQAGAAEAAAAUAAAAAQAGAAAAAAATABAAAQAGAAIAAAATAA8AAQAGAAEAAAATAA4AAQAGAAEAAAATAA0AAQAGAAEAAAATAAwAAQAGAAEAAAATAAsAAQAGAAEAAAATAAoAAQAGAAEAAAATAAkAAQAGAAEAAAATAAgAAQAGAAEAAAATAAcAAQAGAAEAAAATAAYAAQAGAAEAAAATAAUAAQAGAAEAAAATAAQAAQAGAAEAAAATAAMAAQAGAAEAAAATAAIAAQAGAAEAAAATAAEAAQAGAAEAAAATAAAAAQAGAAAAAAASABAAAQAGAAIAAAASAA8AAQAGAAEAAAASAA4AAQAGAAEAAAASAA0AAQAGAAEAAAASAAwAAQAGAAEAAAASAAsAAQAGAAEAAAASAAoAAQAGAAEAAAASAAkAAQAGAAEAAAASAAgAAQAGAAEAAAASAAcAAQAGAAEAAAASAAYAAQAGAAEAAAASAAUAAQAGAAEAAAASAAQAAQAGAAEAAAASAAMAAQAGAAEAAAASAAIAAQAGAAEAAAASAAEAAQAGAAEAAAASAAAAAQAGAAAAAAARABAAAQAGAAIAAAARAA8AAQAGAAEAAAARAA4AAQAGAAEAAAARAA0AAQAGAAEAAAARAAwAAQAGAAEAAAARAAsAAQAGAAEAAAARAAoAAQAGAAEAAAARAAkAAQAGAAEAAAARAAgAAQAGAAEAAAARAAcAAQAGAAEAAAARAAYAAQAGAAEAAAARAAUAAQAGAAEAAAARAAQAAQAGAAEAAAARAAMAAQAGAAEAAAARAAIAAQAGAAEAAAARAAEAAQAGAAEAAAARAAAAAQAGAAAAAAAQABAAAQAGAAIAAAAQAA8AAQAGAAEAAAAQAA4AAQAGAAEAAAAQAA0AAQAGAAEAAAAQAAwAAQAGAAEAAAAQAAsAAQAGAAEAAAAQAAoAAQAGAAEAAAAQAAkAAQAGAAEAAAAQAAgAAQAGAAEAAAAQAAcAAQAGAAEAAAAQAAYAAQAGAAEAAAAQAAUAAQAGAAEAAAAQAAQAAQAGAAEAAAAQAAMAAQAGAAEAAAAQAAIAAQAGAAEAAAAQAAEAAQAGAAEAAAAQAAAAAQAGAAAAAAAPABAAAQAGAAYAAAAPAA8AAQAGAAEAAAAPAA4AAQAGAAEAAAAPAA0AAQAGAAEAAAAPAAwAAQAGAAEAAAAPAAsAAQAGAAEAAAAPAAoAAQAGAAEAAAAPAAkAAQAGAAEAAAAPAAgAAQAGAAEAAAAPAAcAAQAGAAEAAAAPAAYAAQAGAAEAAAAPAAUAAQAGAAEAAAAPAAQAAQAGAAEAAAAPAAMAAQAGAAEAAAAPAAIAAQAGAAEAAAAPAAEAAQAGAAEAAAAPAAAAAQAGAAAAAAAOABAAAQAGAAYAAAAOAA8AAQAGAAEAAAAOAA4AAQAGAAEAAAAOAA0AAQAGAAEAAAAOAAwAAQAGAAEAAAAOAAsAAQAGAAEAAAAOAAoAAQAGAAEAAAAOAAkAAQAGAAEAAAAOAAgAAQAGAAEAAAAOAAcAAQAGAAEAAAAOAAYAAQAGAAEAAAAOAAUAAQAGAAEAAAAOAAQAAQAGAAEAAAAOAAIAAQAGAAEAAAAOAAEAAQAGAAEAAAAOAAAAAQAGAAAAAAANABAAAQAGAAIAAAANAA8AAQAGAAEAAAANAA4AAQAGAAEAAAANAA0AAQAGAAEAAAANAAwAAQAGAAEAAAANAAsAAQAGAAEAAAANAAoAAQAGAAEAAAANAAkAAQAGAAEAAAANAAgAAQAGAAEAAAANAAcAAQAGAAEAAAANAAYAAQAGAAEAAAANAAUAAQAGAAEAAAANAAQAAQAGAAEAAAANAAMAAQAGAAEAAAANAAIAAQAGAAEAAAANAAEAAQAGAAEAAAANAAAAAQAGAAAAAAAMABAAAQAGAAIAAAAMAA8AAQAGAAEAAAAMAA4AAQAGAAEAAAAMAA0AAQAGAAEAAAAMAAwAAQAGAAEAAAAMAAsAAQAGAAEAAAAMAAoAAQAGAAEAAAAMAAkAAQAGAAEAAAAMAAgAAQAGAAEAAAAMAAcAAQAGAAEAAAAMAAYAAQAGAAEAAAAMAAUAAQAGAAEAAAAMAAQAAQAGAAEAAAAMAAMAAQAGAAEAAAAMAAIAAQAGAAEAAAAMAAEAAQAGAAEAAAAMAAAAAQAGAAAAAAALABAAAQAGAAIAAAALAA8AAQAGAAEAAAALAA4AAQAGAAEAAAALAA0AAQAGAAEAAAALAAwAAQAGAAEAAAALAAsAAQAGAAEAAAALAAoAAQAGAAEAAAALAAkAAQAGAAEAAAALAAgAAQAGAAEAAAALAAcAAQAGAAEAAAALAAYAAQAGAAEAAAALAAUAAQAGAAEAAAALAAQAAQAGAAEAAAALAAMAAQAGAAEAAAALAAIAAQAGAAEAAAALAAEAAQAGAAEAAAALAAAAAQAGAAAAAAAKABAAAQAGAAIAAAAKAA8AAQAGAAEAAAAKAA4AAQAGAAEAAAAKAA0AAQAGAAEAAAAKAAwAAQAGAAEAAAAKAAsAAQAGAAEAAAAKAAoAAQAGAAEAAAAKAAkAAQAGAAEAAAAKAAgAAQAGAAEAAAAKAAcAAQAGAAEAAAAKAAYAAQAGAAEAAAAKAAUAAQAGAAEAAAAKAAQAAQAGAAEAAAAKAAMAAQAGAAEAAAAKAAIAAQAGAAEAAAAKAAEAAQAGAAEAAAAKAAAAAQAGAAAAAAAJABAAAQAGAAIAAAAJAA8AAQAGAAEAAAAJAA4AAQAGAAEAAAAJAA0AAQAGAAEAAAAJAAwAAQAGAAEAAAAJAAsAAQAGAAEAAAAJAAoAAQAGAAEAAAAJAAkAAQAGAAEAAAAJAAgAAQAGAAEAAAAJAAcAAQAGAAEAAAAJAAYAAQAGAAEAAAAJAAUAAQAGAAEAAAAJAAQAAQAGAAEAAAAJAAMAAQAGAAEAAAAJAAIAAQAGAAEAAAAJAAEAAQAGAAEAAAAJAAAAAQAGAAAAAAAIABAAAQAGAAIAAAAIAA8AAQAGAAEAAAAIAA4AAQAGAAEAAAAIAA0AAQAGAAEAAAAIAAwAAQAGAAEAAAAIAAsAAQAGAAEAAAAIAAoAAQAGAAEAAAAIAAkAAQAGAAEAAAAIAAgAAQAGAAEAAAAIAAcAAQAGAAEAAAAIAAYAAQAGAAEAAAAIAAUAAQAGAAEAAAAIAAQAAQAGAAEAAAAIAAMAAQAGAAEAAAAIAAIAAQAGAAEAAAAIAAEAAQAGAAEAAAAIAAAAAQAGAAAAAAAHABAAAQAGAAIAAAAHAA8AAQAGAAEAAAAHAA4AAQAGAAEAAAAHAA0AAQAGAAEAAAAHAAwAAQAGAAEAAAAHAAsAAQAGAAEAAAAHAAoAAQAGAAEAAAAHAAkAAQAGAAEAAAAHAAgAAQAGAAEAAAAHAAcAAQAGAAEAAAAHAAYAAQAGAAEAAAAHAAUAAQAGAAEAAAAHAAQAAQAGAAEAAAAHAAMAAQAGAAEAAAAHAAIAAQAGAAEAAAAHAAEAAQAGAAEAAAAHAAAAAQAGAAAAAAAGABAAAQAGAAIAAAAGAA8AAQAGAAEAAAAGAA4AAQAGAAEAAAAGAA0AAQAGAAEAAAAGAAwAAQAGAAEAAAAGAAsAAQAGAAEAAAAGAAoAAQAGAAEAAAAGAAkAAQAGAAEAAAAGAAgAAQAGAAEAAAAGAAcAAQAGAAEAAAAGAAYAAQAGAAEAAAAGAAUAAQAGAAEAAAAGAAQAAQAGAAEAAAAGAAMAAQAGAAEAAAAGAAIAAQAGAAEAAAAGAAEAAQAGAAEAAAAGAAAAAQAGAAAAAAAFABAAAQAGAAIAAAAFAA8AAQAGAAEAAAAFAA4AAQAGAAEAAAAFAA0AAQAGAAEAAAAFAAwAAQAGAAEAAAAFAAsAAQAGAAEAAAAFAAoAAQAGAAEAAAAFAAkAAQAGAAEAAAAFAAgAAQAGAAEAAAAFAAcAAQAGAAEAAAAFAAYAAQAGAAEAAAAFAAUAAQAGAAEAAAAFAAQAAQAGAAEAAAAFAAMAAQAGAAEAAAAFAAIAAQAGAAEAAAAFAAEAAQAGAAEAAAAFAAAAAQAGAAAAAAAEABAAAQAGAAIAAAAEAA8AAQAGAAEAAAAEAA4AAQAGAAEAAAAEAA0AAQAGAAEAAAAEAAwAAQAGAAEAAAAEAAsAAQAGAAEAAAAEAAoAAQAGAAEAAAAEAAkAAQAGAAEAAAAEAAgAAQAGAAEAAAAEAAcAAQAGAAEAAAAEAAYAAQAGAAEAAAAEAAUAAQAGAAEAAAAEAAQAAQAGAAEAAAAEAAMAAQAGAAEAAAAEAAIAAQAGAAEAAAAEAAEAAQAGAAEAAAAEAAAAAQAGAAAAAAADABAAAQAGAAIAAAADAA8AAQAGAAEAAAADAA4AAQAGAAEAAAADAA0AAQAGAAEAAAADAAwAAQAGAAEAAAADAAsAAQAGAAEAAAADAAoAAQAGAAEAAAADAAkAAQAGAAEAAAADAAgAAQAGAAEAAAADAAcAAQAGAAEAAAADAAYAAQAGAAEAAAADAAUAAQAGAAEAAAADAAQAAQAGAAEAAAADAAMAAQAGAAEAAAADAAIAAQAGAAEAAAADAAEAAQAGAAEAAAADAAAAAQAGAAAAAAACABAAAQAGAAIAAAACAA8AAQAGAAEAAAACAA4AAQAGAAEAAAACAA0AAQAGAAEAAAACAAwAAQAGAAEAAAACAAsAAQAGAAEAAAACAAoAAQAGAAEAAAACAAkAAQAGAAEAAAACAAgAAQAGAAEAAAACAAcAAQAGAAEAAAACAAYAAQAGAAEAAAACAAUAAQAGAAEAAAACAAQAAQAGAAEAAAACAAMAAQAGAAEAAAACAAIAAQAGAAEAAAACAAEAAQAGAAEAAAACAAAAAQAGAAAAAAABABAAAQAGAAIAAAABAA8AAQAGAAEAAAABAA4AAQAGAAEAAAABAA0AAQAGAAEAAAABAAwAAQAGAAEAAAABAAsAAQAGAAEAAAABAAoAAQAGAAEAAAABAAkAAQAGAAEAAAABAAgAAQAGAAEAAAABAAcAAQAGAAEAAAABAAYAAQAGAAEAAAABAAUAAQAGAAEAAAABAAQAAQAGAAEAAAABAAMAAQAGAAEAAAABAAIAAQAGAAEAAAABAAEAAQAGAAEAAAABAAAAAQAGAAAAAAAAABAAAQAFAAIAAAAAAA8AAQAFAAEAAAAAAA4AAQAFAAEAAAAAAA0AAQAFAAEAAAAAAAwAAQAFAAEAAAAAAAsAAQAFAAEAAAAAAAoAAQAFAAEAAAAAAAkAAQAFAAEAAAAAAAgAAQAFAAEAAAAAAAcAAQAFAAEAAAAAAAYAAQAFAAEAAAAAAAUAAQAFAAEAAAAAAAQAAQAFAAEAAAAAAAMAAQAFAAEAAAAAAAIAAQAFAAEAAAAAAAEAAQAFAAEAAAAAAAAAAQAFAAAAAAAOAAMAAQAGAAEAAAA=")
+
+[node name="ground_objects" parent="NavigationRegion2D" index="3" unique_id=1376421879]
+tile_map_data = PackedByteArray("AAAGAAoAAQAKAAMAAAAFAAoAAQAOAAoAAAAFAAsAAQAKAAMAAAAGAAsAAQAKAAMAAAAGAAkAAQAKAAMAAAAHAAgAAQAKAAMAAAAHAAoAAQAKAAMAAAAHAAsAAQAOAAoAAAAHAAwAAQAKAAMAAAAJAAwAAQALAAMAAAAIAAsAAQALAAMAAAAJAAoAAQAKAAMAAAAJAAkAAQAKAAMAAAAIAAoAAQAKAAMAAAAIAAkAAQAOAAoAAAAIAAgAAQAKAAMAAAAIAAcAAQAKAAMAAAAKAAoAAQAFAAYAAAAKAAkAAQAFAAYAAAAJAAsAAQAKAAMAAAAIAAwAAQAOAAoAAAAIAA0AAQAKAAMAAAAJAAgAAQAKAAMAAAAKAAsAAQAFAAYAAAAJAA0AAQAFAAUAAAAHAA0AAQAHAAUAAAAGAAwAAQAHAAUAAAAFAAkAAQAHAAcAAAAGAAgAAQAHAAcAAAAHAAcAAQAHAAcAAAAGAAcAAQAIAAUAAAAFAAgAAQAIAAUAAAAGAA0AAQAIAAYAAAAKAA0AAQAJAAYAAAAKAAgAAQAFAAYAAAAJAAcAAQAFAAcAAAAKAAwAAQAFAAYAAAAIAA4AAQAGAAUAAAAHAA4AAQAIAAYAAAAJAA4AAQAJAAYAAAAEAAoAAQAHAAYAAAAEAAsAAQAHAAYAAAAEAAwAAQAIAAYAAAAEAAkAAQAIAAUAAAAFAAwAAQAGAAUAAAAIAAYAAQAGAAcAAAAHAAYAAQAIAAUAAAAJAAYAAQAJAAUAAAAHAAkAAQAKAAMAAAAKAAcAAQAJAAUAAAA=")
+
+[node name="Moving Spikes2" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="0" unique_id=585630325 instance=ExtResource("3_imres")]
+position = Vector2(104, 152)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes3" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="1" unique_id=1493355120 instance=ExtResource("3_imres")]
+position = Vector2(104, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes4" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="2" unique_id=1464887915 instance=ExtResource("3_imres")]
+position = Vector2(88, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes5" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="3" unique_id=2110538343 instance=ExtResource("3_imres")]
+position = Vector2(88, 184)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes6" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="4" unique_id=2121800574 instance=ExtResource("3_imres")]
+position = Vector2(104, 184)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes7" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="5" unique_id=1562936039 instance=ExtResource("3_imres")]
+position = Vector2(120, 200)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes8" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="6" unique_id=1279259098 instance=ExtResource("3_imres")]
+position = Vector2(136, 120)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes9" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="7" unique_id=1568733537 instance=ExtResource("3_imres")]
+position = Vector2(152, 136)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes10" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="8" unique_id=1677250724 instance=ExtResource("3_imres")]
+position = Vector2(136, 136)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes11" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="9" unique_id=1361277711 instance=ExtResource("3_imres")]
+position = Vector2(136, 152)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes12" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="10" unique_id=1491232881 instance=ExtResource("3_imres")]
+position = Vector2(152, 152)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes13" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="11" unique_id=1015250826 instance=ExtResource("3_imres")]
+position = Vector2(136, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes14" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="12" unique_id=454678207 instance=ExtResource("3_imres")]
+position = Vector2(152, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes15" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="13" unique_id=2001590480 instance=ExtResource("3_imres")]
+position = Vector2(136, 216)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes16" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="14" unique_id=1803047375 instance=ExtResource("3_imres")]
+position = Vector2(136, 200)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes17" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="15" unique_id=85977455 instance=ExtResource("3_imres")]
+position = Vector2(120, 136)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes18" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="16" unique_id=1877603693 instance=ExtResource("3_imres")]
+position = Vector2(120, 152)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes19" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="17" unique_id=860878380 instance=ExtResource("3_imres")]
+position = Vector2(120, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes20" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="18" unique_id=1113044022 instance=ExtResource("3_imres")]
+position = Vector2(120, 184)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes21" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="19" unique_id=1784922886 instance=ExtResource("3_imres")]
+position = Vector2(136, 184)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes22" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="20" unique_id=786241195 instance=ExtResource("3_imres")]
+position = Vector2(152, 184)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes23" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="21" unique_id=322986545 instance=ExtResource("3_imres")]
+position = Vector2(152, 200)
+metadata/_scene_painted = true
+
+[node name="destructable" type="Node2D" parent="NavigationRegion2D" index="9" unique_id=426340861]
+
+[node name="Box2" parent="NavigationRegion2D/destructable" index="0" unique_id=1185611550 instance=ExtResource("3_601jd")]
+position = Vector2(152, 56)
+metadata/_scene_painted = true
+
+[node name="Box3" parent="NavigationRegion2D/destructable" index="1" unique_id=610230617 instance=ExtResource("3_601jd")]
+position = Vector2(168, 56)
+metadata/_scene_painted = true
+
+[node name="Box4" parent="NavigationRegion2D/destructable" index="2" unique_id=356529412 instance=ExtResource("3_601jd")]
+position = Vector2(184, 56)
+metadata/_scene_painted = true
+
+[node name="Box5" parent="NavigationRegion2D/destructable" index="3" unique_id=1180209844 instance=ExtResource("3_601jd")]
+position = Vector2(200, 56)
+metadata/_scene_painted = true
+
+[node name="Box9" parent="NavigationRegion2D/destructable" index="4" unique_id=1566579082 instance=ExtResource("3_601jd")]
+position = Vector2(264, 56)
+metadata/_scene_painted = true
+
+[node name="Box10" parent="NavigationRegion2D/destructable" index="5" unique_id=1030620465 instance=ExtResource("3_601jd")]
+position = Vector2(280, 56)
+metadata/_scene_painted = true
+
+[node name="Box11" parent="NavigationRegion2D/destructable" index="6" unique_id=974187648 instance=ExtResource("3_601jd")]
+position = Vector2(296, 56)
+metadata/_scene_painted = true
+
+[node name="Box12" parent="NavigationRegion2D/destructable" index="7" unique_id=1218925803 instance=ExtResource("3_601jd")]
+position = Vector2(312, 56)
+metadata/_scene_painted = true
+
+[node name="Box13" parent="NavigationRegion2D/destructable" index="8" unique_id=1746841525 instance=ExtResource("3_601jd")]
+position = Vector2(328, 56)
+metadata/_scene_painted = true
+
+[node name="Box14" parent="NavigationRegion2D/destructable" index="9" unique_id=777287812 instance=ExtResource("3_601jd")]
+position = Vector2(328, 72)
+metadata/_scene_painted = true
+
+[node name="Box21" parent="NavigationRegion2D/destructable" index="10" unique_id=1513464036 instance=ExtResource("3_601jd")]
+position = Vector2(328, 184)
+metadata/_scene_painted = true
+
+[node name="Box22" parent="NavigationRegion2D/destructable" index="11" unique_id=1987676673 instance=ExtResource("3_601jd")]
+position = Vector2(328, 200)
+metadata/_scene_painted = true
+
+[node name="Box23" parent="NavigationRegion2D/destructable" index="12" unique_id=373339651 instance=ExtResource("3_601jd")]
+position = Vector2(152, 72)
+metadata/_scene_painted = true
+
+[node name="Box24" parent="NavigationRegion2D/destructable" index="13" unique_id=1089518753 instance=ExtResource("3_601jd")]
+position = Vector2(152, 88)
+metadata/_scene_painted = true
+
+[node name="Box30" parent="NavigationRegion2D/destructable" index="14" unique_id=338337704 instance=ExtResource("3_601jd")]
+position = Vector2(152, 184)
+metadata/_scene_painted = true
+
+[node name="Box31" parent="NavigationRegion2D/destructable" index="15" unique_id=468982133 instance=ExtResource("3_601jd")]
+position = Vector2(152, 200)
+metadata/_scene_painted = true
+
+[node name="Box32" parent="NavigationRegion2D/destructable" index="16" unique_id=672075342 instance=ExtResource("3_601jd")]
+position = Vector2(168, 200)
+metadata/_scene_painted = true
+
+[node name="Box33" parent="NavigationRegion2D/destructable" index="17" unique_id=280856893 instance=ExtResource("3_601jd")]
+position = Vector2(184, 200)
+metadata/_scene_painted = true
+
+[node name="Box34" parent="NavigationRegion2D/destructable" index="18" unique_id=629280663 instance=ExtResource("3_601jd")]
+position = Vector2(200, 200)
+metadata/_scene_painted = true
+
+[node name="Box35" parent="NavigationRegion2D/destructable" index="19" unique_id=586704503 instance=ExtResource("3_601jd")]
+position = Vector2(216, 200)
+metadata/_scene_painted = true
+
+[node name="Box36" parent="NavigationRegion2D/destructable" index="20" unique_id=979257783 instance=ExtResource("3_601jd")]
+position = Vector2(232, 200)
+metadata/_scene_painted = true
+
+[node name="Box37" parent="NavigationRegion2D/destructable" index="21" unique_id=665486592 instance=ExtResource("3_601jd")]
+position = Vector2(248, 200)
+metadata/_scene_painted = true
+
+[node name="Box38" parent="NavigationRegion2D/destructable" index="22" unique_id=1259097318 instance=ExtResource("3_601jd")]
+position = Vector2(264, 200)
+metadata/_scene_painted = true
+
+[node name="Box39" parent="NavigationRegion2D/destructable" index="23" unique_id=234694928 instance=ExtResource("3_601jd")]
+position = Vector2(280, 200)
+metadata/_scene_painted = true
+
+[node name="Box40" parent="NavigationRegion2D/destructable" index="24" unique_id=810937335 instance=ExtResource("3_601jd")]
+position = Vector2(296, 200)
+metadata/_scene_painted = true
+
+[node name="Box41" parent="NavigationRegion2D/destructable" index="25" unique_id=1076163159 instance=ExtResource("3_601jd")]
+position = Vector2(312, 200)
+metadata/_scene_painted = true
+
+[node name="Box42" parent="NavigationRegion2D/destructable" index="26" unique_id=472291449 instance=ExtResource("3_601jd")]
+position = Vector2(136, 88)
+metadata/_scene_painted = true
+
+[node name="Box43" parent="NavigationRegion2D/destructable" index="27" unique_id=1560102865 instance=ExtResource("3_601jd")]
+position = Vector2(120, 88)
+metadata/_scene_painted = true
+
+[node name="Box44" parent="NavigationRegion2D/destructable" index="28" unique_id=420332092 instance=ExtResource("3_601jd")]
+position = Vector2(120, 104)
+metadata/_scene_painted = true
+
+[node name="Box45" parent="NavigationRegion2D/destructable" index="29" unique_id=1377673302 instance=ExtResource("3_601jd")]
+position = Vector2(120, 120)
+metadata/_scene_painted = true
+
+[node name="Box46" parent="NavigationRegion2D/destructable" index="30" unique_id=1891504034 instance=ExtResource("3_601jd")]
+position = Vector2(120, 136)
+metadata/_scene_painted = true
+
+[node name="Box47" parent="NavigationRegion2D/destructable" index="31" unique_id=1933691894 instance=ExtResource("3_601jd")]
+position = Vector2(120, 152)
+metadata/_scene_painted = true
+
+[node name="Box48" parent="NavigationRegion2D/destructable" index="32" unique_id=1765016180 instance=ExtResource("3_601jd")]
+position = Vector2(120, 168)
+metadata/_scene_painted = true
+
+[node name="Box49" parent="NavigationRegion2D/destructable" index="33" unique_id=1506116303 instance=ExtResource("3_601jd")]
+position = Vector2(120, 184)
+metadata/_scene_painted = true
+
+[node name="Box50" parent="NavigationRegion2D/destructable" index="34" unique_id=555152328 instance=ExtResource("3_601jd")]
+position = Vector2(136, 184)
+metadata/_scene_painted = true
+
+[node name="Box15" parent="NavigationRegion2D/destructable" index="35" unique_id=13896139 instance=ExtResource("3_601jd")]
+position = Vector2(344, 72)
+metadata/_scene_painted = true
+
+[node name="Box16" parent="NavigationRegion2D/destructable" index="36" unique_id=270451662 instance=ExtResource("3_601jd")]
+position = Vector2(360, 72)
+metadata/_scene_painted = true
+
+[node name="Box17" parent="NavigationRegion2D/destructable" index="37" unique_id=1057488316 instance=ExtResource("3_601jd")]
+position = Vector2(376, 72)
+metadata/_scene_painted = true
+
+[node name="Box18" parent="NavigationRegion2D/destructable" index="38" unique_id=2000087436 instance=ExtResource("3_601jd")]
+position = Vector2(376, 88)
+metadata/_scene_painted = true
+
+[node name="Box19" parent="NavigationRegion2D/destructable" index="39" unique_id=1201218649 instance=ExtResource("3_601jd")]
+position = Vector2(376, 104)
+metadata/_scene_painted = true
+
+[node name="Box20" parent="NavigationRegion2D/destructable" index="40" unique_id=207026169 instance=ExtResource("3_601jd")]
+position = Vector2(376, 120)
+metadata/_scene_painted = true
+
+[node name="Box25" parent="NavigationRegion2D/destructable" index="41" unique_id=1284061007 instance=ExtResource("3_601jd")]
+position = Vector2(376, 136)
+metadata/_scene_painted = true
+
+[node name="Box29" parent="NavigationRegion2D/destructable" index="42" unique_id=106581181 instance=ExtResource("3_601jd")]
+position = Vector2(376, 168)
+metadata/_scene_painted = true
+
+[node name="Box26" parent="NavigationRegion2D/destructable" index="43" unique_id=1832438520 instance=ExtResource("3_601jd")]
+position = Vector2(376, 152)
+metadata/_scene_painted = true
+
+[node name="Box27" parent="NavigationRegion2D/destructable" index="44" unique_id=128411340 instance=ExtResource("3_601jd")]
+position = Vector2(344, 168)
+metadata/_scene_painted = true
+
+[node name="Box28" parent="NavigationRegion2D/destructable" index="45" unique_id=1944087508 instance=ExtResource("3_601jd")]
+position = Vector2(360, 168)
+metadata/_scene_painted = true

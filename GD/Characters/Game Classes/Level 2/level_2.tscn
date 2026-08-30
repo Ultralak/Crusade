@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://lvn68o4si8oq"]
+
+[ext_resource type="PackedScene" uid="uid://bhicndqmq8i05" path="res://Game Components/Scenes/BaseLevel.tscn" id="1_njk3y"]
+[ext_resource type="PackedScene" uid="uid://bo00bcqvxo2mh" path="res://Game Components/Scenes/spawn_logic_component.tscn" id="2_2aex7"]
+[ext_resource type="PackedScene" uid="uid://dfqguxqxm5cxk" path="res://Characters/Game Classes/Level 2/chest_room_level_2(0).tscn" id="3_st85r"]
+
+[node name="Level_2" unique_id=973644688 instance=ExtResource("1_njk3y")]
+
+[node name="Dungeon Generator" parent="." index="1" unique_id=456120006]
+spawn_room_scene = ExtResource("2_2aex7")
+treasure_room_scene = ExtResource("3_st85r")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://ds3swekya3rrh"]
+
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_ksrba"]
+[ext_resource type="Script" uid="uid://7ix2wdyej1op" path="res://Characters/resources/loot_table.gd" id="2_6fiv7"]
+
+[resource]
+script = ExtResource("2_6fiv7")
+metadata/_custom_type_script = "uid://7ix2wdyej1op"

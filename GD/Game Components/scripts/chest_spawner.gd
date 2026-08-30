@@ -2,7 +2,7 @@ class_name ChestSpawnerComponent
 extends Node2D
 
 @export var chest_pool: Array[ChestDropData] = []
-@export var spawn_marker: Marker2D
+@export var spawn_markers: Array[Marker2D] = []
 @export var detect: Area2D
 
 
@@ -19,6 +19,19 @@ func spawn_chest() -> void:
 	var sorted_pool = chest_pool.duplicate()
 	sorted_pool.sort_custom(func(a: ChestDropData, b: ChestDropData): return a.spawn_chance < b.spawn_chance)
 
+	var valid_markers: Array[Marker2D] = []
+	for marker in spawn_markers:
+		if is_instance_valid(marker):
+			valid_markers.append(marker)
+
+	if valid_markers.is_empty():
+		_roll_and_spawn_at_position(position, sorted_pool)
+	else:
+		for marker in valid_markers:
+			_roll_and_spawn_at_position(marker.position, sorted_pool)
+
+
+func _roll_and_spawn_at_position(spawn_pos: Vector2, sorted_pool: Array[ChestDropData]) -> void:
 	var selected_chest_scene: PackedScene = null
 
 	for data in sorted_pool:
@@ -32,10 +45,5 @@ func spawn_chest() -> void:
 
 	if selected_chest_scene:
 		var chest_instance = selected_chest_scene.instantiate() as Node2D
-		
-		var spawn_pos: Vector2 = position
-		if is_instance_valid(spawn_marker):
-			spawn_pos = spawn_marker.position
-			
 		chest_instance.position = spawn_pos
 		get_parent().add_child.call_deferred(chest_instance)
