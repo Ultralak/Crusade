@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bprb15pjpdnib" path="res://Game Files/main rooms/room_0.tscn" id="5_w7bpn"]
 [ext_resource type="PackedScene" uid="uid://bjms0bmh2sbw0" path="res://Characters/Paladin weapons/paladin_ak47.tscn" id="7_5uutt"]
 [ext_resource type="PackedScene" uid="uid://c3krxwkblx4nb" path="res://Characters/Paladin weapons/Paladin_Sniper.tscn" id="8_5g5f8"]
+[ext_resource type="PackedScene" uid="uid://onlllchmukjq" path="res://Characters/Game Classes/BrownChestCommon.tscn" id="8_7q8ir"]
 [ext_resource type="PackedScene" uid="uid://ck77ffvlp8n3k" path="res://Game Components/Scenes/Box_1.tscn" id="9_y0mmi"]
 
 [sub_resource type="Environment" id="Environment_cxjdc"]
@@ -54,6 +55,9 @@ disable_generation = true
 
 [node name="Sniper" parent="Rooms/Room0" unique_id=859750544 instance=ExtResource("8_5g5f8")]
 position = Vector2(99.527405, 250.89706)
+
+[node name="Treasure" parent="Rooms/Room0/Sniper" unique_id=633115791 instance=ExtResource("8_7q8ir")]
+position = Vector2(203.4726, 1.1029358)
 
 [node name="Paladin_AK47" parent="Rooms/Room0" unique_id=183198690 instance=ExtResource("7_5uutt")]
 position = Vector2(61.96167, 250.14575)

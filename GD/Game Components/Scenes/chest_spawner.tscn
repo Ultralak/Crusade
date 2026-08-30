@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://5a1yot7023ve"]
+
+[ext_resource type="Script" uid="uid://rker3skxewf5" path="res://Game Components/scripts/chest_spawner.gd" id="1_aavil"]
+[ext_resource type="Script" uid="uid://ckss40arjcrvb" path="res://Characters/resources/ChestData.gd" id="2_ihvj1"]
+[ext_resource type="Resource" uid="uid://b324556udcm6l" path="res://Characters/resources/chest resources/legendary.tres" id="3_u26kf"]
+[ext_resource type="Resource" uid="uid://bwbqpybfnhau8" path="res://Characters/resources/chest resources/rare_chest.tres" id="4_tmlrk"]
+[ext_resource type="Resource" uid="uid://4c5ie4rn4xdh" path="res://Characters/resources/chest resources/common_chest.tres" id="5_2m2eo"]
+
+[node name="ChestSpawner" type="Node2D" unique_id=395230264]
+script = ExtResource("1_aavil")
+chest_pool = Array[ExtResource("2_ihvj1")]([ExtResource("3_u26kf"), ExtResource("4_tmlrk"), ExtResource("5_2m2eo")])

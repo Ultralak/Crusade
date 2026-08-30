@@ -415,7 +415,6 @@ player = NodePath("..")
 
 [node name="player_hurtbox" type="Area2D" parent="." unique_id=1953454412]
 collision_layer = 8
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox" unique_id=946931530]
 position = Vector2(0, -8)

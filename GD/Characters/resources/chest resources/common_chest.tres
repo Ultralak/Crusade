@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ChestDropData" format=3 uid="uid://4c5ie4rn4xdh"]
+
+[ext_resource type="PackedScene" uid="uid://onlllchmukjq" path="res://Characters/Game Classes/BrownChestCommon.tscn" id="1_bqhdm"]
+[ext_resource type="Script" uid="uid://ckss40arjcrvb" path="res://Characters/resources/ChestData.gd" id="1_qhyhi"]
+
+[resource]
+script = ExtResource("1_qhyhi")
+chest_scene = ExtResource("1_bqhdm")
+spawn_chance = 1.0
+metadata/_custom_type_script = "uid://ckss40arjcrvb"

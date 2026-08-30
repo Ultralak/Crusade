@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ctj30y2iwbjhf"]
+
+[ext_resource type="Script" uid="uid://dujhudytj2rsv" path="res://Game Components/scripts/treasure_component.gd" id="1_bhpn6"]
+[ext_resource type="Resource" uid="uid://fk5njgx38s8j" path="res://Characters/resources/loot item resources/treasure_level_1.tres" id="2_b4oov"]
+[ext_resource type="PackedScene" uid="uid://dkkf8fde6larp" path="res://Game Components/Scenes/treasure_interactable.tscn" id="3_bhpn6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjdc"]
+size = Vector2(16, 14.875)
+
+[node name="Treasure" type="CharacterBody2D" unique_id=580220302 node_paths=PackedStringArray("interactable", "sprite")]
+scale = Vector2(1.5, 1.5)
+collision_mask = 8
+script = ExtResource("1_bhpn6")
+loot_table = ExtResource("2_b4oov")
+interactable = NodePath("treasure_interactable")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=596987754]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_cxjdc")
+debug_color = Color(0.91241175, 9.780168e-05, 0.7250583, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=148166183]
+position = Vector2(-0.104789734, -12.142298)
+
+[node name="treasure_interactable" parent="." unique_id=1361525483 node_paths=PackedStringArray("treasure") instance=ExtResource("3_bhpn6")]
+position = Vector2(0, -10)
+treasure = NodePath("..")

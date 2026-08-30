@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ChestDropData" format=3 uid="uid://b324556udcm6l"]
+
+[ext_resource type="Script" uid="uid://ckss40arjcrvb" path="res://Characters/resources/ChestData.gd" id="1_46f0q"]
+[ext_resource type="PackedScene" uid="uid://b0164ntb3bpxs" path="res://Characters/Game Classes/gold_Legend_chest.tscn" id="1_78kfm"]
+
+[resource]
+script = ExtResource("1_46f0q")
+tier_name = "Legendary"
+chest_scene = ExtResource("1_78kfm")
+spawn_chance = 0.25
+metadata/_custom_type_script = "uid://ckss40arjcrvb"

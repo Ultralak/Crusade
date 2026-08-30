@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dnd0pm2dlxcbq" path="res://Characters/NPC/merchant.tscn" id="2_4yqfw"]
 [ext_resource type="PackedScene" uid="uid://opcofwq6bqw4" path="res://Game Components/Scenes/shop_component.tscn" id="3_etniq"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_4yqfw"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_etniq"]
 resource_local_to_scene = true
 vertices = PackedVector2Array(246, 26, 458, 26, 458, 122, 470, 122, 470, 134, 458, 134, 234, 26, 458, 246, 246, 246, 22, 122, 246, 262, 234, 262, 234, 246, 22, 246, 22, 134, 10, 134, 10, 122, 22, 26, 234, 10, 246, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(2, 3, 4, 5), PackedInt32Array(6, 0, 5, 7, 8, 9), PackedInt32Array(8, 10, 11, 12), PackedInt32Array(12, 13, 14), PackedInt32Array(14, 15, 16, 9), PackedInt32Array(9, 17, 6), PackedInt32Array(6, 18, 19, 0), PackedInt32Array(0, 2, 5), PackedInt32Array(9, 8, 12, 14)])
@@ -12,9 +12,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272,
 source_geometry_group_name = &"NAVIGATION"
 
 [node name="Shop_level_1(0)" unique_id=1787448676 instance=ExtResource("1_p1cg5")]
+floor_event = 4
 
 [node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
-navigation_polygon = SubResource("NavigationPolygon_4yqfw")
+navigation_polygon = SubResource("NavigationPolygon_etniq")
 
 [node name="ground_objects" parent="NavigationRegion2D" index="2" unique_id=1376421879]
 tile_map_data = PackedByteArray("AAAUAAcAAAARAAIAAAAUAAYAAAARAAEAAAAUAAUAAAARAAAAAAATAAcAAAAQAAIAAAATAAYAAAAQAAEAAAATAAUAAAAQAAAAAAASAAcAAAAQAAIAAAASAAYAAAAQAAEAAAASAAUAAAAQAAAAAAARAAcAAAAQAAIAAAARAAYAAAAQAAEAAAARAAUAAAAQAAAAAAAQAAcAAAAQAAIAAAAQAAYAAAAQAAEAAAAQAAUAAAAQAAAAAAAPAAcAAAAQAAIAAAAPAAYAAAAQAAEAAAAPAAUAAAAQAAAAAAAOAAcAAAAQAAIAAAAOAAYAAAAQAAEAAAAOAAUAAAAQAAAAAAANAAcAAAAQAAIAAAANAAYAAAAQAAEAAAANAAUAAAAQAAAAAAAMAAcAAAAQAAIAAAAMAAYAAAAQAAEAAAAMAAUAAAAQAAAAAAALAAcAAAAQAAIAAAALAAYAAAAQAAEAAAALAAUAAAAQAAAAAAAKAAcAAAAQAAIAAAAKAAYAAAAQAAEAAAAKAAUAAAAQAAAAAAAJAAcAAAAPAAIAAAAJAAYAAAAPAAEAAAAJAAUAAAAPAAAAAAA=")

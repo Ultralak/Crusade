@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ChestDropData" format=3 uid="uid://bwbqpybfnhau8"]
+
+[ext_resource type="Script" uid="uid://ckss40arjcrvb" path="res://Characters/resources/ChestData.gd" id="1_0unj5"]
+[ext_resource type="PackedScene" uid="uid://dkes15rrg22sq" path="res://Characters/Game Classes/red_rare_chest.tscn" id="1_rfi8r"]
+
+[resource]
+script = ExtResource("1_0unj5")
+tier_name = "Rare"
+chest_scene = ExtResource("1_rfi8r")
+metadata/_custom_type_script = "uid://ckss40arjcrvb"

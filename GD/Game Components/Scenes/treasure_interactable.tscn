@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dkkf8fde6larp"]
+
+[ext_resource type="PackedScene" uid="uid://7shqxoy8r2if" path="res://Game Components/Scenes/interactable.tscn" id="1_bvo07"]
+[ext_resource type="Script" uid="uid://hc4br4eyw634" path="res://treasure_interactable.gd" id="2_b4eee"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhpn6"]
+
+[node name="treasure_interactable" unique_id=1361525483 instance=ExtResource("1_bvo07")]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("2_b4eee")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1404384435]
+shape = SubResource("CircleShape2D_bhpn6")
+
+[node name="WeaponHover" parent="." index="1" unique_id=1435363319]
+visible = false
+position = Vector2(1, 31)
