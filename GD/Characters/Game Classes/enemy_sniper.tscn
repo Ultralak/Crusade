@@ -12,3 +12,15 @@ position = Vector2(9, 0)
 
 [node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
 texture = ExtResource("2_onxnk")
+
+[node name="WeaponInteractable" parent="." index="4" unique_id=1361525483]
+visible = false
+
+[node name="Price Label" parent="." index="5" unique_id=1378731329]
+visible = false
+
+[node name="PurchaseComponent" parent="." index="6" unique_id=1383381355]
+visible = false
+
+[node name="ItemPickupComponent" parent="." index="7" unique_id=3673617]
+visible = false

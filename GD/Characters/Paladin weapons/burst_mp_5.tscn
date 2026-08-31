@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b6mckv7nqtdt3"]
+
+[ext_resource type="PackedScene" uid="uid://bnctw3q4vykki" path="res://Characters/Game Classes/burst_weapon.tscn" id="1_8b5l4"]
+[ext_resource type="Resource" uid="uid://vqefwmskwlr4" path="res://Characters/weapon resources/burst_mp5.tres" id="2_e04it"]
+[ext_resource type="Texture2D" uid="uid://bdsaxcojlv1my" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0006.png" id="2_j3y8m"]
+
+[node name="burst_mp5" unique_id=859750544 instance=ExtResource("1_8b5l4")]
+weapon_data = ExtResource("2_e04it")
+
+[node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
+position = Vector2(7, -1)
+
+[node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
+texture = ExtResource("2_j3y8m")

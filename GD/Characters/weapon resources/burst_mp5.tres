@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://vqefwmskwlr4"]
+
+[ext_resource type="PackedScene" uid="uid://clm3d5eiagjp3" path="res://Characters/goblin/PlayerBullet.tscn" id="1_bpxcr"]
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_lqvrk"]
+[ext_resource type="Texture2D" uid="uid://bdsaxcojlv1my" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0006.png" id="2_2k8ie"]
+
+[resource]
+script = ExtResource("1_lqvrk")
+name = "Burst smg"
+description = "Fast burst fire-rate"
+weapon_sprite = ExtResource("2_2k8ie")
+ground_sprite = ExtResource("2_2k8ie")
+weapon_scene_path = "uid://b6mckv7nqtdt3"
+damage_amount = 3.0
+critical_hit_chance = 20.0
+knockback_force = 200.0
+bullet_scene = ExtResource("1_bpxcr")
+bullet_velocity = 300.0
+burst_count = 5
+burst_delay = 0.01
+energy_cost = 5
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

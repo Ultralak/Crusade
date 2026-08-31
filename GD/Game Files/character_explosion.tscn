@@ -40,6 +40,7 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=678207351]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_6pmnr")
 animation = &"dead"
 autoplay = "dead"

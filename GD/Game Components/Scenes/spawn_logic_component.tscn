@@ -7,4 +7,3 @@ script = ExtResource("1_p7wsw")
 player_spawn_position = NodePath("player_spawn_position")
 
 [node name="player_spawn_position" type="Marker2D" parent="." unique_id=2048543884]
-position = Vector2(240, 144)

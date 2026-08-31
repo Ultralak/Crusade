@@ -10,17 +10,23 @@ var damage_amount: float
 var entities_hit: Array
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if attackbox:
+	if is_instance_valid(attackbox):
 		attackbox.area_entered.connect(deal_damage)
 
 
-func deal_damage(body: Area2D):
+func deal_damage(body: Area2D) -> void:
+	if not is_instance_valid(entity):
+		return
+
+	if not is_instance_valid(body) or not is_instance_valid(body.get_parent()):
+		return
+
 	print("damage amount : %s" % [entity.damage_amount])
 
 	if body.get_parent() is Paladin:
 		CameraManager.add_trauma(0.4)
+
 	if entities_hit.has(body):
 		return
 	entities_hit.append(body)
@@ -29,7 +35,7 @@ func deal_damage(body: Area2D):
 		damage_amount = entity.damage_amount
 		knockback_force = entity.knockback_force
 		for node in body.get_parent().get_children():
-			if node is HealthComponent:
+			if is_instance_valid(node) and node is HealthComponent:
 				knockback_dir = node.get_knockback_force()
 				break
 	else:
@@ -38,8 +44,9 @@ func deal_damage(body: Area2D):
 		knockback_force = entity.knockback_force
 
 	print("Area entered : %s and damage_dealt : %s" % [body.get_parent().name, damage_amount])
+
 	for node in body.get_parent().get_children():
-		if node is HealthComponent:
+		if is_instance_valid(node) and node is HealthComponent:
 			if entity is BasicProjectile:
 				node.take_damage(
 					damage_amount,
@@ -49,15 +56,20 @@ func deal_damage(body: Area2D):
 				)
 			else:
 				node.take_damage(damage_amount, knockback_dir, knockback_force)
+			
 			manage_penetration()
 			entities_hit.clear()
 			return
 
 
 func manage_penetration() -> void:
+	if not is_instance_valid(entity):
+		return
+
 	if entity is BasicProjectile:
 		if (
-			entity.weapon_shot_out_off is ProjectileWeapon
+			is_instance_valid(entity.weapon_shot_out_off)
+			and entity.weapon_shot_out_off is ProjectileWeapon
 			and entities_hit.size() == entity.penetration
 		):
 			entity.call_deferred("queue_free")

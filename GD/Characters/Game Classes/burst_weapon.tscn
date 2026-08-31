@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bnctw3q4vykki"]
+
+[ext_resource type="PackedScene" uid="uid://duoetiog44jd8" path="res://Characters/Game Classes/projectile_weapon.tscn" id="1_q3xnm"]
+[ext_resource type="Script" uid="uid://deo7fhfu382h3" path="res://burst_weapon.gd" id="2_i4lvp"]
+
+[node name="burst_weapon" unique_id=859750544 instance=ExtResource("1_q3xnm")]
+script = ExtResource("2_i4lvp")
+
+[node name="PurchaseComponent" parent="." index="6" unique_id=1383381355 node_paths=PackedStringArray("item_pickup_component")]
+item_pickup_component = NodePath("../ItemPickupComponent")

@@ -1,0 +1,486 @@
+[gd_scene format=4 uid="uid://dkdtxg7lbnjbu"]
+
+[ext_resource type="PackedScene" uid="uid://bdrufug2gvxv7" path="res://Characters/Game Classes/Level 2/Dungeon_level_2.tscn" id="1_igqh3"]
+[ext_resource type="PackedScene" uid="uid://bt4utd3tt6q5" path="res://Game Components/Scenes/spawn_component.tscn" id="2_roxsf"]
+[ext_resource type="PackedScene" uid="uid://dumrroosi82tl" path="res://Game Components/Scenes/Spikes.tscn" id="3_65smw"]
+[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/goblin.tscn" id="3_htbf1"]
+[ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="4_74x7a"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qkv7u"]
+resource_local_to_scene = true
+vertices = PackedVector2Array(394, 106, 448, 96, 458, 96, 458, 122, 426, 118, 448, 192, 448, 208, 426, 202, 448, 176, 448, 160, 394, 54, 448, 80, 448, 64, 432, 32, 448, 48, 416, 32, 138, 138, 138, 54, 342, 118, 342, 202, 246, 26, 272, 26, 272, 32, 448, 32, 400, 32, 384, 32, 342, 54, 368, 32, 352, 32, 336, 32, 470, 122, 470, 134, 458, 134, 458, 160, 342, 106, 320, 32, 304, 32, 288, 32, 336, 240, 138, 202, 138, 150, 352, 240, 54, 138, 86, 150, 448, 224, 448, 240, 432, 240, 272, 240, 272, 246, 246, 246, 246, 262, 234, 262, 234, 246, 208, 246, 208, 240, 48, 240, 32, 240, 32, 224, 32, 160, 22, 160, 22, 134, 10, 134, 10, 122, 22, 122, 22, 96, 32, 96, 32, 48, 32, 32, 48, 32, 54, 54, 208, 32, 208, 26, 234, 26, 234, 10, 246, 10, 192, 32, 176, 32, 160, 32, 144, 32, 128, 32, 112, 32, 96, 32, 80, 32, 64, 32, 32, 64, 32, 80, 416, 240, 400, 240, 384, 240, 368, 240, 320, 240, 304, 240, 288, 240, 192, 240, 176, 240, 160, 240, 144, 240, 128, 240, 86, 202, 112, 240, 96, 240, 80, 240, 32, 192, 64, 240, 32, 208, 32, 176)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 4), PackedInt32Array(8, 5, 4), PackedInt32Array(9, 8, 4), PackedInt32Array(1, 0, 10, 11), PackedInt32Array(12, 11, 10), PackedInt32Array(13, 14, 12, 10, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 21, 22, 17), PackedInt32Array(13, 23, 14), PackedInt32Array(24, 15, 10), PackedInt32Array(25, 24, 10, 26), PackedInt32Array(27, 25, 26), PackedInt32Array(28, 27, 26), PackedInt32Array(29, 28, 26, 17), PackedInt32Array(3, 30, 31, 32), PackedInt32Array(32, 33, 9, 4), PackedInt32Array(3, 32, 4), PackedInt32Array(0, 4, 18, 34), PackedInt32Array(34, 18, 17), PackedInt32Array(26, 34, 17), PackedInt32Array(35, 29, 17), PackedInt32Array(36, 35, 17), PackedInt32Array(37, 36, 17), PackedInt32Array(22, 37, 17), PackedInt32Array(38, 39, 40, 19, 41), PackedInt32Array(16, 19, 40), PackedInt32Array(42, 16, 40, 43), PackedInt32Array(44, 45, 46, 7), PackedInt32Array(47, 48, 49, 39), PackedInt32Array(49, 50, 51, 52), PackedInt32Array(52, 53, 54), PackedInt32Array(55, 56, 57), PackedInt32Array(58, 59, 60, 42), PackedInt32Array(60, 61, 62, 63), PackedInt32Array(63, 64, 65, 42), PackedInt32Array(66, 67, 68, 69), PackedInt32Array(70, 71, 72), PackedInt32Array(72, 73, 74, 20), PackedInt32Array(72, 20, 17, 70), PackedInt32Array(75, 70, 17), PackedInt32Array(76, 75, 17), PackedInt32Array(77, 76, 17), PackedInt32Array(78, 77, 17), PackedInt32Array(79, 78, 17, 69), PackedInt32Array(80, 79, 69), PackedInt32Array(81, 80, 69), PackedInt32Array(82, 81, 69), PackedInt32Array(83, 82, 69), PackedInt32Array(68, 83, 69), PackedInt32Array(84, 66, 69, 42), PackedInt32Array(85, 84, 42), PackedInt32Array(65, 85, 42), PackedInt32Array(60, 63, 42), PackedInt32Array(7, 6, 44), PackedInt32Array(7, 46, 86, 19), PackedInt32Array(19, 86, 87), PackedInt32Array(19, 87, 88), PackedInt32Array(19, 88, 89), PackedInt32Array(19, 89, 41), PackedInt32Array(39, 38, 90), PackedInt32Array(39, 90, 91), PackedInt32Array(39, 91, 92), PackedInt32Array(39, 92, 47), PackedInt32Array(39, 49, 52, 54), PackedInt32Array(39, 54, 93), PackedInt32Array(39, 93, 94), PackedInt32Array(39, 94, 95), PackedInt32Array(39, 95, 96), PackedInt32Array(39, 96, 97, 98), PackedInt32Array(98, 97, 99), PackedInt32Array(98, 99, 100), PackedInt32Array(98, 100, 101), PackedInt32Array(102, 98, 101, 103, 104), PackedInt32Array(58, 42, 43, 98, 105), PackedInt32Array(102, 105, 98), PackedInt32Array(104, 103, 55, 57)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
+source_geometry_group_name = &"NAVIGATION"
+
+[node name="combat_level_2(1)" unique_id=1787448676 node_paths=PackedStringArray("spawn_component") instance=ExtResource("1_igqh3")]
+floor_event = 1
+spawn_component = NodePath("NavigationRegion2D/spawn component")
+
+[node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
+navigation_polygon = SubResource("NavigationPolygon_qkv7u")
+
+[node name="spawn component" parent="NavigationRegion2D" index="0" unique_id=1800711375 node_paths=PackedStringArray("dungeon") instance=ExtResource("2_roxsf")]
+dungeon = NodePath("../..")
+enemy_scenes = Array[PackedScene]([ExtResource("3_htbf1"), ExtResource("4_74x7a")])
+max_waves = 1
+
+[node name="wave 1" type="Node2D" parent="NavigationRegion2D/spawn component" index="0" unique_id=1746174307]
+
+[node name="Marker2D" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="0" unique_id=1584625517]
+position = Vector2(288, 80)
+
+[node name="Marker2D2" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="1" unique_id=1168490678]
+position = Vector2(160, 80)
+
+[node name="Marker2D3" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="2" unique_id=1413114222]
+position = Vector2(160, 160)
+
+[node name="Marker2D4" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="3" unique_id=1543852315]
+position = Vector2(288, 160)
+
+[node name="wave 2" type="Node2D" parent="NavigationRegion2D/spawn component" index="1" unique_id=389955560]
+
+[node name="Marker2D" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="0" unique_id=1719033902]
+position = Vector2(64, 176)
+
+[node name="Marker2D2" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="1" unique_id=1757693267]
+position = Vector2(432, 208)
+
+[node name="Marker2D3" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="2" unique_id=2042802671]
+position = Vector2(48, 48)
+
+[node name="Marker2D4" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="3" unique_id=1713625595]
+position = Vector2(400, 48)
+
+[node name="ground" parent="NavigationRegion2D" index="1" unique_id=1650485613]
+tile_map_data = PackedByteArray("AAAdABAAAQAJAAEAAAAdAA8AAQAFAAEAAAAdAA4AAQAFAAEAAAAdAA0AAQAFAAEAAAAdAAwAAQAFAAEAAAAdAAsAAQAFAAEAAAAdAAoAAQAFAAEAAAAdAAkAAQAFAAEAAAAdAAgAAQAGAAEAAAAdAAcAAQAGAAEAAAAdAAYAAQAJAAEAAAAdAAUAAQAFAAEAAAAdAAQAAQAFAAEAAAAdAAMAAQAFAAEAAAAdAAIAAQAFAAEAAAAdAAEAAQAFAAEAAAAdAAAAAQAFAAEAAAAcABAAAQAGAAAAAAAcAA8AAQAKAAMAAAAcAA4AAQAKAAMAAAAcAA0AAQALAAMAAAAcAAwAAQALAAMAAAAcAAsAAQALAAMAAAAcAAoAAQAKAAMAAAAcAAkAAQAGAAIAABAcAAgAAQAGAAEAABAcAAcAAQAGAAEAABAcAAYAAQAGAAAAABAcAAUAAQALAAMAAAAcAAQAAQAKAAMAAAAcAAMAAQALAAMAAAAcAAIAAQAKAAMAAAAcAAEAAQAKAAMAAAAcAAAAAQAGAAAAAAAbABAAAQAGAAAAAAAbAA8AAQAKAAMAAAAbAA4AAQAHAAIAAAAbAA0AAQAHAAEAAAAbAAwAAQAHAAEAAAAbAAsAAQAHAAEAAAAbAAoAAQAHAAEAAAAbAAkAAQAIAAAAAAAbAAgAAQAGAAEAAAAbAAcAAQAGAAEAAAAbAAYAAQAIAAEAAAAbAAUAAQAHAAEAAAAbAAQAAQAHAAEAAAAbAAMAAQAHAAEAAAAbAAIAAQAHAAAAAAAbAAEAAQAKAAMAAAAbAAAAAQAGAAAAAAAaABAAAQAGAAAAAAAaAA8AAQAKAAMAAAAaAA4AAQAGAAIAAAAaAA0AAQAGAAEAAAAaAAwAAQAGAAEAAAAaAAsAAQAGAAEAAAAaAAoAAQAGAAEAAAAaAAkAAQAGAAEAAAAaAAgAAQAGAAEAAAAaAAcAAQAGAAEAAAAaAAYAAQAGAAEAAAAaAAUAAQAGAAEAAAAaAAQAAQAGAAEAAAAaAAMAAQAGAAEAAAAaAAIAAQAGAAAAAAAaAAEAAQALAAMAAAAaAAAAAQAGAAAAAAAZABAAAQAGAAAAAAAZAA8AAQALAAMAAAAZAA4AAQAGAAIAAAAZAA0AAQAGAAEAAAAZAAwAAQAGAAEAAAAZAAsAAQAGAAEAAAAZAAoAAQAGAAEAAAAZAAkAAQAGAAEAAAAZAAgAAQAGAAEAAAAZAAcAAQAGAAEAAAAZAAYAAQAGAAEAAAAZAAUAAQAGAAEAAAAZAAQAAQAGAAEAAAAZAAMAAQAGAAEAAAAZAAIAAQAGAAAAAAAZAAEAAQAKAAMAAAAZAAAAAQAGAAAAAAAYABAAAQAGAAAAAAAYAA8AAQAKAAMAAAAYAA4AAQAGAAIAAAAYAA0AAQAGAAEAAAAYAAwAAQAGAAEAAAAYAAsAAQAGAAEAAAAYAAoAAQAGAAEAAAAYAAkAAQAGAAEAAAAYAAgAAQAGAAEAAAAYAAcAAQAGAAEAAAAYAAYAAQAGAAEAAAAYAAUAAQAGAAEAAAAYAAQAAQAGAAEAAAAYAAMAAQAGAAEAAAAYAAIAAQAGAAAAAAAYAAEAAQAKAAMAAAAYAAAAAQAGAAAAAAAXABAAAQAGAAAAAAAXAA8AAQAKAAMAAAAXAA4AAQAGAAIAAAAXAA0AAQAGAAEAAAAXAAwAAQAGAAEAAAAXAAsAAQAGAAEAAAAXAAoAAQAGAAEAAAAXAAkAAQAGAAEAAAAXAAgAAQAGAAEAAAAXAAcAAQAGAAEAAAAXAAYAAQAGAAEAAAAXAAUAAQAGAAEAAAAXAAQAAQAGAAEAAAAXAAMAAQAGAAEAAAAXAAIAAQAGAAAAAAAXAAEAAQAKAAMAAAAXAAAAAQAGAAAAAAAWABAAAQAGAAAAAAAWAA8AAQAKAAMAAAAWAA4AAQAGAAIAAAAWAA0AAQAGAAEAAAAWAAwAAQAGAAEAAAAWAAsAAQAGAAEAAAAWAAoAAQAGAAEAAAAWAAkAAQAGAAEAAAAWAAgAAQAGAAEAAAAWAAcAAQAGAAEAAAAWAAYAAQAGAAEAAAAWAAUAAQAGAAEAAAAWAAQAAQAGAAEAAAAWAAMAAQAGAAEAAAAWAAIAAQAGAAAAAAAWAAEAAQALAAMAAAAWAAAAAQAGAAAAAAAVABAAAQAGAAAAAAAVAA8AAQAKAAMAAAAVAA4AAQAGAAIAAAAVAA0AAQAGAAEAAAAVAAwAAQAGAAEAAAAVAAsAAQAGAAEAAAAVAAoAAQAGAAEAAAAVAAkAAQAGAAEAAAAVAAgAAQAGAAEAAAAVAAcAAQAGAAEAAAAVAAYAAQAGAAEAAAAVAAUAAQAGAAEAAAAVAAQAAQAGAAEAAAAVAAMAAQAGAAEAAAAVAAIAAQAGAAAAAAAVAAEAAQALAAMAAAAVAAAAAQAGAAAAAAAUABAAAQAGAAAAAAAUAA8AAQAKAAMAAAAUAA4AAQAGAAIAAAAUAA0AAQAGAAEAAAAUAAwAAQAGAAEAAAAUAAsAAQAGAAEAAAAUAAoAAQAGAAEAAAAUAAkAAQAGAAEAAAAUAAgAAQAGAAEAAAAUAAcAAQAGAAEAAAAUAAYAAQAGAAEAAAAUAAUAAQAGAAEAAAAUAAQAAQAGAAEAAAAUAAMAAQAGAAEAAAAUAAIAAQAGAAAAAAAUAAEAAQALAAMAAAAUAAAAAQAGAAAAAAATABAAAQAGAAAAAAATAA8AAQALAAMAAAATAA4AAQAGAAIAAAATAA0AAQAGAAEAAAATAAwAAQAGAAEAAAATAAsAAQAGAAEAAAATAAoAAQAGAAEAAAATAAkAAQAGAAEAAAATAAgAAQAGAAEAAAATAAcAAQAGAAEAAAATAAYAAQAGAAEAAAATAAUAAQAGAAEAAAATAAQAAQAGAAEAAAATAAMAAQAGAAEAAAATAAIAAQAGAAAAAAATAAEAAQAKAAMAAAATAAAAAQAGAAAAAAASABAAAQAGAAAAAAASAA8AAQAKAAMAAAASAA4AAQAGAAIAAAASAA0AAQAGAAEAAAASAAwAAQAGAAEAAAASAAsAAQAGAAEAAAASAAoAAQAGAAEAAAASAAkAAQAGAAEAAAASAAgAAQAGAAEAAAASAAcAAQAGAAEAAAASAAYAAQAGAAEAAAASAAUAAQAGAAEAAAASAAQAAQAGAAEAAAASAAMAAQAGAAEAAAASAAIAAQAGAAAAAAASAAEAAQAKAAMAAAASAAAAAQAGAAAAAAARABAAAQAGAAAAAAARAA8AAQAKAAMAAAARAA4AAQAGAAIAAAARAA0AAQAGAAEAAAARAAwAAQAGAAEAAAARAAsAAQAGAAEAAAARAAoAAQAGAAEAAAARAAkAAQAGAAEAAAARAAgAAQAGAAEAAAARAAcAAQAGAAEAAAARAAYAAQAGAAEAAAARAAUAAQAGAAEAAAARAAQAAQAGAAEAAAARAAMAAQAGAAEAAAARAAIAAQAGAAAAAAARAAEAAQALAAMAAAARAAAAAQAGAAAAAAAQABAAAQAIAAEAAAAQAA8AAQAHAAEAAAAQAA4AAQAHAAEAAAAQAA0AAQAGAAEAAAAQAAwAAQAGAAEAAAAQAAsAAQAGAAEAAAAQAAoAAQAGAAEAAAAQAAkAAQAGAAEAAAAQAAgAAQAGAAEAAAAQAAcAAQAGAAEAAAAQAAYAAQAGAAEAAAAQAAUAAQAGAAEAAAAQAAQAAQAGAAEAAAAQAAMAAQAGAAEAAAAQAAIAAQAIAAEAAAAQAAEAAQAHAAEAAAAQAAAAAQAHAAAAAAAPABAAAQAGAAEAAAAPAA8AAQAGAAEAAAAPAA4AAQAGAAEAAAAPAA0AAQAGAAEAAAAPAAwAAQAGAAEAAAAPAAsAAQAGAAEAAAAPAAoAAQAGAAEAAAAPAAkAAQAGAAEAAAAPAAgAAQAGAAEAAAAPAAcAAQAGAAEAAAAPAAYAAQAGAAEAAAAPAAUAAQAGAAEAAAAPAAQAAQAGAAEAAAAPAAMAAQAGAAEAAAAPAAIAAQAGAAEAAAAPAAEAAQAGAAEAAAAPAAAAAQAGAAAAAAAOABAAAQAGAAEAAAAOAA8AAQAGAAEAAAAOAA4AAQAGAAEAAAAOAA0AAQAGAAEAAAAOAAwAAQAGAAEAAAAOAAsAAQAGAAEAAAAOAAoAAQAGAAEAAAAOAAkAAQAGAAEAAAAOAAgAAQAGAAEAAAAOAAcAAQAGAAEAAAAOAAYAAQAGAAEAAAAOAAUAAQAGAAEAAAAOAAQAAQAGAAEAAAAOAAMAAQAGAAEAAAAOAAIAAQAGAAEAAAAOAAEAAQAGAAEAAAAOAAAAAQAGAAAAAAANABAAAQAJAAEAAAANAA8AAQAFAAEAAAANAA4AAQAFAAEAAAANAA0AAQAGAAEAAAANAAwAAQAGAAEAAAANAAsAAQAGAAEAAAANAAoAAQAGAAEAAAANAAkAAQAGAAEAAAANAAgAAQAGAAEAAAANAAcAAQAGAAEAAAANAAYAAQAGAAEAAAANAAUAAQAGAAEAAAANAAQAAQAGAAEAAAANAAMAAQAGAAEAAAANAAIAAQAJAAEAAAANAAEAAQAFAAEAAAANAAAAAQAFAAAAAAAMABAAAQAGAAAAAAAMAA8AAQALAAMAAAAMAA4AAQAGAAIAAAAMAA0AAQAGAAEAAAAMAAwAAQAGAAEAAAAMAAsAAQAGAAEAAAAMAAoAAQAGAAEAAAAMAAkAAQAGAAEAAAAMAAgAAQAGAAEAAAAMAAcAAQAGAAEAAAAMAAYAAQAGAAEAAAAMAAUAAQAGAAEAAAAMAAQAAQAGAAEAAAAMAAMAAQAGAAEAAAAMAAIAAQAGAAAAAAAMAAEAAQAKAAMAAAAMAAAAAQAGAAAAAAALABAAAQAGAAAAAAALAA8AAQAKAAMAAAALAA4AAQAGAAIAAAALAA0AAQAGAAEAAAALAAwAAQAGAAEAAAALAAsAAQAGAAEAAAALAAoAAQAGAAEAAAALAAkAAQAGAAEAAAALAAgAAQAGAAEAAAALAAcAAQAGAAEAAAALAAYAAQAGAAEAAAALAAUAAQAGAAEAAAALAAQAAQAGAAEAAAALAAMAAQAGAAEAAAALAAIAAQAGAAAAAAALAAEAAQALAAMAAAALAAAAAQAGAAAAAAAKABAAAQAGAAAAAAAKAA8AAQAKAAMAAAAKAA4AAQAGAAIAAAAKAA0AAQAGAAEAAAAKAAwAAQAGAAEAAAAKAAsAAQAGAAEAAAAKAAoAAQAGAAEAAAAKAAkAAQAGAAEAAAAKAAgAAQAGAAEAAAAKAAcAAQAGAAEAAAAKAAYAAQAGAAEAAAAKAAUAAQAGAAEAAAAKAAQAAQAGAAEAAAAKAAMAAQAGAAEAAAAKAAIAAQAGAAAAAAAKAAEAAQALAAMAAAAKAAAAAQAGAAAAAAAJABAAAQAGAAAAAAAJAA8AAQALAAMAAAAJAA4AAQAGAAIAAAAJAA0AAQAGAAEAAAAJAAwAAQAGAAEAAAAJAAsAAQAGAAEAAAAJAAoAAQAGAAEAAAAJAAkAAQAGAAEAAAAJAAgAAQAGAAEAAAAJAAcAAQAGAAEAAAAJAAYAAQAGAAEAAAAJAAUAAQAGAAEAAAAJAAQAAQAGAAEAAAAJAAMAAQAGAAEAAAAJAAIAAQAGAAAAAAAJAAEAAQALAAMAAAAJAAAAAQAGAAAAAAAIABAAAQAGAAAAAAAIAA8AAQALAAMAAAAIAA4AAQAGAAIAAAAIAA0AAQAGAAEAAAAIAAwAAQAGAAEAAAAIAAsAAQAGAAEAAAAIAAoAAQAGAAEAAAAIAAkAAQAGAAEAAAAIAAgAAQAGAAEAAAAIAAcAAQAGAAEAAAAIAAYAAQAGAAEAAAAIAAUAAQAGAAEAAAAIAAQAAQAGAAEAAAAIAAMAAQAGAAEAAAAIAAIAAQAGAAAAAAAIAAEAAQALAAMAAAAIAAAAAQAGAAAAAAAHABAAAQAGAAAAAAAHAA8AAQALAAMAAAAHAA4AAQAGAAIAAAAHAA0AAQAGAAEAAAAHAAwAAQAGAAEAAAAHAAsAAQAGAAEAAAAHAAoAAQAGAAEAAAAHAAkAAQAGAAEAAAAHAAgAAQAGAAEAAAAHAAcAAQAGAAEAAAAHAAYAAQAGAAEAAAAHAAUAAQAGAAEAAAAHAAQAAQAGAAEAAAAHAAMAAQAGAAEAAAAHAAIAAQAGAAAAAAAHAAEAAQALAAMAAAAHAAAAAQAGAAAAAAAGABAAAQAGAAAAAAAGAA8AAQALAAMAAAAGAA4AAQAGAAIAAAAGAA0AAQAGAAEAAAAGAAwAAQAGAAEAAAAGAAsAAQAGAAEAAAAGAAoAAQAGAAEAAAAGAAkAAQAGAAEAAAAGAAgAAQAGAAEAAAAGAAcAAQAGAAEAAAAGAAYAAQAGAAEAAAAGAAUAAQAGAAEAAAAGAAQAAQAGAAEAAAAGAAMAAQAGAAEAAAAGAAIAAQAGAAAAAAAGAAEAAQAKAAMAAAAGAAAAAQAGAAAAAAAFABAAAQAGAAAAAAAFAA8AAQALAAMAAAAFAA4AAQAGAAIAAAAFAA0AAQAGAAEAAAAFAAwAAQAGAAEAAAAFAAsAAQAGAAEAAAAFAAoAAQAGAAEAAAAFAAkAAQAGAAEAAAAFAAgAAQAGAAEAAAAFAAcAAQAGAAEAAAAFAAYAAQAGAAEAAAAFAAUAAQAGAAEAAAAFAAQAAQAGAAEAAAAFAAMAAQAGAAEAAAAFAAIAAQAGAAAAAAAFAAEAAQALAAMAAAAFAAAAAQAGAAAAAAAEABAAAQAGAAAAAAAEAA8AAQAKAAMAAAAEAA4AAQAGAAIAAAAEAA0AAQAGAAEAAAAEAAwAAQAGAAEAAAAEAAsAAQAGAAEAAAAEAAoAAQAGAAEAAAAEAAkAAQAGAAEAAAAEAAgAAQAGAAEAAAAEAAcAAQAGAAEAAAAEAAYAAQAGAAEAAAAEAAUAAQAGAAEAAAAEAAQAAQAGAAEAAAAEAAMAAQAGAAEAAAAEAAIAAQAGAAAAAAAEAAEAAQALAAMAAAAEAAAAAQAGAAAAAAADABAAAQAGAAAAAAADAA8AAQALAAMAAAADAA4AAQAGAAIAAAADAA0AAQAGAAEAAAADAAwAAQAGAAEAAAADAAsAAQAGAAEAAAADAAoAAQAGAAEAAAADAAkAAQAGAAEAAAADAAgAAQAGAAEAAAADAAcAAQAGAAEAAAADAAYAAQAGAAEAAAADAAUAAQAGAAEAAAADAAQAAQAGAAEAAAADAAMAAQAGAAEAAAADAAIAAQAGAAAAAAADAAEAAQALAAMAAAADAAAAAQAGAAAAAAACABAAAQAGAAAAAAACAA8AAQALAAMAAAACAA4AAQAFAAIAAAACAA0AAQAFAAEAAAACAAwAAQAFAAEAAAACAAsAAQAFAAEAAAACAAoAAQAFAAEAAAACAAkAAQAJAAAAAAACAAgAAQAGAAEAAAACAAcAAQAGAAEAAAACAAYAAQAJAAEAAAACAAUAAQAFAAEAAAACAAQAAQAFAAEAAAACAAMAAQAFAAEAAAACAAIAAQAFAAAAAAACAAEAAQALAAMAAAACAAAAAQAGAAAAAAABABAAAQAGAAAAAAABAA8AAQAKAAMAAAABAA4AAQAKAAMAAAABAA0AAQAKAAMAAAABAAwAAQAKAAMAAAABAAsAAQALAAMAAAABAAoAAQALAAMAAAABAAkAAQAGAAIAAAABAAgAAQAGAAEAAAABAAcAAQAGAAEAAAABAAYAAQAGAAAAAAABAAUAAQALAAMAAAABAAQAAQALAAMAAAABAAMAAQAKAAMAAAABAAIAAQAKAAMAAAABAAEAAQAKAAMAAAABAAAAAQAGAAAAAAAAABAAAQAIAAEAAAAAAA8AAQAHAAEAAAAAAA4AAQAHAAEAAAAAAA0AAQAHAAEAAAAAAAwAAQAHAAEAAAAAAAsAAQAHAAEAAAAAAAoAAQAHAAEAAAAAAAkAAQAHAAEAAAAAAAgAAQAGAAEAAAAAAAcAAQAGAAEAAAAAAAYAAQAIAAEAAAAAAAUAAQAHAAEAAAAAAAQAAQAHAAEAAAAAAAMAAQAHAAEAAAAAAAIAAQAHAAEAAAAAAAEAAQAHAAEAAAAAAAAAAQAHAAEAAAAOABEAAQAGAAIAAAAPABEAAQAGAAIAAAA=")
+
+[node name="ground_objects" parent="NavigationRegion2D" index="3" unique_id=1376421879]
+tile_map_data = PackedByteArray("AAAGAAoAAQANAAsAAAAGAAsAAQANAAwAAAAHAAoAAQAOAAsAAAAHAAsAAQAOAAwAAAAFAAQAAQAOAAsAAAAFAAUAAQAOAAwAAAAFAAYAAQAOAAsAAAAGAAQAAQANAAsAAAAGAAUAAQANAAwAAAAGAAYAAQANAAsAAAAHAAQAAQAOAAsAAAAHAAUAAQAOAAwAAAAHAAYAAQAOAAsAAAAEAAQAAQANAAsAAAAEAAUAAQANAAwAAAAEAAYAAQANAAsAAAAEAAcAAQANAAwAAAAFAAcAAQAOAAwAAAAGAAcAAQANAAwAAAAHAAcAAQAOAAwAAAAWAAkAAQANAAwAAAAWAAoAAQANAAsAAAAWAAsAAQANAAwAAAAXAAkAAQAOAAwAAAAXAAoAAQAOAAsAAAAXAAsAAQAOAAwAAAAYAAkAAQANAAwAAAAYAAoAAQANAAsAAAAYAAsAAQANAAwAAAAZAAkAAQAOAAwAAAAZAAoAAQAOAAsAAAAZAAsAAQAOAAwAAAAWAAgAAQANAAsAAAAXAAgAAQAOAAsAAAAYAAgAAQANAAsAAAAZAAgAAQAOAAsAAAAXAAUAAQAOAAwAAAAWAAQAAQANAAsAAAAWAAUAAQANAAwAAAAXAAQAAQAOAAsAAAA=")
+
+[node name="PlayerDetect" parent="NavigationRegion2D" index="6" unique_id=2066230081]
+visible = true
+
+[node name="Moving Spikes" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="0" unique_id=970121578 instance=ExtResource("3_65smw")]
+position = Vector2(24, 24)
+
+[node name="Moving Spikes2" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="1" unique_id=1833474483 instance=ExtResource("3_65smw")]
+position = Vector2(40, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes3" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="2" unique_id=1140187147 instance=ExtResource("3_65smw")]
+position = Vector2(56, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes4" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="3" unique_id=663252526 instance=ExtResource("3_65smw")]
+position = Vector2(72, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes5" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="4" unique_id=1757186659 instance=ExtResource("3_65smw")]
+position = Vector2(88, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes6" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="5" unique_id=1466369571 instance=ExtResource("3_65smw")]
+position = Vector2(104, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes7" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="6" unique_id=2092377290 instance=ExtResource("3_65smw")]
+position = Vector2(120, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes8" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="7" unique_id=1992077846 instance=ExtResource("3_65smw")]
+position = Vector2(136, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes9" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="8" unique_id=1885456473 instance=ExtResource("3_65smw")]
+position = Vector2(152, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes10" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="9" unique_id=134725505 instance=ExtResource("3_65smw")]
+position = Vector2(168, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes11" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="10" unique_id=1054043604 instance=ExtResource("3_65smw")]
+position = Vector2(184, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes12" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="11" unique_id=1781241030 instance=ExtResource("3_65smw")]
+position = Vector2(200, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes13" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="12" unique_id=729104736 instance=ExtResource("3_65smw")]
+position = Vector2(24, 40)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes14" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="13" unique_id=1600164334 instance=ExtResource("3_65smw")]
+position = Vector2(24, 40)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes15" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="14" unique_id=413387790 instance=ExtResource("3_65smw")]
+position = Vector2(24, 56)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes16" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="15" unique_id=1868874151 instance=ExtResource("3_65smw")]
+position = Vector2(24, 56)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes17" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="16" unique_id=1360447833 instance=ExtResource("3_65smw")]
+position = Vector2(24, 56)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes18" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="17" unique_id=722453936 instance=ExtResource("3_65smw")]
+position = Vector2(24, 56)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes19" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="18" unique_id=1709869231 instance=ExtResource("3_65smw")]
+position = Vector2(24, 72)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes20" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="19" unique_id=572225339 instance=ExtResource("3_65smw")]
+position = Vector2(24, 72)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes21" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="20" unique_id=1965676651 instance=ExtResource("3_65smw")]
+position = Vector2(24, 72)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes22" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="21" unique_id=1483186888 instance=ExtResource("3_65smw")]
+position = Vector2(24, 72)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes23" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="22" unique_id=1288554809 instance=ExtResource("3_65smw")]
+position = Vector2(24, 72)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes24" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="23" unique_id=8251259 instance=ExtResource("3_65smw")]
+position = Vector2(24, 88)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes25" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="24" unique_id=755385140 instance=ExtResource("3_65smw")]
+position = Vector2(24, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes26" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="25" unique_id=15171353 instance=ExtResource("3_65smw")]
+position = Vector2(24, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes27" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="26" unique_id=364141093 instance=ExtResource("3_65smw")]
+position = Vector2(24, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes28" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="27" unique_id=364811508 instance=ExtResource("3_65smw")]
+position = Vector2(24, 184)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes29" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="28" unique_id=1114210468 instance=ExtResource("3_65smw")]
+position = Vector2(24, 184)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes30" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="29" unique_id=1572761735 instance=ExtResource("3_65smw")]
+position = Vector2(24, 200)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes31" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="30" unique_id=1123835948 instance=ExtResource("3_65smw")]
+position = Vector2(24, 200)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes32" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="31" unique_id=870564781 instance=ExtResource("3_65smw")]
+position = Vector2(24, 216)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes33" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="32" unique_id=537038432 instance=ExtResource("3_65smw")]
+position = Vector2(24, 216)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes34" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="33" unique_id=523812156 instance=ExtResource("3_65smw")]
+position = Vector2(24, 232)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes35" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="34" unique_id=538813442 instance=ExtResource("3_65smw")]
+position = Vector2(24, 232)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes36" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="35" unique_id=1223124014 instance=ExtResource("3_65smw")]
+position = Vector2(24, 232)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes37" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="36" unique_id=162082467 instance=ExtResource("3_65smw")]
+position = Vector2(24, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes38" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="37" unique_id=2116545933 instance=ExtResource("3_65smw")]
+position = Vector2(40, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes39" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="38" unique_id=177089396 instance=ExtResource("3_65smw")]
+position = Vector2(40, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes40" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="39" unique_id=1486642872 instance=ExtResource("3_65smw")]
+position = Vector2(40, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes41" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="40" unique_id=1896931629 instance=ExtResource("3_65smw")]
+position = Vector2(72, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes42" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="41" unique_id=1671641910 instance=ExtResource("3_65smw")]
+position = Vector2(88, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes43" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="42" unique_id=1814816074 instance=ExtResource("3_65smw")]
+position = Vector2(88, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes44" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="43" unique_id=1638438741 instance=ExtResource("3_65smw")]
+position = Vector2(104, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes45" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="44" unique_id=1989707775 instance=ExtResource("3_65smw")]
+position = Vector2(120, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes46" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="45" unique_id=281971519 instance=ExtResource("3_65smw")]
+position = Vector2(120, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes47" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="46" unique_id=143319361 instance=ExtResource("3_65smw")]
+position = Vector2(120, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes48" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="47" unique_id=1000422994 instance=ExtResource("3_65smw")]
+position = Vector2(136, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes49" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="48" unique_id=231462300 instance=ExtResource("3_65smw")]
+position = Vector2(152, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes50" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="49" unique_id=1833852404 instance=ExtResource("3_65smw")]
+position = Vector2(152, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes51" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="50" unique_id=1296454005 instance=ExtResource("3_65smw")]
+position = Vector2(168, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes52" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="51" unique_id=552894010 instance=ExtResource("3_65smw")]
+position = Vector2(184, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes53" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="52" unique_id=2037782834 instance=ExtResource("3_65smw")]
+position = Vector2(200, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes54" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="53" unique_id=1787648518 instance=ExtResource("3_65smw")]
+position = Vector2(200, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes55" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="54" unique_id=2002198287 instance=ExtResource("3_65smw")]
+position = Vector2(56, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes56" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="55" unique_id=1426623915 instance=ExtResource("3_65smw")]
+position = Vector2(280, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes57" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="56" unique_id=1942303421 instance=ExtResource("3_65smw")]
+position = Vector2(280, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes58" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="57" unique_id=742117853 instance=ExtResource("3_65smw")]
+position = Vector2(312, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes59" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="58" unique_id=1506423214 instance=ExtResource("3_65smw")]
+position = Vector2(328, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes60" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="59" unique_id=1158840123 instance=ExtResource("3_65smw")]
+position = Vector2(344, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes61" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="60" unique_id=662407270 instance=ExtResource("3_65smw")]
+position = Vector2(360, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes62" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="61" unique_id=720626392 instance=ExtResource("3_65smw")]
+position = Vector2(376, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes63" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="62" unique_id=1147970545 instance=ExtResource("3_65smw")]
+position = Vector2(392, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes64" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="63" unique_id=1051051413 instance=ExtResource("3_65smw")]
+position = Vector2(392, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes65" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="64" unique_id=629936594 instance=ExtResource("3_65smw")]
+position = Vector2(392, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes66" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="65" unique_id=1804058252 instance=ExtResource("3_65smw")]
+position = Vector2(424, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes67" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="66" unique_id=789276095 instance=ExtResource("3_65smw")]
+position = Vector2(424, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes68" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="67" unique_id=2129285382 instance=ExtResource("3_65smw")]
+position = Vector2(424, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes69" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="68" unique_id=2034509618 instance=ExtResource("3_65smw")]
+position = Vector2(440, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes70" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="69" unique_id=542112836 instance=ExtResource("3_65smw")]
+position = Vector2(440, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes71" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="70" unique_id=909612882 instance=ExtResource("3_65smw")]
+position = Vector2(440, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes72" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="71" unique_id=860589894 instance=ExtResource("3_65smw")]
+position = Vector2(456, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes73" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="72" unique_id=1144311581 instance=ExtResource("3_65smw")]
+position = Vector2(456, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes74" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="73" unique_id=1176696110 instance=ExtResource("3_65smw")]
+position = Vector2(408, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes75" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="74" unique_id=376394899 instance=ExtResource("3_65smw")]
+position = Vector2(296, 248)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes76" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="75" unique_id=191267326 instance=ExtResource("3_65smw")]
+position = Vector2(456, 232)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes77" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="76" unique_id=1950824691 instance=ExtResource("3_65smw")]
+position = Vector2(456, 216)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes78" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="77" unique_id=1522775571 instance=ExtResource("3_65smw")]
+position = Vector2(456, 200)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes79" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="78" unique_id=1824297236 instance=ExtResource("3_65smw")]
+position = Vector2(456, 200)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes80" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="79" unique_id=896948120 instance=ExtResource("3_65smw")]
+position = Vector2(456, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes81" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="80" unique_id=1803660544 instance=ExtResource("3_65smw")]
+position = Vector2(456, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes82" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="81" unique_id=1809101696 instance=ExtResource("3_65smw")]
+position = Vector2(456, 168)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes83" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="82" unique_id=916244266 instance=ExtResource("3_65smw")]
+position = Vector2(456, 184)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes84" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="83" unique_id=1499493549 instance=ExtResource("3_65smw")]
+position = Vector2(280, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes85" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="84" unique_id=2106561485 instance=ExtResource("3_65smw")]
+position = Vector2(280, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes86" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="85" unique_id=1794544210 instance=ExtResource("3_65smw")]
+position = Vector2(312, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes87" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="86" unique_id=1692844830 instance=ExtResource("3_65smw")]
+position = Vector2(328, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes88" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="87" unique_id=918747151 instance=ExtResource("3_65smw")]
+position = Vector2(360, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes89" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="88" unique_id=1021484787 instance=ExtResource("3_65smw")]
+position = Vector2(392, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes90" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="89" unique_id=1054969645 instance=ExtResource("3_65smw")]
+position = Vector2(392, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes91" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="90" unique_id=1787589126 instance=ExtResource("3_65smw")]
+position = Vector2(440, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes92" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="91" unique_id=1625186771 instance=ExtResource("3_65smw")]
+position = Vector2(456, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes93" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="92" unique_id=553156992 instance=ExtResource("3_65smw")]
+position = Vector2(456, 56)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes94" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="93" unique_id=1759330946 instance=ExtResource("3_65smw")]
+position = Vector2(456, 56)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes95" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="94" unique_id=1509661093 instance=ExtResource("3_65smw")]
+position = Vector2(456, 72)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes96" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="95" unique_id=73374022 instance=ExtResource("3_65smw")]
+position = Vector2(456, 72)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes97" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="96" unique_id=1991445824 instance=ExtResource("3_65smw")]
+position = Vector2(456, 88)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes98" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="97" unique_id=1723532818 instance=ExtResource("3_65smw")]
+position = Vector2(456, 72)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes99" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="98" unique_id=895149314 instance=ExtResource("3_65smw")]
+position = Vector2(456, 40)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes100" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="99" unique_id=224782074 instance=ExtResource("3_65smw")]
+position = Vector2(456, 40)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes101" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="100" unique_id=284026464 instance=ExtResource("3_65smw")]
+position = Vector2(408, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes102" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="101" unique_id=968544799 instance=ExtResource("3_65smw")]
+position = Vector2(424, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes103" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="102" unique_id=1247410397 instance=ExtResource("3_65smw")]
+position = Vector2(376, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes104" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="103" unique_id=1386180446 instance=ExtResource("3_65smw")]
+position = Vector2(344, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes105" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="104" unique_id=419783418 instance=ExtResource("3_65smw")]
+position = Vector2(280, 24)
+metadata/_scene_painted = true
+
+[node name="Moving Spikes106" parent="NavigationRegion2D/Hazards" parent_id_path=PackedInt32Array(335313459) index="105" unique_id=946902771 instance=ExtResource("3_65smw")]
+position = Vector2(296, 24)
+metadata/_scene_painted = true

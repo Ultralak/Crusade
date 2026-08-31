@@ -18,6 +18,7 @@ navigation_polygon = SubResource("NavigationPolygon_16gsd")
 navigation_layers = 0
 
 [node name="SpawnLogic" parent="NavigationRegion2D" index="0" unique_id=210688217 node_paths=PackedStringArray("detect") instance=ExtResource("2_jd3c8")]
+position = Vector2(240, 144)
 detect = NodePath("../PlayerDetect")
 
 [node name="ground" parent="NavigationRegion2D" index="1" unique_id=1650485613]

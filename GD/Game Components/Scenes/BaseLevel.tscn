@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://yms8qkwa3gjm" path="res://Game Components/scripts/dungeon_generator.gd" id="1_ki7nh"]
 [ext_resource type="Script" uid="uid://bq4uf0k1shulg" path="res://Game Components/scripts/player_camera.gd" id="2_kkief"]
 [ext_resource type="PackedScene" uid="uid://0fjk7cy6dtws" path="res://Characters/Game Classes/Level 1/spawn_level_1(0).tscn" id="3_e0t25"]
-[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="3_mo7kc"]
 [ext_resource type="PackedScene" uid="uid://cbcdvnmwxcpkn" path="res://Game Files/Player_health_bar.tscn" id="4_e0t25"]
 [ext_resource type="PackedScene" uid="uid://bw450uo0647jj" path="res://Characters/Game Classes/Level 1/shop_level_1(0).tscn" id="5_e0t25"]
 [ext_resource type="PackedScene" uid="uid://kljplg8oiqh8" path="res://Characters/Game Classes/Level 1/combat_level_1(1).tscn" id="6_hmtut"]
@@ -13,10 +12,6 @@
 
 [node name="Main" type="Node2D" unique_id=973644688]
 
-[node name="Player" parent="." unique_id=246556358 instance=ExtResource("3_mo7kc")]
-z_index = 1
-position = Vector2(249, 131)
-
 [node name="Dungeon Generator" type="Node2D" parent="." unique_id=456120006]
 script = ExtResource("1_ki7nh")
 spawn_room_scene = ExtResource("3_e0t25")
@@ -25,13 +20,11 @@ treasure_room_scene = ExtResource("6_n3d17")
 combat_room_scenes = Array[PackedScene]([ExtResource("6_hmtut"), ExtResource("7_1gtd8"), ExtResource("8_ddrdp")])
 max_rooms = 6
 
-[node name="PlayerCamera" type="Camera2D" parent="." unique_id=116882109 node_paths=PackedStringArray("player")]
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=116882109]
 script = ExtResource("2_kkief")
-player = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=636500648]
 
-[node name="Player_Healthbar" parent="CanvasLayer" unique_id=1150709564 node_paths=PackedStringArray("entity") instance=ExtResource("4_e0t25")]
-position = Vector2(88, -32)
+[node name="Player_Healthbar" parent="CanvasLayer" unique_id=1150709564 instance=ExtResource("4_e0t25")]
+position = Vector2(96, -32)
 scale = Vector2(2, 2)
-entity = NodePath("../../Player")

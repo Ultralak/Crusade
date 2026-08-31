@@ -1,5 +1,2 @@
 extends BaseDungeon
 class_name DungeonTwo
-
-func _ready() -> void:
-	pass

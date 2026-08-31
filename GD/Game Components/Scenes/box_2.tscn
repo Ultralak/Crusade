@@ -5,12 +5,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ocos"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wlux"]
+resource_local_to_scene = true
+size = Vector2(13.5, 12.5)
+
 [node name="Box_2" unique_id=1185611550 instance=ExtResource("1_24m0p")]
 sprite_textures = Array[Texture2D]([ExtResource("3_qf6m6")])
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(437174867) index="0" unique_id=355400070]
 shape = SubResource("RectangleShape2D_1ocos")
 
+[node name="Sprite2D" parent="." index="1" unique_id=273383467]
+texture = ExtResource("3_qf6m6")
+
 [node name="NavigationObstacle2D" parent="." index="2" unique_id=1927262121]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-affect_navigation_mesh = true
+
+[node name="CollisionShape2D" parent="." index="3" unique_id=626683043]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_1wlux")

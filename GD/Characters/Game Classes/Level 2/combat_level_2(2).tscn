@@ -1,0 +1,554 @@
+[gd_scene format=3 uid="uid://wmf6dva5mlgk"]
+
+[ext_resource type="PackedScene" uid="uid://bdrufug2gvxv7" path="res://Characters/Game Classes/Level 2/Dungeon_level_2.tscn" id="1_2wcl4"]
+[ext_resource type="PackedScene" uid="uid://bt4utd3tt6q5" path="res://Game Components/Scenes/spawn_component.tscn" id="2_c84b5"]
+[ext_resource type="PackedScene" uid="uid://dg3log4jn1tj8" path="res://Game Components/Scenes/box_3.tscn" id="3_53edn"]
+[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/goblin.tscn" id="3_mt5r6"]
+[ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="4_2wqpd"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mt5r6"]
+resource_local_to_scene = true
+vertices = PackedVector2Array(458, 164, 452, 164, 45, 156, 52, 156, 458, 84, 452, 84, 141, 76, 260, 76, 365, 180, 356, 180, 141, 172, 141, 164, 356, 172, 365, 196, 356, 196, 141, 188, 141, 180, 356, 188, 365, 212, 356, 212, 141, 204, 148, 204, 458, 230, 457.6797, 230, 365, 228, 221, 220, 221, 212, 356, 220, 269, 68, 260, 68, 141, 60, 148, 60, 458, 122, 141, 108, 269, 92, 276, 92, 269, 52, 260, 52, 205, 44, 205, 36, 260, 44, 264, 92, 260, 92, 141, 100, 445, 92, 445, 84, 452, 92, 436, 84, 445, 172, 445, 164, 452, 172, 436, 164, 429, 172, 429, 164, 436, 172, 420, 164, 413, 172, 413, 164, 420, 172, 404, 164, 458, 26, 269, 60, 269, 44, 269, 36, 141, 92, 141, 84, 260, 84, 365, 236, 457.6797, 246, 356, 228, 458, 134, 141, 156, 141, 148, 246, 26, 260, 26, 260, 28, 269, 28, 269, 26, 264, 28, 260, 36, 264, 44, 456, 92, 458, 92, 136, 92, 132, 100, 125, 100, 132, 92, 125, 108, 470, 122, 470, 134, 456, 172, 458, 172, 365, 246, 365, 244, 221, 236, 221, 228, 356, 236, 356, 244, 356, 246, 246, 246, 246, 262, 234, 262, 234, 246, 221, 244, 216, 236, 221, 246, 212, 244, 212, 236, 212, 246, 22, 246, 22, 156, 24, 156, 29, 156, 132, 204, 29, 148, 22, 148, 22, 134, 10, 134, 10, 122, 22, 122, 22, 108, 24, 108, 29, 100, 22, 100, 22, 26, 132, 52, 132, 60, 196, 26, 196, 28, 205, 28, 205, 26, 234, 26, 234, 10, 246, 10, 45, 108, 52, 108, 132, 148, 136, 172, 356, 204, 221, 196, 269, 76, 189, 60, 196, 60, 221, 204, 216, 220, 136, 60, 365, 220, 365, 204, 360, 204, 29, 108, 36, 148, 260, 60, 200, 44, 440, 172, 365, 188, 360, 188, 440, 92, 365, 172, 372, 172, 360, 172, 424, 172, 436, 92, 429, 92, 429, 84, 420, 84, 196, 36, 200, 28, 196, 44, 356, 164, 132, 180, 132, 172, 212, 196, 136, 188, 408, 172, 404, 172, 397, 172, 397, 164, 388, 164, 424, 92, 392, 172, 420, 92, 413, 92, 413, 84, 404, 84, 388, 172, 381, 172, 381, 164, 372, 164, 376, 172, 365, 164, 132, 164, 132, 188, 40, 156, 408, 92, 404, 92, 397, 92, 397, 84, 388, 84, 392, 92, 40, 108, 388, 92, 381, 92, 381, 84, 372, 84, 36, 108, 125, 148, 376, 92, 372, 92, 365, 92, 365, 84, 356, 84, 36, 156, 148, 196, 141, 196, 360, 92, 356, 92, 349, 92, 349, 84, 340, 84, 344, 92, 205, 52, 340, 92, 333, 92, 333, 84, 324, 84, 328, 92, 324, 92, 317, 92, 317, 84, 308, 84, 312, 92, 308, 92, 301, 92, 301, 84, 292, 84, 296, 92, 292, 92, 285, 92, 285, 84, 276, 84, 280, 92, 269, 84, 136, 76, 132, 84, 132, 76, 141, 68, 264, 60, 205, 60, 196, 52, 212, 220, 360, 236, 360, 220, 205, 196, 212, 228, 212, 212, 136, 204, 132, 196, 184, 60, 200, 60, 180, 60, 173, 60, 180, 52, 173, 52, 189, 52, 164, 52, 168, 60, 164, 60, 157, 60, 157, 52, 148, 52, 152, 60, 141, 52, 216, 204, 212, 204, 205, 204, 196, 196, 200, 204, 196, 204, 189, 204, 189, 196, 180, 196, 184, 204, 180, 204, 173, 204, 173, 196, 164, 196, 136, 108, 132, 108, 116, 100, 109, 100, 132, 68, 109, 108, 264, 76, 120, 108, 168, 204, 116, 108, 100, 100, 36, 100, 164, 204, 157, 204, 157, 196, 104, 108, 100, 108, 93, 108, 93, 100, 84, 100, 152, 204, 88, 108, 84, 108, 77, 108, 77, 100, 68, 100, 45, 148, 72, 108, 68, 108, 61, 108, 61, 100, 52, 100, 56, 108, 45, 100, 136, 156, 132, 156, 125, 156, 116, 148, 120, 156, 116, 156, 109, 156, 109, 148, 100, 148, 104, 156, 100, 156, 93, 156, 93, 148, 84, 148, 88, 156, 84, 156, 77, 156, 77, 148, 68, 148, 68, 156, 61, 148, 72, 156, 61, 156, 52, 148, 56, 156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26, 27), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(32, 33, 34, 35), PackedInt32Array(36, 37, 38, 39, 40), PackedInt32Array(41, 34, 33), PackedInt32Array(42, 41, 33, 43), PackedInt32Array(44, 45, 5, 46), PackedInt32Array(6, 5, 45), PackedInt32Array(6, 45, 47), PackedInt32Array(48, 49, 1, 50), PackedInt32Array(2, 1, 49), PackedInt32Array(2, 49, 51), PackedInt32Array(52, 53, 51, 54), PackedInt32Array(2, 51, 53), PackedInt32Array(2, 53, 55), PackedInt32Array(56, 57, 55, 58), PackedInt32Array(2, 55, 57), PackedInt32Array(2, 57, 59), PackedInt32Array(60, 4, 61, 36), PackedInt32Array(62, 60, 36), PackedInt32Array(60, 62, 63), PackedInt32Array(64, 65, 66, 42), PackedInt32Array(64, 42, 43), PackedInt32Array(67, 24, 23, 68), PackedInt32Array(25, 24, 69), PackedInt32Array(70, 0, 71, 72), PackedInt32Array(73, 74, 75), PackedInt32Array(76, 77, 60), PackedInt32Array(76, 60, 63), PackedInt32Array(78, 76, 63, 79), PackedInt32Array(75, 78, 79), PackedInt32Array(80, 62, 36), PackedInt32Array(81, 82, 32), PackedInt32Array(83, 64, 43, 84), PackedInt32Array(85, 86, 83, 84, 87), PackedInt32Array(32, 88, 89, 70), PackedInt32Array(90, 91, 22), PackedInt32Array(68, 92, 93), PackedInt32Array(68, 93, 94, 95, 96), PackedInt32Array(94, 93, 97), PackedInt32Array(97, 98, 99, 94), PackedInt32Array(99, 100, 101, 102), PackedInt32Array(94, 99, 102, 103, 104), PackedInt32Array(102, 105, 103), PackedInt32Array(104, 103, 106, 107), PackedInt32Array(106, 108, 109, 110, 111), PackedInt32Array(106, 111, 112, 113), PackedInt32Array(114, 115, 116), PackedInt32Array(116, 117, 118, 119), PackedInt32Array(119, 120, 121), PackedInt32Array(122, 123, 124, 125, 126), PackedInt32Array(124, 127, 128), PackedInt32Array(129, 130, 131), PackedInt32Array(131, 132, 133, 73), PackedInt32Array(134, 135, 32, 70, 72, 136), PackedInt32Array(50, 90, 22), PackedInt32Array(10, 9, 17, 16, 137), PackedInt32Array(15, 14, 138, 139), PackedInt32Array(20, 19, 27, 26), PackedInt32Array(4, 140, 28), PackedInt32Array(4, 28, 141, 142), PackedInt32Array(18, 143, 139, 138), PackedInt32Array(25, 69, 96, 144), PackedInt32Array(46, 81, 32), PackedInt32Array(30, 29, 7, 145), PackedInt32Array(48, 50, 22), PackedInt32Array(22, 146, 18), PackedInt32Array(147, 22, 18, 148), PackedInt32Array(131, 73, 75, 79, 39, 129), PackedInt32Array(119, 121, 149, 150, 114, 116), PackedInt32Array(38, 37, 151, 152), PackedInt32Array(44, 46, 32), PackedInt32Array(153, 48, 22), PackedInt32Array(22, 147, 13), PackedInt32Array(154, 22, 13, 155), PackedInt32Array(54, 153, 22), PackedInt32Array(52, 54, 22), PackedInt32Array(156, 44, 32), PackedInt32Array(22, 154, 8), PackedInt32Array(22, 8, 157, 158), PackedInt32Array(159, 157, 8), PackedInt32Array(160, 52, 22), PackedInt32Array(58, 160, 22), PackedInt32Array(161, 156, 32), PackedInt32Array(161, 32, 162), PackedInt32Array(47, 161, 162, 163), PackedInt32Array(6, 47, 163), PackedInt32Array(6, 163, 164), PackedInt32Array(40, 80, 36), PackedInt32Array(79, 40, 39), PackedInt32Array(129, 39, 165, 166), PackedInt32Array(128, 166, 165), PackedInt32Array(124, 128, 165), PackedInt32Array(124, 165, 167), PackedInt32Array(12, 159, 8), PackedInt32Array(168, 12, 11, 2), PackedInt32Array(17, 155, 13), PackedInt32Array(137, 16, 169, 170), PackedInt32Array(138, 148, 18), PackedInt32Array(15, 139, 171, 172), PackedInt32Array(56, 58, 22), PackedInt32Array(173, 56, 22), PackedInt32Array(174, 173, 22), PackedInt32Array(174, 22, 175), PackedInt32Array(59, 174, 175, 176), PackedInt32Array(2, 59, 176), PackedInt32Array(2, 176, 177), PackedInt32Array(178, 162, 32), PackedInt32Array(179, 175, 22), PackedInt32Array(180, 178, 32), PackedInt32Array(180, 32, 181), PackedInt32Array(164, 180, 181, 182), PackedInt32Array(6, 164, 182), PackedInt32Array(6, 182, 183), PackedInt32Array(184, 179, 22), PackedInt32Array(184, 22, 185), PackedInt32Array(177, 184, 185, 186), PackedInt32Array(2, 177, 186), PackedInt32Array(2, 186, 187), PackedInt32Array(188, 185, 22), PackedInt32Array(158, 188, 22), PackedInt32Array(187, 158, 157, 189), PackedInt32Array(2, 187, 189), PackedInt32Array(2, 189, 168), PackedInt32Array(2, 11, 190), PackedInt32Array(2, 190, 170), PackedInt32Array(2, 170, 169), PackedInt32Array(2, 169, 191, 192), PackedInt32Array(193, 181, 32), PackedInt32Array(194, 193, 32), PackedInt32Array(194, 32, 195), PackedInt32Array(183, 194, 195, 196), PackedInt32Array(6, 183, 196), PackedInt32Array(6, 196, 197), PackedInt32Array(198, 195, 32), PackedInt32Array(199, 134, 136), PackedInt32Array(200, 198, 32), PackedInt32Array(200, 32, 201), PackedInt32Array(197, 200, 201, 202), PackedInt32Array(6, 197, 202), PackedInt32Array(6, 202, 203), PackedInt32Array(204, 199, 136, 205), PackedInt32Array(206, 201, 32), PackedInt32Array(207, 206, 32), PackedInt32Array(207, 32, 208), PackedInt32Array(203, 207, 208, 209), PackedInt32Array(6, 203, 209), PackedInt32Array(6, 209, 210), PackedInt32Array(211, 192, 191, 212, 213), PackedInt32Array(214, 208, 32), PackedInt32Array(215, 214, 32), PackedInt32Array(215, 32, 216), PackedInt32Array(210, 215, 216, 217), PackedInt32Array(6, 210, 217), PackedInt32Array(6, 217, 218), PackedInt32Array(219, 216, 32), PackedInt32Array(167, 152, 151, 220), PackedInt32Array(221, 219, 32), PackedInt32Array(221, 32, 222), PackedInt32Array(218, 221, 222, 223), PackedInt32Array(6, 218, 223), PackedInt32Array(6, 223, 224), PackedInt32Array(225, 222, 32), PackedInt32Array(226, 225, 32), PackedInt32Array(226, 32, 227), PackedInt32Array(224, 226, 227, 228), PackedInt32Array(6, 224, 228), PackedInt32Array(6, 228, 229), PackedInt32Array(230, 227, 32), PackedInt32Array(231, 230, 32), PackedInt32Array(231, 32, 232), PackedInt32Array(229, 231, 232, 233), PackedInt32Array(6, 229, 233), PackedInt32Array(6, 233, 234), PackedInt32Array(235, 232, 32), PackedInt32Array(236, 235, 32), PackedInt32Array(236, 32, 237), PackedInt32Array(234, 236, 237, 238), PackedInt32Array(6, 234, 238), PackedInt32Array(6, 238, 239), PackedInt32Array(240, 237, 32), PackedInt32Array(35, 240, 32), PackedInt32Array(239, 35, 34, 241), PackedInt32Array(6, 239, 241), PackedInt32Array(6, 241, 66), PackedInt32Array(6, 66, 65, 242), PackedInt32Array(242, 65, 243, 244), PackedInt32Array(126, 145, 7, 245), PackedInt32Array(246, 61, 4), PackedInt32Array(151, 246, 4), PackedInt32Array(151, 4, 247), PackedInt32Array(151, 247, 220), PackedInt32Array(167, 220, 248, 124), PackedInt32Array(249, 144, 96, 95), PackedInt32Array(250, 67, 68), PackedInt32Array(251, 146, 22), PackedInt32Array(191, 172, 171, 252), PackedInt32Array(96, 250, 68), PackedInt32Array(249, 95, 253, 20), PackedInt32Array(27, 251, 22), PackedInt32Array(20, 26, 254), PackedInt32Array(20, 254, 249), PackedInt32Array(20, 253, 107), PackedInt32Array(20, 107, 106, 255), PackedInt32Array(113, 255, 106), PackedInt32Array(256, 113, 112), PackedInt32Array(213, 256, 112, 211), PackedInt32Array(257, 141, 28), PackedInt32Array(258, 247, 4), PackedInt32Array(259, 257, 28), PackedInt32Array(259, 28, 260), PackedInt32Array(261, 259, 260, 262), PackedInt32Array(142, 258, 4), PackedInt32Array(248, 142, 141, 263), PackedInt32Array(124, 248, 263), PackedInt32Array(124, 263, 261), PackedInt32Array(124, 261, 262), PackedInt32Array(124, 262, 264), PackedInt32Array(265, 260, 28), PackedInt32Array(266, 265, 28), PackedInt32Array(266, 28, 267), PackedInt32Array(264, 266, 267, 268), PackedInt32Array(124, 264, 268), PackedInt32Array(124, 268, 269), PackedInt32Array(270, 267, 28), PackedInt32Array(31, 270, 28), PackedInt32Array(269, 31, 30, 271), PackedInt32Array(124, 269, 271), PackedInt32Array(124, 271, 125), PackedInt32Array(272, 143, 18), PackedInt32Array(273, 272, 18), PackedInt32Array(273, 18, 274), PackedInt32Array(171, 273, 274, 252), PackedInt32Array(191, 252, 275), PackedInt32Array(276, 274, 18), PackedInt32Array(277, 276, 18), PackedInt32Array(277, 18, 278), PackedInt32Array(275, 277, 278, 279), PackedInt32Array(191, 275, 279), PackedInt32Array(191, 279, 280), PackedInt32Array(281, 278, 18), PackedInt32Array(282, 281, 18), PackedInt32Array(282, 18, 283), PackedInt32Array(280, 282, 283, 284), PackedInt32Array(191, 280, 284), PackedInt32Array(191, 284, 285), PackedInt32Array(286, 33, 32), PackedInt32Array(287, 286, 32), PackedInt32Array(287, 32, 87), PackedInt32Array(84, 287, 87), PackedInt32Array(86, 85, 288, 243), PackedInt32Array(244, 243, 288), PackedInt32Array(289, 290, 244, 288, 291), PackedInt32Array(292, 140, 4), PackedInt32Array(293, 87, 32), PackedInt32Array(294, 283, 18), PackedInt32Array(295, 293, 32), PackedInt32Array(295, 32, 291), PackedInt32Array(288, 295, 291), PackedInt32Array(290, 289, 296), PackedInt32Array(7, 292, 4), PackedInt32Array(7, 6, 245), PackedInt32Array(126, 245, 290), PackedInt32Array(122, 126, 290, 297), PackedInt32Array(298, 294, 18), PackedInt32Array(298, 18, 299), PackedInt32Array(285, 298, 299, 300), PackedInt32Array(191, 285, 300), PackedInt32Array(191, 300, 212), PackedInt32Array(301, 291, 32), PackedInt32Array(302, 301, 32), PackedInt32Array(302, 32, 303), PackedInt32Array(296, 302, 303, 304), PackedInt32Array(290, 296, 304), PackedInt32Array(290, 304, 305), PackedInt32Array(306, 299, 18), PackedInt32Array(307, 303, 32), PackedInt32Array(308, 307, 32), PackedInt32Array(308, 32, 309), PackedInt32Array(305, 308, 309, 310), PackedInt32Array(290, 305, 310), PackedInt32Array(290, 310, 311), PackedInt32Array(21, 306, 18), PackedInt32Array(212, 21, 20, 213), PackedInt32Array(150, 211, 112, 114), PackedInt32Array(312, 150, 149, 122, 204), PackedInt32Array(313, 309, 32), PackedInt32Array(314, 313, 32), PackedInt32Array(314, 32, 315), PackedInt32Array(311, 314, 315, 316), PackedInt32Array(290, 311, 316), PackedInt32Array(290, 316, 317), PackedInt32Array(318, 315, 32), PackedInt32Array(135, 318, 32), PackedInt32Array(317, 135, 134, 319), PackedInt32Array(290, 317, 319), PackedInt32Array(290, 319, 297), PackedInt32Array(122, 297, 204), PackedInt32Array(320, 71, 0), PackedInt32Array(321, 320, 0), PackedInt32Array(321, 0, 322), PackedInt32Array(136, 321, 322, 205), PackedInt32Array(204, 205, 323), PackedInt32Array(324, 322, 0), PackedInt32Array(325, 324, 0), PackedInt32Array(325, 0, 326), PackedInt32Array(323, 325, 326, 327), PackedInt32Array(204, 323, 327), PackedInt32Array(204, 327, 328), PackedInt32Array(329, 326, 0), PackedInt32Array(330, 329, 0), PackedInt32Array(330, 0, 331), PackedInt32Array(328, 330, 331, 332), PackedInt32Array(204, 328, 332), PackedInt32Array(204, 332, 333), PackedInt32Array(334, 331, 0), PackedInt32Array(335, 334, 0), PackedInt32Array(335, 0, 336), PackedInt32Array(333, 335, 336, 337), PackedInt32Array(204, 333, 337), PackedInt32Array(204, 337, 338), PackedInt32Array(204, 338, 339, 340), PackedInt32Array(341, 336, 0), PackedInt32Array(339, 341, 0), PackedInt32Array(339, 0, 342), PackedInt32Array(339, 342, 340), PackedInt32Array(204, 340, 343), PackedInt32Array(312, 204, 343, 3), PackedInt32Array(2, 312, 3), PackedInt32Array(0, 3, 344), PackedInt32Array(0, 344, 342)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
+source_geometry_group_name = &"NAVIGATION"
+
+[node name="combat_level_2(2)" unique_id=1787448676 node_paths=PackedStringArray("spawn_component") instance=ExtResource("1_2wcl4")]
+floor_event = 1
+spawn_component = NodePath("NavigationRegion2D/spawn component")
+
+[node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
+navigation_polygon = SubResource("NavigationPolygon_mt5r6")
+
+[node name="spawn component" parent="NavigationRegion2D" index="0" unique_id=1800711375 node_paths=PackedStringArray("dungeon") instance=ExtResource("2_c84b5")]
+dungeon = NodePath("../..")
+enemy_scenes = Array[PackedScene]([ExtResource("3_mt5r6"), ExtResource("4_2wqpd")])
+max_waves = 2
+
+[node name="wave 1" type="Node2D" parent="NavigationRegion2D/spawn component" index="0" unique_id=1709524951]
+
+[node name="Marker2D" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="0" unique_id=1330968390]
+position = Vector2(176, 96)
+
+[node name="Marker2D2" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="1" unique_id=1474557457]
+position = Vector2(176, 160)
+
+[node name="Marker2D3" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="2" unique_id=778909942]
+position = Vector2(224, 112)
+
+[node name="Marker2D4" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="3" unique_id=2019294383]
+position = Vector2(240, 144)
+
+[node name="Marker2D5" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 1" index="4" unique_id=133631188]
+position = Vector2(288, 144)
+
+[node name="wave 2" type="Node2D" parent="NavigationRegion2D/spawn component" index="1" unique_id=1106193063]
+
+[node name="Marker2D" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="0" unique_id=769173981]
+position = Vector2(80, 48)
+
+[node name="Marker2D2" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="1" unique_id=1270568006]
+position = Vector2(32, 64)
+
+[node name="Marker2D3" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="2" unique_id=140706414]
+position = Vector2(368, 48)
+
+[node name="Marker2D4" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="3" unique_id=764272736]
+position = Vector2(416, 208)
+
+[node name="Marker2D5" type="Marker2D" parent="NavigationRegion2D/spawn component/wave 2" index="4" unique_id=1912608208]
+position = Vector2(80, 208)
+
+[node name="Destructable" type="Node2D" parent="NavigationRegion2D" index="9" unique_id=759702073]
+
+[node name="Box2" parent="NavigationRegion2D/Destructable" index="0" unique_id=1809703641 instance=ExtResource("3_53edn")]
+position = Vector2(24, 104)
+metadata/_scene_painted = true
+
+[node name="Box3" parent="NavigationRegion2D/Destructable" index="1" unique_id=321611325 instance=ExtResource("3_53edn")]
+position = Vector2(24, 104)
+metadata/_scene_painted = true
+
+[node name="Box4" parent="NavigationRegion2D/Destructable" index="2" unique_id=1689687853 instance=ExtResource("3_53edn")]
+position = Vector2(40, 104)
+metadata/_scene_painted = true
+
+[node name="Box5" parent="NavigationRegion2D/Destructable" index="3" unique_id=567848217 instance=ExtResource("3_53edn")]
+position = Vector2(40, 104)
+metadata/_scene_painted = true
+
+[node name="Box6" parent="NavigationRegion2D/Destructable" index="4" unique_id=1533453239 instance=ExtResource("3_53edn")]
+position = Vector2(56, 104)
+metadata/_scene_painted = true
+
+[node name="Box7" parent="NavigationRegion2D/Destructable" index="5" unique_id=736651628 instance=ExtResource("3_53edn")]
+position = Vector2(56, 104)
+metadata/_scene_painted = true
+
+[node name="Box8" parent="NavigationRegion2D/Destructable" index="6" unique_id=1543713920 instance=ExtResource("3_53edn")]
+position = Vector2(72, 104)
+metadata/_scene_painted = true
+
+[node name="Box9" parent="NavigationRegion2D/Destructable" index="7" unique_id=35217440 instance=ExtResource("3_53edn")]
+position = Vector2(72, 104)
+metadata/_scene_painted = true
+
+[node name="Box10" parent="NavigationRegion2D/Destructable" index="8" unique_id=2090282433 instance=ExtResource("3_53edn")]
+position = Vector2(72, 104)
+metadata/_scene_painted = true
+
+[node name="Box11" parent="NavigationRegion2D/Destructable" index="9" unique_id=39188084 instance=ExtResource("3_53edn")]
+position = Vector2(88, 104)
+metadata/_scene_painted = true
+
+[node name="Box12" parent="NavigationRegion2D/Destructable" index="10" unique_id=1298080387 instance=ExtResource("3_53edn")]
+position = Vector2(88, 104)
+metadata/_scene_painted = true
+
+[node name="Box13" parent="NavigationRegion2D/Destructable" index="11" unique_id=1256016577 instance=ExtResource("3_53edn")]
+position = Vector2(88, 104)
+metadata/_scene_painted = true
+
+[node name="Box14" parent="NavigationRegion2D/Destructable" index="12" unique_id=1072753067 instance=ExtResource("3_53edn")]
+position = Vector2(104, 104)
+metadata/_scene_painted = true
+
+[node name="Box15" parent="NavigationRegion2D/Destructable" index="13" unique_id=1359609450 instance=ExtResource("3_53edn")]
+position = Vector2(104, 104)
+metadata/_scene_painted = true
+
+[node name="Box16" parent="NavigationRegion2D/Destructable" index="14" unique_id=256208666 instance=ExtResource("3_53edn")]
+position = Vector2(104, 104)
+metadata/_scene_painted = true
+
+[node name="Box17" parent="NavigationRegion2D/Destructable" index="15" unique_id=889912080 instance=ExtResource("3_53edn")]
+position = Vector2(104, 104)
+metadata/_scene_painted = true
+
+[node name="Box18" parent="NavigationRegion2D/Destructable" index="16" unique_id=70207149 instance=ExtResource("3_53edn")]
+position = Vector2(104, 104)
+metadata/_scene_painted = true
+
+[node name="Box19" parent="NavigationRegion2D/Destructable" index="17" unique_id=1870575054 instance=ExtResource("3_53edn")]
+position = Vector2(120, 104)
+metadata/_scene_painted = true
+
+[node name="Box20" parent="NavigationRegion2D/Destructable" index="18" unique_id=953428483 instance=ExtResource("3_53edn")]
+position = Vector2(120, 104)
+metadata/_scene_painted = true
+
+[node name="Box21" parent="NavigationRegion2D/Destructable" index="19" unique_id=39862400 instance=ExtResource("3_53edn")]
+position = Vector2(120, 104)
+metadata/_scene_painted = true
+
+[node name="Box22" parent="NavigationRegion2D/Destructable" index="20" unique_id=1828584008 instance=ExtResource("3_53edn")]
+position = Vector2(120, 104)
+metadata/_scene_painted = true
+
+[node name="Box23" parent="NavigationRegion2D/Destructable" index="21" unique_id=1674633631 instance=ExtResource("3_53edn")]
+position = Vector2(136, 104)
+metadata/_scene_painted = true
+
+[node name="Box24" parent="NavigationRegion2D/Destructable" index="22" unique_id=326637874 instance=ExtResource("3_53edn")]
+position = Vector2(136, 88)
+metadata/_scene_painted = true
+
+[node name="Box25" parent="NavigationRegion2D/Destructable" index="23" unique_id=1053877819 instance=ExtResource("3_53edn")]
+position = Vector2(136, 88)
+metadata/_scene_painted = true
+
+[node name="Box26" parent="NavigationRegion2D/Destructable" index="24" unique_id=1634758952 instance=ExtResource("3_53edn")]
+position = Vector2(136, 88)
+metadata/_scene_painted = true
+
+[node name="Box27" parent="NavigationRegion2D/Destructable" index="25" unique_id=1845530870 instance=ExtResource("3_53edn")]
+position = Vector2(136, 88)
+metadata/_scene_painted = true
+
+[node name="Box28" parent="NavigationRegion2D/Destructable" index="26" unique_id=548692243 instance=ExtResource("3_53edn")]
+position = Vector2(136, 72)
+metadata/_scene_painted = true
+
+[node name="Box29" parent="NavigationRegion2D/Destructable" index="27" unique_id=1320857520 instance=ExtResource("3_53edn")]
+position = Vector2(136, 72)
+metadata/_scene_painted = true
+
+[node name="Box30" parent="NavigationRegion2D/Destructable" index="28" unique_id=76287854 instance=ExtResource("3_53edn")]
+position = Vector2(136, 72)
+metadata/_scene_painted = true
+
+[node name="Box31" parent="NavigationRegion2D/Destructable" index="29" unique_id=287177200 instance=ExtResource("3_53edn")]
+position = Vector2(136, 56)
+metadata/_scene_painted = true
+
+[node name="Box32" parent="NavigationRegion2D/Destructable" index="30" unique_id=426175703 instance=ExtResource("3_53edn")]
+position = Vector2(136, 56)
+metadata/_scene_painted = true
+
+[node name="Box33" parent="NavigationRegion2D/Destructable" index="31" unique_id=2079440541 instance=ExtResource("3_53edn")]
+position = Vector2(136, 56)
+metadata/_scene_painted = true
+
+[node name="Box34" parent="NavigationRegion2D/Destructable" index="32" unique_id=2065954544 instance=ExtResource("3_53edn")]
+position = Vector2(152, 56)
+metadata/_scene_painted = true
+
+[node name="Box35" parent="NavigationRegion2D/Destructable" index="33" unique_id=1274712673 instance=ExtResource("3_53edn")]
+position = Vector2(152, 56)
+metadata/_scene_painted = true
+
+[node name="Box36" parent="NavigationRegion2D/Destructable" index="34" unique_id=1843268367 instance=ExtResource("3_53edn")]
+position = Vector2(168, 56)
+metadata/_scene_painted = true
+
+[node name="Box37" parent="NavigationRegion2D/Destructable" index="35" unique_id=1435084200 instance=ExtResource("3_53edn")]
+position = Vector2(200, 56)
+metadata/_scene_painted = true
+
+[node name="Box38" parent="NavigationRegion2D/Destructable" index="36" unique_id=699108071 instance=ExtResource("3_53edn")]
+position = Vector2(200, 56)
+metadata/_scene_painted = true
+
+[node name="Box39" parent="NavigationRegion2D/Destructable" index="37" unique_id=952593737 instance=ExtResource("3_53edn")]
+position = Vector2(184, 56)
+metadata/_scene_painted = true
+
+[node name="Box40" parent="NavigationRegion2D/Destructable" index="38" unique_id=1342253354 instance=ExtResource("3_53edn")]
+position = Vector2(184, 56)
+metadata/_scene_painted = true
+
+[node name="Box41" parent="NavigationRegion2D/Destructable" index="39" unique_id=1053323647 instance=ExtResource("3_53edn")]
+position = Vector2(200, 40)
+metadata/_scene_painted = true
+
+[node name="Box42" parent="NavigationRegion2D/Destructable" index="40" unique_id=954461478 instance=ExtResource("3_53edn")]
+position = Vector2(200, 40)
+metadata/_scene_painted = true
+
+[node name="Box43" parent="NavigationRegion2D/Destructable" index="41" unique_id=1832814394 instance=ExtResource("3_53edn")]
+position = Vector2(200, 24)
+metadata/_scene_painted = true
+
+[node name="Box44" parent="NavigationRegion2D/Destructable" index="42" unique_id=1741937810 instance=ExtResource("3_53edn")]
+position = Vector2(200, 24)
+metadata/_scene_painted = true
+
+[node name="Box45" parent="NavigationRegion2D/Destructable" index="43" unique_id=860563118 instance=ExtResource("3_53edn")]
+position = Vector2(24, 152)
+metadata/_scene_painted = true
+
+[node name="Box46" parent="NavigationRegion2D/Destructable" index="44" unique_id=541719737 instance=ExtResource("3_53edn")]
+position = Vector2(24, 152)
+metadata/_scene_painted = true
+
+[node name="Box47" parent="NavigationRegion2D/Destructable" index="45" unique_id=1751957157 instance=ExtResource("3_53edn")]
+position = Vector2(40, 152)
+metadata/_scene_painted = true
+
+[node name="Box48" parent="NavigationRegion2D/Destructable" index="46" unique_id=1324012704 instance=ExtResource("3_53edn")]
+position = Vector2(56, 152)
+metadata/_scene_painted = true
+
+[node name="Box49" parent="NavigationRegion2D/Destructable" index="47" unique_id=88126800 instance=ExtResource("3_53edn")]
+position = Vector2(72, 152)
+metadata/_scene_painted = true
+
+[node name="Box50" parent="NavigationRegion2D/Destructable" index="48" unique_id=2098170732 instance=ExtResource("3_53edn")]
+position = Vector2(72, 152)
+metadata/_scene_painted = true
+
+[node name="Box51" parent="NavigationRegion2D/Destructable" index="49" unique_id=1818493474 instance=ExtResource("3_53edn")]
+position = Vector2(104, 152)
+metadata/_scene_painted = true
+
+[node name="Box52" parent="NavigationRegion2D/Destructable" index="50" unique_id=1749423364 instance=ExtResource("3_53edn")]
+position = Vector2(104, 152)
+metadata/_scene_painted = true
+
+[node name="Box53" parent="NavigationRegion2D/Destructable" index="51" unique_id=1500885710 instance=ExtResource("3_53edn")]
+position = Vector2(120, 152)
+metadata/_scene_painted = true
+
+[node name="Box54" parent="NavigationRegion2D/Destructable" index="52" unique_id=1811934640 instance=ExtResource("3_53edn")]
+position = Vector2(120, 152)
+metadata/_scene_painted = true
+
+[node name="Box55" parent="NavigationRegion2D/Destructable" index="53" unique_id=1656533799 instance=ExtResource("3_53edn")]
+position = Vector2(136, 152)
+metadata/_scene_painted = true
+
+[node name="Box56" parent="NavigationRegion2D/Destructable" index="54" unique_id=561368341 instance=ExtResource("3_53edn")]
+position = Vector2(88, 152)
+metadata/_scene_painted = true
+
+[node name="Box57" parent="NavigationRegion2D/Destructable" index="55" unique_id=725428916 instance=ExtResource("3_53edn")]
+position = Vector2(136, 168)
+metadata/_scene_painted = true
+
+[node name="Box58" parent="NavigationRegion2D/Destructable" index="56" unique_id=665705190 instance=ExtResource("3_53edn")]
+position = Vector2(136, 168)
+metadata/_scene_painted = true
+
+[node name="Box59" parent="NavigationRegion2D/Destructable" index="57" unique_id=166626360 instance=ExtResource("3_53edn")]
+position = Vector2(136, 184)
+metadata/_scene_painted = true
+
+[node name="Box60" parent="NavigationRegion2D/Destructable" index="58" unique_id=1093789669 instance=ExtResource("3_53edn")]
+position = Vector2(136, 200)
+metadata/_scene_painted = true
+
+[node name="Box61" parent="NavigationRegion2D/Destructable" index="59" unique_id=292421519 instance=ExtResource("3_53edn")]
+position = Vector2(136, 200)
+metadata/_scene_painted = true
+
+[node name="Box62" parent="NavigationRegion2D/Destructable" index="60" unique_id=2110821470 instance=ExtResource("3_53edn")]
+position = Vector2(152, 200)
+metadata/_scene_painted = true
+
+[node name="Box63" parent="NavigationRegion2D/Destructable" index="61" unique_id=1340827187 instance=ExtResource("3_53edn")]
+position = Vector2(152, 200)
+metadata/_scene_painted = true
+
+[node name="Box64" parent="NavigationRegion2D/Destructable" index="62" unique_id=1205031259 instance=ExtResource("3_53edn")]
+position = Vector2(168, 200)
+metadata/_scene_painted = true
+
+[node name="Box65" parent="NavigationRegion2D/Destructable" index="63" unique_id=601858621 instance=ExtResource("3_53edn")]
+position = Vector2(184, 200)
+metadata/_scene_painted = true
+
+[node name="Box66" parent="NavigationRegion2D/Destructable" index="64" unique_id=1466607171 instance=ExtResource("3_53edn")]
+position = Vector2(200, 200)
+metadata/_scene_painted = true
+
+[node name="Box67" parent="NavigationRegion2D/Destructable" index="65" unique_id=2026493415 instance=ExtResource("3_53edn")]
+position = Vector2(200, 200)
+metadata/_scene_painted = true
+
+[node name="Box68" parent="NavigationRegion2D/Destructable" index="66" unique_id=1670659879 instance=ExtResource("3_53edn")]
+position = Vector2(200, 200)
+metadata/_scene_painted = true
+
+[node name="Box69" parent="NavigationRegion2D/Destructable" index="67" unique_id=1181988448 instance=ExtResource("3_53edn")]
+position = Vector2(200, 200)
+metadata/_scene_painted = true
+
+[node name="Box70" parent="NavigationRegion2D/Destructable" index="68" unique_id=475029862 instance=ExtResource("3_53edn")]
+position = Vector2(200, 200)
+metadata/_scene_painted = true
+
+[node name="Box71" parent="NavigationRegion2D/Destructable" index="69" unique_id=770180091 instance=ExtResource("3_53edn")]
+position = Vector2(200, 200)
+metadata/_scene_painted = true
+
+[node name="Box72" parent="NavigationRegion2D/Destructable" index="70" unique_id=1366426805 instance=ExtResource("3_53edn")]
+position = Vector2(216, 200)
+metadata/_scene_painted = true
+
+[node name="Box73" parent="NavigationRegion2D/Destructable" index="71" unique_id=2014109711 instance=ExtResource("3_53edn")]
+position = Vector2(216, 216)
+metadata/_scene_painted = true
+
+[node name="Box74" parent="NavigationRegion2D/Destructable" index="72" unique_id=2003305441 instance=ExtResource("3_53edn")]
+position = Vector2(216, 216)
+metadata/_scene_painted = true
+
+[node name="Box75" parent="NavigationRegion2D/Destructable" index="73" unique_id=1758646089 instance=ExtResource("3_53edn")]
+position = Vector2(216, 232)
+metadata/_scene_painted = true
+
+[node name="Box76" parent="NavigationRegion2D/Destructable" index="74" unique_id=1278754468 instance=ExtResource("3_53edn")]
+position = Vector2(216, 232)
+metadata/_scene_painted = true
+
+[node name="Box77" parent="NavigationRegion2D/Destructable" index="75" unique_id=342964003 instance=ExtResource("3_53edn")]
+position = Vector2(216, 248)
+metadata/_scene_painted = true
+
+[node name="Box78" parent="NavigationRegion2D/Destructable" index="76" unique_id=1586746776 instance=ExtResource("3_53edn")]
+position = Vector2(216, 248)
+metadata/_scene_painted = true
+
+[node name="Box79" parent="NavigationRegion2D/Destructable" index="77" unique_id=1562238356 instance=ExtResource("3_53edn")]
+position = Vector2(216, 248)
+metadata/_scene_painted = true
+
+[node name="Box80" parent="NavigationRegion2D/Destructable" index="78" unique_id=392025408 instance=ExtResource("3_53edn")]
+position = Vector2(264, 24)
+metadata/_scene_painted = true
+
+[node name="Box81" parent="NavigationRegion2D/Destructable" index="79" unique_id=1985504359 instance=ExtResource("3_53edn")]
+position = Vector2(264, 24)
+metadata/_scene_painted = true
+
+[node name="Box82" parent="NavigationRegion2D/Destructable" index="80" unique_id=718705750 instance=ExtResource("3_53edn")]
+position = Vector2(264, 24)
+metadata/_scene_painted = true
+
+[node name="Box83" parent="NavigationRegion2D/Destructable" index="81" unique_id=45884185 instance=ExtResource("3_53edn")]
+position = Vector2(264, 40)
+metadata/_scene_painted = true
+
+[node name="Box84" parent="NavigationRegion2D/Destructable" index="82" unique_id=461553508 instance=ExtResource("3_53edn")]
+position = Vector2(264, 40)
+metadata/_scene_painted = true
+
+[node name="Box85" parent="NavigationRegion2D/Destructable" index="83" unique_id=1248835277 instance=ExtResource("3_53edn")]
+position = Vector2(264, 56)
+metadata/_scene_painted = true
+
+[node name="Box86" parent="NavigationRegion2D/Destructable" index="84" unique_id=550735664 instance=ExtResource("3_53edn")]
+position = Vector2(264, 56)
+metadata/_scene_painted = true
+
+[node name="Box87" parent="NavigationRegion2D/Destructable" index="85" unique_id=1581004753 instance=ExtResource("3_53edn")]
+position = Vector2(264, 56)
+metadata/_scene_painted = true
+
+[node name="Box88" parent="NavigationRegion2D/Destructable" index="86" unique_id=1049846619 instance=ExtResource("3_53edn")]
+position = Vector2(264, 72)
+metadata/_scene_painted = true
+
+[node name="Box89" parent="NavigationRegion2D/Destructable" index="87" unique_id=1237672480 instance=ExtResource("3_53edn")]
+position = Vector2(264, 72)
+metadata/_scene_painted = true
+
+[node name="Box90" parent="NavigationRegion2D/Destructable" index="88" unique_id=102910190 instance=ExtResource("3_53edn")]
+position = Vector2(264, 88)
+metadata/_scene_painted = true
+
+[node name="Box91" parent="NavigationRegion2D/Destructable" index="89" unique_id=114474856 instance=ExtResource("3_53edn")]
+position = Vector2(264, 88)
+metadata/_scene_painted = true
+
+[node name="Box92" parent="NavigationRegion2D/Destructable" index="90" unique_id=1499496059 instance=ExtResource("3_53edn")]
+position = Vector2(280, 88)
+metadata/_scene_painted = true
+
+[node name="Box93" parent="NavigationRegion2D/Destructable" index="91" unique_id=1875580678 instance=ExtResource("3_53edn")]
+position = Vector2(280, 88)
+metadata/_scene_painted = true
+
+[node name="Box94" parent="NavigationRegion2D/Destructable" index="92" unique_id=1606670591 instance=ExtResource("3_53edn")]
+position = Vector2(328, 88)
+metadata/_scene_painted = true
+
+[node name="Box95" parent="NavigationRegion2D/Destructable" index="93" unique_id=299221991 instance=ExtResource("3_53edn")]
+position = Vector2(344, 88)
+metadata/_scene_painted = true
+
+[node name="Box96" parent="NavigationRegion2D/Destructable" index="94" unique_id=1339571999 instance=ExtResource("3_53edn")]
+position = Vector2(360, 88)
+metadata/_scene_painted = true
+
+[node name="Box97" parent="NavigationRegion2D/Destructable" index="95" unique_id=1571245538 instance=ExtResource("3_53edn")]
+position = Vector2(392, 88)
+metadata/_scene_painted = true
+
+[node name="Box98" parent="NavigationRegion2D/Destructable" index="96" unique_id=1916169156 instance=ExtResource("3_53edn")]
+position = Vector2(408, 88)
+metadata/_scene_painted = true
+
+[node name="Box99" parent="NavigationRegion2D/Destructable" index="97" unique_id=854460393 instance=ExtResource("3_53edn")]
+position = Vector2(440, 88)
+metadata/_scene_painted = true
+
+[node name="Box100" parent="NavigationRegion2D/Destructable" index="98" unique_id=1910883144 instance=ExtResource("3_53edn")]
+position = Vector2(456, 88)
+metadata/_scene_painted = true
+
+[node name="Box101" parent="NavigationRegion2D/Destructable" index="99" unique_id=2053795159 instance=ExtResource("3_53edn")]
+position = Vector2(456, 88)
+metadata/_scene_painted = true
+
+[node name="Box102" parent="NavigationRegion2D/Destructable" index="100" unique_id=249208247 instance=ExtResource("3_53edn")]
+position = Vector2(456, 88)
+metadata/_scene_painted = true
+
+[node name="Box103" parent="NavigationRegion2D/Destructable" index="101" unique_id=563294908 instance=ExtResource("3_53edn")]
+position = Vector2(424, 88)
+metadata/_scene_painted = true
+
+[node name="Box104" parent="NavigationRegion2D/Destructable" index="102" unique_id=9196251 instance=ExtResource("3_53edn")]
+position = Vector2(296, 88)
+metadata/_scene_painted = true
+
+[node name="Box105" parent="NavigationRegion2D/Destructable" index="103" unique_id=1577434344 instance=ExtResource("3_53edn")]
+position = Vector2(312, 88)
+metadata/_scene_painted = true
+
+[node name="Box106" parent="NavigationRegion2D/Destructable" index="104" unique_id=626523344 instance=ExtResource("3_53edn")]
+position = Vector2(312, 88)
+metadata/_scene_painted = true
+
+[node name="Box107" parent="NavigationRegion2D/Destructable" index="105" unique_id=1570330694 instance=ExtResource("3_53edn")]
+position = Vector2(456, 168)
+metadata/_scene_painted = true
+
+[node name="Box108" parent="NavigationRegion2D/Destructable" index="106" unique_id=1686532179 instance=ExtResource("3_53edn")]
+position = Vector2(440, 168)
+metadata/_scene_painted = true
+
+[node name="Box109" parent="NavigationRegion2D/Destructable" index="107" unique_id=590497363 instance=ExtResource("3_53edn")]
+position = Vector2(408, 168)
+metadata/_scene_painted = true
+
+[node name="Box110" parent="NavigationRegion2D/Destructable" index="108" unique_id=906040592 instance=ExtResource("3_53edn")]
+position = Vector2(424, 168)
+metadata/_scene_painted = true
+
+[node name="Box111" parent="NavigationRegion2D/Destructable" index="109" unique_id=1701465239 instance=ExtResource("3_53edn")]
+position = Vector2(424, 168)
+metadata/_scene_painted = true
+
+[node name="Box112" parent="NavigationRegion2D/Destructable" index="110" unique_id=178638462 instance=ExtResource("3_53edn")]
+position = Vector2(408, 168)
+metadata/_scene_painted = true
+
+[node name="Box113" parent="NavigationRegion2D/Destructable" index="111" unique_id=1328524731 instance=ExtResource("3_53edn")]
+position = Vector2(376, 168)
+metadata/_scene_painted = true
+
+[node name="Box114" parent="NavigationRegion2D/Destructable" index="112" unique_id=713407584 instance=ExtResource("3_53edn")]
+position = Vector2(392, 168)
+metadata/_scene_painted = true
+
+[node name="Box115" parent="NavigationRegion2D/Destructable" index="113" unique_id=1717891987 instance=ExtResource("3_53edn")]
+position = Vector2(360, 168)
+metadata/_scene_painted = true
+
+[node name="Box116" parent="NavigationRegion2D/Destructable" index="114" unique_id=395702616 instance=ExtResource("3_53edn")]
+position = Vector2(360, 168)
+metadata/_scene_painted = true
+
+[node name="Box117" parent="NavigationRegion2D/Destructable" index="115" unique_id=2071149036 instance=ExtResource("3_53edn")]
+position = Vector2(360, 184)
+metadata/_scene_painted = true
+
+[node name="Box121" parent="NavigationRegion2D/Destructable" index="116" unique_id=794368633 instance=ExtResource("3_53edn")]
+position = Vector2(360, 232)
+metadata/_scene_painted = true
+
+[node name="Box122" parent="NavigationRegion2D/Destructable" index="117" unique_id=1888169202 instance=ExtResource("3_53edn")]
+position = Vector2(360, 248)
+metadata/_scene_painted = true
+
+[node name="Box123" parent="NavigationRegion2D/Destructable" index="118" unique_id=1472030973 instance=ExtResource("3_53edn")]
+position = Vector2(360, 248)
+metadata/_scene_painted = true
+
+[node name="Box124" parent="NavigationRegion2D/Destructable" index="119" unique_id=318816780 instance=ExtResource("3_53edn")]
+position = Vector2(360, 216)
+metadata/_scene_painted = true
+
+[node name="Box125" parent="NavigationRegion2D/Destructable" index="120" unique_id=1161770826 instance=ExtResource("3_53edn")]
+position = Vector2(360, 216)
+metadata/_scene_painted = true
+
+[node name="Box126" parent="NavigationRegion2D/Destructable" index="121" unique_id=49569454 instance=ExtResource("3_53edn")]
+position = Vector2(360, 200)
+metadata/_scene_painted = true
+
+[node name="Box118" parent="NavigationRegion2D/Destructable" index="122" unique_id=708987114 instance=ExtResource("3_53edn")]
+position = Vector2(376, 88)
+metadata/_scene_painted = true

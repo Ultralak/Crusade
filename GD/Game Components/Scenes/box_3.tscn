@@ -3,8 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://cgwjltaq0qvlb" path="res://Characters/Game Classes/box.tscn" id="1_yea0w"]
 [ext_resource type="Texture2D" uid="uid://cbprlb8ps7sit" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tiles/tile_0221.png" id="2_2ek38"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knyi4"]
+size = Vector2(17, 17.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yea0w"]
+resource_local_to_scene = true
+size = Vector2(10.5, 13)
+
 [node name="Box" unique_id=1185611550 instance=ExtResource("1_yea0w")]
 sprite_textures = Array[Texture2D]([ExtResource("2_2ek38")])
 
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(437174867) index="0" unique_id=355400070]
+position = Vector2(-0.5, 0.6875)
+shape = SubResource("RectangleShape2D_knyi4")
+
+[node name="Sprite2D" parent="." index="1" unique_id=273383467]
+texture = ExtResource("2_2ek38")
+
 [node name="NavigationObstacle2D" parent="." index="2" unique_id=1927262121]
+radius = 4.0
 vertices = PackedVector2Array(-4, -4, 5, -4, 5, 4, -4, 4)
+
+[node name="CollisionShape2D" parent="." index="3" unique_id=626683043]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_yea0w")

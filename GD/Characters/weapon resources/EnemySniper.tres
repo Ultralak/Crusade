@@ -15,5 +15,7 @@ damage_amount = 3.0
 critical_hit_chance = 0.0
 critical_hit_damage_multiplier = 0.0
 bullet_scene = ExtResource("1_g4y65")
+fire_rate = 3
+bullet_velocity = 200.0
 weapon_bloom = 5
 metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

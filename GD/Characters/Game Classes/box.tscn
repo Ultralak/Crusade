@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://8ixwhtjbc1ya" path="res://Characters/Game Classes/Destroyables.gd" id="1_61g0v"]
 
-[node name="Box" type="Node2D" unique_id=1185611550]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot5sy"]
+resource_local_to_scene = true
+size = Vector2(21, 26)
+
+[node name="Box" type="CharacterBody2D" unique_id=1584555066]
+collision_mask = 7
 script = ExtResource("1_61g0v")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=437174867]
@@ -15,5 +20,8 @@ collision_mask = 128
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1927262121]
 affect_navigation_mesh = true
 carve_navigation_mesh = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=626683043]
+shape = SubResource("RectangleShape2D_ot5sy")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

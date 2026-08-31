@@ -389,7 +389,7 @@ script = ExtResource("8_othkt")
 muzzle = NodePath("../../pivot")
 entity = NodePath("../..")
 FSM = NodePath("..")
-weapon = NodePath("../../weapon_rotate/ProjectileWeapon")
+weapon = NodePath("../../weapon_rotate/enemy_sniper")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="has_shot" type="Timer" parent="StateMachine/shoot" index="0" unique_id=2010598981]
@@ -412,10 +412,11 @@ script = ExtResource("13_5jbbf")
 entity = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="dead" type="Node" parent="StateMachine" index="9" unique_id=1645953202 node_paths=PackedStringArray("enemy", "Navigation_component", "animation_player")]
+[node name="dead" type="Node" parent="StateMachine" index="9" unique_id=1645953202 node_paths=PackedStringArray("enemy", "Navigation_component", "weapon", "animation_player")]
 script = ExtResource("14_0crro")
 enemy = NodePath("../..")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
+weapon = NodePath("../../weapon_rotate/enemy_sniper")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Test" parent="." index="5" unique_id=1726522527 node_paths=PackedStringArray("healthcomp", "FSM", "enemy")]
@@ -472,9 +473,12 @@ enemy = NodePath("..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation_Component_enemy" index="0" unique_id=604236777]
 navigation_layers = 2
+simplify_path = true
+simplify_epsilon = 2.0
 avoidance_enabled = true
 radius = 117.24
 max_speed = 1000.0
+debug_enabled = true
 
 [node name="CPUParticles2D" parent="." index="13" unique_id=1548876848 instance=ExtResource("22_4pllu")]
 
@@ -487,11 +491,11 @@ position = Vector2(0, -10)
 
 [node name="weapon_rotate" type="Node2D" parent="." index="17" unique_id=182039965 node_paths=PackedStringArray("weapon", "entity", "pivot")]
 script = ExtResource("23_knyi4")
-weapon = NodePath("ProjectileWeapon")
+weapon = NodePath("enemy_sniper")
 entity = NodePath("..")
 pivot = NodePath("../pivot")
 
-[node name="ProjectileWeapon" parent="weapon_rotate" index="0" unique_id=859750544 instance=ExtResource("23_2fpsw")]
+[node name="enemy_sniper" parent="weapon_rotate" index="0" unique_id=859750544 instance=ExtResource("23_2fpsw")]
 position = Vector2(8, 0)
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
