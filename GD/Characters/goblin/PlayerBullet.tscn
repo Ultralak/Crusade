@@ -2,12 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/Game Classes/Basic_Projectile.tscn" id="1_dcj6o"]
 [ext_resource type="Texture2D" uid="uid://b363gnowrj7ig" path="res://Old_Crusade_sidescroller/Enemies/Shooter/shot.png" id="2_2nvki"]
+[ext_resource type="Texture2D" uid="uid://1uyp00trnfvn" path="res://Art/Player Bullets/Player Bullets/P1 Bullet_Yellow.png" id="3_2nvki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
-size = Vector2(6, 4)
+size = Vector2(22.5, 6)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d1wpy"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa2gp"]
+size = Vector2(20, 6)
 
 [sub_resource type="Animation" id="Animation_dcj6o"]
 length = 0.001
@@ -48,6 +49,35 @@ _data = {
 &"idle": SubResource("Animation_2nvki")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg0rk"]
+atlas = ExtResource("3_2nvki")
+region = Rect2(0, 0, 6, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1wpy"]
+atlas = ExtResource("3_2nvki")
+region = Rect2(6, 0, 6, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b8g7"]
+atlas = ExtResource("3_2nvki")
+region = Rect2(12, 0, 6, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg0rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1wpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b8g7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}]
+
 [node name="PlayerBullet" unique_id=990992544 instance=ExtResource("1_dcj6o")]
 collision_mask = 16
 
@@ -56,6 +86,7 @@ position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_6pmnr")
 
 [node name="Sprite2D" parent="." index="1" unique_id=209185298]
+visible = false
 texture = ExtResource("2_2nvki")
 hframes = 2
 
@@ -63,7 +94,7 @@ hframes = 2
 collision_mask = 17
 
 [node name="CollisionShape2D" parent="AttackBox" index="0" unique_id=1925796586]
-shape = SubResource("CircleShape2D_d1wpy")
+shape = SubResource("RectangleShape2D_qa2gp")
 debug_color = Color(0.9092908, 0.00011243344, 0.73561233, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4" unique_id=1321422941]
@@ -72,3 +103,10 @@ libraries/ = SubResource("AnimationLibrary_cg0rk")
 [node name="DamageComponent" parent="." index="5" unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox")]
 entity = NodePath("..")
 attackbox = NodePath("../AttackBox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6" unique_id=429224690]
+rotation = -1.5707964
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_6pmnr")
+autoplay = "default"
+frame_progress = 0.39349318

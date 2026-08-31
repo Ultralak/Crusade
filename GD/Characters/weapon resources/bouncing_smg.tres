@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://d3i6y2sf5p71s"]
+
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_jl30y"]
+[ext_resource type="PackedScene" uid="uid://beceqe0ih8gyo" path="res://Characters/Game Classes/sine_bullet_purple.tscn" id="1_mxqww"]
+[ext_resource type="Texture2D" uid="uid://cp0wqxcxg1f5h" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0016.png" id="2_mxqww"]
+
+[resource]
+script = ExtResource("1_jl30y")
+weapon_sprite = ExtResource("2_mxqww")
+ground_sprite = ExtResource("2_mxqww")
+weapon_scene_path = "uid://dt4oyuo6v0qyy"
+penetration = 2
+damage_amount = 0.5
+critical_hit_chance = 50.0
+bullet_scene = ExtResource("1_mxqww")
+fire_rate = 7.5
+bullet_velocity = 200.0
+burst_count = 10
+burst_delay = 0.01
+energy_cost = 5
+recoil_distance = 3.0
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

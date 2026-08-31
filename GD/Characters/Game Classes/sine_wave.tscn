@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://tlqskavmi4y4"]
+
+[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/Game Classes/Basic_Projectile.tscn" id="1_nvll0"]
+[ext_resource type="Script" uid="uid://cs4y884quyci1" path="res://sine_wave.gd" id="2_13tqs"]
+
+[node name="sine_wave" unique_id=990992544 instance=ExtResource("1_nvll0")]
+script = ExtResource("2_13tqs")
+wave_frequency = 12.0
+wave_amplitude = 35.0
+
+[node name="AttackBox" parent="." index="3" unique_id=646875869]
+collision_mask = 9
+
+[node name="DamageComponent" parent="." index="4" unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox")]
+entity = NodePath("..")
+attackbox = NodePath("../AttackBox")

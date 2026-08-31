@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cpwh3snmg5fv3"]
+
+[ext_resource type="PackedScene" uid="uid://cuix80qoirkfe" path="res://Characters/Game Classes/cluster_projectile.tscn" id="1_a5fur"]
+[ext_resource type="PackedScene" uid="uid://50d26r56t71s" path="res://Characters/Game Classes/bullets/alter_normal.tscn" id="2_a3hrt"]
+[ext_resource type="Texture2D" uid="uid://jiv1v7up8wth" path="res://Art/Player Bullets/Player Bullets/P1_Bullet_Alt2.png" id="3_55pea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vuq5"]
+size = Vector2(13, 14)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f037w"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64rco"]
+atlas = ExtResource("3_55pea")
+region = Rect2(0, 0, 13, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulqbx"]
+atlas = ExtResource("3_55pea")
+region = Rect2(13, 0, 13, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64rco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulqbx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Cluster Alter" unique_id=990992544 instance=ExtResource("1_a5fur")]
+sub_projectile_scene = ExtResource("2_a3hrt")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_5vuq5")
+
+[node name="Sprite2D" parent="." index="1" unique_id=209185298]
+visible = false
+
+[node name="AttackBox" parent="." index="3" unique_id=646875869]
+collision_mask = 9
+
+[node name="CollisionShape2D" parent="AttackBox" index="0" unique_id=1925796586]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_f037w")
+debug_color = Color(0.62124604, 0.53429914, 1.92523e-07, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=1877289113]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_6pmnr")
+autoplay = "default"
+frame_progress = 0.47203055

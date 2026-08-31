@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://d32h6onri84tl"]
+
+[ext_resource type="PackedScene" uid="uid://cpwh3snmg5fv3" path="res://Characters/Game Classes/bullets/cluster_alter.tscn" id="1_b7bhp"]
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_rtdgh"]
+[ext_resource type="Texture2D" uid="uid://dkr5m1w3uee0q" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0017.png" id="2_71wb5"]
+
+[resource]
+script = ExtResource("1_rtdgh")
+name = "Launcher"
+weapon_sprite = ExtResource("2_71wb5")
+ground_sprite = ExtResource("2_71wb5")
+weapon_scene_path = "uid://dwi2wdgil6axk"
+damage_amount = 5.0
+bullet_scene = ExtResource("1_b7bhp")
+bullet_velocity = 200.0
+burst_count = 3
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

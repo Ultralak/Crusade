@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cuix80qoirkfe"]
+
+[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/Game Classes/Basic_Projectile.tscn" id="1_xaqmx"]
+[ext_resource type="Script" uid="uid://djylg1b0khdgb" path="res://cluster_projectile.gd" id="2_vairm"]
+
+[node name="Cluster Projectile" unique_id=990992544 instance=ExtResource("1_xaqmx")]
+script = ExtResource("2_vairm")
+sub_projectile_scene = null
+cluster_count = 6
+damage_multiplier = 0.5
+
+[node name="DamageComponent" parent="." index="4" unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox")]
+entity = NodePath("..")
+attackbox = NodePath("../AttackBox")

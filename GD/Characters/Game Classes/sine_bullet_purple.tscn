@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://beceqe0ih8gyo"]
+
+[ext_resource type="PackedScene" uid="uid://tlqskavmi4y4" path="res://Characters/Game Classes/sine_wave.tscn" id="1_0uc4h"]
+[ext_resource type="Texture2D" uid="uid://bwp2rqybxtisg" path="res://Art/24StaticGenericProjectiles Spreadsheet.png" id="2_kerqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxqww"]
+size = Vector2(4.0742188, 3.2714844)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o2csm"]
+radius = 3.0
+
+[node name="sine_wave" unique_id=990992544 instance=ExtResource("1_0uc4h")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_mxqww")
+
+[node name="Sprite2D" parent="." index="1" unique_id=209185298]
+texture = ExtResource("2_kerqn")
+hframes = 5
+vframes = 5
+frame = 5
+
+[node name="CollisionShape2D" parent="AttackBox" parent_id_path=PackedInt32Array(646875869) index="0" unique_id=1925796586]
+shape = SubResource("CircleShape2D_o2csm")

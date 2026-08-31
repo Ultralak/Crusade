@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://cecj4xb8s3yjv"]
 
 [ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_7fgoq"]
-[ext_resource type="PackedScene" uid="uid://dnp5m1f3wnim6" path="res://Characters/Game Classes/smg_projectile.tscn" id="1_skaev"]
+[ext_resource type="PackedScene" uid="uid://dnp5m1f3wnim6" path="res://Characters/Game Classes/bullets/smg_projectile.tscn" id="1_skaev"]
 [ext_resource type="Texture2D" uid="uid://dlf5ul3puutbl" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0002.png" id="2_fjeud"]
 
 [resource]

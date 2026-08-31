@@ -45,5 +45,5 @@ func layer_damage_player()->void:
 
 
 func _on_attack_box_body_entered(body : Node2D) -> void:
-	if body is TileMapLayer:
+	if body is TileMapLayer or (body is CharacterBody2D and !body.is_in_group("ENEMY")):
 		call_deferred("queue_free")

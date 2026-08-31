@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://y46fhxkrc5wu"]
+
+[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/Game Classes/Basic_Projectile.tscn" id="1_y6m8f"]
+[ext_resource type="PackedScene" uid="uid://bpi43pdjj0swm" path="res://Characters/Game Classes/bullet_trail.tscn" id="2_f2kqa"]
+[ext_resource type="Texture2D" uid="uid://dsn4c48pvqrhq" path="res://Art/Player Bullets/Player Bullets/P1 Bullet _Thinier_BermudaGreen.png" id="3_atu0h"]
+[ext_resource type="PackedScene" uid="uid://cqxicjgd7nwq6" path="res://Characters/Game Classes/bullets/sniper_line_2d.tscn" id="4_cwcaa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k86q8"]
+size = Vector2(5, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tri2k"]
+radius = 4.0
+height = 22.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwcaa"]
+atlas = ExtResource("3_atu0h")
+region = Rect2(0, 0, 6, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdcyc"]
+atlas = ExtResource("3_atu0h")
+region = Rect2(6, 0, 6, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jmvq"]
+atlas = ExtResource("3_atu0h")
+region = Rect2(12, 0, 6, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwcaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdcyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jmvq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_cwcaa"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.17525773, 0.48969072, 0.8814433)
+colors = PackedColorArray(0.70980394, 0.30980393, 0.6392157, 0.25882354, 0.015686275, 0.54901963, 0.5686275, 1, 0.08627451, 1, 0.6509804, 1)
+
+[node name="Player_sniper" unique_id=990992544 instance=ExtResource("1_y6m8f")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
+position = Vector2(0, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_k86q8")
+
+[node name="AttackBox" parent="." index="3" unique_id=646875869]
+rotation = 1.5707964
+collision_mask = 9
+
+[node name="CollisionShape2D" parent="AttackBox" index="0" unique_id=1925796586]
+shape = SubResource("CapsuleShape2D_tri2k")
+debug_color = Color(0.9537192, 0.21786791, 1.1551381e-06, 0.41960785)
+
+[node name="DamageComponent" parent="." index="4" unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox")]
+entity = NodePath("..")
+attackbox = NodePath("../AttackBox")
+
+[node name="BulletTrail" parent="." index="5" unique_id=1362041451 node_paths=PackedStringArray("entity", "line") instance=ExtResource("2_f2kqa")]
+entity = NodePath("..")
+line = NodePath("../saved scene")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6" unique_id=1219554120]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_6pmnr")
+autoplay = "default"
+
+[node name="saved scene" parent="." index="7" unique_id=1527856420 instance=ExtResource("4_cwcaa")]
+width = 4.0
+gradient = SubResource("Gradient_cwcaa")

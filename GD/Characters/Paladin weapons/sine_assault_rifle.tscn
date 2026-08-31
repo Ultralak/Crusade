@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://chlm6ek3hpsb8"]
+
+[ext_resource type="PackedScene" uid="uid://duoetiog44jd8" path="res://Characters/Game Classes/projectile_weapon.tscn" id="1_hqeo5"]
+[ext_resource type="Resource" uid="uid://ck4spnbd5ubr0" path="res://Characters/weapon resources/sine_assault.tres" id="2_6lbsl"]
+[ext_resource type="Texture2D" uid="uid://db17fpdgde4o0" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0015.png" id="2_x4se7"]
+
+[node name="Sine Assault rifle" unique_id=859750544 instance=ExtResource("1_hqeo5")]
+weapon_data = ExtResource("2_6lbsl")
+
+[node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
+position = Vector2(9, -1)
+
+[node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
+texture = ExtResource("2_x4se7")

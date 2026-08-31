@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cqxicjgd7nwq6"]
+
+[sub_resource type="Curve" id="Curve_burgw"]
+_data = [Vector2(0, 0.22222221), 0.0, 0.0, 0, 0, Vector2(0.99693245, 0.8253968), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7ri5p"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.17525773, 0.48969072, 0.8814433)
+colors = PackedColorArray(0.70980394, 0.30980393, 0.6392157, 0.25882354, 0.09803922, 0.35686275, 0.5137255, 1, 0.22352941, 0.78431374, 0.79607844, 1)
+
+[node name="Line2D" type="Line2D" unique_id=1527856420]
+top_level = true
+width = 2.0
+width_curve = SubResource("Curve_burgw")
+gradient = SubResource("Gradient_7ri5p")

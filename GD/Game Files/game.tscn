@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dg3log4jn1tj8" path="res://Game Components/Scenes/box_3.tscn" id="12_1ocos"]
 [ext_resource type="PackedScene" uid="uid://bkt8v1a0pvbmm" path="res://Characters/Paladin weapons/m_249_shotgun.tscn" id="13_j3jbs"]
 [ext_resource type="PackedScene" uid="uid://dvpi3jcoy6obr" path="res://Characters/Paladin weapons/lockwood.tscn" id="14_kofko"]
+[ext_resource type="PackedScene" uid="uid://crg2q2g106wdy" path="res://Characters/Paladin weapons/little_bloom_shotgun.tscn" id="15_pywuv"]
+[ext_resource type="PackedScene" uid="uid://dt4oyuo6v0qyy" path="res://Characters/Paladin weapons/sine_burst.tscn" id="16_8s325"]
 
 [sub_resource type="Environment" id="Environment_cxjdc"]
 background_mode = 1
@@ -83,3 +85,9 @@ position = Vector2(70, 283)
 
 [node name="lockwood" parent="." unique_id=350413332 instance=ExtResource("14_kofko")]
 position = Vector2(107, 301)
+
+[node name="little_bloom_shotgun" parent="." unique_id=1529764283 instance=ExtResource("15_pywuv")]
+position = Vector2(23.829353, 301.25848)
+
+[node name="sine_burst" parent="." unique_id=370786067 instance=ExtResource("16_8s325")]
+position = Vector2(154.8755, 335.6104)

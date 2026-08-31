@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://ni57kusignki"]
+
+[ext_resource type="PackedScene" uid="uid://tlqskavmi4y4" path="res://Characters/Game Classes/sine_wave.tscn" id="1_ygoi4"]
+[ext_resource type="Texture2D" uid="uid://br1s73pseriai" path="res://Art/Player Bullets/Player Bullets/P1_Bullet_Hit.png" id="2_i6snl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opslm"]
+size = Vector2(12, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygoi4"]
+size = Vector2(15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0k2p"]
+atlas = ExtResource("2_i6snl")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utnqq"]
+atlas = ExtResource("2_i6snl")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goqwc"]
+atlas = ExtResource("2_i6snl")
+region = Rect2(28, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr2bm"]
+atlas = ExtResource("2_i6snl")
+region = Rect2(42, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w567"]
+atlas = ExtResource("2_i6snl")
+region = Rect2(56, 0, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0k2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utnqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goqwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr2bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w567")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="sine_wave" unique_id=990992544 instance=ExtResource("1_ygoi4")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_opslm")
+
+[node name="Sprite2D" parent="." index="1" unique_id=209185298]
+visible = false
+
+[node name="CollisionShape2D" parent="AttackBox" parent_id_path=PackedInt32Array(646875869) index="0" unique_id=1925796586]
+shape = SubResource("RectangleShape2D_ygoi4")
+debug_color = Color(0.9347082, 2.1273792e-05, 0.641507, 0.41960785)
+
+[node name="DamageComponent" parent="." index="4" unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox")]
+entity = NodePath("..")
+attackbox = NodePath("../AttackBox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=839628559]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_6pmnr")
+autoplay = "default"

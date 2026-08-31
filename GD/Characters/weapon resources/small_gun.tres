@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://k67n43oicciv"]
+
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_7m3io"]
+[ext_resource type="PackedScene" uid="uid://dnp5m1f3wnim6" path="res://Characters/Game Classes/bullets/smg_projectile.tscn" id="1_uuuwn"]
+[ext_resource type="Texture2D" uid="uid://dq4aswjiirjf6" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0010.png" id="2_lw4t5"]
+
+[resource]
+script = ExtResource("1_7m3io")
+name = "Small Gun"
+description = "- petite weapon"
+weapon_sprite = ExtResource("2_lw4t5")
+ground_sprite = ExtResource("2_lw4t5")
+weapon_scene_path = "uid://dti842vnftuvs"
+damage_amount = 2.0
+critical_hit_chance = 0.0
+bullet_scene = ExtResource("1_uuuwn")
+fire_rate = 10.0
+bullet_velocity = 300.0
+energy_cost = 0
+recoil_distance = 2.0
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

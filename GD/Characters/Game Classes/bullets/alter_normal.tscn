@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://50d26r56t71s"]
+
+[ext_resource type="PackedScene" uid="uid://c2dxnaou5uqe3" path="res://Characters/Game Classes/Basic_Projectile.tscn" id="1_mfyb1"]
+[ext_resource type="Texture2D" uid="uid://jiv1v7up8wth" path="res://Art/Player Bullets/Player Bullets/P1_Bullet_Alt2.png" id="2_qbcoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hvax"]
+size = Vector2(15.8515625, 12)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvfbe"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfyb1"]
+atlas = ExtResource("2_qbcoy")
+region = Rect2(0, 0, 13, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbcoy"]
+atlas = ExtResource("2_qbcoy")
+region = Rect2(13, 0, 13, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pmnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfyb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbcoy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="alter normal" unique_id=990992544 instance=ExtResource("1_mfyb1")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
+position = Vector2(1.9257813, 0)
+shape = SubResource("RectangleShape2D_0hvax")
+
+[node name="Sprite2D" parent="." index="1" unique_id=209185298]
+visible = false
+texture = ExtResource("2_qbcoy")
+hframes = 2
+frame = 1
+
+[node name="AttackBox" parent="." index="3" unique_id=646875869]
+collision_mask = 9
+
+[node name="CollisionShape2D" parent="AttackBox" index="0" unique_id=1925796586]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xvfbe")
+debug_color = Color(8.904189e-07, 0.6473082, 0.22286743, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=882788717]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_6pmnr")
+autoplay = "default"
+frame = 1
+frame_progress = 0.30051908

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://ck4spnbd5ubr0"]
+
+[ext_resource type="PackedScene" uid="uid://ni57kusignki" path="res://Characters/Game Classes/bullets/sine_bullet.tscn" id="1_54oq1"]
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_l7yc3"]
+[ext_resource type="Texture2D" uid="uid://db17fpdgde4o0" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0015.png" id="2_525sg"]
+
+[resource]
+script = ExtResource("1_l7yc3")
+name = "Sine wave assault rifle"
+weapon_sprite = ExtResource("2_525sg")
+ground_sprite = ExtResource("2_525sg")
+weapon_scene_path = "uid://chlm6ek3hpsb8"
+penetration = 3
+damage_amount = 2.0
+bullet_scene = ExtResource("1_54oq1")
+fire_rate = 20.0
+weapon_bloom = 3
+energy_cost = 15
+recoil_distance = 7.0
+recoil_duration = 0.2
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dilyhohsnkdlw"]
+
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_5uaba"]
+[ext_resource type="PackedScene" uid="uid://clm3d5eiagjp3" path="res://Characters/goblin/PlayerBullet.tscn" id="1_cly6h"]
+[ext_resource type="Texture2D" uid="uid://brnk3nx1dam1u" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0014.png" id="2_ootr7"]
+
+[resource]
+script = ExtResource("1_5uaba")
+name = "automatic shotgun"
+weapon_sprite = ExtResource("2_ootr7")
+ground_sprite = ExtResource("2_ootr7")
+weapon_scene_path = "uid://crg2q2g106wdy"
+penetration = 2
+damage_amount = 1.5
+critical_hit_chance = 0.0
+knockback_force = 50.0
+bullet_scene = ExtResource("1_cly6h")
+fire_rate = 10.0
+bullet_velocity = 500.0
+weapon_bloom = 10
+pellets_per_shot = 10
+energy_cost = 15
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

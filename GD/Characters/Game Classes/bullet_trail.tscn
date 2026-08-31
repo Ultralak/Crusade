@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bpi43pdjj0swm"]
+
+[ext_resource type="Script" uid="uid://cekd56th51s45" path="res://Characters/goblin/bullet_trail.gd" id="1_72a6q"]
+
+[node name="BulletTrail" type="Node2D" unique_id=1362041451 node_paths=PackedStringArray("line")]
+script = ExtResource("1_72a6q")
+line = NodePath("")

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bs7l821ldq03s"]
+
+[ext_resource type="PackedScene" uid="uid://du0hhsvvi56f0" path="res://Characters/Game Classes/bounce_projectile.tscn" id="1_86t7j"]
+[ext_resource type="PackedScene" uid="uid://bpi43pdjj0swm" path="res://Characters/Game Classes/bullet_trail.tscn" id="2_vr0ay"]
+[ext_resource type="PackedScene" uid="uid://cqxicjgd7nwq6" path="res://Characters/Game Classes/bullets/sniper_line_2d.tscn" id="3_y5fl3"]
+[ext_resource type="Texture2D" uid="uid://bwp2rqybxtisg" path="res://Art/24StaticGenericProjectiles Spreadsheet.png" id="4_ffrs7"]
+
+[sub_resource type="Gradient" id="Gradient_86t7j"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.17525773, 0.5265958, 0.8814433)
+colors = PackedColorArray(0.70980394, 0.30980393, 0.6392157, 0.25882354, 1, 0.3882353, 0.8901961, 1, 0.62352943, 0.12941177, 0.5294118, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epe0v"]
+size = Vector2(4, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0g0d"]
+radius = 3.1622777
+
+[node name="bouncing smg" unique_id=990992544 instance=ExtResource("1_86t7j")]
+
+[node name="BulletTrail" parent="." index="0" unique_id=1362041451 node_paths=PackedStringArray("entity", "line") instance=ExtResource("2_vr0ay")]
+entity = NodePath("..")
+line = NodePath("Line2D")
+
+[node name="Line2D" parent="BulletTrail" index="0" unique_id=1527856420 instance=ExtResource("3_y5fl3")]
+gradient = SubResource("Gradient_86t7j")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1549141753]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_epe0v")
+
+[node name="Sprite2D" parent="." index="2" unique_id=209185298]
+texture = ExtResource("4_ffrs7")
+hframes = 5
+vframes = 5
+frame = 5
+
+[node name="CollisionShape2D" parent="AttackBox" parent_id_path=PackedInt32Array(646875869) index="0" unique_id=1925796586]
+shape = SubResource("CircleShape2D_e0g0d")
+
+[node name="DamageComponent" parent="." index="5" unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox")]
+entity = NodePath("..")
+attackbox = NodePath("../AttackBox")

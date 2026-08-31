@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dwi2wdgil6axk"]
+
+[ext_resource type="PackedScene" uid="uid://duoetiog44jd8" path="res://Characters/Game Classes/projectile_weapon.tscn" id="1_a5jx0"]
+[ext_resource type="Resource" uid="uid://d32h6onri84tl" path="res://Characters/weapon resources/launcher.tres" id="2_0pxwa"]
+[ext_resource type="Texture2D" uid="uid://dkr5m1w3uee0q" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0017.png" id="2_y67x1"]
+
+[node name="launcher" unique_id=859750544 instance=ExtResource("1_a5jx0")]
+weapon_data = ExtResource("2_0pxwa")
+
+[node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
+position = Vector2(7, -2)
+
+[node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
+texture = ExtResource("2_y67x1")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dvptqa555sir6"]
+
+[ext_resource type="PackedScene" uid="uid://duoetiog44jd8" path="res://Characters/Game Classes/projectile_weapon.tscn" id="1_q3tcx"]
+[ext_resource type="Texture2D" uid="uid://cuww1atdew0bx" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0012.png" id="2_es8fu"]
+[ext_resource type="Resource" uid="uid://c2u5gp3bu4w4i" path="res://Characters/weapon resources/sine_burst.tres" id="2_pb4cq"]
+
+[node name="Bouncing Smg Gun" unique_id=859750544 instance=ExtResource("1_q3tcx")]
+weapon_data = ExtResource("2_pb4cq")
+
+[node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
+position = Vector2(7, -2)
+
+[node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
+texture = ExtResource("2_es8fu")
