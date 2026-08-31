@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dvpi3jcoy6obr"]
+
+[ext_resource type="PackedScene" uid="uid://cth3vp0nvvkcb" path="res://Characters/Game Classes/shot_gun_weapon.tscn" id="1_0criw"]
+[ext_resource type="Resource" uid="uid://dpwn11k3lh17a" path="res://Characters/weapon resources/normal_shotgun.tres" id="2_5e3lw"]
+[ext_resource type="Texture2D" uid="uid://c4dy4gqtaa5ho" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0007.png" id="2_t3f30"]
+
+[node name="lockwood" unique_id=859750544 instance=ExtResource("1_0criw")]
+weapon_data = ExtResource("2_5e3lw")
+
+[node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
+position = Vector2(8, -1)
+
+[node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
+texture = ExtResource("2_t3f30")

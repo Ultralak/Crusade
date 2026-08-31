@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dpwn11k3lh17a"]
+
+[ext_resource type="PackedScene" uid="uid://clm3d5eiagjp3" path="res://Characters/goblin/PlayerBullet.tscn" id="1_7gxcj"]
+[ext_resource type="Texture2D" uid="uid://c4dy4gqtaa5ho" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0007.png" id="1_iy5yy"]
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_sw46n"]
+
+[resource]
+script = ExtResource("1_sw46n")
+name = "SHOTGUN"
+description = "Devastating Firepower"
+weapon_sprite = ExtResource("1_iy5yy")
+ground_sprite = ExtResource("1_iy5yy")
+weapon_scene_path = "uid://dvpi3jcoy6obr"
+damage_amount = 5.0
+critical_hit_chance = 45.0
+critical_hit_damage_multiplier = 1.5
+bullet_scene = ExtResource("1_7gxcj")
+fire_rate = 3.0
+weapon_bloom = 15
+pellets_per_shot = 5
+recoil_distance = 10.0
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

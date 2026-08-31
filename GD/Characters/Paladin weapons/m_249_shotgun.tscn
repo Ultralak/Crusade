@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bkt8v1a0pvbmm"]
+
+[ext_resource type="PackedScene" uid="uid://cth3vp0nvvkcb" path="res://Characters/Game Classes/shot_gun_weapon.tscn" id="1_eqd48"]
+[ext_resource type="Resource" uid="uid://ds30ulhanpgua" path="res://Characters/weapon resources/automatic_shotgun.tres" id="2_gt7vs"]
+[ext_resource type="Texture2D" uid="uid://by7g447hgevd" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0004.png" id="2_qoueg"]
+
+[node name="m249 shotgun Automatic" unique_id=859750544 instance=ExtResource("1_eqd48")]
+weapon_data = ExtResource("2_gt7vs")
+
+[node name="muzzle" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="0" unique_id=940464424]
+position = Vector2(9, -3)
+
+[node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
+texture = ExtResource("2_qoueg")

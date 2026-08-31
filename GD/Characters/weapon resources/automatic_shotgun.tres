@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://ds30ulhanpgua"]
+
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_h6mwx"]
+[ext_resource type="PackedScene" uid="uid://clm3d5eiagjp3" path="res://Characters/goblin/PlayerBullet.tscn" id="1_uhhfp"]
+[ext_resource type="Texture2D" uid="uid://by7g447hgevd" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0004.png" id="2_clch7"]
+
+[resource]
+script = ExtResource("1_h6mwx")
+name = "Automatic shotgun"
+description = "use this to evaporate your enemy into pieces"
+weapon_sprite = ExtResource("2_clch7")
+ground_sprite = ExtResource("2_clch7")
+weapon_scene_path = "uid://bkt8v1a0pvbmm"
+penetration = 2
+damage_amount = 1.0
+bullet_scene = ExtResource("1_uhhfp")
+fire_rate = 10.0
+bullet_velocity = 450.0
+weapon_bloom = 40
+pellets_per_shot = 3
+burst_delay = 0.09999999999999999
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

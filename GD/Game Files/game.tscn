@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ck77ffvlp8n3k" path="res://Game Components/Scenes/Box_1.tscn" id="9_y0mmi"]
 [ext_resource type="PackedScene" uid="uid://h5mybqympw6s" path="res://Game Components/Scenes/box_2.tscn" id="11_xah7n"]
 [ext_resource type="PackedScene" uid="uid://dg3log4jn1tj8" path="res://Game Components/Scenes/box_3.tscn" id="12_1ocos"]
+[ext_resource type="PackedScene" uid="uid://bkt8v1a0pvbmm" path="res://Characters/Paladin weapons/m_249_shotgun.tscn" id="13_j3jbs"]
+[ext_resource type="PackedScene" uid="uid://dvpi3jcoy6obr" path="res://Characters/Paladin weapons/lockwood.tscn" id="14_kofko"]
 
 [sub_resource type="Environment" id="Environment_cxjdc"]
 background_mode = 1
@@ -75,3 +77,9 @@ position = Vector2(174, 284)
 
 [node name="Box2" parent="." unique_id=778149820 instance=ExtResource("12_1ocos")]
 position = Vector2(269, 280)
+
+[node name="m249 shotgun Automatic" parent="." unique_id=165845016 instance=ExtResource("13_j3jbs")]
+position = Vector2(70, 283)
+
+[node name="lockwood" parent="." unique_id=350413332 instance=ExtResource("14_kofko")]
+position = Vector2(107, 301)
