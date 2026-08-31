@@ -7,23 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://cqxicjgd7nwq6" path="res://Characters/Game Classes/bullets/sniper_line_2d.tscn" id="5_1uxtj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwlt8"]
-size = Vector2(12, 4)
+size = Vector2(6.272854, 5.5973625)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_burgw"]
-radius = 2.0
-height = 10.0
+radius = 5.0
+height = 12.0
 
 [sub_resource type="Gradient" id="Gradient_1uxtj"]
 resource_local_to_scene = true
-offsets = PackedFloat32Array(0.17525773, 0.48969072, 0.8814433)
-colors = PackedColorArray(0.70980394, 0.30980393, 0.6392157, 0.25882354, 0.09803922, 0.35686275, 0.5137255, 1, 0.22352941, 0.78431374, 0.79607844, 1)
+offsets = PackedFloat32Array(0.10702341, 0.2575251, 0.5451505, 0.8814433)
+colors = PackedColorArray(0.25490198, 0.023529412, 0.023529412, 0.3764706, 0.25490198, 0.023529412, 0.023529412, 1, 0.9764706, 0.36078432, 0.36078432, 1, 0.94509804, 0.27058825, 0.27058825, 1)
 
 [node name="sniper_projectile" unique_id=990992544 groups=["ENEMY"] instance=ExtResource("1_p7ctm")]
 collision_mask = 0
 script = ExtResource("2_1uxtj")
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
-visible = false
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_qwlt8")
 
 [node name="Sprite2D" parent="." index="1" unique_id=209185298]
@@ -31,7 +31,7 @@ rotation = 1.5707964
 texture = ExtResource("3_0hvax")
 hframes = 5
 vframes = 5
-frame = 11
+frame = 15
 
 [node name="AttackBox" parent="." index="3" unique_id=646875869]
 collision_mask = 9
@@ -42,13 +42,10 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_burgw")
 debug_color = Color(0.9782464, 0, 0.40147218, 0.41960785)
 
-[node name="DamageComponent" parent="." index="4" unique_id=87847977 node_paths=PackedStringArray("entity", "attackbox")]
-entity = NodePath("..")
-attackbox = NodePath("../AttackBox")
-
 [node name="BulletTrail" parent="." index="5" unique_id=1362041451 node_paths=PackedStringArray("entity", "line") instance=ExtResource("4_p7ctm")]
 entity = NodePath("..")
 line = NodePath("Line2D2")
 
 [node name="Line2D2" parent="BulletTrail" index="0" unique_id=1527856420 instance=ExtResource("5_1uxtj")]
+width = 4.0
 gradient = SubResource("Gradient_1uxtj")

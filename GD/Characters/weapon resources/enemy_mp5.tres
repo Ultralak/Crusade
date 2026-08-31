@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://udlraxevjnyd"]
+
+[ext_resource type="Texture2D" uid="uid://bdsaxcojlv1my" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0006.png" id="1_ll7yd"]
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_saror"]
+[ext_resource type="PackedScene" uid="uid://cxlklukg0l144" path="res://Characters/goblin/sniper_projectile.tscn" id="1_tgl2n"]
+
+[resource]
+script = ExtResource("1_saror")
+weapon_sprite = ExtResource("1_ll7yd")
+ground_sprite = ExtResource("1_ll7yd")
+damage_amount = 4.0
+critical_hit_chance = 0.0
+critical_hit_damage_multiplier = 0.0
+bullet_scene = ExtResource("1_tgl2n")
+fire_rate = 20.0
+bullet_velocity = 150.0
+weapon_bloom = 10
+burst_count = 5
+burst_delay = 0.09999999999999999
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

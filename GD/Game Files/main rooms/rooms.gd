@@ -4,7 +4,7 @@ const SPAWN_EXPLOSION_SCENE : PackedScene = preload("res://Game Files/character_
 enum ENEMYTYPE {FLYING, RANGE}
 const ENEMY_SCENES: Dictionary[ENEMYTYPE,PackedScene] = {
 		ENEMYTYPE.FLYING : preload("res://Characters/flying Animal/flyingEnemy.tscn")
-		,ENEMYTYPE.RANGE : preload("res://Characters/goblin/goblin.tscn")
+		,ENEMYTYPE.RANGE : preload("res://Characters/goblin/sniper_enemy.tscn")
 }
 
 var num_enemies: int

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://bhrqu54hve0ip"]
+
+[ext_resource type="PackedScene" uid="uid://di063laa36xqd" path="res://Characters/Game Classes/bullets/enemy_bouncing.tscn" id="1_5fogj"]
+[ext_resource type="Script" uid="uid://bqh3ttj6fhtsf" path="res://Characters/resources/WeaponData.gd" id="1_gh678"]
+[ext_resource type="Texture2D" uid="uid://c4dy4gqtaa5ho" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0007.png" id="2_qw5nl"]
+
+[resource]
+script = ExtResource("1_gh678")
+name = "Enemy shotgun"
+weapon_sprite = ExtResource("2_qw5nl")
+ground_sprite = ExtResource("2_qw5nl")
+damage_amount = 1.0
+critical_hit_chance = 0.0
+critical_hit_damage_multiplier = 0.0
+bullet_scene = ExtResource("1_5fogj")
+bullet_velocity = 100.0
+weapon_bloom = 50
+pellets_per_shot = 7
+metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

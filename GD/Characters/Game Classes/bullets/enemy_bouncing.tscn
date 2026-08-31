@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://di063laa36xqd"]
+
+[ext_resource type="PackedScene" uid="uid://du0hhsvvi56f0" path="res://Characters/Game Classes/bounce_projectile.tscn" id="1_2vb5q"]
+[ext_resource type="Texture2D" uid="uid://bwp2rqybxtisg" path="res://Art/24StaticGenericProjectiles Spreadsheet.png" id="2_e30cg"]
+[ext_resource type="PackedScene" uid="uid://bpi43pdjj0swm" path="res://Characters/Game Classes/bullet_trail.tscn" id="3_wv26w"]
+[ext_resource type="PackedScene" uid="uid://cqxicjgd7nwq6" path="res://Characters/Game Classes/bullets/sniper_line_2d.tscn" id="4_ot3ns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv26w"]
+size = Vector2(6.1484375, 5.0859375)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ot3ns"]
+radius = 4.1231055
+
+[sub_resource type="Gradient" id="Gradient_q8whg"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.17525773, 0.5117057, 0.8814433)
+colors = PackedColorArray(0.70980394, 0.30980393, 0.6392157, 0.25882354, 0.49019608, 0.05882353, 0.05882353, 1, 0.8980392, 0.21176471, 0.21176471, 1)
+
+[node name="enemy_bouncing" unique_id=990992544 instance=ExtResource("1_2vb5q")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1549141753]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_wv26w")
+
+[node name="Sprite2D" parent="." index="1" unique_id=209185298]
+rotation = 1.5707964
+texture = ExtResource("2_e30cg")
+hframes = 5
+vframes = 5
+frame = 13
+
+[node name="CollisionShape2D" parent="AttackBox" parent_id_path=PackedInt32Array(646875869) index="0" unique_id=1925796586]
+shape = SubResource("CircleShape2D_ot3ns")
+
+[node name="BulletTrail" parent="." index="5" unique_id=1362041451 node_paths=PackedStringArray("entity", "line") instance=ExtResource("3_wv26w")]
+entity = NodePath("..")
+line = NodePath("Line2D")
+
+[node name="Line2D" parent="BulletTrail" index="0" unique_id=1527856420 instance=ExtResource("4_ot3ns")]
+gradient = SubResource("Gradient_q8whg")

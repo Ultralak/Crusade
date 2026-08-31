@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://crssqbqbrfyj5"]
+
+[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/general.tscn" id="1_b4g5q"]
+[ext_resource type="Texture2D" uid="uid://bcqxu03kcy7pw" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Players/Tiles/tile_0008.png" id="2_o8c2j"]
+[ext_resource type="Shader" uid="uid://dw2g1tunky0ih" path="res://Characters/Game Classes/bullets/hit_flash_new.tres" id="2_sg4ja"]
+[ext_resource type="PackedScene" uid="uid://bt0vq4iuqgar2" path="res://Characters/Paladin weapons/enemy_mp_5.tscn" id="4_sg4ja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4o7bv"]
+shader = ExtResource("2_sg4ja")
+shader_parameter/Hit_flash_on = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_sg4ja"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_iipgr"]
+parameter_name = "Hit_flash_on"
+default_value = true
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_xoflu"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0shy4"]
+input_name = "color"
+
+[sub_resource type="VisualShader" id="VisualShader_br1xj"]
+resource_local_to_scene = true
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(180, 60)
+nodes/fragment/0/position = Vector2(580, 260)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_sg4ja")
+nodes/fragment/2/position = Vector2(-140, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_iipgr")
+nodes/fragment/3/position = Vector2(140, 160)
+nodes/fragment/4/node = SubResource("VisualShaderNodeIf_xoflu")
+nodes/fragment/4/position = Vector2(400, 340)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_0shy4")
+nodes/fragment/5/position = Vector2(-160, 440)
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 3, 0, 4, 0, 2, 0, 4, 3, 5, 0, 4, 4, 5, 0, 4, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qun7e"]
+resource_local_to_scene = true
+shader = SubResource("VisualShader_br1xj")
+shader_parameter/Hit_flash_on = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[node name="assault_enemy" unique_id=246556358 instance=ExtResource("1_b4g5q")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1043512702]
+material = SubResource("ShaderMaterial_4o7bv")
+texture = ExtResource("2_o8c2j")
+
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=1501961513]
+material = SubResource("ShaderMaterial_qun7e")
+
+[node name="shoot" parent="StateMachine" parent_id_path=PackedInt32Array(1129076061) index="5" unique_id=390576517 node_paths=PackedStringArray("weapon")]
+weapon = NodePath("../../weapon_rotate/enemy_mp5")
+
+[node name="dead" parent="StateMachine" parent_id_path=PackedInt32Array(1129076061) index="9" unique_id=1645953202 node_paths=PackedStringArray("weapon")]
+weapon = NodePath("../../weapon_rotate/enemy_mp5")
+
+[node name="StateMachine Controller" parent="." index="10" unique_id=812689681]
+sweet_spot = 40.0
+deadzone = 15.0
+
+[node name="weapon_rotate" parent="." index="18" unique_id=182039965 node_paths=PackedStringArray("weapon")]
+weapon = NodePath("enemy_mp5")
+
+[node name="enemy_mp5" parent="weapon_rotate" index="0" unique_id=859750544 instance=ExtResource("4_sg4ja")]
+position = Vector2(5, -1)

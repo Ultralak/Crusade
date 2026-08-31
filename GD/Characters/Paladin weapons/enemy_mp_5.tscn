@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bt0vq4iuqgar2"]
+
+[ext_resource type="PackedScene" uid="uid://b6mckv7nqtdt3" path="res://Characters/Paladin weapons/burst_mp_5.tscn" id="1_xe0b4"]
+[ext_resource type="Resource" uid="uid://udlraxevjnyd" path="res://Characters/weapon resources/enemy_mp5.tres" id="2_kb5yd"]
+
+[node name="enemy_mp5" unique_id=859750544 instance=ExtResource("1_xe0b4")]
+weapon_data = ExtResource("2_kb5yd")
+
+[node name="WeaponInteractable" parent="." index="4" unique_id=1361525483]
+visible = false
+
+[node name="Price Label" parent="." index="5" unique_id=1378731329]
+visible = false

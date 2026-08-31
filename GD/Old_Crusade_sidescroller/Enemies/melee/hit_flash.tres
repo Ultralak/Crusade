@@ -16,9 +16,7 @@ input_name = "color"
 
 [resource]
 resource_local_to_scene = true
-mode = 1
-flags/light_only = false
-nodes/vertex/0/position = Vector2(180, 60)
+nodes/vertex/0/position = Vector2(220, 140)
 nodes/fragment/0/position = Vector2(580, 260)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_lfy1x")
 nodes/fragment/2/position = Vector2(-140, 240)
@@ -28,4 +26,4 @@ nodes/fragment/4/node = SubResource("VisualShaderNodeIf_skcu7")
 nodes/fragment/4/position = Vector2(400, 340)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_hd4xh")
 nodes/fragment/5/position = Vector2(-160, 440)
-nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 3, 0, 4, 0, 2, 0, 4, 3, 5, 0, 4, 4, 5, 0, 4, 5)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 4, 3)

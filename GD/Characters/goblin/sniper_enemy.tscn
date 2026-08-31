@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cu8so2t8ix2jj"]
+
+[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/general.tscn" id="1_w05sm"]
+[ext_resource type="PackedScene" uid="uid://2upbms8cmua6" path="res://Characters/Game Classes/enemy_sniper.tscn" id="27_l7bio"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awqsl"]
+resource_local_to_scene = true
+
+[node name="sniper_enemy" unique_id=246556358 instance=ExtResource("1_w05sm")]
+
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=1501961513]
+material = SubResource("ShaderMaterial_awqsl")
+
+[node name="shoot" parent="StateMachine" parent_id_path=PackedInt32Array(1129076061) index="5" unique_id=390576517 node_paths=PackedStringArray("weapon")]
+weapon = NodePath("../../weapon_rotate/EnemySniper")
+
+[node name="dead" parent="StateMachine" parent_id_path=PackedInt32Array(1129076061) index="9" unique_id=1645953202 node_paths=PackedStringArray("weapon")]
+weapon = NodePath("../../weapon_rotate/EnemySniper")
+
+[node name="StateMachine Controller" parent="." index="10" unique_id=812689681]
+sweet_spot = 100.0
+deadzone = 40.0
+
+[node name="weapon_rotate" parent="." index="18" unique_id=182039965 node_paths=PackedStringArray("weapon")]
+weapon = NodePath("EnemySniper")
+
+[node name="EnemySniper" parent="weapon_rotate" index="0" unique_id=859750544 instance=ExtResource("27_l7bio")]
+position = Vector2(7, -2)

@@ -11,7 +11,7 @@ func enter():
 	player = PlayerManager.player
 	var direction_to_player : Vector2 = entity.global_position.direction_to(player.global_position)
 	
-	animation_player.play("run")
+	entity.start_waddle()
 	navigation_component.enable_navigation()
 	navigation_component.recalculate_path()
 	
@@ -35,5 +35,5 @@ func on_physics_process(_delta : float):
 	
 func exit():
 	navigation_component.ignore_player = false
-	animation_player.stop()
+	entity.stop_waddle()
 	navigation_component.disable_navigation()

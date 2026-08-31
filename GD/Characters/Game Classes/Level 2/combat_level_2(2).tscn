@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bdrufug2gvxv7" path="res://Characters/Game Classes/Level 2/Dungeon_level_2.tscn" id="1_2wcl4"]
 [ext_resource type="PackedScene" uid="uid://bt4utd3tt6q5" path="res://Game Components/Scenes/spawn_component.tscn" id="2_c84b5"]
 [ext_resource type="PackedScene" uid="uid://dg3log4jn1tj8" path="res://Game Components/Scenes/box_3.tscn" id="3_53edn"]
-[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/goblin.tscn" id="3_mt5r6"]
+[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/general.tscn" id="3_mt5r6"]
 [ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="4_2wqpd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mt5r6"]

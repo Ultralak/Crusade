@@ -4,7 +4,6 @@ extends Enemy
 
 @export var projectile_speed : float = 500
 @export var knockback_force : float
-@export var sprite : AnimatedSprite2D
 @export var weapon_pivot : Marker2D
 
 var knockback_dir : Vector2
@@ -17,6 +16,7 @@ func _ready() -> void:
 	player = PlayerManager.player
 	
 func _process(_delta: float) -> void:
+	
 	if player:
 		if direction_to_player.x > 0:
 			sprite.flip_h = false

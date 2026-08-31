@@ -5,7 +5,7 @@ extends NodeState
 @export var navAgent : NavigationAgent2D
 
 func enter():
-	animation_player.play("run")
+	entity.start_waddle()
 	navigation_component.enable_navigation()
 	navigation_component.recalculate_path()
 
@@ -20,5 +20,5 @@ func on_physics_process(_delta : float):
 		entity.approach_finished = true
 	
 func exit():
-	animation_player.stop()
+	entity.stop_waddle()
 	navigation_component.disable_navigation()

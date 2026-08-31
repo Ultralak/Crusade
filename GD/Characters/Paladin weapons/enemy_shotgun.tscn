@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://brf217x04gvwo"]
+
+[ext_resource type="PackedScene" uid="uid://dvpi3jcoy6obr" path="res://Characters/Paladin weapons/lockwood.tscn" id="1_bygrc"]
+[ext_resource type="Resource" uid="uid://bhrqu54hve0ip" path="res://Characters/weapon resources/enemy_shotgun.tres" id="2_hb7gl"]
+
+[node name="enemy_shotgun" unique_id=859750544 instance=ExtResource("1_bygrc")]
+weapon_data = ExtResource("2_hb7gl")
+
+[node name="WeaponInteractable" parent="." index="4" unique_id=1361525483]
+visible = false
+
+[node name="Price Label" parent="." index="5" unique_id=1378731329]
+visible = false
