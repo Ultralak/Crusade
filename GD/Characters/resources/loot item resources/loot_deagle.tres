@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://bbe03lglcqnd7"]
+
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_7ekln"]
+[ext_resource type="Resource" uid="uid://1e0lqtgvxrxg" path="res://Characters/weapon resources/handCannon.tres" id="1_s0kbq"]
+[ext_resource type="PackedScene" uid="uid://dw102ma641cxt" path="res://Characters/Paladin weapons/deagle.tscn" id="2_4m08d"]
+
+[resource]
+script = ExtResource("1_7ekln")
+item_data = ExtResource("1_s0kbq")
+item_scene = ExtResource("2_4m08d")
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"

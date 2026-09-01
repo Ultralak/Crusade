@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://bvvh373r6wusq"]
+
+[ext_resource type="Resource" uid="uid://coh7oy4f0eobi" path="res://Characters/weapon resources/burst_sniper.tres" id="1_4wetv"]
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_n7w7t"]
+[ext_resource type="PackedScene" uid="uid://rvhvuwmlplyw" path="res://Characters/Paladin weapons/burst_sniper.tscn" id="2_rxqie"]
+
+[resource]
+script = ExtResource("1_n7w7t")
+item_data = ExtResource("1_4wetv")
+item_scene = ExtResource("2_rxqie")
+weight = 80
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"

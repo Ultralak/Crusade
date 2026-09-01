@@ -234,10 +234,9 @@ animations = [{
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_llo60")
-detection_radius = 100.0
 knockback_force = 300.0
 sprite_animated = NodePath("AnimatedSprite2D")
-energy_dropped = 50
+energy_dropped = 2000
 damage_amount = 3.0
 debug_text = NodePath("Test")
 movement_speed = 40.0
@@ -380,6 +379,7 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="rest_timer" type="Timer" parent="StateMachine/rest" unique_id=981954949]
 
 [node name="Test" type="Label" parent="." unique_id=1726522527 node_paths=PackedStringArray("health_comp", "enemy", "FSM")]
+visible = false
 custom_maximum_size = Vector2(100, 100)
 offset_left = -20.0
 offset_top = -30.0

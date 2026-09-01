@@ -19,5 +19,5 @@ fire_rate = 10.0
 bullet_velocity = 500.0
 weapon_bloom = 10
 pellets_per_shot = 10
-energy_cost = 15
+energy_cost = 5
 metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

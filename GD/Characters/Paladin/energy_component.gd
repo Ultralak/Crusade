@@ -18,4 +18,4 @@ func _spawn_floating_text(amount: int) -> void:
 	var popup = floating_text_scene
 	
 	# 1. Pass data values directly to the instance variables
-	popup.setup(damage,global_position)
+	popup.setup(amount,global_position)

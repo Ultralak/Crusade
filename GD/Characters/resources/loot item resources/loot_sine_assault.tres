@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://s7ab3xngabam"]
+
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_0n2mf"]
+[ext_resource type="Resource" uid="uid://ck4spnbd5ubr0" path="res://Characters/weapon resources/sine_assault.tres" id="1_akav3"]
+[ext_resource type="PackedScene" uid="uid://chlm6ek3hpsb8" path="res://Characters/Paladin weapons/sine_assault_rifle.tscn" id="2_sfsue"]
+
+[resource]
+script = ExtResource("1_0n2mf")
+item_data = ExtResource("1_akav3")
+item_scene = ExtResource("2_sfsue")
+weight = 20
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"

@@ -5,8 +5,13 @@
 [ext_resource type="Resource" uid="uid://drbgpur7bwnkl" path="res://Characters/resources/loot item resources/loot_ak47_level_1.tres" id="2_mk8en"]
 [ext_resource type="Resource" uid="uid://dnbutnkcbsrs8" path="res://Characters/resources/loot item resources/loot_mac10_level_1.tres" id="3_r34t3"]
 [ext_resource type="Resource" uid="uid://bpuy556qi0kik" path="res://Characters/resources/loot item resources/loot_sniper_level_1.tres" id="4_66vi3"]
+[ext_resource type="Resource" uid="uid://bsofgfk5t4lgl" path="res://Characters/resources/loot item resources/loot_launcher.tres" id="5_tirik"]
+[ext_resource type="Resource" uid="uid://c0a783wikc444" path="res://Characters/resources/loot item resources/loot_lockwood.tres" id="6_a0v4b"]
+[ext_resource type="Resource" uid="uid://cqvkho1bvmui2" path="res://Characters/resources/loot item resources/loot_small_gun.tres" id="7_lgnfm"]
+[ext_resource type="Resource" uid="uid://bbe03lglcqnd7" path="res://Characters/resources/loot item resources/loot_deagle.tres" id="8_2jmr2"]
+[ext_resource type="Resource" uid="uid://bvvh373r6wusq" path="res://Characters/resources/loot item resources/loot_burst_sniper.tres" id="9_78wm2"]
 
 [resource]
 script = ExtResource("2_j6jpb")
-entries = Array[ExtResource("1_ix2sm")]([ExtResource("2_mk8en"), ExtResource("3_r34t3"), ExtResource("4_66vi3")])
+entries = Array[ExtResource("1_ix2sm")]([ExtResource("2_mk8en"), ExtResource("3_r34t3"), ExtResource("4_66vi3"), ExtResource("5_tirik"), ExtResource("6_a0v4b"), ExtResource("7_lgnfm"), ExtResource("8_2jmr2"), ExtResource("9_78wm2")])
 metadata/_custom_type_script = "uid://7ix2wdyej1op"

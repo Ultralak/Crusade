@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://cqvkho1bvmui2"]
+
+[ext_resource type="Resource" uid="uid://k67n43oicciv" path="res://Characters/weapon resources/small_gun.tres" id="1_4eyt8"]
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_r5drf"]
+[ext_resource type="PackedScene" uid="uid://dti842vnftuvs" path="res://Characters/Paladin weapons/small_gun.tscn" id="2_krtu4"]
+
+[resource]
+script = ExtResource("1_r5drf")
+item_data = ExtResource("1_4eyt8")
+item_scene = ExtResource("2_krtu4")
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"

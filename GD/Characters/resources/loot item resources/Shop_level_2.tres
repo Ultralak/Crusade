@@ -2,7 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_vglxu"]
 [ext_resource type="Script" uid="uid://7ix2wdyej1op" path="res://Characters/resources/loot_table.gd" id="2_cgl2c"]
+[ext_resource type="Resource" uid="uid://mnf674lspvhd" path="res://Characters/resources/loot item resources/loot_sine_burst.tres" id="2_vnxc6"]
+[ext_resource type="Resource" uid="uid://s7ab3xngabam" path="res://Characters/resources/loot item resources/loot_sine_assault.tres" id="3_i5aag"]
+[ext_resource type="Resource" uid="uid://dq5kb34bcddma" path="res://Characters/resources/loot item resources/loot_bouncing_smg.tres" id="4_i7443"]
+[ext_resource type="Resource" uid="uid://crffdb4rd8uow" path="res://Characters/resources/loot item resources/loot_bloom_less_shotgun.tres" id="5_qqh2r"]
+[ext_resource type="Resource" uid="uid://bluijbga8kvfd" path="res://Characters/resources/loot item resources/loot_automatic_shotgun.tres" id="6_4notu"]
+[ext_resource type="Resource" uid="uid://dajs8saxe6amo" path="res://Characters/resources/loot item resources/loot_burst_mp5.tres" id="7_mfj16"]
+[ext_resource type="Resource" uid="uid://bvvh373r6wusq" path="res://Characters/resources/loot item resources/loot_burst_sniper.tres" id="8_uatx0"]
+[ext_resource type="Resource" uid="uid://bsofgfk5t4lgl" path="res://Characters/resources/loot item resources/loot_launcher.tres" id="9_trf0w"]
 
 [resource]
 script = ExtResource("2_cgl2c")
+entries = Array[ExtResource("1_vglxu")]([ExtResource("2_vnxc6"), ExtResource("3_i5aag"), ExtResource("4_i7443"), ExtResource("5_qqh2r"), ExtResource("6_4notu"), ExtResource("7_mfj16"), ExtResource("8_uatx0"), ExtResource("9_trf0w")])
 metadata/_custom_type_script = "uid://7ix2wdyej1op"

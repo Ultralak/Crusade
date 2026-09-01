@@ -7,7 +7,8 @@
 resource_local_to_scene = true
 
 [node name="sniper_enemy" unique_id=246556358 instance=ExtResource("1_w05sm")]
-energy_dropped = 100
+projectile_speed = 2000.0
+energy_dropped = 1000
 
 [node name="AnimatedSprite2D" parent="." index="4" unique_id=1501961513]
 material = SubResource("ShaderMaterial_awqsl")

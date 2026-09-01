@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_ksrba"]
 [ext_resource type="Script" uid="uid://7ix2wdyej1op" path="res://Characters/resources/loot_table.gd" id="2_6fiv7"]
+[ext_resource type="Resource" uid="uid://c0a783wikc444" path="res://Characters/resources/loot item resources/loot_lockwood.tres" id="2_ed75v"]
+[ext_resource type="Resource" uid="uid://bluijbga8kvfd" path="res://Characters/resources/loot item resources/loot_automatic_shotgun.tres" id="3_2w1jd"]
+[ext_resource type="Resource" uid="uid://bsofgfk5t4lgl" path="res://Characters/resources/loot item resources/loot_launcher.tres" id="4_pyua3"]
+[ext_resource type="Resource" uid="uid://dajs8saxe6amo" path="res://Characters/resources/loot item resources/loot_burst_mp5.tres" id="5_3qc3o"]
 
 [resource]
 script = ExtResource("2_6fiv7")
+entries = Array[ExtResource("1_ksrba")]([ExtResource("2_ed75v"), ExtResource("3_2w1jd"), ExtResource("4_pyua3"), ExtResource("5_3qc3o")])
 metadata/_custom_type_script = "uid://7ix2wdyej1op"

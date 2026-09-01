@@ -7,7 +7,7 @@ signal coins_updated(new_amount: int)
 @export var player_scene: PackedScene = preload("res://Characters/Paladin/player.tscn")
 
 var player: CharacterBody2D = null
-var coins: int = 2000
+var coins: int = 3000
 
 # Inventory persistence variables
 var saved_inventory: Dictionary[String, WeaponData] = {

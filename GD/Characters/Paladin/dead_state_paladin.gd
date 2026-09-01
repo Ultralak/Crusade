@@ -1,11 +1,11 @@
 extends NodeState
 
-var death_explosion : PackedScene = preload("uid://3er4nc5bjvmo")
-@export var player : CharacterBody2D
+var death_explosion: PackedScene = preload("uid://3er4nc5bjvmo")
+@export var player: CharacterBody2D
+@export_file("*.tscn") var main_menu_path: String
 
 
-func enter():
-	
+func enter() -> void:
 	var timer = Timer.new()
 	timer.one_shot = true
 	timer.wait_time = 0.5
@@ -18,6 +18,10 @@ func enter():
 	get_parent().add_child(death_explosion_instance)
 	timer.start()
 
+
 func on_timer_timeout() -> void:
-	player.queue_free()
-	get_tree().paused = true
+	get_tree().paused = false
+	if main_menu_path != "":
+		get_tree().change_scene_to_file(main_menu_path)
+	else:
+		push_error("Main menu scene path is not set in the Inspector on " + name)

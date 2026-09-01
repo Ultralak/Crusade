@@ -18,4 +18,5 @@ texture = ExtResource("2_h8emm")
 size_flags_horizontal = 3
 
 [node name="PurchaseComponent" parent="." index="6" unique_id=1383381355 node_paths=PackedStringArray("item_pickup_component")]
+price = 15
 item_pickup_component = NodePath("../ItemPickupComponent")

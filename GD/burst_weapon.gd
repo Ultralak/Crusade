@@ -2,7 +2,7 @@ class_name BurstWeapon
 extends ProjectileWeapon
 
 
-func shoot() -> void:
+func fire() -> void:
 	if PlayerManager.spend_coins(weapon_data.energy_cost):
 		setup_normal_damage()
 		if not bullet_setup or not can_shoot or not is_normal_damage_setup:
@@ -51,3 +51,10 @@ func shoot() -> void:
 		fire_rate_timer.wait_time = frequency
 		fire_rate_timer.one_shot = true
 		fire_rate_timer.start()
+		
+func shoot() -> void:
+	if weapon_user is Paladin :
+		if PlayerManager.spend_coins(weapon_data.energy_cost):
+			fire()
+	else:
+		fire()

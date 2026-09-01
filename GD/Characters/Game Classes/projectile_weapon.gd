@@ -43,7 +43,7 @@ func setup_gun_enemy(direction : Vector2, user : CharacterBody2D, pivot : Marker
 	global_position  = pivot.global_position
 	bullet_setup = true
 
-func shoot()->void:
+func fire()->void:
 	if PlayerManager.spend_coins(weapon_data.energy_cost):
 		setup_normal_damage()
 		if !bullet_setup or !can_shoot or !is_normal_damage_setup:
@@ -88,6 +88,13 @@ func shoot()->void:
 		fire_rate_timer.start()
 	
 
+func shoot() -> void:
+	if weapon_user is Paladin :
+		if PlayerManager.spend_coins(weapon_data.energy_cost):
+			fire()
+	else:
+		fire()
+	
 func _on_fire_rate_timer_timeout() -> void:
 	can_shoot = true
 

@@ -14,6 +14,7 @@ var is_setup  : bool = false
 
 
 func enter():
+	trigger_slow_motion(0.9,1)
 	velocityComp.speed_modifier = 0.01
 	if healthComp.health < 0:
 		FSM.transition_to("dead")
@@ -45,7 +46,16 @@ func set_knockback(direction : Vector2, force : float) -> void:
 	knk_force = force
 	is_setup = true
 	#print(" Force : %s Direction : %s" % [knk_force,knk_direction])
-
+func trigger_slow_motion(slow_factor: float = 0.2, duration: float = 0.5) -> void:
+	Engine.time_scale = slow_factor
+	
+	# Create a tween that restores time scale over the given duration
+	var tween = create_tween()
+	
+	# PROCESS_MODE_ALWAYS ensures the tween steps during slow motion
+	tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
+	tween.tween_property(Engine, "time_scale", 1.0, duration)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func _on_hurt_timer_timeout() -> void:
 	if healthComp.health < 0:

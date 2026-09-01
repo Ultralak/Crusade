@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://crffdb4rd8uow"]
+
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_8vx0q"]
+[ext_resource type="Resource" uid="uid://dilyhohsnkdlw" path="res://Characters/weapon resources/bloom_less_shotgun.tres" id="1_f4a6y"]
+[ext_resource type="PackedScene" uid="uid://crg2q2g106wdy" path="res://Characters/Paladin weapons/little_bloom_shotgun.tscn" id="2_lvuur"]
+
+[resource]
+script = ExtResource("1_8vx0q")
+item_data = ExtResource("1_f4a6y")
+item_scene = ExtResource("2_lvuur")
+weight = 67
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://ce5r7sbr8o2ki"]
+
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_meyjv"]
+[ext_resource type="Script" uid="uid://7ix2wdyej1op" path="res://Characters/resources/loot_table.gd" id="2_jo3om"]
+[ext_resource type="Resource" uid="uid://mnf674lspvhd" path="res://Characters/resources/loot item resources/loot_sine_burst.tres" id="2_t1prp"]
+[ext_resource type="Resource" uid="uid://s7ab3xngabam" path="res://Characters/resources/loot item resources/loot_sine_assault.tres" id="3_iw5js"]
+[ext_resource type="Resource" uid="uid://dajs8saxe6amo" path="res://Characters/resources/loot item resources/loot_burst_mp5.tres" id="4_verl1"]
+[ext_resource type="Resource" uid="uid://dq5kb34bcddma" path="res://Characters/resources/loot item resources/loot_bouncing_smg.tres" id="5_g07us"]
+[ext_resource type="Resource" uid="uid://crffdb4rd8uow" path="res://Characters/resources/loot item resources/loot_bloom_less_shotgun.tres" id="6_l14ab"]
+
+[resource]
+script = ExtResource("2_jo3om")
+entries = Array[ExtResource("1_meyjv")]([ExtResource("2_t1prp"), ExtResource("3_iw5js"), ExtResource("4_verl1"), ExtResource("5_g07us"), ExtResource("6_l14ab")])
+metadata/_custom_type_script = "uid://7ix2wdyej1op"

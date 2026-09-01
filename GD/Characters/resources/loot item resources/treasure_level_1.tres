@@ -5,8 +5,10 @@
 [ext_resource type="Resource" uid="uid://drbgpur7bwnkl" path="res://Characters/resources/loot item resources/loot_ak47_level_1.tres" id="2_tbu6j"]
 [ext_resource type="Resource" uid="uid://dnbutnkcbsrs8" path="res://Characters/resources/loot item resources/loot_mac10_level_1.tres" id="3_0eusy"]
 [ext_resource type="Resource" uid="uid://bpuy556qi0kik" path="res://Characters/resources/loot item resources/loot_sniper_level_1.tres" id="4_s33ik"]
+[ext_resource type="Resource" uid="uid://bbe03lglcqnd7" path="res://Characters/resources/loot item resources/loot_deagle.tres" id="5_s33ik"]
+[ext_resource type="Resource" uid="uid://cqvkho1bvmui2" path="res://Characters/resources/loot item resources/loot_small_gun.tres" id="6_vjoa5"]
 
 [resource]
 script = ExtResource("2_24yxb")
-entries = Array[ExtResource("1_25d7k")]([ExtResource("2_tbu6j"), ExtResource("3_0eusy"), ExtResource("4_s33ik")])
+entries = Array[ExtResource("1_25d7k")]([ExtResource("2_tbu6j"), ExtResource("3_0eusy"), ExtResource("4_s33ik"), ExtResource("5_s33ik"), ExtResource("6_vjoa5")])
 metadata/_custom_type_script = "uid://7ix2wdyej1op"

@@ -16,4 +16,5 @@ bullet_scene = ExtResource("1_od3ss")
 fire_rate = 25.0
 bullet_velocity = 300.0
 weapon_bloom = 3
+energy_cost = 5
 metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

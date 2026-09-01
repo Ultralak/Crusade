@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://c0a783wikc444"]
+
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_innmq"]
+[ext_resource type="Resource" uid="uid://dpwn11k3lh17a" path="res://Characters/weapon resources/normal_shotgun.tres" id="1_vuybw"]
+[ext_resource type="PackedScene" uid="uid://dvpi3jcoy6obr" path="res://Characters/Paladin weapons/lockwood.tscn" id="2_v0e6k"]
+
+[resource]
+script = ExtResource("1_innmq")
+item_data = ExtResource("1_vuybw")
+item_scene = ExtResource("2_v0e6k")
+weight = 80
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"

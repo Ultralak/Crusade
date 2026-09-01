@@ -19,4 +19,5 @@ bullet_scene = ExtResource("1_skaev")
 fire_rate = 50
 bullet_velocity = 500.0
 weapon_bloom = 20
+energy_cost = 15
 metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

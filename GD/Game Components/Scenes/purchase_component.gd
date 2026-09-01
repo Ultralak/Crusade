@@ -12,6 +12,7 @@ signal purchase_done
 
 
 func _ready() -> void:
+	price = price * 10
 	if price_label:
 		price_label.text = str(price)
 

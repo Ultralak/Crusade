@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bupokqxhcxq2g" path="res://Characters/Game Classes/Level 1/Dungeon_level_1.tscn" id="1_o3u23"]
 [ext_resource type="PackedScene" uid="uid://h5mybqympw6s" path="res://Game Components/Scenes/box_2.tscn" id="2_7ehn5"]
 [ext_resource type="PackedScene" uid="uid://bt4utd3tt6q5" path="res://Game Components/Scenes/spawn_component.tscn" id="3_dcg74"]
-[ext_resource type="PackedScene" uid="uid://bumfv0o1pu20u" path="res://Characters/goblin/general.tscn" id="4_fgfeh"]
+[ext_resource type="PackedScene" uid="uid://ca6ppe5i7a6rf" path="res://Characters/goblin/shot_gun_enemy.tscn" id="4_iwkgr"]
 [ext_resource type="PackedScene" uid="uid://n1rexluimhji" path="res://Characters/flying Animal/flyingEnemy.tscn" id="5_ay3i1"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_iwkgr"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dcg74"]
 resource_local_to_scene = true
 vertices = PackedVector2Array(384, 32, 384, 64, 352, 64, 96, 32, 416, 128, 416, 96, 448, 96, 448, 176, 448, 64, 452, 64, 452, 208, 448, 208, 416, 176, 416, 144, 352, 128, 352, 144, 352, 208, 384, 208, 384, 240, 96, 240, 96, 208, 128, 208, 128, 144, 64, 144, 64, 176, 32, 176, 32, 96, 32, 208, 28, 208, 28, 64, 32, 64, 64, 96, 64, 128, 128, 128, 128, 64, 96, 64)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(6, 8, 9, 10), PackedInt32Array(10, 11, 7), PackedInt32Array(6, 10, 7), PackedInt32Array(7, 12, 13), PackedInt32Array(4, 7, 13), PackedInt32Array(14, 4, 13, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(19, 20, 21), PackedInt32Array(16, 19, 21, 15), PackedInt32Array(15, 21, 22, 14), PackedInt32Array(23, 24, 25, 26), PackedInt32Array(25, 27, 28, 29), PackedInt32Array(29, 30, 26), PackedInt32Array(25, 29, 26), PackedInt32Array(26, 31, 32), PackedInt32Array(23, 26, 32), PackedInt32Array(22, 23, 32, 33), PackedInt32Array(14, 22, 33, 2), PackedInt32Array(2, 33, 34), PackedInt32Array(3, 2, 34), PackedInt32Array(3, 34, 35)])
@@ -19,11 +19,11 @@ floor_event = 1
 spawn_component = NodePath("NavigationRegion2D/spawn component")
 
 [node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
-navigation_polygon = SubResource("NavigationPolygon_iwkgr")
+navigation_polygon = SubResource("NavigationPolygon_dcg74")
 
 [node name="spawn component" parent="NavigationRegion2D" index="0" unique_id=1800711375 node_paths=PackedStringArray("dungeon") instance=ExtResource("3_dcg74")]
 dungeon = NodePath("../..")
-enemy_scenes = Array[PackedScene]([ExtResource("4_fgfeh"), ExtResource("5_ay3i1")])
+enemy_scenes = Array[PackedScene]([ExtResource("5_ay3i1"), ExtResource("4_iwkgr")])
 max_waves = 1
 
 [node name="Wave 1" type="Node2D" parent="NavigationRegion2D/spawn component" index="0" unique_id=569484614]

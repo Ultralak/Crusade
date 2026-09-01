@@ -12,3 +12,7 @@ position = Vector2(10, 0)
 
 [node name="weapon skin" parent="non physics" parent_id_path=PackedInt32Array(1062263897) index="1" unique_id=796010820]
 texture = ExtResource("3_01cyj")
+
+[node name="PurchaseComponent" parent="." index="6" unique_id=1383381355 node_paths=PackedStringArray("item_pickup_component")]
+price = 30
+item_pickup_component = NodePath("../ItemPickupComponent")

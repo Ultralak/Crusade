@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LootItem" format=3 uid="uid://mnf674lspvhd"]
+
+[ext_resource type="Script" uid="uid://cg66kscfjtvgv" path="res://Characters/resources/loot_item.gd" id="1_cn5go"]
+[ext_resource type="Resource" uid="uid://c2u5gp3bu4w4i" path="res://Characters/weapon resources/sine_burst.tres" id="1_ib8cj"]
+[ext_resource type="PackedScene" uid="uid://dt4oyuo6v0qyy" path="res://Characters/Paladin weapons/sine_burst.tscn" id="2_l3o0v"]
+
+[resource]
+script = ExtResource("1_cn5go")
+item_data = ExtResource("1_ib8cj")
+item_scene = ExtResource("2_l3o0v")
+weight = 20
+metadata/_custom_type_script = "uid://cg66kscfjtvgv"
