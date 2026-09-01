@@ -3,13 +3,11 @@ class_name FloatingText
 
 @onready var label: Label = $Label
 
-var amount: int = 0
-var spawn_position: Vector2 = Vector2.ZERO
-
-func _ready() -> void:
-	# Position and format text on frame 1 as it enters the scene
+func setup(amount: int, spawn_position: Vector2) -> void:
 	global_position = spawn_position
 	label.text = "+%d" % amount
+	
+	# Start animations as soon as it enters the scene
 	_animate_and_free()
 
 func _animate_and_free() -> void:
@@ -19,9 +17,9 @@ func _animate_and_free() -> void:
 	tween.tween_property(self, "global_position:y", global_position.y - 40.0, 0.65)\
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		
-	# Fade transparency to 0
+	# Fade out alpha transparency
 	tween.tween_property(self, "modulate:a", 0.0, 0.65)\
 		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 		
-	# Automatically clean up node from memory
+	# Delete node when tween completes
 	tween.chain().tween_callback(queue_free)
