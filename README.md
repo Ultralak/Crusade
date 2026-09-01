@@ -35,3 +35,7 @@ Watch out for the attack
 
 Weapons include shotgun, grenade launcher (basically ;) assault rifle, burst rifle, automatic shotgun and Smg with some very basic and very advanced machinery per level
 The better the weapon the higher the cost 
+
+To run to game please download from the following demo link : https://ultrala.itch.io/crusade
+
+just download and run the game or run the demo
