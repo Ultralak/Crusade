@@ -7,7 +7,15 @@ signal coins_updated(new_amount: int)
 @export var player_scene: PackedScene = preload("res://Characters/Paladin/player.tscn")
 
 var player: CharacterBody2D = null
-var coins: int = 20
+var coins: int = 2000
+
+# Inventory persistence variables
+var saved_inventory: Dictionary[String, WeaponData] = {
+	"Slot 1": null,
+	"Slot 2": null
+}
+var saved_active_slot: String = "Slot 1"
+var has_saved_inventory: bool = false
 
 
 func register_player(player_node: CharacterBody2D) -> void:
@@ -38,9 +46,22 @@ func spawn_player_at(target_position: Vector2, parent_node: Node) -> void:
 	set_player_position(target_position)
 
 
+func save_inventory_data(backpack: Dictionary, active_slot: String) -> void:
+	for slot in backpack.keys():
+		var weapon_node = backpack[slot]
+		if weapon_node != null and "weapon_data" in weapon_node:
+			saved_inventory[slot] = weapon_node.weapon_data
+		else:
+			saved_inventory[slot] = null
+	
+	saved_active_slot = active_slot
+	has_saved_inventory = true
+
+
 func add_coins(amount: int) -> void:
 	coins += amount
 	coins_updated.emit(coins)
+
 
 
 func has_enough_coins(amount: int) -> bool:

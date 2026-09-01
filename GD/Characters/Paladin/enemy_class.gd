@@ -3,6 +3,7 @@ class_name Enemy
 
 signal enemy_killed(body: CharacterBody2D)
 
+@export var energy_dropped : int = 10
 @export var sprite: Sprite2D
 @export var damage_amount: float = 4.0
 @export var max_health: float = 10.0

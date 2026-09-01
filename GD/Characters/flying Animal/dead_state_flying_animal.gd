@@ -1,11 +1,12 @@
 extends NodeState
 
 var death_explosion : PackedScene = preload("uid://3er4nc5bjvmo")
-@export var enemy : CharacterBody2D
+@export var enemy : Enemy
 @export var Navigation_comp : NavigationComponent
 
 
 func enter():
+	PlayerManager.add_coins(enemy.energy_dropped)
 	Navigation_comp.disable_navigation()
 	enemy.emit_is_dead()
 	var timer = Timer.new()

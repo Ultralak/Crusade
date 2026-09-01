@@ -44,47 +44,49 @@ func setup_gun_enemy(direction : Vector2, user : CharacterBody2D, pivot : Marker
 	bullet_setup = true
 
 func shoot()->void:
-	setup_normal_damage()
-	if !bullet_setup or !can_shoot or !is_normal_damage_setup:
-		return
-	var bulletInstance := weapon_data.bullet_scene.instantiate() as BasicProjectile
+	if PlayerManager.spend_coins(weapon_data.energy_cost):
+		setup_normal_damage()
+		if !bullet_setup or !can_shoot or !is_normal_damage_setup:
+			return
+		var bulletInstance := weapon_data.bullet_scene.instantiate() as BasicProjectile
+		
+		bulletInstance.global_position = muzzle.global_position
+		
+		bulletInstance.z_index = 20
+		critical_hit()
+		bulletInstance.knockback_dir = gun_direction
+		bulletInstance.knockback_force = weapon_data.knockback_force
+		bulletInstance.damage_amount = damage
+		bulletInstance.penetration = weapon_data.penetration
+		bulletInstance.projectile_direction = gun_direction
+		
+		handle_weapon_bloom()
+		bulletInstance.is_critical_damage = critical_hit_done
+		
+		bulletInstance.projectile_velocity = weapon_data.bullet_velocity
+		bulletInstance.rotation = gun_direction.angle()
+		bulletInstance.weapon_shot_out_off = self
+		
+		if weapon_user.is_in_group("ENEMY"):
+			bulletInstance.layer_damage_player()
+		elif weapon_user.is_in_group("PLAYER"):
+			bulletInstance.layer_damage_enemy()
+		
+		#print("Weapon : %s" % [damage_amount])
+		get_tree().current_scene.add_child(bulletInstance)
+		bulletInstance.is_shot = true
+		
+		apply_weapon_recoil()
+		
+		bullet_setup = false
+		can_shoot = false
+		
+		var frequency : float = 1/(weapon_data.fire_rate * 1.0)
+		
+		fire_rate_timer.wait_time = frequency
+		fire_rate_timer.one_shot = true
+		fire_rate_timer.start()
 	
-	bulletInstance.global_position = muzzle.global_position
-	
-	bulletInstance.z_index = 20
-	critical_hit()
-	bulletInstance.knockback_dir = gun_direction
-	bulletInstance.knockback_force = weapon_data.knockback_force
-	bulletInstance.damage_amount = damage
-	bulletInstance.penetration = weapon_data.penetration
-	bulletInstance.projectile_direction = gun_direction
-	
-	handle_weapon_bloom()
-	bulletInstance.is_critical_damage = critical_hit_done
-	
-	bulletInstance.projectile_velocity = weapon_data.bullet_velocity
-	bulletInstance.rotation = gun_direction.angle()
-	bulletInstance.weapon_shot_out_off = self
-	
-	if weapon_user.is_in_group("ENEMY"):
-		bulletInstance.layer_damage_player()
-	elif weapon_user.is_in_group("PLAYER"):
-		bulletInstance.layer_damage_enemy()
-	
-	#print("Weapon : %s" % [damage_amount])
-	get_tree().current_scene.add_child(bulletInstance)
-	bulletInstance.is_shot = true
-	
-	apply_weapon_recoil()
-	
-	bullet_setup = false
-	can_shoot = false
-	
-	var frequency : float = 1/(weapon_data.fire_rate * 1.0)
-	
-	fire_rate_timer.wait_time = frequency
-	fire_rate_timer.one_shot = true
-	fire_rate_timer.start()
 
 func _on_fire_rate_timer_timeout() -> void:
 	can_shoot = true

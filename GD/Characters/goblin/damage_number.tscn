@@ -2,10 +2,10 @@
 
 [ext_resource type="FontFile" uid="uid://irgxl4asst5j" path="res://Old_Crusade_sidescroller/UI/theme/GravityRegular5.ttf" id="1_fshnh"]
 [ext_resource type="Script" uid="uid://db6ukxt00kktj" path="res://Characters/goblin/damage_number_scene.gd" id="2_7yc0n"]
+[ext_resource type="FontFile" uid="uid://cn6sglhpgvlhv" path="res://Art/BoldPixels.ttf" id="2_vdxpn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yc0n"]
-font = ExtResource("1_fshnh")
-font_size = 6
+font = ExtResource("2_vdxpn")
 outline_size = 3
 outline_color = Color(1.685791, 0.57282364, 0, 1)
 shadow_size = 3

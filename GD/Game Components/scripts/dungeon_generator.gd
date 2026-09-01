@@ -2,6 +2,7 @@ extends Node2D
 class_name DungeonGenerator
 
 @export var spawn_room_scene: PackedScene
+@export var end_room_scene: PackedScene
 @export var shop_room_scene: PackedScene
 @export var treasure_room_scene: PackedScene
 @export var combat_room_scenes: Array[PackedScene] = []
@@ -39,9 +40,36 @@ func generate_dungeon() -> void:
 
 
 func _assign_room_events() -> void:
+	# Breadth-First Search (BFS) to find true walking step distance from spawn (0,0)
+	var distances: Dictionary = {}
+	var queue: Array[Vector2i] = [Vector2i.ZERO]
+	distances[Vector2i.ZERO] = 0
+	
+	var furthest_pos: Vector2i = Vector2i.ZERO
+	var max_distance: int = 0
+	
+	while not queue.is_empty():
+		var current: Vector2i = queue.pop_front()
+		var current_dist: int = distances[current]
+		
+		if current_dist > max_distance:
+			max_distance = current_dist
+			furthest_pos = current
+		
+		for dir in cardinal_directions:
+			var neighbor: Vector2i = current + dir
+			if dungeon_layout.has(neighbor) and not distances.has(neighbor):
+				distances[neighbor] = current_dist + 1
+				queue.append(neighbor)
+	
+	# Assign boss room to the room requiring the most room-to-room steps from spawn
+	if furthest_pos != Vector2i.ZERO:
+		dungeon_layout[furthest_pos] = BaseDungeon.DUNGEONEVENT.boss
+	
+	# Filter available positions, explicitly protecting spawn (0,0) and the boss room
 	var available_positions: Array[Vector2i] = []
 	for grid_pos in dungeon_layout.keys():
-		if grid_pos != Vector2i.ZERO:
+		if grid_pos != Vector2i.ZERO and grid_pos != furthest_pos:
 			available_positions.append(grid_pos)
 	
 	available_positions.shuffle()
@@ -86,6 +114,8 @@ func _get_scene_for_event(event_type: BaseDungeon.DUNGEONEVENT) -> PackedScene:
 	match event_type:
 		BaseDungeon.DUNGEONEVENT.spawn:
 			return spawn_room_scene
+		BaseDungeon.DUNGEONEVENT.boss:
+			return end_room_scene if end_room_scene else combat_room_scenes.pick_random()
 		BaseDungeon.DUNGEONEVENT.shop:
 			return shop_room_scene if shop_room_scene else combat_room_scenes.pick_random()
 		BaseDungeon.DUNGEONEVENT.treasure:

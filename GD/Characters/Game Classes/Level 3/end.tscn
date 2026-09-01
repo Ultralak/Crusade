@@ -1,0 +1,35 @@
+[gd_scene format=4 uid="uid://gwu2qiqu6hjj"]
+
+[ext_resource type="PackedScene" uid="uid://cey1d8kd7vsx4" path="res://Characters/Game Classes/Level 3/Dungeon_level_3.tscn" id="1_212in"]
+[ext_resource type="PackedScene" uid="uid://cea0vmwnoxg4n" path="res://Game Components/Scenes/door.tscn" id="2_ninsr"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_firh6"]
+resource_local_to_scene = true
+vertices = PackedVector2Array(470, 262, 10, 262, 10, 10, 470, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 272, 0, 272)])
+source_geometry_group_name = &"NAVIGATION"
+
+[node name="Level 3" unique_id=1787448676 instance=ExtResource("1_212in")]
+floor_event = 3
+
+[node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
+navigation_polygon = SubResource("NavigationPolygon_firh6")
+
+[node name="ground_objects" parent="NavigationRegion2D" index="2" unique_id=1376421879]
+tile_map_data = PackedByteArray("AAAJAAUAAQAOAAMAAAAJAAYAAQAOAAQAAAATAAMAAQAOAAMAAAATAAQAAQAOAAQAAAAUAAkAAQAOAAMAAAAUAAoAAQAOAAQAAAAKAAsAAQAOAAMAAAAKAAwAAQAOAAQAAAAFAAkAAQAOAAMAAAAFAAoAAQAOAAQAAAAYAAUAAQAOAAMAAAAYAAYAAQAOAAQAAAAYAAwAAQAOAAMAAAAYAA0AAQAOAAQAAAAGAA4AAQANAAsAAAAGAA8AAQANAAwAAAAHAA4AAQAOAAsAAAAHAA8AAQAOAAwAAAAEAAQAAQANAAsAAAAEAAUAAQANAAwAAAAFAAQAAQAOAAsAAAAFAAUAAQAOAAwAAAAXAAMAAQANAAsAAAAXAAQAAQANAAwAAAAYAAMAAQAOAAsAAAAYAAQAAQAOAAwAAAAaAAoAAQANAAsAAAAaAAsAAQANAAwAAAAbAAoAAQAOAAsAAAAbAAsAAQAOAAwAAAA=")
+
+[node name="ground objects 2" parent="NavigationRegion2D" index="3" unique_id=840028683]
+tile_map_data = PackedByteArray("AAANAAsAAAAEAAYAAAAOAAsAAAAKAAcAAAAPAAsAAAAIAAYAAAAQAAsAAAAGAAcAAAAOAAkAAAAGAAQAAAAPAAkAAAAGAAQAAAAOAAoAAAAGAAQAAAAPAAoAAAAGAAQAAAA=")
+
+[node name="InteractableClass" parent="NavigationRegion2D" index="4" unique_id=1361525483 instance=ExtResource("2_ninsr")]
+position = Vector2(239, 119)
+collision_layer = 64
+collision_mask = 0
+
+[node name="right" parent="NavigationRegion2D/exit" parent_id_path=PackedInt32Array(1579311928) index="2" unique_id=743812689]
+position = Vector2(438, 126)
+
+[node name="PlayerDetect" parent="NavigationRegion2D" index="6" unique_id=2066230081]
+monitoring = false
+monitorable = false

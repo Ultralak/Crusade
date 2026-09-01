@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://ccdp6jq322r6m"]
+
+[ext_resource type="Script" uid="uid://b8wm4r6sgwj8" path="res://Characters/UI/pause_menu.gd" id="1_0j5oy"]
+[ext_resource type="LabelSettings" uid="uid://cbr8fpw6m832a" path="res://Characters/UI/label_crusade.tres" id="1_rt4ae"]
+[ext_resource type="FontFile" uid="uid://cn6sglhpgvlhv" path="res://Art/BoldPixels.ttf" id="2_0j5oy"]
+[ext_resource type="StyleBox" uid="uid://dlmxsc2qu2tgl" path="res://Characters/UI/crusade_button_not_pressed.tres" id="3_hlcbg"]
+[ext_resource type="StyleBox" uid="uid://by4768id6gqtb" path="res://Characters/UI/crusade_button_pressed.tres" id="4_0en2q"]
+
+[node name="PauseMenu" type="Control" unique_id=274423734]
+process_mode = 3
+z_index = 50
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_0j5oy")
+main_menu_path = "uid://byd35cbsn5h5k"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=739578422]
+custom_minimum_size = Vector2(480, 280)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.003921569, 0.003921569, 0.003921569, 0.3764706)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=630065465]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1762033040]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=685497757]
+layout_mode = 2
+text = "Paused"
+label_settings = ExtResource("1_rt4ae")
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=563711395]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0j5oy")
+theme_override_styles/normal = ExtResource("3_hlcbg")
+theme_override_styles/pressed = ExtResource("4_0en2q")
+theme_override_styles/hover = ExtResource("3_hlcbg")
+text = "Resume"
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=702320043]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0j5oy")
+theme_override_styles/normal = ExtResource("3_hlcbg")
+theme_override_styles/pressed = ExtResource("4_0en2q")
+theme_override_styles/hover = ExtResource("3_hlcbg")
+text = "Menu"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

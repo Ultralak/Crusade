@@ -3,8 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bupokqxhcxq2g" path="res://Characters/Game Classes/Level 1/Dungeon_level_1.tscn" id="1_l045j"]
 [ext_resource type="PackedScene" uid="uid://bt4utd3tt6q5" path="res://Game Components/Scenes/spawn_component.tscn" id="2_puu8v"]
 [ext_resource type="PackedScene" uid="uid://h5mybqympw6s" path="res://Game Components/Scenes/box_2.tscn" id="3_ftv4c"]
+[ext_resource type="PackedScene" uid="uid://crssqbqbrfyj5" path="res://Characters/goblin/assault_enemy.tscn" id="3_ujivr"]
+[ext_resource type="PackedScene" uid="uid://ca6ppe5i7a6rf" path="res://Characters/goblin/shot_gun_enemy.tscn" id="4_y47l7"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ftv4c"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_g8fgq"]
 resource_local_to_scene = true
 vertices = PackedVector2Array(470, 262, 10, 262, 10, 10, 470, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -16,10 +18,12 @@ floor_event = 1
 spawn_component = NodePath("NavigationRegion2D/spawn component")
 
 [node name="NavigationRegion2D" parent="." index="0" unique_id=378223689]
-navigation_polygon = SubResource("NavigationPolygon_ftv4c")
+navigation_polygon = SubResource("NavigationPolygon_g8fgq")
 
 [node name="spawn component" parent="NavigationRegion2D" index="0" unique_id=1800711375 node_paths=PackedStringArray("dungeon") instance=ExtResource("2_puu8v")]
 dungeon = NodePath("../..")
+enemy_scenes = Array[PackedScene]([ExtResource("3_ujivr"), ExtResource("4_y47l7")])
+max_waves = 2
 
 [node name="wave 1" type="Node2D" parent="NavigationRegion2D/spawn component" index="0" unique_id=1774760116]
 

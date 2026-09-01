@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://rfgae3ygh82b" path="res://Game Files/PlayerCamera.gd" id="3_w7bpn"]
 [ext_resource type="Script" uid="uid://ck7i7esh4j2xt" path="res://Game Files/room_procedural_generation.gd" id="4_3nhi0"]
 [ext_resource type="PackedScene" uid="uid://cbcdvnmwxcpkn" path="res://Game Files/Player_health_bar.tscn" id="5_3nhi0"]
+[ext_resource type="PackedScene" uid="uid://1r08v0omsmgq" path="res://Game Components/Scenes/coin_label.tscn" id="5_8s325"]
 [ext_resource type="PackedScene" uid="uid://bprb15pjpdnib" path="res://Game Files/main rooms/room_0.tscn" id="5_w7bpn"]
 [ext_resource type="PackedScene" uid="uid://bjms0bmh2sbw0" path="res://Characters/Paladin weapons/paladin_ak47.tscn" id="7_5uutt"]
 [ext_resource type="PackedScene" uid="uid://c3krxwkblx4nb" path="res://Characters/Paladin weapons/Paladin_Sniper.tscn" id="8_5g5f8"]
@@ -52,6 +53,12 @@ position = Vector2(83, -38)
 scale = Vector2(2, 2)
 entity = NodePath("../../Player")
 damage_bar_tween_duration = 2.0
+
+[node name="Label" parent="UI" unique_id=586692068 instance=ExtResource("5_8s325")]
+offset_left = 61.0
+offset_top = 38.0
+offset_right = 115.0
+offset_bottom = 66.0
 
 [node name="Rooms" type="Node2D" parent="." unique_id=2073198002]
 script = ExtResource("4_3nhi0")

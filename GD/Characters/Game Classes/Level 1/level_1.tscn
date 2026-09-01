@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://c7biqo5ty20ym"]
 
 [ext_resource type="PackedScene" uid="uid://bhicndqmq8i05" path="res://Game Components/Scenes/BaseLevel.tscn" id="1_jme48"]
-[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="2_anxat"]
+[ext_resource type="PackedScene" uid="uid://gwu2qiqu6hjj" path="res://Characters/Game Classes/Level 3/end.tscn" id="2_anxat"]
+[ext_resource type="PackedScene" uid="uid://1r08v0omsmgq" path="res://Game Components/Scenes/coin_label.tscn" id="3_7ebar"]
 
 [node name="Level_1" unique_id=973644688 instance=ExtResource("1_jme48")]
 
-[node name="Player" parent="." index="0" unique_id=246556358 instance=ExtResource("2_anxat")]
+[node name="Dungeon Generator" parent="." index="0" unique_id=456120006]
+end_room_scene = ExtResource("2_anxat")
+
+[node name="Label" parent="CanvasLayer" parent_id_path=PackedInt32Array(636500648) index="1" unique_id=586692068 instance=ExtResource("3_7ebar")]
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 126.0
+offset_bottom = 76.0

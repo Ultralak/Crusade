@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://byd35cbsn5h5k"]
+
+[ext_resource type="Script" uid="uid://cxinuvb2v8f76" path="res://Characters/UI/main_menu.gd" id="1_8u72s"]
+[ext_resource type="Texture2D" uid="uid://uvv1x01qhkqm" path="res://Art/kenney_desert-shooter-pack_1.0/PNG/Interface/Tilemap/tilemap_packed.png" id="1_p3iub"]
+[ext_resource type="LabelSettings" uid="uid://cbr8fpw6m832a" path="res://Characters/UI/label_crusade.tres" id="3_3vjey"]
+[ext_resource type="FontFile" uid="uid://cn6sglhpgvlhv" path="res://Art/BoldPixels.ttf" id="3_hrvrr"]
+[ext_resource type="StyleBox" uid="uid://dlmxsc2qu2tgl" path="res://Characters/UI/crusade_button_not_pressed.tres" id="4_wc84w"]
+[ext_resource type="StyleBox" uid="uid://by4768id6gqtb" path="res://Characters/UI/crusade_button_pressed.tres" id="5_3vjey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxjdc"]
+atlas = ExtResource("1_p3iub")
+region = Rect2(144, 0, 48, 48)
+margin = Rect2(-2, -2, -4, -4)
+
+[node name="MainMenu" type="Control" unique_id=1951565163]
+process_mode = 3
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_8u72s")
+first_level_path = "uid://c7biqo5ty20ym"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=588401711]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.3888889
+anchor_right = 1.0
+anchor_bottom = 1.3888888
+offset_top = 105.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_cxjdc")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1940076790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -87.5
+offset_right = 103.0
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=390092968]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=148657590]
+layout_mode = 2
+text = "Crusade"
+label_settings = ExtResource("3_3vjey")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1371606061]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_hrvrr")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("4_wc84w")
+theme_override_styles/pressed = ExtResource("5_3vjey")
+theme_override_styles/hover = ExtResource("4_wc84w")
+theme_override_styles/hover_pressed = ExtResource("4_wc84w")
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1055404994]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hrvrr")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("4_wc84w")
+theme_override_styles/pressed = ExtResource("5_3vjey")
+theme_override_styles/hover = ExtResource("4_wc84w")
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

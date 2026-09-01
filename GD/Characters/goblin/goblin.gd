@@ -16,7 +16,7 @@ func _ready() -> void:
 	player = PlayerManager.player
 	
 func _process(_delta: float) -> void:
-	
+	direction_to_player = global_position.direction_to(player.global_position)
 	if player:
 		if direction_to_player.x > 0:
 			sprite.flip_h = false

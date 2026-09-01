@@ -47,6 +47,7 @@ shader_parameter/Hit_flash_on = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [node name="assault_enemy" unique_id=246556358 instance=ExtResource("1_b4g5q")]
+energy_dropped = 50
 
 [node name="Sprite2D" parent="." index="0" unique_id=1043512702]
 material = SubResource("ShaderMaterial_4o7bv")

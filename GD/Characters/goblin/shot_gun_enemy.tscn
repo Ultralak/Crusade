@@ -77,6 +77,7 @@ shader_parameter/Hit_flash_on = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [node name="ShotGun enemy" unique_id=246556358 instance=ExtResource("1_es1ef")]
+energy_dropped = 20
 
 [node name="Sprite2D" parent="." index="0" unique_id=1043512702]
 material = SubResource("ShaderMaterial_da10x")

@@ -1,7 +1,7 @@
 extends NodeState
 
 var death_explosion : PackedScene = preload("uid://3er4nc5bjvmo")
-@export var enemy : CharacterBody2D
+@export var enemy : Enemy
 @export var Navigation_component : NavigationComponent
 @export var weapon : ProjectileWeapon
 
@@ -10,6 +10,7 @@ func _ready() -> void:
 	Navigation_component.disable_navigation()
 
 func enter():
+	PlayerManager.add_coins(enemy.energy_dropped)
 	enemy.visible = false
 	enemy.emit_is_dead()
 	

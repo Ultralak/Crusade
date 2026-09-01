@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cbr8fpw6m832a"]
+
+[ext_resource type="FontFile" uid="uid://cn6sglhpgvlhv" path="res://Art/BoldPixels.ttf" id="1_7eox5"]
+
+[resource]
+font = ExtResource("1_7eox5")
+font_size = 60
+font_color = Color(0.3529412, 0.2784314, 0.30980393, 1)
+outline_size = 16

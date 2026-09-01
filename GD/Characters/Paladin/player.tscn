@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://chlm6ek3hpsb8" path="res://Characters/Paladin weapons/sine_assault_rifle.tscn" id="19_e0g0d"]
 [ext_resource type="PackedScene" uid="uid://dvptqa555sir6" path="res://Characters/Paladin weapons/bouncing_smg_gun.tscn" id="20_epe0v"]
 [ext_resource type="Script" uid="uid://dajmqytx2xcg2" path="res://Characters/Paladin/object_interation.gd" id="21_epe0v"]
+[ext_resource type="Script" uid="uid://bsnygk55su2wh" path="res://Characters/Paladin/energy_component.gd" id="22_rxvsy"]
 [ext_resource type="Texture2D" uid="uid://8detilfebbxg" path="res://Art/heroes/knight/knight_run_anim_f1.png" id="23_rxvsy"]
 [ext_resource type="Script" uid="uid://c0k3hvbb6wp3i" path="res://Characters/Paladin/inventory_system.gd" id="25_5lc8f"]
 
@@ -182,9 +183,8 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ce124"]
+render_priority = 0
 shader = ExtResource("5_y0e2x")
-shader_parameter/Hit_flash_on = false
-shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbmiu"]
 atlas = ExtResource("2_vb825")
@@ -471,6 +471,10 @@ player = NodePath("..")
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_6pmnr")
 debug_color = Color(0.7298368, 0.4700004, 0.16690713, 0.41960785)
+
+[node name="EnergyComponent" type="Node2D" parent="." unique_id=1584256153]
+position = Vector2(0, -14)
+script = ExtResource("22_rxvsy")
 
 [connection signal="timeout" from="StateMachine/hurt/hurt_timer" to="StateMachine/hurt" method="_on_hurt_timer_timeout"]
 [connection signal="area_entered" from="ObjectInteration" to="ObjectInteration" method="_on_area_entered"]

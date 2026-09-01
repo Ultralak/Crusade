@@ -15,5 +15,5 @@ critical_hit_damage_multiplier = 0.0
 bullet_scene = ExtResource("1_5fogj")
 bullet_velocity = 100.0
 weapon_bloom = 50
-pellets_per_shot = 7
+pellets_per_shot = 4
 metadata/_custom_type_script = "uid://bqh3ttj6fhtsf"

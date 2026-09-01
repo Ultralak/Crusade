@@ -7,11 +7,11 @@ func display_number(value : float, position : Vector2, is_critical : bool = fals
 
 	var color = Color("#FFFFFF")
 	if is_critical:
-		font_outline_color = Color("#FF6347")
+		font_outline_color = Color("851400ff")
 	elif value == 0:
-		font_outline_color = Color("#00FF00")
+		font_outline_color = Color("fe48a3ff")
 	else:
-		font_outline_color = Color(0.18, 0.824, 0.871, 1.0)
+		font_outline_color = Color(0.963, 0.666, 0.0, 1.0)
 	number.setup_damage_labels(value, color, font_outline_color)
 	call_deferred("add_child", number)
 	

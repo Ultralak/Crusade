@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bfblgslkkew8h"]
+
+[ext_resource type="FontFile" uid="uid://cn6sglhpgvlhv" path="res://Art/BoldPixels.ttf" id="1_v4chl"]
+
+[resource]
+font = ExtResource("1_v4chl")
+font_size = 20
+outline_size = 10
+outline_color = Color(0.29886717, 0.13538885, 0.40505195, 1)
+shadow_size = 0
+shadow_offset = Vector2(16, 16)

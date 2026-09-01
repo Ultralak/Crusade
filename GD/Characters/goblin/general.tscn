@@ -160,7 +160,7 @@ _data = {
 &"run": SubResource("Animation_3t3vp")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8osqu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4irj"]
 resource_local_to_scene = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t3vp"]
@@ -297,6 +297,7 @@ script = ExtResource("2_w23w4")
 projectile_speed = 500.0
 knockback_force = 150.0
 weapon_pivot = NodePath("pivot")
+energy_dropped = 10
 sprite = NodePath("Sprite2D")
 damage_amount = 1.0
 max_health = 10.0
@@ -326,7 +327,7 @@ libraries/ = SubResource("AnimationLibrary_dsawu")
 
 [node name="AnimatedSprite2D" parent="." index="4" unique_id=1501961513]
 visible = false
-material = SubResource("ShaderMaterial_8osqu")
+material = SubResource("ShaderMaterial_f4irj")
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_75vv0")
 animation = &"idle"
@@ -369,12 +370,11 @@ animation_player = NodePath("../../AnimationPlayer")
 script = ExtResource("12_ty4dt")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="shoot" type="Node" parent="StateMachine" index="5" unique_id=390576517 node_paths=PackedStringArray("muzzle", "entity", "FSM", "weapon", "animation_player")]
+[node name="shoot" type="Node" parent="StateMachine" index="5" unique_id=390576517 node_paths=PackedStringArray("muzzle", "entity", "FSM", "animation_player")]
 script = ExtResource("13_s2lb6")
 muzzle = NodePath("../../pivot")
 entity = NodePath("../..")
 FSM = NodePath("..")
-weapon = NodePath("")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="has_shot" type="Timer" parent="StateMachine/shoot" index="0" unique_id=2010598981]
@@ -397,11 +397,10 @@ script = ExtResource("16_fb0ae")
 entity = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="dead" type="Node" parent="StateMachine" index="9" unique_id=1645953202 node_paths=PackedStringArray("enemy", "Navigation_component", "weapon", "animation_player")]
+[node name="dead" type="Node" parent="StateMachine" index="9" unique_id=1645953202 node_paths=PackedStringArray("enemy", "Navigation_component", "animation_player")]
 script = ExtResource("17_ev62x")
 enemy = NodePath("../..")
 Navigation_component = NodePath("../../Navigation_Component_enemy")
-weapon = NodePath("")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Test" parent="." index="6" unique_id=1726522527 node_paths=PackedStringArray("healthcomp", "FSM", "enemy")]
@@ -474,10 +473,9 @@ debug_enabled = true
 [node name="DamageNumberPosition" type="Node2D" parent="." index="17" unique_id=1479610752]
 position = Vector2(0, -10)
 
-[node name="weapon_rotate" type="Node2D" parent="." index="18" unique_id=182039965 node_paths=PackedStringArray("weapon", "entity", "pivot")]
+[node name="weapon_rotate" type="Node2D" parent="." index="18" unique_id=182039965 node_paths=PackedStringArray("entity", "pivot")]
 position = Vector2(3, 3)
 script = ExtResource("26_0cm41")
-weapon = NodePath("")
 entity = NodePath("..")
 pivot = NodePath("../pivot")
 

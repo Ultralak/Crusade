@@ -1,21 +1,26 @@
 [gd_scene format=3 uid="uid://lvn68o4si8oq"]
 
 [ext_resource type="PackedScene" uid="uid://bhicndqmq8i05" path="res://Game Components/Scenes/BaseLevel.tscn" id="1_njk3y"]
-[ext_resource type="PackedScene" uid="uid://cppvfe7oq5n4b" path="res://Characters/Paladin/player.tscn" id="2_c4j0p"]
 [ext_resource type="PackedScene" uid="uid://bdnyykkb27xte" path="res://Characters/Game Classes/Level 2/spawn_level_2(0).tscn" id="2_njk3y"]
 [ext_resource type="PackedScene" uid="uid://ca6ytajfj7nn3" path="res://Characters/Game Classes/Level 2/shop_level_2(0).tscn" id="3_7e6hp"]
+[ext_resource type="PackedScene" uid="uid://gwu2qiqu6hjj" path="res://Characters/Game Classes/Level 3/end.tscn" id="3_c4j0p"]
 [ext_resource type="PackedScene" uid="uid://dfqguxqxm5cxk" path="res://Characters/Game Classes/Level 2/chest_room_level_2(0).tscn" id="3_st85r"]
 [ext_resource type="PackedScene" uid="uid://bsp50mm3gvssy" path="res://Characters/Game Classes/Level 2/combat_level_2(0).tscn" id="5_c4j0p"]
 [ext_resource type="PackedScene" uid="uid://dkdtxg7lbnjbu" path="res://Characters/Game Classes/Level 2/combat_level_2(1).tscn" id="6_q26s6"]
 [ext_resource type="PackedScene" uid="uid://wmf6dva5mlgk" path="res://Characters/Game Classes/Level 2/combat_level_2(2).tscn" id="7_pmn7t"]
+[ext_resource type="PackedScene" uid="uid://1r08v0omsmgq" path="res://Game Components/Scenes/coin_label.tscn" id="9_q26s6"]
 
 [node name="Level_2" unique_id=973644688 instance=ExtResource("1_njk3y")]
 
-[node name="Player2" parent="." index="0" unique_id=246556358 instance=ExtResource("2_c4j0p")]
-max_health = 100.0
-
-[node name="Dungeon Generator" parent="." index="1" unique_id=456120006]
+[node name="Dungeon Generator" parent="." index="0" unique_id=456120006]
 spawn_room_scene = ExtResource("2_njk3y")
+end_room_scene = ExtResource("3_c4j0p")
 shop_room_scene = ExtResource("3_7e6hp")
 treasure_room_scene = ExtResource("3_st85r")
 combat_room_scenes = Array[PackedScene]([ExtResource("5_c4j0p"), ExtResource("6_q26s6"), ExtResource("7_pmn7t")])
+
+[node name="Label" parent="CanvasLayer" parent_id_path=PackedInt32Array(636500648) index="1" unique_id=586692068 instance=ExtResource("9_q26s6")]
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 126.0
+offset_bottom = 76.0

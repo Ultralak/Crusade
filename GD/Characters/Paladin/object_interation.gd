@@ -32,8 +32,9 @@ func update_closest_interactabe_object()->void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and active_interactable:
 		active_interactable.interact()
-		print("Interacted with %s in the world!" % [active_interactable.name])
-		get_viewport().set_input_as_handled()
+		if active_interactable:
+			print("Interacted with %s in the world!" % [active_interactable.name])
+			get_viewport().set_input_as_handled()
 
 	
 func _on_area_exited(area : Area2D) -> void:

@@ -5,6 +5,7 @@ var death_explosion : PackedScene = preload("uid://3er4nc5bjvmo")
 
 
 func enter():
+	
 	var timer = Timer.new()
 	timer.one_shot = true
 	timer.wait_time = 0.5
