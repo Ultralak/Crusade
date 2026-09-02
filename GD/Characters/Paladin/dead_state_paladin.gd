@@ -1,6 +1,7 @@
 extends NodeState
 
 var death_explosion: PackedScene = preload("uid://3er4nc5bjvmo")
+var main_menu : PackedScene = preload("uid://byd35cbsn5h5k")
 @export var player: CharacterBody2D
 @export_file("*.tscn") var main_menu_path: String
 
@@ -21,7 +22,9 @@ func enter() -> void:
 
 func on_timer_timeout() -> void:
 	get_tree().paused = false
-	if main_menu_path != "":
-		get_tree().change_scene_to_file(main_menu_path)
+	if main_menu:
+		PlayerManager.reset()
+		get_tree().change_scene_to_packed(main_menu)
+		
 	else:
 		push_error("Main menu scene path is not set in the Inspector on " + name)

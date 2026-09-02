@@ -8,7 +8,7 @@ signal coins_updated(new_amount: int)
 
 var player: CharacterBody2D = null
 var coins: int = 3000
-
+const COINS = 3000
 # Inventory persistence variables
 var saved_inventory: Dictionary[String, WeaponData] = {
 	"Slot 1": null,
@@ -62,7 +62,8 @@ func add_coins(amount: int) -> void:
 	coins += amount
 	coins_updated.emit(coins)
 
-
+func reset():
+	coins = COINS
 
 func has_enough_coins(amount: int) -> bool:
 	return coins >= amount

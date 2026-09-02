@@ -3,7 +3,6 @@ extends ProjectileWeapon
 
 
 func fire() -> void:
-	if PlayerManager.spend_coins(weapon_data.energy_cost):
 		setup_normal_damage()
 		if not bullet_setup or not can_shoot or not is_normal_damage_setup:
 			return
@@ -17,7 +16,7 @@ func fire() -> void:
 			var bulletInstance := weapon_data.bullet_scene.instantiate() as BasicProjectile
 			bulletInstance.global_position = muzzle.global_position
 			bulletInstance.z_index = 20
-			
+			PlayerManager.spend_coins(weapon_data.energy_cost)
 			critical_hit()
 			bulletInstance.knockback_dir = gun_direction
 			bulletInstance.knockback_force = weapon_data.knockback_force
@@ -54,7 +53,7 @@ func fire() -> void:
 		
 func shoot() -> void:
 	if weapon_user is Paladin :
-		if PlayerManager.spend_coins(weapon_data.energy_cost):
+		if PlayerManager.has_enough_coins(weapon_data.energy_cost):
 			fire()
 	else:
 		fire()

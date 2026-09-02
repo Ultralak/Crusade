@@ -4,7 +4,7 @@ extends ProjectileWeapon
 
 func shoot() -> void:
 	if weapon_user is Paladin :
-		if PlayerManager.spend_coins(weapon_data.energy_cost):
+		if PlayerManager.has_enough_coins(weapon_data.energy_cost):
 			fire()
 	else:
 		fire()
@@ -23,7 +23,7 @@ func fire():
 		var bulletInstance := weapon_data.bullet_scene.instantiate() as BasicProjectile
 		bulletInstance.global_position = muzzle.global_position
 		bulletInstance.z_index = 20
-
+		PlayerManager.spend_coins(weapon_data.energy_cost)
 		critical_hit()
 
 		var mid: float = float(weapon_data.weapon_bloom) / 2.0

@@ -35,7 +35,8 @@ func validate(node : Node):
 		if missing_count > 0:
 			print_rich("[color=red][b]Validation failed for '%s' in '%s': %d missing reference(s) found.[/b][/color]" % [target_node.name,node.name, missing_count])
 		else:
-			print_rich("[color=green]✔ Validation passed for '%s' [/color]in [color=aqua]'%s'.[/color]" % [target_node.name, node.name])
+			pass
+			#print_rich("[color=green]✔ Validation passed for '%s' [/color]in [color=aqua]'%s'.[/color]" % [target_node.name, node.name])
 			
 		
 func is_value_null_or_empty(value) -> bool:

@@ -44,12 +44,12 @@ func setup_gun_enemy(direction : Vector2, user : CharacterBody2D, pivot : Marker
 	bullet_setup = true
 
 func fire()->void:
-	if PlayerManager.spend_coins(weapon_data.energy_cost):
+
 		setup_normal_damage()
 		if !bullet_setup or !can_shoot or !is_normal_damage_setup:
 			return
 		var bulletInstance := weapon_data.bullet_scene.instantiate() as BasicProjectile
-		
+		PlayerManager.spend_coins(weapon_data.energy_cost)
 		bulletInstance.global_position = muzzle.global_position
 		
 		bulletInstance.z_index = 20
@@ -90,7 +90,7 @@ func fire()->void:
 
 func shoot() -> void:
 	if weapon_user is Paladin :
-		if PlayerManager.spend_coins(weapon_data.energy_cost):
+		if PlayerManager.has_enough_coins(weapon_data.energy_cost):
 			fire()
 	else:
 		fire()
