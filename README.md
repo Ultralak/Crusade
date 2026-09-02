@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/e80e6c1c-e903-418a-9639-5a75bc04e849" alt="game_banner" width="100%" />
 </p>
 <p align="center">
-<img width="856" height="243" alt="Crusade image" src="https://github.com/user-attachments/assets/eb76499b-307e-4e83-9594-c4c9313c2e60" />
+<img width="856" height="243" alt="crusade image" src="https://github.com/user-attachments/assets/1b59a280-9d7c-4e89-9654-ef5862859a14" />
 </p>
 
 <p align="center">
