@@ -1,11 +1,12 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/e80e6c1c-e903-418a-9639-5a75bc04e849" alt="game_banner" width="100%" />
 </p>
-
-<h1 align="center">Crusade</h1>
+<p align="center">
+<img width="856" height="243" alt="Crusade image" src="https://github.com/user-attachments/assets/eb76499b-307e-4e83-9594-c4c9313c2e60" />
+</p>
 
 <p align="center">
-  <a href="https://ultrala.itch.io/crusade"><img src="https://img.shields.io/badge/Play_on-Itch.io-ff2449?style=for-the-badge&logo=itch.io&logoColor=white" alt="Play on Itch.io" /></a>
+  <a href="https://ultrala.itch.io/crusade?secret=0qNZi4fWMvZbj9LkHpkoDs9k0"><img src="https://img.shields.io/badge/Play_on-Itch.io-ff2449?style=for-the-badge&logo=itch.io&logoColor=white" alt="Play on Itch.io" /></a>
   <img src="https://img.shields.io/badge/Engine-Godot_4.6-478cbf?style=for-the-badge&logo=godotengine&logoColor=white" alt="Godot Engine" />
 </p>
 
@@ -58,7 +59,6 @@ Weapons are differentiated by weapons stat, look and projectile type [`Bouncing`
 As of now the player gains coins from killing enemies and uses that to buy more weapons. Since it is a roguelike death means starting over from the beginning. The loop is mainly kill gain money and gain weapons.
 Later on i will be planning to add things like Secret levels and achievements.
 
----
 
 ## Running the Game
 To play a demo of the game (i.e the whole game), go to the itch.io site and play the demo or download the crusade.exe file for windows : [Play on itch.io](https://ultrala.itch.io/crusade) 
