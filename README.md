@@ -49,7 +49,9 @@ While it is fairly simple ( in the context of procedural generation) it does for
 There are 14 weapons available (more to come) with basically 3 weapon types [`Burst`, `Shotgun`, and `Normal` with plans for `Laser`]. 
 
 Weapons are differentiated by weapons stat, look and projectile type [`Bouncing`, `Cluster`, and `Sine` with plans for `Homing`].
-
+<p align = "center">
+<img width="1920" height="1080" alt="Screenshot 2026-09-02 191400" src="https://github.com/user-attachments/assets/55af1775-7423-47d1-af98-0b66c710d199" />
+</p>
 ---
 
 ## Game Loop
