@@ -83,7 +83,7 @@ Choose one of the following methods to download the project files:
 #### Option B: Using Git Command Line
 Open your terminal or command prompt and run:
 ```bash
-git clone [https://github.com/Ultralak/Crusade](https://github.com/Ultralak/Crusade)
+git clone https://github.com/Ultralak/Crusade
 cd Crusade
 ```
 
