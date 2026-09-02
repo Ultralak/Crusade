@@ -53,7 +53,7 @@ Weapons are differentiated by weapons stat, look and projectile type [`Bouncing`
 <p align = "center">
 <img width="1920" height="1080" alt="Screenshot 2026-09-02 191400" src="https://github.com/user-attachments/assets/55af1775-7423-47d1-af98-0b66c710d199" />
 </p>
----
+
 
 ## Game Loop
 As of now the player gains coins from killing enemies and uses that to buy more weapons. Since it is a roguelike death means starting over from the beginning. The loop is mainly kill gain money and gain weapons.
@@ -113,6 +113,3 @@ cd Crusade
 
 Navigate to your export folder and run the generated application file (`.exe` on Windows, `.x86_64` on Linux, or open `index.html` in a browser for Web exports) to play the game without needing the editor.
 
-```
-
-```
